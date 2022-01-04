@@ -1,0 +1,123 @@
+## Plugin Configurations
+
+liquid:
+  error_mode: strict
+
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter_opts:
+    disable : true
+
+sass:
+  style: compressed
+
+
+## Globals
+
+url:        oyendrila-dobe.github.io
+baseurl:
+repository: oyendrila-dobe/oyendrila-dobe.github.io
+permalink:  pretty
+
+title:      'Oyendrila Dobe'
+timezone:   'America/Detroit'
+
+author:
+  name:     'Oyendrila Dobe'
+  link:     https://oyendrila-dobe.github.io
+  photo:
+    alt:    'Lame Headshot'
+    local:  assets/img/oyendrila.jpeg
+
+github: [metadata]
+
+## Theme and Layout
+
+default_icon:
+  award: trophy
+  position: address-card
+  publication: file-signature
+  service: user-astronaut
+  talk: talk
+  teaching: chalkboard-teacher
+
+default_highlight:
+  award: accent
+  position: medium-accent
+  publication: highlight
+
+# Defaults:
+# ---------
+# theme:
+#   tooltips:    enabled
+#   hover_light: enabled
+#
+# fonts:
+#   base: Noto Sans
+#   head: Montserrat
+#   mono: Ubuntu Mono
+#
+# layout:
+#   header:
+#     style: scroll # (can be: scroll | fixed | disabled)
+#   footer:
+#     style: scroll # (can be: scroll | fixed | disabled)
+
+layout:
+  header:
+    style: fixed
+
+topmenu:
+  Resume:
+    updates:
+      local: updates.md
+    cv:
+      local: Resume.md
+  Main:
+    publications:
+      local: publications.md
+    slides:
+      local: slides.md
+   
+  Misc:
+    blog:
+      local: iwebsites.md
+    other:
+      local: personal.md
+    sports:
+      local: badminton.md 
+    travel:
+      local: travel.md
+
+
+collections:
+  blogposts:
+    output: true
+    permalink: 'blog/:path.html'
+  publications:
+    output: true
+  slides:
+    output: true
+    permalink: '/:collection/:path.html'
+  updates:
+    output: false
+
+defaults:
+  - scope:
+      path: ''
+      type: slides
+    values:
+      layout: slide
+  # - scope:
+  #     path: ''
+  #     type: blogposts
+  #   values:
+  #     layout: blogpost
+  - scope:
+      path: ''
+      type: publications
+    values:
+      layout: article
