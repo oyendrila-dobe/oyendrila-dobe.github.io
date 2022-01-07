@@ -17,9 +17,10 @@ This page is dedicated to keep track of interesting places I came across on the 
   - [Allan Rossman's blog](https://askgoodquestions.blog/) answers interesting questions about statistics.
 <br>
 
-* **Intersting article collections:**
+* **Intersting articles:**
   - Richard Feynman's [lecture collection](https://www.feynmanlectures.caltech.edu/).
   - A [collections of letters](https://news.lettersofnote.com/) from all accross the world.
+  - Women are better at [discriminating among colors](https://www.nationalgeographic.com/culture/article/120907-men-women-see-differently-science-health-vision-sex) and men didn't evolve to do so!
 
 
 * **Helpful for exploration in other fields:**
@@ -32,6 +33,7 @@ This page is dedicated to keep track of interesting places I came across on the 
   - [The PhD Grind](https://www.scholat.com/teamwork/teamworkdownloadscholar.html?id=4924&teamId=1158) gives an exellent journal on the journey. Though the author graduated in another decade, the outlines of the key points , I believe, are still relevant. There are after-discussion on this [here](https://blog.regehr.org/archives/743) and [here](https://cacm.acm.org/blogs/blog-cacm/154473-the-phd-grind-main-grinds-and-side-grinds/fulltext). 
   - [How to do grad school](https://open.spotify.com/show/5v81sUzjnRKl5s13sqG1fm?si=1f3ce770c6a04542) is another podcast I absolutely love. It brings up aspects of this journey from the perspective of esearchers from different fields.
   - The talk on [how to do research](https://youtu.be/ZkDC4aizsqQ?list=PLMPy362FkW9pZsgycOxbKKbs-YfcyzbrY&t=4363) by Rupak Majumdar has given me direction at times. It refers to [Richard Hamming's](https://www.cs.virginia.edu/~robins/YouAndYourResearch.html) key talk on 'You and your research'.
+  - Thread on useful information for [incoming graduate students](https://typefully.com/u/neeldhara/t/ZgqBZsTFu31x)
 
 
 * **Relevant comics:**
@@ -45,4 +47,8 @@ This page is dedicated to keep track of interesting places I came across on the 
   - An experiment on how different countries view the [perfect female body](https://www.mic.com/articles/123930/this-woman-was-photoshopped-to-show-18-countries-very-different-beauty-standards).
   - A revised version of The Little Mermaid by Malcolm Gladwell. It has [episode 1](https://www.pushkin.fm/episode/little-mermaid-part-1-the-golden-contract/), [episode 2](https://www.pushkin.fm/episode/little-mermaid-part-2-the-fairytale-twist/), and [episode 3](https://www.pushkin.fm/episode/little-mermaid-part-3-honestly-ever-after/).
   - [My body is not an apology](https://thebodyisnotanapology.com/) follows the body positive movement by their founder *Sonya Renee Taylor*. Explore a wide range of organized articles on several topics [here](https://thebodypositive.org/thisisbeauty/about/).
+
+
+* **Tools for women in STEM:**
+
 
