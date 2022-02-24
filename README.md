@@ -1,4 +1,6 @@
-# [Personal Webpage](http://oyendrila-dobe.github.io/) [![Build Status](https://travis-ci.com/oyendrila-dobe/oyendrila-dobe.github.io.svg?branch=master)](https://travis-ci.com/oyendrila-dobe/oyendrila-dobe.github.io)
+# [Personal Webpage](http://oyendrila-dobe.github.io/)
+
+This organized theme was created by [Saswat Padhi](https://github.com/SaswatPadhi). 
 
 Powered by [Jekyll].
 
