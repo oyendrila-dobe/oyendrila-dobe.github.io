@@ -83,10 +83,12 @@ topmenu:
       local: slides.md
    
   Misc:
-    blog:
+    collections:
       local: iwebsites.md
     other:
       local: personal.md
+    blog:
+      local: blog.md
     sports:
       local: badminton.md 
     travel:

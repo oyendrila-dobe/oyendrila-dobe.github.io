@@ -14,7 +14,7 @@ This page is dedicated to keep track of interesting places I came across on the 
   - [Terry Tao's](https://terrytao.wordpress.com/) blog for mathematical articles.
   - [Andreas Zeller's](https://andreas-zeller.info/) blog on automated testing and program analysis.
   - [Philip Zucker's](https://www.philipzucker.com/) blog. I came across this when exploring a tutorial session on z3 by him.
-  - [Allan Rossman's blog](https://askgoodquestions.blog/) answers interesting questions about statistics.
+  - [Lex Fridman's](https://lexfridman.com/) blog. He is an exceptional human whose humbleness, intellect, and thinking skills I admire. 
 <br>
 
 * **Intersting articles:**
