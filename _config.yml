@@ -89,10 +89,10 @@ topmenu:
       local: personal.md
     blog:
       local: blog.md
-    sports:
-      local: badminton.md 
-    travel:
-      local: travel.md
+    #sports:
+    #  local: badminton.md 
+    #travel:
+    #  local: travel.md
 
 
 collections:

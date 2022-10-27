@@ -9,4 +9,4 @@ tagline: 'The current development of a pseudo sense of how learning anything is 
 categories: [ 'random-musing' ]
 ---
 
-In the age of social media, 
+---working on it---
