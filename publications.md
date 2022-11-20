@@ -25,7 +25,7 @@ title: Publications
 
 {% include tools/pubs_filter.md type="conference" %}
 
-<!-- #### <i class='fas fa-fw fa-book'></i> Journal Papers
+#### <i class='fas fa-fw fa-book'></i> Journal Papers
 
 {% include tools/pubs_filter.md type="journal" %} -->
 

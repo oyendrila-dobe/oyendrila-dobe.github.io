@@ -113,11 +113,11 @@ defaults:
       type: slides
     values:
       layout: slide
-  # - scope:
-  #     path: ''
-  #     type: blogposts
-  #   values:
-  #     layout: blogpost
+  - scope:
+      path: ''
+      type: blogposts
+    values:
+      layout: blogpost
   - scope:
       path: ''
       type: publications
