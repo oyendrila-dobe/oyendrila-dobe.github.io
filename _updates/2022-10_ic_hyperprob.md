@@ -1,9 +1,9 @@
 ---
 date: 2022-10-28
 
-type: paper
+type: publication
 
-icon: paper
+icon: desktop
 
 headline: 'Journal Publication'
 ---

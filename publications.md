@@ -27,7 +27,7 @@ title: Publications
 
 #### <i class='fas fa-fw fa-book'></i> Journal Papers
 
-{% include tools/pubs_filter.md type="journal" %} -->
+{% include tools/pubs_filter.md type="journal" %}
 
 <!-- <hr>
 

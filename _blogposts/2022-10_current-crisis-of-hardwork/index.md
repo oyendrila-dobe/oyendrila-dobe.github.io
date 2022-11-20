@@ -1,12 +1,11 @@
 ---
-icon: yarn
+icon: thinking
 
 post_date: 2022-10-26
 
-title: 'Eveything seems so easy'
-tagline: 'The current development of a pseudo sense of how learning anything is easy and fast.'
+title: 'Learning fast and slow'
+tagline: 'Social media`s affect on how we perceive the difficulty of a task.'
 
 categories: [ 'random-musing' ]
 ---
 
----working on it---
