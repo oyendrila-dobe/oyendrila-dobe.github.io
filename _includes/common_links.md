@@ -14,7 +14,7 @@
 
 {% comment%}              GROUPS
 {% endcomment %}
-[AWS]:                    [https://www.amazon.science/publications/how-amazon-web-services-uses-formal-methods](https://www.amazon.science/research-areas/automated-reasoning)
+[AWS]:                    https://www.amazon.science/publications/how-amazon-web-services-uses-formal-methods/
 
 
 
