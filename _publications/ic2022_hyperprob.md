@@ -18,8 +18,8 @@ awards:
 tweet: 'We study the problem of formalizing and checking probabilistic hyperproperties for Markov decision processes (MDPs). We introduce the temporal logic HyperPCTL that allows explicit and simultaneous quantification over schedulers as well as probabilistic computation trees. We show that the logic can express important quantitative requirements in various fields. We show that HyperPCTL model checking over MDPs is in general undecidable, but restricting the domain of scheduler quantification to memoryless non-probabilistic schedulers turns the model checking problem decidable. Subsequently, we propose an SMT-based encoding for model checking this language.'
 
 target:
-  #short: 
-  #full: 
+  #short: IC
+  #full: Information and Computation, Special Isuue
   link: 'https://doi.org/10.1016/j.ic.2022.104978'
 
 links:
