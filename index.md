@@ -52,7 +52,7 @@ Apart from research, I'm an avid badminton player and have been playing the spor
 &nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://www.instagram.com/girl_with_elephant_patronus/"><i class="fab fa-instagram-square fa-2x"></i></a>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://twitter.com/OyendrilaDobe" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>
+<!--<a href="https://twitter.com/OyendrilaDobe" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>-->
 
 <p class='indented' markdown='1'>
     <em>Office</em>: &nbsp;428 S Shaw Ln # 3320, East Lansing, MI 48824
@@ -74,7 +74,7 @@ Apart from research, I'm an avid badminton player and have been playing the spor
 </p>
 
 
-#### <i class="fas fa-box-open"></i>&nbsp;&nbsp;Follow my work on: 
+#### <i class="fas fa-box-open"></i>&nbsp;&nbsp;Follow my work on:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://github.com/oyendrila-dobe" target="_blank"><i class="fab fa-github-square fa-2x"></i></a>

@@ -1,8 +1,12 @@
-{% comment %}             AWESOME PEOPLE
+{% comment %}             COLLABORATORS
 {% endcomment %}
 [Borzoo]:                 http://www.cse.msu.edu/~borzoo/
 [Erika]:				  https://ths.rwth-aachen.de/people/erika-abraham/
 [Ezio]:                   http://www.eziobartocci.com/
+[Stefan]                  https://stefanschupp.de/
+[Axel]                    https://ieeexplore.ieee.org/author/37545470100
+[Miroslav]                https://people.duke.edu/~mp275/
+[Yu]                      https://sites.google.com/view/y-wang
 
 
 {% comment %}             SCHOOLS
@@ -14,7 +18,7 @@
 
 {% comment%}              GROUPS
 {% endcomment %}
-[AWS]:                    https://www.amazon.science/research-areas/automated-reasoning
+[AWSAR]:                    https://www.amazon.science/research-areas/automated-reasoning
 
 
 
@@ -38,8 +42,10 @@
 [CAV 2021]:               http://i-cav.org/2021
 [ATVA 2020]:              http://fit.uet.vnu.edu.vn/atva2020/
 [FM 2021]:                https://lcs.ios.ac.cn/fm2021/
-[ATVA 2021]:             https://formal-analysis.com/atva/2021/
-[NFM 2022]:              https://nfm2022.caltech.edu/
+[ATVA 2021]:              https://formal-analysis.com/atva/2021/
+[NFM 2022]:               https://nfm2022.caltech.edu/
+[ATVA 2023]:              https://atva-conference.org/2023/
+[QEST 2023]:              https://www.qest.org/qest2023/          
 
 
 {% comment %}             REFERENCE.

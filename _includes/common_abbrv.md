@@ -8,12 +8,8 @@
 
 {% comment %}       SCHOOLS, DEPARTMENTS etc.
 {% endcomment %}
-*[IFIS]:            Institut für Informationssysteme
-*[IIT]:             Indian Institute of Technology
-*[HSSEAS]:          Henry Samueli School of Engineering and Applied Sciences
-*[MSR AI]:          Microsoft Research AI
-*[RiSE]:            Research in Software Engineering
-*[UCLA]:            University of California - Los Angeles
+*[MSU]:             Michigan State University
+*[AWS AR]:          Amazon Web Sevices Automated Reasoning
 
 
 {% comment %}       TOOLS, GROUPS etc.
