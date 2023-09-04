@@ -3,7 +3,7 @@ layout: article
 
 type: conference
 year: 2023
-month: 10
+month: 08
 
 title: 'Lightweight Verification of Hyperproperties'
 authors: ['Oyendrila Dobe', 'Stefan Schupp', '[Ezio Bartocci](Ezio)', '[Borzoo Bonakdarpour](Borzoo)', '[Axel Legay](Axel)', '[Miroslav Pajic](Miroslav)', '[Yu Wang](Yu)' ]
@@ -38,4 +38,4 @@ Hyperproperties have been widely used to express system properties like noninter
 ```bibtex {% raw %}
 {
 }
-{% endraw %} ```
+{% endraw %} ```git 
