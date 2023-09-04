@@ -6,7 +6,7 @@ year: 2023
 month: 08
 
 title: 'Lightweight Verification of Hyperproperties'
-authors: ['Oyendrila Dobe', 'Stefan Schupp', '[Ezio Bartocci](Ezio)', '[Borzoo Bonakdarpour](Borzoo)', '[Axel Legay](Axel)', '[Miroslav Pajic](Miroslav)', '[Yu Wang](Yu)' ]
+authors: ['Oyendrila Dobe', 'Stefan Schupp'(Stefan), '[Ezio Bartocci](Ezio)', '[Borzoo Bonakdarpour](Borzoo)', '[Axel Legay](Axel)', '[Miroslav Pajic](Miroslav)', '[Yu Wang](Yu)' ]
 
 #DOI:
 #  target: Springer, Cham

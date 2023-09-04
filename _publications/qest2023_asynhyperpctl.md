@@ -6,7 +6,7 @@ year: 2023
 month: 08
 
 title: 'Introducing Asynchronicity to Probabilistic Hyperproperties'
-authors: ['Lina Gerlach', Oyendrila Dobe', '[Erika Ábrahám](Erika)', '[Ezio Bartocci](Ezio)', '[Borzoo Bonakdarpour](Borzoo)']
+authors: ['Lina Gerlach', 'Oyendrila Dobe', '[Erika Ábrahám](Erika)', '[Ezio Bartocci](Ezio)', '[Borzoo Bonakdarpour](Borzoo)']
 
 DOI:
   target: 
