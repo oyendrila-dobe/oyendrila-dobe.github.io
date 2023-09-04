@@ -3,10 +3,10 @@
 [Borzoo]:                 http://www.cse.msu.edu/~borzoo/
 [Erika]:				  https://ths.rwth-aachen.de/people/erika-abraham/
 [Ezio]:                   http://www.eziobartocci.com/
-[Stefan]                  https://stefanschupp.de/
-[Axel]                    https://ieeexplore.ieee.org/author/37545470100
-[Miroslav]                https://people.duke.edu/~mp275/
-[Yu]                      https://sites.google.com/view/y-wang
+[Stefan]:                  https://stefanschupp.de/
+[Axel]:                    https://ieeexplore.ieee.org/author/37545470100
+[Miroslav]:                https://people.duke.edu/~mp275/
+[Yu]:                      https://sites.google.com/view/y-wang
 
 
 {% comment %}             SCHOOLS
