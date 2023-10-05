@@ -23,7 +23,7 @@ target:
   link: 'https://www.qest.org/qest2023/'
 
 links:
-  PDF: '%BASE_URL%/assets/pdf/atva2023_async.pdf'
+  PDF: '%BASE_URL%/assets/pdf/qest2023_async.pdf'
   #Slides: '%BASE_URL%/slides/nfm2022_hyperrewards'
   #Talk: 'https://youtu.be/T-4J81c_bzY'
 ---

@@ -22,6 +22,8 @@ This page is dedicated to keep track of interesting places I came across on the 
   - Richard Feynman's [lecture collection](https://www.feynmanlectures.caltech.edu/).
   - A [collections of letters](https://news.lettersofnote.com/) from all accross the world.
   - Women are better at [discriminating among colors](https://www.nationalgeographic.com/culture/article/120907-men-women-see-differently-science-health-vision-sex) and men didn't evolve to do so!
+  - [An article relevant to our times](https://www.persuasion.community/p/take-a-position-not-a-side?r=rvt08&utm_campaign=post&utm_medium=web): How we should have <it>opinions</it> instead of <it>taking sides</it>.
+  - A thoughful and humorous [graduation speech](https://www.persuasion.community/p/take-a-position-not-a-side?r=rvt08&utm_campaign=post&utm_medium=web) by David Sedaris. 
 
 
 * **Helpful for exploration in other fields:**
