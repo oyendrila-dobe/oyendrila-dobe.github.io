@@ -16,6 +16,7 @@ This page is dedicated to keep track of interesting places I came across on the 
   - [Philip Zucker's](https://www.philipzucker.com/) blog. I came across this when exploring a tutorial session on z3 by him.
   - [Lex Fridman's](https://lexfridman.com/) blog. He is an exceptional human whose humbleness, intellect, and thinking skills I admire. 
   - [Christof Koch's](https://christofkoch.com/) blog. Along with the other interesting sections of this blog, the 'books I've read' is one of the coolest part.
+  - [Rustan's puzzle collection](https://leino.science/puzzles/). Also has advanced resources for [Dafny](https://dafny.org/).
 <br>
 
 * **Intersting articles:**
