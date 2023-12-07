@@ -9,8 +9,7 @@ tagline: 'In our day-to-day busy schedule, we get so involved that we often fail
 categories: [ 'floating-characters' ]
 ---
 
-<bold>Kolkata.</bold>
-<br>
+<b>Kolkata.</b>
 
 Around 5pm of any busy working day. Buses, taxis, autos- honking, tires screeching, traffic light red-green-yellow-red. The city, she just breathes at this hour, tired of the day’s work. She doesn’t live, just exists; satisfied at the thought of having spent yet another day. Passengers in their seats, headphones on, probably a journey song is playing. The soft, lyrical song, you know, where the words are intentionally dragged at places, to tune it with the audiences’ mood; tired, a little sad, regrets surfacing, but all of it gives in to a smile saying life moves on. Hawkers on the road, walking back home with their earnings of the day in the pocket, the leftover burden on shoulders, eyes lost in thoughts of how his life would have been, had the jute mill not closed down. The lights turn red; car stops; two little Chotus and a Bani walk into the traffic, knocking on the windows of cars; requesting earnestly, “Ek ful le lo na dada”.
 
