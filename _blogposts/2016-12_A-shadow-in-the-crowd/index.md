@@ -1,7 +1,7 @@
 ---
 icon: <i class="fa-solid fa-person-dress"></i>
 
-post_date: 2022-10-26
+post_date: 2016-12-17
 
 title: 'A shadow in the crowd (I)'
 tagline: 'In our day-to-day busy schedule, we get so involved that we often fail to notice the person sitting next to us in the metro. We have no idea of them- their life, their dreams, their nightmares. But there are several amazing people around us in the crowd. I prefer calling them “Shadows in the crowd”. This story is about one such shadow…..'
