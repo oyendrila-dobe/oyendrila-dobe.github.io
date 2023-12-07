@@ -1,5 +1,5 @@
 ---
-icon: <i class="fa-solid fa-person-dress"></i>
+icon: person
 
 post_date: 2016-12-17
 
