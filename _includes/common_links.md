@@ -47,6 +47,7 @@
 [ATVA 2023]:              https://atva-conference.org/2023/
 [QEST 2023]:              https://www.qest.org/qest2023/ 
 [TACAS 2024]:             https://etaps.org/2024/conferences/tacas/
+[CAV 2024]:               https://i-cav.org/2024/
 
 
 {% comment %}             REFERENCE.
