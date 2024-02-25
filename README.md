@@ -6,6 +6,6 @@ Powered by [Jekyll].
 
 ### LICENSE
 
-Copyright (c) 2023 Oyendrila Dobe, The MIT License (MIT).
+Copyright (c) 2024 Oyendrila Dobe, The MIT License (MIT).
 
 [Jekyll]: https://jekyllrb.com/

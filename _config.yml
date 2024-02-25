@@ -76,6 +76,8 @@ topmenu:
       local: updates.md
     cv:
       local: Resume.md
+    resume:
+      local: CV.md
   Main:
     publications:
       local: publications.md
