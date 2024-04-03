@@ -48,7 +48,7 @@ Apart from research, I'm an avid badminton player and have been playing the spor
 
 #### <i class="fas fa-users"></i>&nbsp;&nbsp;You can find me on:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://www.linkedin.com/in/oyendrila-dobe-400430103/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+<a href="https://www.linkedin.com/in/oyendrila-dobe/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://www.instagram.com/girl_with_elephant_patronus/"><i class="fab fa-instagram-square fa-2x"></i></a>
 &nbsp;&nbsp;&nbsp;&nbsp;
