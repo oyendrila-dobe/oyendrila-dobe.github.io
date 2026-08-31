@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 18px; /* default is 16px — bumps every rem-based text size ~12.5% larger site-wide */
+}
+
+html, body, #root {
+  height: 100%;
+}
