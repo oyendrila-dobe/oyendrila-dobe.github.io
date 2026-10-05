@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Code2, FileText, Search } from "lucide-react";
+import { ArrowRight, Code2, FileText, Search } from "lucide-react";
 
 // Same palette/fonts as the rest of the site (kept local so this file is
 // self-contained; if you ever export these from one module, import them here).
@@ -62,7 +62,85 @@ function LinkPill({ href, Icon, label }) {
   );
 }
 
-function PaperEntry({ p, themes, types, expanded, onToggle }) {
+function IdeaStrip({ idea }) {
+  const steps = [
+    ["problem", idea.problem],
+    ["approach", idea.approach],
+    ["result", idea.result],
+  ];
+  return (
+    <div className="flex flex-col items-stretch gap-1.5 sm:flex-row">
+      {steps.map(([label, text], i) => (
+        <React.Fragment key={label}>
+          {i > 0 && <ArrowRight size={16} color={MUTED} className="shrink-0 self-center rotate-90 sm:rotate-0" />}
+          <div className="flex-1 border px-2.5 py-2" style={{ borderColor: PEACH, background: "#FFF9F5" }}>
+            <div className="uppercase tracking-wide" style={{ fontFamily: MONO, color: RUST, fontSize: "0.7rem" }}>
+              {label}
+            </div>
+            <div className="text-sm leading-snug" style={{ fontFamily: SERIF, color: INK }}>
+              {text}
+            </div>
+          </div>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+// The paper's own Figure 1 when its license allows reuse (hotlinked from arXiv, with attribution);
+// otherwise, or if the image fails to load, the three-phrase idea strip.
+function OverviewPanel({ p }) {
+  const [imgFailed, setImgFailed] = useState(false);
+  const fig =
+    p.figure && !imgFailed && typeof p.figure.url === "string" && p.figure.url.startsWith("https://arxiv.org/")
+      ? p.figure
+      : null;
+
+  if (fig) {
+    const lead = p.authors[0] ? `${p.authors[0]}${p.authors.length > 1 ? " et al." : ""}` : "the authors";
+    return (
+      <figure className="mt-2">
+        <img
+          src={fig.url}
+          alt={fig.caption || "Figure 1"}
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          onError={() => setImgFailed(true)}
+          className="block max-w-full border"
+          style={{ borderColor: INK, background: WHITE, maxHeight: "26rem" }}
+        />
+        <figcaption className="mt-1 text-xs leading-snug" style={{ fontFamily: SERIF, color: MUTED }}>
+          {fig.caption && <span>{fig.caption} </span>}
+          <span style={{ fontFamily: MONO }}>
+            Figure 1 from “{p.title}” ({lead},{" "}
+            <a href={p.abs_url} target="_blank" rel="noreferrer" className="underline" style={{ color: TEAL }}>
+              arXiv:{p.id}
+            </a>
+            ), licensed{" "}
+            <a href={p.license_url} target="_blank" rel="noreferrer" className="underline" style={{ color: TEAL }}>
+              {p.license}
+            </a>
+            .
+          </span>
+        </figcaption>
+      </figure>
+    );
+  }
+  if (p.idea) {
+    return (
+      <div className="mt-2">
+        <IdeaStrip idea={p.idea} />
+      </div>
+    );
+  }
+  return (
+    <p className="mt-2 text-xs" style={{ fontFamily: MONO, color: MUTED }}>
+      No overview available.
+    </p>
+  );
+}
+
+function PaperEntry({ p, themes, types, expanded, onToggle, ovExpanded, onToggleOv }) {
   const shown = p.authors.slice(0, 5);
   const cats = p.categories && p.categories.length ? p.categories : [p.primary_category].filter(Boolean);
   const why = p.why || p.summary;
@@ -141,6 +219,7 @@ function PaperEntry({ p, themes, types, expanded, onToggle }) {
             {p.abstract}
           </p>
         )}
+        {ovExpanded && <OverviewPanel p={p} />}
         <div className="mt-2 flex flex-wrap items-center gap-1.5">
           <LinkPill href={p.pdf_url} Icon={FileText} label="PDF" />
           <button
@@ -150,6 +229,15 @@ function PaperEntry({ p, themes, types, expanded, onToggle }) {
           >
             {expanded ? "hide abstract" : "abstract"}
           </button>
+          {(p.figure || p.idea) && (
+            <button
+              onClick={onToggleOv}
+              className="px-2 py-0.5 text-sm underline"
+              style={{ fontFamily: MONO, color: TEAL }}
+            >
+              {ovExpanded ? "hide overview" : "overview"}
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -165,6 +253,7 @@ export default function PapersFeed() {
   const [windowDays, setWindowDays] = useState(0);
   const [visible, setVisible] = useState(PAGE);
   const [open, setOpen] = useState({});
+  const [openOv, setOpenOv] = useState({});
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}data/papers.json`)
@@ -297,6 +386,8 @@ export default function PapersFeed() {
           types={types}
           expanded={!!open[p.id]}
           onToggle={() => setOpen((o) => ({ ...o, [p.id]: !o[p.id] }))}
+          ovExpanded={!!openOv[p.id]}
+          onToggleOv={() => setOpenOv((o) => ({ ...o, [p.id]: !o[p.id] }))}
         />
       ))}
 
