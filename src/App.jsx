@@ -24,6 +24,7 @@ import { books } from "./data/marginalia/books.js";
 import { marginaliaBlogPosts } from "./data/marginalia/marginaliaBlogPosts.js";
 import { publications } from "./data/research/publications.js";
 import { researchBlogPosts } from "./data/research/researchBlogPosts.js";
+import PapersFeed from "./PapersFeed.jsx";
 
 // ---- palette (coolors.co/588b8b-ffffff-ffd5c2-f28f3b-c8553d) ----
 const TEAL = "#2E7D52";
@@ -714,6 +715,7 @@ function ResearchPage() {
          options={[
           { id: "topic", label: "Topics" },
           { id: "publications", label: "Publications" },
+          { id: "fetched_papers", label: "Papers" },
           { id: "blog", label: "Blog" },
         ]}
         active={view}
@@ -830,6 +832,9 @@ function ResearchPage() {
           <BlogSection posts={researchBlogPosts} />
         </div>
       )}
+
+      {view === "fetched_papers" && <PapersFeed />}
+      
     </PaperShell>
   );
 }
