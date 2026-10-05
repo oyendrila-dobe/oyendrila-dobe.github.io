@@ -331,7 +331,8 @@ export default function PapersFeed() {
       <p className="mb-1 text-justify text-[1.03rem] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
         Reading radar: new arXiv papers are crawled daily and screened by Claude against my research interests, which
         are getting LLMs to reason beyond next-token prediction, formalizing natural language into something provable,
-        and mining specifications to understand what systems actually do.
+        mining specifications to understand what systems actually do, and building the harnesses and guardrails that
+        keep LLM agents in check.
       </p>
       <p className="mb-5 text-sm" style={{ fontFamily: MONO, color: MUTED }}>
         {data.papers.length} papers
