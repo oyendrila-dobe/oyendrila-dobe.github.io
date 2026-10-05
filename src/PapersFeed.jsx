@@ -313,6 +313,21 @@ export default function PapersFeed() {
 
   return (
     <div>
+      <div className="mb-5 border px-4 py-2.5" style={{ borderColor: PEACH, background: "#FFF9F5" }}>
+        <p className="text-sm leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
+          <span style={{ fontFamily: MONO, color: RUST, fontWeight: 600 }}>Credit —</span> this page is an adaptation
+          of the idea behind{" "}
+          <a href="https://github.com/soonhokong/paperswithlean" target="_blank" rel="noreferrer" className="underline" style={{ color: TEAL }}>
+            Papers with Lean
+          </a>{" "}
+          by{" "}
+          <a href="https://soonhokong.github.io/" target="_blank" rel="noreferrer" className="underline" style={{ color: TEAL }}>
+            Soonho Kong
+          </a>
+          , a daily-updated, LLM-screened index of arXiv papers. It's reworked here for different topics.
+        </p>
+      </div>
+
       <p className="mb-1 text-justify text-[1.03rem] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
         Reading radar: new arXiv papers are crawled daily and screened by Claude against my research interests, which
         are getting LLMs to reason beyond next-token prediction, formalizing natural language into something provable,
