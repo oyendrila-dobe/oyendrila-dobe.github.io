@@ -1,0 +1,1385 @@
+{
+ "generated": "2026-10-05",
+ "themes": {
+  "semantic_understanding": "Semantic understanding & reasoning",
+  "autoformalization": "Autoformalization",
+  "specification_mining": "Specification mining"
+ },
+ "types": {
+  "method": "Method",
+  "benchmark": "Benchmark",
+  "empirical": "Empirical study",
+  "survey": "Survey",
+  "position": "Position",
+  "tool": "Tool",
+  "theory": "Theory"
+ },
+ "papers": [
+  {
+   "id": "2610.02829",
+   "title": "Clinical Concept Centers in LLMs",
+   "authors": [
+    "Aishik Nagar",
+    "Abhishek Vaidyanathan",
+    "Arun-Kumar Kaliya-Perumal",
+    "Elijah Tzen Hsuen Boey",
+    "Stefan Winkler"
+   ],
+   "abstract": "Large language models are increasingly used in clinical settings. However, research into the reliability and performance of these models has focused almost entirely on the language substrate, scoring what the model says. Mechanistic interpretability has found that the latent space carries a higher fidelity of representation than the text: internal representations not only encode substantially more than the output verbalizes, but the stated reasoning also systematically omits features that causally drive the answer. An evaluation of model behavior in terms of mechanistic interpretability has not been explored in clinical decision support. In this work, we extend behavioral evaluation into the latent space and ask whether clinical concepts exist as locatable, causally used representations inside open-weight LLMs. We find dedicated clinical concept centers in the latent space of all eleven open models we test. These concept centers are interpretable, firing only on their aligned clinical narratives, and meaningfully and causally drive model behavior in both constrained and open-ended settings. They are not just analytical representations, but circuits that can be utilized in clinical practice, and we explore their use from the perspective of both evaluation and performance. From the evaluation standpoint, models stay internally coherent and keep using the relevant concept centers even under adversarial role-based priming, while aligned priming improves downstream clinical performance. From a performance perspective, we simulate realistic deployment settings and find that steering models along these centers leads to meaningful downstream improvements. Finally, we conduct a blinded clinician validation and find the activation and usage of these concept centers predicts clinicians preferences.",
+   "abs_url": "https://arxiv.org/abs/2610.02829",
+   "pdf_url": "https://arxiv.org/pdf/2610.02829",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.LG"
+   ],
+   "published": "2026-10-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Mechanistic interpretability study that probes latent representations in LLMs to understand clinical concept reasoning, including activation steering to improve model behavior.",
+   "idea": {
+    "problem": "Clinical LLM outputs lack verifiable reasoning; latent representations may encode richer clinical knowledge than text outputs reveal.",
+    "approach": "Mechanistic interpretability investigation of latent space in open-weight LLMs to locate and characterize dedicated clinical concept centers; steering and evalu",
+    "result": "Identified locatable, causal clinical concept centers in all tested models; steering improves downstream performance and aligns with clinician preferences."
+   }
+  },
+  {
+   "id": "2610.02792",
+   "title": "Law And Order: Tax Law Autoformalization",
+   "authors": [
+    "Sophia Simeng Han",
+    "Yoshiki Takashima",
+    "Anjiang Wei",
+    "Zhaoyu Li",
+    "Michael Genesereth"
+   ],
+   "abstract": "Legal systems are increasingly implemented through software, yet scalable methods for translating legal texts into accurate symbolic representations remain underdeveloped. We study this problem through tax law, where forms and filing instructions define large computational structures involving arithmetic, branching, recursion, and tabular reasoning. We propose Law&Order, a neuro-symbolic framework for automatically formalizing tax forms and instructions into executable symbolic programs. Our approach establishes two forms of correspondence between law and logic: structural correspondence, which aligns legal and symbolic components such as cells and schedules, and denotational correspondence, which requires symbolic components to implement the computations specified by their legal counterparts. We combine large language model synthesis with cell-level verification and iterative localized error repair using human-written OpenTaxSolver tax returns. We then evaluate the resulting formalizations on independently authored, held-out TaxCalcBench returns, that are never exposed during generation or repair. Although the most advanced LLM achieves only 66% accuracy, Law&Order achieves 100% cell-level and form-level accuracy on 51 held-out returns, demonstrating the effectiveness of combining LLM-based synthesis with symbolic verification for scalable and verifiable large-scale legal autoformalization compared with using an LLM alone.",
+   "abs_url": "https://arxiv.org/abs/2610.02792",
+   "pdf_url": "https://arxiv.org/pdf/2610.02792",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-02",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Proposes Law&Order, a neuro-symbolic framework for automatically formalizing tax law into executable symbolic programs using LLM synthesis with symbolic verification.",
+   "idea": {
+    "problem": "Translating legal texts (tax law) into accurate symbolic representations at scale",
+    "approach": "Neuro-symbolic framework combining LLM synthesis with cell-level verification and iterative error repair",
+    "result": "Achieves 100% accuracy on held-out tax returns versus 66% for LLM alone"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2608.30258",
+   "title": "Stratified Consistency Distillation for Natural Language Formalization",
+   "authors": [
+    "Zhichao Hou",
+    "Ferhat Erata",
+    "Joe Lilien",
+    "MohamadAli Torkamani"
+   ],
+   "abstract": "Neurosymbolic reasoning has shown promising success in addressing complex reasoning tasks by combining large language models (LLMs) and symbolic solvers. While this approach shows promise, a fundamental challenge remains: improving the accuracy of translations from natural language to logical formulas. Current methods predominantly rely on prompt engineering, which is difficult to scale across different domains and input formats. Drawing inspiration from the success of fine-tuning in other model adaptation and alignment applications, we propose a fine-tuning-based Stratified Consistency Distillation approach: (1) We generate K logical translations per input using a frontier LLM and cluster them by semantic equivalence (2) Based on the entropy level, we apply majority voting (low entropy), LLM-as-a-Judge (medium entropy), or unification/abstention (high entropy), and (3) fine-tune a smaller model using the selected pseudo-labels. Our experiments show significant and consistent improvements in both Pass@K and our novel Equivalent Logical Similarity metrics, demonstrating the potential of advancing logical translation through consistency distillation.",
+   "abs_url": "https://arxiv.org/abs/2608.30258",
+   "pdf_url": "https://arxiv.org/pdf/2608.30258",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-10-02",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a fine-tuning approach to improve LLM translation from natural language to logical formulas through consistency distillation and stratified pseudo-labeling.",
+   "idea": {
+    "problem": "LLM-to-logical-formula translation accuracy limits neurosymbolic reasoning systems; prompt engineering does not scale across domains.",
+    "approach": "Generate multiple logical translations, cluster by semantic equivalence, apply stratified selection (majority voting, LLM-as-a-Judge, or unification based on en",
+    "result": "Significant improvements in Pass@K and Equivalent Logical Similarity metrics for natural language to logic translation."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2606.30163",
+   "title": "End-to-End Abstraction-Based Control with LLM-Enhanced NL-to-LTL Translation",
+   "authors": [
+    "Amir Bayat",
+    "Necmiye Ozay",
+    "Alessandro Abate",
+    "Raphael M. Jungers"
+   ],
+   "abstract": "Abstraction-Based Controller Design (ABCD) offers a principled framework for the safe control of complex Cyber-Physical Systems (CPSs), but interfacing real-world requirements with its formal synthesis machinery remains a major bottleneck: such requirements are most naturally expressed in Natural Language (NL), whereas ABCD requires formal specifications such as Linear Temporal Logic (LTL). Large Language Models (LLMs) offer a promising way to bridge this gap by translating NL requirements into formal specifications. This paper makes three contributions. First, we formalize an LLM-enhanced pipeline for ABCD, in which NL requirements are translated into LTL and used within a formal synthesis workflow. Second, we implement this pipeline in the Dionysos toolbox and introduce a benchmark for evaluating NL-to-LTL translation under both logical diversity and linguistic variation. Third, experiments with state-of-the-art LLMs reveal a consistent relationship between LTL complexity and translation success: translation accuracy decreases as the target specification becomes more complex in terms of Abstract Syntax Tree (AST) size, temporal depth, and Büchi automaton size, while accounting for NL input length. Together, these contributions provide both an evaluation framework and a practical integration pathway for making ABCD more accessible while preserving the rigor of formal methods.",
+   "abs_url": "https://arxiv.org/abs/2606.30163",
+   "pdf_url": "https://arxiv.org/pdf/2606.30163",
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.SY"
+   ],
+   "published": "2026-10-02",
+   "venue": "publication in IEEE Control Systems Letters",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Develops an LLM-enhanced pipeline to translate natural-language control requirements into Linear Temporal Logic for formal synthesis in cyber-physical systems, combining autoformalization with practical controller design.",
+   "idea": {
+    "problem": "Bridging gap between natural-language CPS requirements and formal LTL specifications needed for abstraction-based controller design",
+    "approach": "LLM-enhanced pipeline translating NL to LTL specifications integrated into Dionysos toolbox with evaluation benchmark",
+    "result": "Shows translation accuracy decreases with specification complexity (AST size, temporal depth, Büchi automaton size), providing evaluation framework and practica"
+   }
+  },
+  {
+   "id": "2609.38806",
+   "title": "Blackboard Intelligence Can Surpass Autoregressive on Globally Constrained Problems",
+   "authors": [
+    "Woosang Jeon",
+    "Jaeyeon Kim",
+    "Sham Kakade",
+    "Yilun Du",
+    "Amrit Singh Bedi",
+    "Arun Kumar Chithanar",
+    "Chul Lee",
+    "Taehyeong Kim",
+    "Sitan Chen"
+   ],
+   "abstract": "Next-token prediction has driven remarkable progress in large language models, yet a growing body of evidence suggests that they can struggle on problems governed by complex global constraints. In this work, we focus on this regime and ask whether some of these limitations arise from the inference interface induced by next-token prediction itself. We study this question through blackboard intelligence: an inference-time perspective in which a model works on a fixed, revisable canvas and searches over candidate solution states rather than committing to a causal, left-to-right trajectory. We instantiate this idea with diffusion language models, whose any-order prediction interface naturally exposes predictions over partially filled solution states. Our key observation is that mean confidence, a simple model-internal quantity available from the standard masked diffusion objective, provides a useful proxy for global coherence and can guide inference-time search and revision. Empirically, across ZebraLogic, Nurse Rostering, and Job-Shop Scheduling, Blackboard consistently improves inference while holding the fine-tuned LLaDA-8B-Instruct checkpoint fixed and substantially outperforms same-scale autoregressive baselines, reaching 90.4% accuracy on ZebraLogic-Hard, 76.4% exact feasibility on Nurse Rostering, and 80.2% optimality on JSSP. Stronger autoregressive search and refinement also fail to close the gap on ZebraLogic-Hard, while Blackboard surpasses tested frontier LLMs there and on JSSP despite their substantially greater scale and strong test-time reasoning. We open-source our codebase at https://github.com/jwoosang1/blackboard-intelligence.",
+   "abs_url": "https://arxiv.org/abs/2609.38806",
+   "pdf_url": "https://arxiv.org/pdf/2609.38806",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CL"
+   ],
+   "published": "2026-10-01",
+   "venue": "",
+   "code": "https://github.com/jwoosang1/blackboard-intelligence",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes blackboard intelligence inference mechanism that improves constraint satisfaction by revising solutions non-autogressively, demonstrating better global reasoning than next-token prediction.",
+   "idea": {
+    "problem": "Autoregressive LLMs struggle with problems governed by complex global constraints due to left-to-right commitment.",
+    "approach": "Use diffusion language models with any-order prediction to work on a revisable canvas, guided by mean confidence as a global coherence proxy.",
+    "result": "Blackboard inference substantially outperforms autoregressive baselines on constraint satisfaction tasks like ZebraLogic, Nurse Rostering, and Job-Shop Scheduli"
+   }
+  },
+  {
+   "id": "2609.34660",
+   "title": "Rewarding Novel Deductions: Solver-guided Process Supervision for Logical Reasoning",
+   "authors": [
+    "Muhammad Asif Ali",
+    "Wenqing Wang",
+    "Huan Wang",
+    "Mohammad Raza"
+   ],
+   "abstract": "Logical reasoning remains a major challenge for large language models (LLMs), particularly on structured problems that require precise constraint tracking, consistency preservation, and multi-step deduction. This challenge is especially acute for small-scale LLMs, which are more prone to producing inconsistent, redundant, or brittle reasoning trajectories. Existing approaches for improving logical reasoning largely optimize for final-answer correctness, providing only weak supervision over the intermediate reasoning process. In this work, we propose SPRING: (Solver-guided Process Rewards for Novel LogIcal ReasoNing Step Generation). SPRING uses SMT solver as a training-time verifier of intermediate reasoning steps to provide process-level supervision. It introduces the notion of a novel reasoning step, namely, a step that is logically valid, consistent with the evolving reasoning state, and not already implied by previously accepted non-contradictory deductions. Based on this solver-based assessment, it designs process rewards that encourage novel inferential progress while penalizing contradictory and uninformative reasoning steps. Evaluation across three logical reasoning benchmarks, ZebraLogic, AR-LSAT, and Knights and Knaves, and four LLMs shows that SPRING consistently outperforms base LLMs, outcome-only reward baselines, and Logic-LM. On ZebraLogic, SPRING improves puzzle accuracy by up to 49.71 and 15.43 points over the base LLM and strongest outcome-only baseline, respectively. On AR-LSAT, it improves overall accuracy by up to 64.93 and 12.14 points, respectively. On Knights and Knaves, SPRING achieves up to 93.14 puzzle accuracy and 96.05 person accuracy.",
+   "abs_url": "https://arxiv.org/abs/2609.34660",
+   "pdf_url": "https://arxiv.org/pdf/2609.34660",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-01",
+   "venue": "NeurIPS 2026",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes process-level supervision using SMT solvers to verify intermediate reasoning steps and guide LLM training toward logically sound multi-step deduction.",
+   "idea": {
+    "problem": "LLMs struggle with logical reasoning requiring precise constraint tracking, consistency, and multi-step deduction, especially smaller models.",
+    "approach": "Use SMT solver to verify intermediate reasoning steps and provide process rewards for novel, logically valid deductions while penalizing contradictions.",
+    "result": "SPRING improves puzzle accuracy on ZebraLogic by up to 49.71 points over base LLM and outperforms outcome-only baselines across three benchmarks."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.38420",
+   "title": "What Was Said, Not What Was 'Thought': Type-6 Logic for CoT Verification",
+   "authors": [
+    "Adrian de Wynter"
+   ],
+   "abstract": "We introduce Type-6 logic, a variant of dynamic epistemic logic augmented with two operators (uncertainty and recurrence), designed to model the inferential dynamics of contemporary large language model (LLM) chain-of-thought (CoT) reasoning. Type-6 accounts for common LLM reasoning pathologies such as unlicensed revision, enthymemes, loopbacks, and unverifiable/incorrect claims. We propose a verifier based on Type-6 logic that builds a graph out the trace, and checks it against Type-6's axioms and inference rules. We evaluate our framework on LLM-generated CoTs four splits spanning formal and informal reasoning. Our verifier detects structurally unsound reasoning steps that surface-level heuristics miss, and allows for easy visualisation of the model's reasoning process. In our corpus, our verifier shows that derived contradiction is the most common hard-fail category in CoT, and that only about 3\\% of the propositions of a trace have impact on the final derivation. Ablation studies show that other verification methods (LLMs-as-judges, other neurosymbolic approaches, etc.) cannot be considered interchangeable: for example, agreement between LLMs-as-judges and LINC is $κ\\approx 0.034$, and this persists within a method across underlying models. Type-6, however, is the most agreed-with method amongst the ones we tested. We prove our verifier runs on average-case linear time; and release our logic specification and artefacts.",
+   "abs_url": "https://arxiv.org/abs/2609.38420",
+   "pdf_url": "https://arxiv.org/pdf/2609.38420",
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-09-29",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.87,
+   "type": "method",
+   "why": "Proposes Type-6 logic with a verifier to detect structural unsoundness in LLM chain-of-thought reasoning, grounding verification in formal logical axioms and inference rules rather than heuristics.",
+   "idea": {
+    "problem": "LLM chain-of-thought reasoning contains pathologies like unlicensed revision, enthymemes, and unverifiable claims that surface-level heuristics miss.",
+    "approach": "Type-6 logic augments dynamic epistemic logic with uncertainty and recurrence operators to model reasoning dynamics; a verifier builds graph traces and checks a",
+    "result": "Verifier detects structurally unsound steps, shows derived contradiction is most common failure, and achieves stronger agreement than LLM-as-judge and other neu"
+   }
+  },
+  {
+   "id": "2609.36813",
+   "title": "RESCUE: Repairing Language Model Errors to Sparse Circuits via Reinforcement Learning",
+   "authors": [
+    "Chuanpu Liu",
+    "Miao Yu",
+    "Yikai Cai",
+    "Yuanhe Zhang",
+    "Zhenhong Zhou",
+    "Li Sun",
+    "Zuming Jiang",
+    "Yufei Guo"
+   ],
+   "abstract": "Large language models (LLMs) exhibit strong general capabilities that mechanistic interpretability has attributed to sparse computational circuits. However, existing circuit studies emphasize preserving functionality or explaining safety, leaving the mechanisms underlying failures across a broader range of tasks largely unexplored. Extending circuit analysis from abilities to errors, we explore the perspective that such failures may likewise arise from erroneous internal computations and that targeted tuning of the corresponding parameters can correct such errors while largely preserving other capabilities. Motivated by this insight, we introduce RESCUE (Reasoning-Error Sparse-Circuit Uncovering and Editing), a framework that localizes error-associated circuits and surgically repairs them for performance enhancement. General tasks typically involve multi-step reasoning and long-form generation, where early deviations can cause prefixes to drift from supervised references, leading SFT-based mask optimization to overlook circuits involved in generation-time errors. RESCUE therefore refines these masks through reinforcement learning with multiple masked-model rollouts, improving their relevance to observed task failures. Finally, RESCUE introduces a pruning technique and precisely fine-tunes error circuits to correct task failures, thereby translating error localization into a sparse and targeted model update. We validate RESCUE on heterogeneous repair sets across two domains: (1) mathematical reasoning, identifying a math error circuit of 1.40% density whose repair raises accuracy from 6.0% to 75.5%; and (2) medical QA, where a similarly compact 1.44% circuit improves repair-set accuracy from 0% to 81%. Our code is available at: https://github.com/chuanpupig/RESCUE.",
+   "abs_url": "https://arxiv.org/abs/2609.36813",
+   "pdf_url": "https://arxiv.org/pdf/2609.36813",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "published": "2026-09-29",
+   "venue": "",
+   "code": "https://github.com/chuanpupig/RESCUE",
+   "license": "CC BY-SA 4.0",
+   "license_url": "http://creativecommons.org/licenses/by-sa/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes mechanistic interpretability approach to localize and repair error circuits in LLMs through RL-guided circuit identification and targeted fine-tuning for reasoning tasks.",
+   "idea": {
+    "problem": "LLM failures in multi-step reasoning arise from erroneous internal computations in sparse circuits, but existing circuit studies don't explain or fix these erro",
+    "approach": "Use RL to refine error-circuit masks through rollouts, then prune and fine-tune identified circuits to correct reasoning failures.",
+    "result": "Repairs sparse circuits (1.4% density) improve math reasoning from 6% to 75.5% and medical QA from 0% to 81% accuracy."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.38237",
+   "title": "A Trust Ledger and an Execution Check for CPG-Based C-to-Lean 4 Autoformalization: Separating Declined from Silently Incorrect Translations",
+   "authors": [
+    "Ishan K Singavarapu",
+    "Manish Bhatt"
+   ],
+   "abstract": "Verifying large C codebases requires translating them into formally checkable semantics, but most autoformalization work reports a single aggregate success rate that conflates two different failure modes: code the translator declined to handle and code the translator translated incorrectly. We present a deterministic code-property-graph (CPG)-based exporter that translates C source into a small Lean~4 core semantics under a three-tier correctness discipline: hole-free, call-closed, and dynamic-hole-risk, that keeps these modes distinct. Applied to a re-export of the SQLite source tree (8{,}602 functions, over 1.5~million AST nodes), the exporter translates 5{,}222 functions (60.7\\%) hole-free, of which only 2{,}134 (24.8\\%) are call-closed, a $2.4\\times$ gap a single rate would hide. Both figures are reported in a full per-construct trust ledger rather than a single score. Our main contribution is methodological: a protocol for separating constructs that are fundamentally unresolvable by whole-program static analysis (such as public API boundaries) from constructs that only look that way. For example, we retracted our own ``impossible'' classification of function-pointer/vtable dispatch after tracing a concrete counterexample in the target codebase. Separately, a search for ``more holes closed'' surfaced a latent silent-wrong-answer bug: a translation that succeeded with an incorrect result rather than declining, a failure mode we argue is more dangerous than any hole, and one a hole-count-only evaluation would never surface.",
+   "abs_url": "https://arxiv.org/abs/2609.38237",
+   "pdf_url": "https://arxiv.org/pdf/2609.38237",
+   "primary_category": "cs.PL",
+   "categories": [
+    "cs.PL",
+    "cs.CR"
+   ],
+   "published": "2026-09-28",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Presents a CPG-based technique for translating C code to Lean 4 with a three-tier correctness discipline that distinguishes declined translations from silently incorrect ones, advancing autoformalization methodology.",
+   "idea": {
+    "problem": "Autoformalization success rates conflate two failure modes: code translators decline to handle versus code they translate incorrectly.",
+    "approach": "Three-tier correctness discipline (hole-free, call-closed, dynamic-hole-risk) with per-construct trust ledger to separate unresolvable constructs from those tha",
+    "result": "Applied to SQLite: 60.7% hole-free translations, 24.8% call-closed (2.4× gap); discovered latent silent-wrong-answer bug, demonstrating value of distinguishing "
+   }
+  },
+  {
+   "id": "2602.14143",
+   "title": "Watch the Model Think: On-Policy Extraction of Activation Steering Vectors",
+   "authors": [
+    "Xuanbo Su",
+    "Yingfang Zhang",
+    "Hao Luo",
+    "Huajun Bai",
+    "Guangyuan Dong",
+    "Ling Huang"
+   ],
+   "abstract": "When a model solves a problem on one attempt and fails it on the next, what separates the two is rarely the final answer token; it is the trajectory that reached it. Contrastive activation steering leaves that signal unused: CAA, SADI, RepE and ITI build their direction from experimenter-supplied text, recorded while the model reads rather than reasons. That choice also caps what the vector can express, since polarity must be written into the text, and a task judged only by outcome offers nothing to write it with. ROAST makes the trajectory itself the contrast: sample rollouts, let an outcome verifier split them into successes and failures, and contrast the reasoning that worked against the reasoning that did not. A matched teacher-forced control---rollouts, labels, answer text and pair counts held fixed, the trajectory alone stripped---points to the trajectory as what matters: on GSM8K at 0.6B the pairs alone buy +0.12 points while restoring the trajectories buys +6.05, the larger and only seed-robust step. Replacing the trajectory with an equal-length neutral prefix or another question's reasoning falls below no intervention. The two corpora are also far apart geometrically, a median 70+ degrees apart at both Qwen3 scales probed, beyond what a split-half null explains. Reading from rollouts calls for two corrections---keeping the full difference vector rather than Top-10% masking, and giving each question one vote rather than one per pair---and only grouped aggregation beats the unsteered baseline under 20% verifier noise. On parser-free benchmarks (GSM8K, MATH500, IFEval), ROAST is best in all six cells over two models, by up to +9.7, at +6.4% wall-clock and no added context; it also leads on six parser-scored benchmarks across three models. Across nine models (0.6B--122B, four families), ROAST improves on the unsteered model at every scale. Code: https://github.com/TomySu404/ORBIT",
+   "abs_url": "https://arxiv.org/abs/2602.14143",
+   "pdf_url": "https://arxiv.org/pdf/2602.14143",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CL"
+   ],
+   "published": "2026-09-28",
+   "venue": "",
+   "code": "https://github.com/TomySu404/ORBIT",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes ROAST, a technique for extracting activation steering vectors from model reasoning trajectories to improve semantic understanding and problem-solving by contrasting successful versus failed reasoning paths.",
+   "idea": {
+    "problem": "Existing contrastive activation steering methods use static text rather than actual reasoning trajectories, limiting what they can express.",
+    "approach": "ROAST contrasts successful and failed reasoning rollouts using an outcome verifier, extracting steering vectors from the actual problem-solving trajectories.",
+    "result": "ROAST achieves consistent improvements across benchmarks (GSM8K, MATH500, IFEval) and nine models (0.6B–122B), with gains up to +9.7 points."
+   }
+  },
+  {
+   "id": "2609.33796",
+   "title": "RAISE: Reinforcing Access Control Policy Synthesis in LLMs via Symbolic Evaluation",
+   "authors": [
+    "Yingming Zhou",
+    "Adarsh Vatsa",
+    "William Eiers"
+   ],
+   "abstract": "Translating natural-language access-control requirements into policies requires careful reasoning about permissions, constraints, and exceptions, and even frontier LLMs often produce policies that violate the intended authorization semantics. We construct CedarInstruct, to our knowledge the first dataset that supports both training and semantic evaluation for formally verifiable Cedar policy synthesis. It contains 5,800 scenarios across 44 domains and 1,408 representing a single synthetic organization, each with a verified target policy and an executable verification plan. On this data we introduce RAISE, which trains policy synthesizers from formal verification in two stages, verified supervised fine-tuning (SFT) followed by a reinforcement learning (RL) stage that learns from verifier signal. We find that SFT succeeds largely by letting models express authorization logic they already have, since untrained models rarely write valid Cedar but often reason correctly when they do. After SFT, how the verifier's information is used matters more than how much of it is used. Of six RL instantiations that consume progressively richer verifier signal, only RAISE-OC improves meaningfully on SFT; it turns failed checks and symbolic counterexamples into guided exploration and learns from the result with off-context GRPO. With about 5.4K verified scenarios and LoRA fine-tuning, RAISE-OC trains Qwen3.5-9B to surpass zero-shot GPT-6 Astra and Claude Opus 5 by 13.33 and 16.26 percentage points in semantic success on held-out scenarios, and training transfers to the independently constructed CedarBench.",
+   "abs_url": "https://arxiv.org/abs/2609.33796",
+   "pdf_url": "https://arxiv.org/pdf/2609.33796",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.CR",
+    "cs.LG"
+   ],
+   "published": "2026-09-27",
+   "venue": "",
+   "code": "https://github.com/Aizhouym/raise",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.87,
+   "type": "method",
+   "why": "Trains LLMs to synthesize formally verifiable access-control policies from natural language using supervised fine-tuning and RL guided by symbolic verification, demonstrating autoformalization with semantic grounding.",
+   "idea": {
+    "problem": "LLMs produce access-control policies violating intended authorization semantics when translating natural-language requirements.",
+    "approach": "Two-stage training: verified SFT followed by RL using verifier signals and symbolic counterexamples to guide policy synthesis.",
+    "result": "RAISE-OC achieves 13-16 percentage points higher semantic success than GPT-6 Astra and Claude Opus 5 on held-out scenarios."
+   }
+  },
+  {
+   "id": "2609.33612",
+   "title": "Quizzing the Translation: A Prover-Grounded Evaluation Metric for NL$\\rightarrow$FOL",
+   "authors": [
+    "Pu Suo",
+    "Ali Emami"
+   ],
+   "abstract": "A standard pipeline for symbolic reasoning over natural-language problems translates them into first-order logic and invokes a theorem prover. The translation step is the bottleneck: swap \"every\" for \"some\" and every inference that follows is corrupted. Yet today's metrics often score more broken translations higher than less broken ones, because BLEU, BERTScore, and Smatch++ reward surface overlap that the worst errors happen to preserve. We introduce SIV, which derives two kinds of probes from the target formula and uses a theorem prover to verify the candidate translation against each. Positive probes are statements the candidate must entail, which detect translations that drop content; contrastive probes are statements the candidate must not entail, which detect translations that assert more than the original. On a controlled pool of perturbed FOLIO translations, the severity of the error accounts for 80% of SIV's score variance, compared with at most 17% for any prior metric. Across six error classes on a disjoint pool, SIV scores the reference above the perturbed candidate in over 99% of pairs. Because each probe is labeled with what it tests, the failure pattern also supplies a labeled error trace, recovering the perturbation class at macro-F1 0.638, nearly double the score-only baseline. On 434 expert-audited real LLM translations, SIV attains the top AUC, uniquely detects and grades expert-labeled major errors, and abstains, rather than mis-scoring, on out-of-vocabulary translations.",
+   "abs_url": "https://arxiv.org/abs/2609.33612",
+   "pdf_url": "https://arxiv.org/pdf/2609.33612",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LO"
+   ],
+   "published": "2026-09-27",
+   "venue": "EMNLP 2026",
+   "code": "https://github.com/pu-suo/siv-metric",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes SIV, a prover-grounded evaluation metric for assessing quality of natural-language-to-first-order-logic translations by using theorem prover verification against positive and contrastive probes.",
+   "idea": {
+    "problem": "Current metrics (BLEU, BERTScore, Smatch++) poorly evaluate NL-to-FOL translations, rewarding broken ones with surface overlap.",
+    "approach": "Use theorem prover to verify candidate translations against positive probes (must entail) and contrastive probes (must not entail).",
+    "result": "SIV correlates 80% with error severity on controlled perturbations, ranks reference above perturbed candidates 99%+ of the time, and detects expert-labeled erro"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.33438",
+   "title": "Path2Spec: Path-Aware Specification Generation via Large Language Models",
+   "authors": [
+    "Dan Huang",
+    "Zhensu Sun",
+    "Huihui Huang",
+    "Jinfeng Jiang",
+    "Xiaofei Xie",
+    "Yintong Huo",
+    "David Lo"
+   ],
+   "abstract": "Formal specifications are critical for program verification, comprehension, and maintenance. However, manually writing them is costly and difficult to scale. Recent studies have shown that Large Language Models (LLMs) are promising for automated specification generation, but existing methods suffer from quality issues. We analyze a state-of-the-art approach and find that at least 34.6% of successfully verified specifications actually fail to meaningfully capture the program's distinct behavior, which is a quality issue not captured by metrics that only measure verification success. We further found that a major factor contributing to such hidden quality issues stems from the design of existing methods: these methods treat a program as a single unit, resulting in overly general, coarse-grained constraints. To this end, we introduce Path2Spec, a divide-and-conquer framework that addresses these limitations through systematic path-based reasoning. Path2Spec leverages LLMs to extract all execution paths from an input program, generates path-specific specifications for each, and merges them into a comprehensive overall specification. For complex programs where path-based generation struggles, Path2Spec employs a decompose-then-retry strategy that recursively breaks a program into smaller subprograms based on logical branches, generates specifications for each, and merges them back. We evaluate Path2Spec on two public benchmarks: SG-Bench (120 programs) and SV-COMP (265 programs). Results show that Path2Spec can outperform the state-of-the-art baseline SpecGen: 87.5% versus 66.7% on SG-Bench, and 83.0% versus 44.2% on SV-COMP. Human evaluation further validates that Path2Spec generates higher-quality specifications with precise semantic alignment to the code.",
+   "abs_url": "https://arxiv.org/abs/2609.33438",
+   "pdf_url": "https://arxiv.org/pdf/2609.33438",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-09-27",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes Path2Spec, an LLM-based framework for automatically generating formal specifications from programs through path-aware reasoning and decomposition strategies.",
+   "idea": {
+    "problem": "LLM-based specification generation produces overly general specifications that fail to capture distinct program behaviors despite verification success.",
+    "approach": "Divide-and-conquer framework using path-based reasoning: extract execution paths, generate path-specific specifications, merge into comprehensive specification;",
+    "result": "Path2Spec achieves 87.5% on SG-Bench and 83.0% on SV-COMP, outperforming SpecGen baseline; human evaluation confirms higher-quality semantic alignment."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.33287",
+   "title": "Feedback Makes Perfect: A Closed-Loop Framework for NL-to-STL Translation",
+   "authors": [
+    "Bowen Ye",
+    "Xiang Yin"
+   ],
+   "abstract": "Signal Temporal Logic (STL) enables rigorous verification and control of cyber-physical systems, but writing correct specifications requires expertise that most requirement holders lack. Large language models can translate natural-language (NL) requirements into STL, yet stronger translators alone approach an accuracy ceiling. We argue that this ceiling stems from how the task is posed: one-shot, open-loop translation is somewhat ill-defined. Natural language is ambiguous, and, more fundamentally, what a person writes may not always be what they intend, so the target specification is not fully contained in the input text. We therefore reformulate NL-to-STL translation as a closed-loop feedback process. Each generated formula is translated back into natural language for the user to check, and natural-language corrections drive revision until the user accepts the specification. Users never read or write formal syntax. This framework rests on an asymmetry familiar from feedback control theory. The forward path, from ambiguous language to formal logic, is hard and error-prone. The feedback path, from structured STL back to language, can be made highly precise, and a precise feedback path lets an imprecise forward path achieve precise closed-loop behavior. Experiments on 500 expert-authored requirements and seven LLMs support this view. Back-translated explanations agree with expert judgments in 99.5\\% of cases. Closed-loop refinement raises strong models from about 89\\% open-loop accuracy to 98.0--99.2\\%, and yields gains of over 30 percentage points for weaker models (e.g., 17.6\\%$\\rightarrow$48.0\\%). Ablations show these gains come from the semantic content of the feedback rather than from repeated attempts. An expert audit and a 280-session user study further confirm the reliability of the loop. We also identify a capability threshold above which feedback no longer helps.",
+   "abs_url": "https://arxiv.org/abs/2609.33287",
+   "pdf_url": "https://arxiv.org/pdf/2609.33287",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.RO",
+    "cs.SY",
+    "eess.SY"
+   ],
+   "published": "2026-09-27",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a closed-loop feedback framework for translating natural-language requirements into formal Signal Temporal Logic specifications, using back-translation and iterative refinement to resolve ambiguity and improve translation accuracy.",
+   "idea": {
+    "problem": "NL-to-STL translation hits accuracy ceiling due to ambiguity and mismatch between written and intended specifications.",
+    "approach": "Closed-loop feedback: translate NL to STL, back-translate STL to NL for user verification, iterate with user corrections until acceptance.",
+    "result": "Closed-loop refinement raises accuracy from ~89% to 98.0–99.2% for strong models and gains 30+ percentage points for weaker models."
+   }
+  },
+  {
+   "id": "2609.32927",
+   "title": "The Geometry of Logic: Stratification Induces Semantic Structure and Robust Reasoning",
+   "authors": [
+    "Cristina V. Lopes",
+    "Yuangang Li",
+    "Justin Tian Jin Chen",
+    "Alberto Krone-Martins",
+    "Iris Ma",
+    "Md Rakib Hossain Misu"
+   ],
+   "abstract": "Transformer-based language models perform well on symbolic tasks, yet it remains unclear whether they learn generalizable rules or rely on statistical shortcuts. Mechanistic studies link algorithmic behavior to structured internal representations, motivating the hypothesis that robust reasoning benefits from separating values from the types that control their manipulation. Can making this separation an architectural primitive improve the learnability and generalization of logical mechanisms? We introduce \\textbf{STRAT} (\\textbf{ST}ratified \\textbf{R}egisters \\textbf{A}nd \\textbf{T}ypes), which partitions the residual stream into orthogonal Data and Type subspaces and uses Type-based attention and gating to govern Data transformations. Controlled arithmetic ablations identify three failure modes associated with data-control interference: the Linear Trap, Gradient Wall, and Open Gate Trap. Mechanistic analysis reveals interpretable logical structure, and in arithmetic, STRAT reduces median OOD error 35-fold relative to a Transformer baseline. On each of 11 datasets spanning 10 tasks, STRAT outperforms the Transformer baseline in mean accuracy, by 26 percentage points on average, with both models trained from 10 base examples per dataset using identical task-specific augmentation where applicable. Under distribution shift, STRAT's mean accuracy drops by only 2.39 percentage points, compared with 11.75 for the Transformer.",
+   "abs_url": "https://arxiv.org/abs/2609.32927",
+   "pdf_url": "https://arxiv.org/pdf/2609.32927",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI"
+   ],
+   "published": "2026-09-26",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes STRAT, an architectural modification that separates data and type subspaces to improve mechanistic interpretability and generalization in logical reasoning tasks, directly addressing how LLMs learn robust symbolic reasoning.",
+   "idea": {
+    "problem": "Unclear whether transformers learn generalizable logical rules or rely on statistical shortcuts; data-control interference undermines robust reasoning.",
+    "approach": "Partition residual stream into orthogonal Data and Type subspaces; use Type-based attention and gating to govern Data transformations as architectural primitive",
+    "result": "STRAT reduces median OOD error 35-fold in arithmetic; outperforms Transformer baseline by 26 percentage points on average across 11 datasets; more robust under "
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.32491",
+   "title": "Explaining Textual Entailment with Lexical Entailments: Using LLMs to Supply Lexical Relations for Formal Proofs",
+   "authors": [
+    "Jorryt de Jong",
+    "Stefan Moraca",
+    "Ettore Cesari",
+    "Lasha Abzianidze"
+   ],
+   "abstract": "Large Language Models (LLMs) are highly capable of natural language reasoning and appear to store a great deal of lexical knowledge, but it is still unclear how much of this knowledge they actually use when reasoning, and whether they use it in the right way. On the other hand, logic-based Natural Language Inference (NLI) systems provide transparent and formally grounded reasoning, but they need to be supplied with rich lexical knowledge to prove inferences beyond purely logical ones. In this paper, we evaluate whether LLMs can identify all lexical knowledge needed to solve NLI problems and how much this knowledge contributes to proof search in a logic-based NLI system. Our research focuses exclusively on structured lexical entailments (e.g., chinchilla$\\sqsubseteq$small animal) as a proxy for structured explanations for NLI problems with an entailment label. First, we curate a dataset for a new task of explaining sentential entailments with a set of lexical entailments. The dataset is used to intrinsically evaluate LLMs on generating structured lexical explanations. Then, we use NLI as an extrinsic evaluation in a simple neuro-symbolic setting, assessing whether LLMs can supply sufficient lexical relations to LangPro, a natural-logic theorem prover for natural language. The results show that the proposed task remains challenging even for hosted proprietary LLMs, and that their contribution to theorem proving is moderate: generated relations are often only partially sound and may be tailored to the specific NLI problem rather than representing generally valid lexical knowledge.",
+   "abs_url": "https://arxiv.org/abs/2609.32491",
+   "pdf_url": "https://arxiv.org/pdf/2609.32491",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-09-26",
+   "venue": "11th Workshop on Automated Knowledge Base Con",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.82,
+   "type": "empirical",
+   "why": "Evaluates LLMs' ability to extract lexical knowledge for formal logic-based reasoning, analyzing how well LLM-generated structured relations support theorem proving in a neuro-symbolic NLI system.",
+   "idea": {
+    "problem": "LLMs possess lexical knowledge but unclear if they use it correctly for reasoning; logic-based NLI needs rich structured lexical relations.",
+    "approach": "Curate dataset of lexical entailments explaining NLI problems; evaluate LLMs on generating structured relations; test relations' utility in logic theorem prover",
+    "result": "LLMs struggle with the task; generated relations are only partially sound and contribute moderately to theorem proving."
+   }
+  },
+  {
+   "id": "2609.31903",
+   "title": "Choir: An Open Protocol for Distributed Multi-Agent Autoformalization",
+   "authors": [
+    "Yidi Qi",
+    "Melanie Weber"
+   ],
+   "abstract": "AI agents can now formalize entire textbooks and major theorems in proof assistants such as Lean, but current efforts are typically centralized: a single team runs all agents and bears the full computational cost. We introduce Choir, an open protocol for distributed formalization. Choir decomposes a project into tasks that can be completed by independent contributors, each running their own agent with their own LLM subscription, while coordinating entirely through the project's GitHub repository. To support open participation, every contribution is checked by a deterministic gate before merge. Choir supports Lean 4, Isabelle, and Rocq, and is open source and modular, allowing projects to replace individual components or extend the protocol.",
+   "abs_url": "https://arxiv.org/abs/2609.31903",
+   "pdf_url": "https://arxiv.org/pdf/2609.31903",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LO",
+    "cs.MA"
+   ],
+   "published": "2026-09-25",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.95,
+   "type": "tool",
+   "why": "Introduces Choir, an open protocol and system for distributed autoformalization across multiple proof assistants (Lean, Isabelle, Rocq), enabling independent contributors to formalize mathematical content via AI agents with coordination and verification gates.",
+   "idea": {
+    "problem": "Formalizing textbooks and theorems in proof assistants is computationally expensive and typically centralized under single teams.",
+    "approach": "Decompose formalization into independent tasks coordinated through GitHub with deterministic verification gates before merge; support multiple proof assistants.",
+    "result": "Open protocol enabling distributed multi-agent autoformalization with modular, extensible design across Lean 4, Isabelle, and Rocq."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.29870",
+   "title": "Formal Model Construction Guided by Model-Based Proof Sketches",
+   "authors": [
+    "Hongshu Wang",
+    "Xinyue Zuo",
+    "Yufan Cai",
+    "Neeraj Kumar Singh",
+    "Yamine Ait Ameur",
+    "Jin Song Dong"
+   ],
+   "abstract": "Formal modeling provides strong guarantees about system correctness, but developing and repairing formal models remains labor-intensive and requires substantial expertise in logic and formal reasoning. Recent LLM-based autoformalization agents seek to reduce this burden by generating candidate formal models and revising them using feedback from formal tools. However, the existing approaches follow a generate-and-repair paradigm, in which repairs are driven by verification failures of the generated model and therefore depend heavily on both the granularity of the feedback and the LLM's repair capability. As a consequence, a repair targeting one level of verification may invalidate properties at another level, which requires reasoning over the complete set of event guards. To address these limitations, we propose Proof-Sketch-Guided Formal Model Synthesis (ProGS), an autoformalization method centered on model-based proof sketches. A model-based proof sketch represents the proof structure of the target formal system as a tree. Internal nodes capture case splits and inductive reasoning steps, while leaf nodes correspond to concrete state-transition events that realize individual subgoals. ProGS uses LLMs to generate and repair these sketches, with verification failures mapped back to specific nodes and subtrees to provide structured guidance for iterative repair. Our evaluation on a benchmark of 27 formal systems shows that ProGS improves over state-of-the-art agentic formal modeling approaches in syntactic validity, deductive verifiability, and behavioral correctness, demonstrating the benefit of organizing formal model construction around hierarchical proof sketches.",
+   "abs_url": "https://arxiv.org/abs/2609.29870",
+   "pdf_url": "https://arxiv.org/pdf/2609.29870",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-09-24",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes an LLM-based autoformalization method using proof sketches as structured guidance to improve formal model generation and repair from natural language specifications.",
+   "idea": {
+    "problem": "Formal model development is labor-intensive; LLM-based autoformalization suffers from coarse feedback and repair-induced invalidation of other properties.",
+    "approach": "Use model-based proof sketches as hierarchical trees to guide LLM-based synthesis, mapping verification failures to specific nodes for structured iterative repa",
+    "result": "ProGS improves syntactic validity, deductive verifiability, and behavioral correctness over state-of-the-art agentic formal modeling on 27 formal systems."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.19814",
+   "title": "Long-horizon autoformalization of a core theorem underlying MIP* = RE",
+   "authors": [
+    "Sirui Lu",
+    "Ruixuan Deng",
+    "David Zhu",
+    "Zhengfeng Ji"
+   ],
+   "abstract": "Landmark mathematical formalizations have taken specialist teams years to complete. We present FormalFlow, a system that coordinates AI proving agents under human supervision to address statement drift and proof composition in long-horizon formalization. Drawing on software engineering principles and practices, it uses a shared blueprint to guide nested planning, proving and review loops. Agents strengthen verification and review throughout formalization. We completed a machine-checked Lean 4 proof of the quantum soundness of the classical low individual-degree test, a core theorem underlying MIP* = RE. Developing the proof took 63 days; greater parallelism could further reduce this time. The final library contains 126,367 lines of Lean code, all generated by agents. The formalization corrects side conditions and intermediate errors while preserving the published final error bound under corrected assumptions. This work provides a verified foundation for quantum complexity and demonstrates a route to affordable verification of major research proofs by small teams.",
+   "abs_url": "https://arxiv.org/abs/2609.19814",
+   "pdf_url": "https://arxiv.org/pdf/2609.19814",
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph",
+    "cs.AI",
+    "cs.LO"
+   ],
+   "published": "2026-09-24",
+   "venue": "",
+   "code": "https://github.com/LionSR/MIPStarRE",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Demonstrates an AI-assisted system (FormalFlow) for long-horizon autoformalization of mathematical theorems into machine-checked Lean proofs, addressing statement drift and proof composition challenges.",
+   "idea": {
+    "problem": "Long-horizon mathematical proofs are time-consuming to formalize; landmark formalizations take specialist teams years",
+    "approach": "FormalFlow coordinates AI proving agents with human supervision, using shared blueprints to guide nested planning, proving, and review loops for formalization",
+    "result": "Completed machine-checked Lean 4 proof of MIP* = RE quantum soundness theorem in 63 days with 126,367 lines of agent-generated code"
+   }
+  },
+  {
+   "id": "2609.28809",
+   "title": "Stream Recursion Model (SRM)",
+   "authors": [
+    "Asael Sorensen",
+    "Charles Brock",
+    "David Chamberlain",
+    "Jennifer Minnich",
+    "Matthew Hoffman",
+    "Ramyaa Ramyaa"
+   ],
+   "abstract": "Mechanistic interpretability seeks to make verifiable statements about the internal behavior of large language models (LLMs). Many interpretability techniques struggle to scale with the increasing size and depth of architectures. Our solution to this is to introduce smaller models with structures that lend themselves to interpretability. In this work, we introduce the Stream Recursion Model (SRM), a modification of the Hierarchical Reasoning Model (HRM) designed to expose internal computational structure while remaining scalable. SRM organizes computation into multiple interacting latent streams that are updated through recursive refinement, enabling direct analysis of stream dynamics, causal contribution, and routing behavior. SRM achieves performance comparable to GPT-2 on a per-parameter basis. Our analysis reveals consistent and distinct behavior across streams, indicating structured specialization and interaction. These results suggest that SRM provides a practical architectural foundation for scalable mechanistic interpretability and opens up promising avenues for future research in both reasoning performance and interpretability.",
+   "abs_url": "https://arxiv.org/abs/2609.28809",
+   "pdf_url": "https://arxiv.org/pdf/2609.28809",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "published": "2026-09-23",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.87,
+   "type": "method",
+   "why": "Proposes a new interpretable architecture (SRM) designed specifically for mechanistic interpretability, enabling direct analysis of internal computational structure and causal contributions.",
+   "idea": {
+    "problem": "Mechanistic interpretability techniques struggle to scale with model size and depth.",
+    "approach": "Introduce Stream Recursion Model with multiple interacting latent streams updated through recursive refinement for direct analysis.",
+    "result": "SRM achieves GPT-2-level per-parameter performance with analyzable stream dynamics and specialization patterns."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.27517",
+   "title": "Not What You Meant: Can LLMs Follow a Specified Negation Semantics?",
+   "authors": [
+    "Qiming Bao",
+    "Agnieszka Mensfelt",
+    "Michael J. Witbrock",
+    "Kostas Stathis"
+   ],
+   "abstract": "Negation does not carry a uniform interpretation across domains. In legal, regulatory, and medical reasoning, the intended interpretation depends on the reading in force -- open- versus closed-world, two- versus three-valued, and credulous versus skeptical. We study which reading of negation large language models adopt by default and whether they can override that preference when a different reading is explicitly specified. To this end, we introduce NAFBench, a procedural generator of solver-certified instances spanning four semantic viewpoints: SLDNF, well-founded semantics (WFS), and credulous and skeptical reasoning under stable-model semantics. The generator emits ground normal logic programs with controlled depth, width, and cycle structure. Each program is solved under all four viewpoints using SWI-Prolog, a well-founded semantics solver, and clingo, yielding up to four divergent labels. The programs are then verbalized into natural language under multiple framings and rule orderings that leave the answer invariant. The results expose a consistent gap. Across open-source models, following a specified negation semantics remains unsolved: the strongest models score 59--74% across the four semantic viewpoints, while the weakest score 31--67%. All models are order-sensitive on more than half of logically identical rule shufflings, while the two weaker models frequently overcommit on well-founded \"undefined.\" Two frontier models reach 100% on the main fixed-complexity evaluation set, and a third, o4-mini, is near-perfect, falling only to 81% on well-founded \"undefined.\" Delegating reasoning to a solver, fine-tuning on certified traces, or forcing an explicit three-valued verdict each partly closes the gap.",
+   "abs_url": "https://arxiv.org/abs/2609.27517",
+   "pdf_url": "https://arxiv.org/pdf/2609.27517",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-09-23",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Introduces NAFBench, a benchmark for evaluating whether LLMs can follow specified negation semantics in logic programs—testing semantic understanding and the capacity to formalize reasoning in multiple logical frameworks.",
+   "idea": {
+    "problem": "LLMs struggle to follow specified negation semantics across different logical interpretations (open/closed-world, two/three-valued, credulous/skeptical).",
+    "approach": "Create NAFBench, a procedural generator of solver-certified logic programs with controlled structure, verbalized under multiple framings, with ground-truth labe",
+    "result": "Open-source models score 31–74% across semantic viewpoints; frontier models reach near-perfect on fixed-complexity sets but struggle on well-founded 'undefined'"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2608.20153",
+   "title": "FormalTCS: Benchmarking End-to-End Frontier Formal Theoretical Computer Science Research of Large Language Models",
+   "authors": [
+    "Dingzirui Wang",
+    "Xuanliang Zhang",
+    "Keyan Xu",
+    "Qingfu Zhu",
+    "Wanxiang Che"
+   ],
+   "abstract": "Large language models (LLMs) have shown growing potential for automated theoretical computer science (TCS) research, yet existing benchmarks remain far from realistic research settings. We introduce \\ourbenchmark, an expert-validated benchmark for evaluating LLMs on frontier, end-to-end TCS research. \\ourbenchmark contains $143$ instances drawn from papers accepted to STOC, FOCS, SODA, and COLT in 2025-2026, preserving paper-specific definitions, assumptions, and proof dependencies, with expert-verified Lean formalizations and proofs. Evaluations of leading LLMs reveal that current models remain far from reliably completing the full research pipeline. In particular, autoformalization is the sharpest bottleneck: the best model achieves only $11.5$ on translating natural-language claims into formal theorem statements, compared with $28.6$ Pass@8 when proving human-provided formal statements. Building on \\ourbenchmark, we further develop an automated TCS research framework that generates, formalizes, filters, and proves new claims. Of $64$ generated claims, only $6$ ultimately pass expert evaluation and proof verification, indicating that beyond formalization, limited research taste remains another major barrier to autonomous TCS research.",
+   "abs_url": "https://arxiv.org/abs/2608.20153",
+   "pdf_url": "https://arxiv.org/pdf/2608.20153",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-09-23",
+   "venue": "",
+   "code": "",
+   "license": "CC0 1.0",
+   "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Introduces a benchmark for evaluating LLMs on frontier TCS research, with expert-verified Lean formalizations, identifying autoformalization as a critical bottleneck in the research pipeline.",
+   "idea": {
+    "problem": "Evaluating LLMs on realistic end-to-end frontier theoretical computer science research with faithful formalization.",
+    "approach": "Create expert-validated benchmark from accepted STOC/FOCS/SODA/COLT papers with Lean formalizations; evaluate LLMs on natural-language-to-formal translation and",
+    "result": "Autoformalization is the sharpest bottleneck (11.5% accuracy); best models achieve 28.6% Pass@8 on provided formal statements; only 6 of 64 generated claims pas"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.21190",
+   "title": "SWE-Proof: Can Language Models Resolve Real-World Issues with Machine-Checked Proofs?",
+   "authors": [
+    "George Ma",
+    "Benjamin Mikek",
+    "Haoyu Li",
+    "Ferhat Erata",
+    "Yuhao Zhang",
+    "Zeren Shui",
+    "Behrooz Omidvar Tehrani",
+    "Jun Huan",
+    "Murali Krishna Ramanathan",
+    "Somayeh Sojoudi",
+    "Hao Zhou",
+    "Anoop Deoras"
+   ],
+   "abstract": "Ensuring the correctness of LLM-generated code is a core challenge for modern software engineering. Benchmarks for agentic code generation check correctness with held-out test suites, which are inherently incomplete and increasingly susceptible to memorization. Formal verification avoids both problems, but existing work covers only standalone tasks whose specifications are given as input, not real issues, which touch large repositories and state intent in vague natural language. We present Benchproofer, a pipeline that turns a coding task with a known correct patch into a formally verified one: it writes a specification for the new code, summarizes the existing functions that code calls with axioms, and admits an instance only after mechanical and adversarial gates agree. Applying it to SWE-bench Verified yields SWE-Proof, 500 real issues whose correctness is formally verified rather than tested, and it extends to SWE-bench Pro. Evaluating Claude Opus 4.8, we find that verification catches what tests miss: a quarter of test-passing patches admit counterexamples, which a structured natural-language specification does not fix, while a correct formal one lifts resolution from 85% to 95%. Writing that specification is the hard part: an agent that must write its own gains nothing over an unaided baseline, and only 56% of those specifications pass our audit. The usual failure is faithfulness, a specification that constrains part of the required behavior and leaves the rest free. Specification quality still tracks the outcome, failing on 92% of unresolved instances against 51% of resolved ones, making faithful specification synthesis a concrete open problem.",
+   "abs_url": "https://arxiv.org/abs/2609.21190",
+   "pdf_url": "https://arxiv.org/pdf/2609.21190",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.SE"
+   ],
+   "published": "2026-09-22",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "specification_mining",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Creates a benchmark of real-world coding issues with formally verified specifications rather than tests, identifying specification faithfulness as a key challenge for LLM-based code verification.",
+   "idea": {
+    "problem": "Test-based correctness checking for LLM-generated code is incomplete and memorization-prone; formal verification requires precise specifications for real vague ",
+    "approach": "Pipeline (Benchproofer) that writes formal specifications, summarizes dependencies as axioms, applies mechanical and adversarial verification gates to real codi",
+    "result": "SWE-Proof benchmark of 500 formally verified issues; finds 25% of test-passing patches admit counterexamples; faithful specifications are crucial but hard to sy"
+   }
+  },
+  {
+   "id": "2604.25031",
+   "title": "Faithful Autoformalization via Roundtrip Verification and Repair",
+   "authors": [
+    "Daneshvar Amrollahi",
+    "Jerry Lopez",
+    "Clark Barrett"
+   ],
+   "abstract": "When an LLM formalizes natural language, how do we know the output is faithful? We propose a roundtrip verification approach which does not require ground-truth annotations: formalize a statement, translate the result back to natural language, re-formalize, and use a formal tool to check logical equivalence. When the two formalizations agree, this provides evidence of a faithful formalization. When they disagree, a stage-level diagnosis localizes the error to a specific translation step, and a scoped repair operator attempts to correct that step. We evaluate the framework on two statutory domains (the Texas Transportation Code and the Texas Parks and Wildlife Code) using two LLMs (Claude Opus~4.6 and GPT-5.2) with three repair baselines. Diagnosis-guided scoped repair is the most effective method, with effectiveness contingent on the reliability of the diagnosis function. Across both domains and both models, under our full repair system, rules that fail the equivalence check show 1.4x-2.5x more natural language inference (NLI) drift than rules that pass it.",
+   "abs_url": "https://arxiv.org/abs/2604.25031",
+   "pdf_url": "https://arxiv.org/pdf/2604.25031",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-09-21",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Proposes a roundtrip verification and repair framework to ensure faithful autoformalization of natural language legal text into formal specifications, with diagnosis-guided error correction.",
+   "idea": {
+    "problem": "Determining whether LLM formalizations of natural language are faithful without ground-truth annotations",
+    "approach": "Roundtrip verification: formalize, back-translate, re-formalize, check logical equivalence; diagnosis localizes errors; scoped repair corrects identified transl",
+    "result": "Diagnosis-guided repair most effective; rules failing equivalence check show 1.4x-2.5x more NLI drift than passing rules"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.23517",
+   "title": "VSpector: Specification-Driven Bug Detection for RISC-V CPUs",
+   "authors": [
+    "Tianyu Jia",
+    "Zhaoyang Yu",
+    "Yuanliang Chen",
+    "Wei You",
+    "Jianjun Huang",
+    "Bin Liang"
+   ],
+   "abstract": "Detecting RTL design bugs in open-source RISC-V CPU implementations is critical for ensuring system reliability. Traditional detection approaches inherently rely on predefined artifacts. In this paper, we leverage the official,natural-language RISC-V specifications as an effective information source for bug detection. We present VSpector, a specification-driven bug detection pipeline that directly checks whether CPU register-transfer level (RTL) implementations adhere to official specification rules, without requiring specialized construction of reference models, formal properties, or custom bug patterns. To resolve the key technical trade-off between broad context scope and model reasoning accuracy when using Large Language Models (LLMs), VSpector employs a stepwise context refinement scheme across a four-stage pipeline: rule extraction, implementation localization, candidate identification, and sequential violation auditing. We evaluate VSpector on two industrial-strength RISC-V CPUs, CVA6 and XiangShan. Out of 217 reported candidates, manual inspection confirmed 148 true violations, representing a 68.2% precision. These violations correspond to 73 distinct bugs, including 42 previously unknown bugs. In our comparative experiments, DiveFuzz, a state-of-the-art CPU fuzzer, detected none of these new bugs during 24-hour runs per CPU. All 42 new bugs have been reported upstream, with developers already fixing 19 and confirming an additional 11 (30 in total), demonstrating that specification-driven auditing is a practical and complementary strategy for CPU bug detection.",
+   "abs_url": "https://arxiv.org/abs/2609.23517",
+   "pdf_url": "https://arxiv.org/pdf/2609.23517",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AR"
+   ],
+   "published": "2026-09-20",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Extracts formal specification rules from natural-language RISC-V specs and uses LLMs to check RTL implementations for violations, mining specifications as ground truth for automated bug detection.",
+   "idea": {
+    "problem": "Detecting RTL design bugs in RISC-V CPUs without predefined artifacts, reference models, or custom bug patterns.",
+    "approach": "Four-stage pipeline using LLMs to extract rules from official specs and verify RTL adherence through stepwise context refinement.",
+    "result": "Detected 73 distinct bugs including 42 previously unknown bugs in CVA6 and XiangShan with 68.2% precision."
+   }
+  },
+  {
+   "id": "2609.21662",
+   "title": "When Steering Fails in Latent Reasoning: A Latent-to-Language Transition Gap",
+   "authors": [
+    "Gaoxiang Huang",
+    "Lei Qi"
+   ],
+   "abstract": "Activation steering has become a widely used approach for controlling language models during explicit chain-of-thought (CoT) reasoning, motivating its extension to latent CoT. However, we find that steering continuous thoughts produces substantially weaker effects on subsequent language generation than steering explicit CoT, even when the hidden representations are moved by comparable amounts. We first show that task information remains identifiable in continuous thoughts. Hence, we hypothesize a \\textbf{latent-to-language transition gap}, in which an intervention effect in latent space fails to transfer to language generation. Two further results support this hypothesis: the output distribution changes abruptly at the transition boundary, and task-related directions exert much weaker bidirectional control in latent CoT than in explicit CoT. These findings identify the transition interface as a central target for evaluating and designing future latent-steering methods.",
+   "abs_url": "https://arxiv.org/abs/2609.21662",
+   "pdf_url": "https://arxiv.org/pdf/2609.21662",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-09-18",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Analyzes activation steering's failure in latent reasoning, identifying a latent-to-language transition gap that prevents intervention effects from transferring to language generation—directly addressing mechanistic understanding of how LLMs perform reasoning.",
+   "idea": {
+    "problem": "Activation steering works well for explicit CoT but fails for latent CoT reasoning, despite comparable representation changes.",
+    "approach": "Empirically analyze the latent-to-language transition boundary, measuring task information identifiability and control bidirectionality across explicit vs. late",
+    "result": "Identify a latent-to-language transition gap where intervention effects abruptly fail to transfer; task directions show weaker bidirectional control in latent C"
+   }
+  },
+  {
+   "id": "2609.21492",
+   "title": "LogicTrack: Auditing Reasoning Trajectories of Large Language Models with Formal Logic Solvers",
+   "authors": [
+    "Jingyu Hu",
+    "Shu Yang",
+    "Weiru Liu",
+    "Di Wang"
+   ],
+   "abstract": "Chain-of-Thought (CoT) reasoning has been shown to improve the performance of large language models (LLMs), yet existing optimization methods largely rely on outcome-based feedback, leaving the logical validity of intermediate reasoning steps largely unverified. To address the gap whereby LLMs arrive at correct final answers through logically flawed intermediate reasoning chains, we propose LogicTrack, a neuro-symbolic framework that audits reasoning trajectories by auto-formalizing each reasoning step into symbolic representations and verifying it with automated theorem provers. LogicTrack introduces Solver-Based Backtracking Reward (SBR), a step-wise scoring mechanism that quantifies logical soundness and guides backtracking tree search at inference time. We further extend LogicTrack to construct supervised fine-tuning (SFT) data with backtracking traces from its trajectories, enabling fine-tuned models to internalize step-wise auditing as an intrinsic capability. Extensive experiments across 8 reasoning benchmarks and 7 LLMs demonstrate that LogicTrack effectively improves both the verifiability of reasoning chains and final answer pass rate, thereby enhancing overall CoT quality and trustworthiness in high-stakes domains.",
+   "abs_url": "https://arxiv.org/abs/2609.21492",
+   "pdf_url": "https://arxiv.org/pdf/2609.21492",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO",
+    "cs.SC"
+   ],
+   "published": "2026-09-18",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a neuro-symbolic framework that auto-formalizes LLM reasoning steps into logic and verifies them with theorem provers, combining auditing with fine-tuning to improve reasoning soundness.",
+   "idea": {
+    "problem": "LLMs produce correct answers via logically flawed intermediate reasoning steps that current outcome-based methods don't catch.",
+    "approach": "Auto-formalize CoT steps into symbolic logic, verify with automated theorem provers, use solver-based rewards to guide search and fine-tune models.",
+    "result": "Improves verifiability of reasoning chains and final answer pass rates across 8 benchmarks and 7 LLMs while enhancing trustworthiness."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2603.17839",
+   "title": "How do LLMs Compute Verbal Confidence",
+   "authors": [
+    "Dharshan Kumaran",
+    "Arthur Conmy",
+    "Federico Barbero",
+    "Simon Osindero",
+    "Viorica Patraucean",
+    "Petar Veličković"
+   ],
+   "abstract": "Verbal confidence -- prompting LLMs to state their confidence as a number or category -- is widely used to extract uncertainty estimates from black-box models. However, how LLMs internally generate such scores remains unknown. We address two questions: first, when confidence is computed -- just-in-time when requested, or automatically during answer generation and cached for later retrieval; and second, what verbal confidence represents -- token log-probabilities, or a richer evaluation of answer quality? Focusing on Gemma 3 27B (across TriviaQA, BigMath, and MMLU), Qwen 2.5 7B, and the reasoning model Magistral Small 24B, we provide convergent evidence for cached retrieval. Activation steering, patching, noising, and swap experiments reveal that confidence representations emerge at answer-adjacent positions before appearing at the verbalization site. Attention blocking pinpoints the information flow: confidence is gathered from answer tokens, cached at the first post-answer position, then retrieved for output. Critically, linear probing and variance partitioning reveal that these cached representations explain substantial variance in verbal confidence beyond token log-probabilities, suggesting a richer answer-quality evaluation rather than a simple fluency readout. These findings demonstrate that verbal confidence reflects automatic, sophisticated self-evaluation -- not post-hoc reconstruction -- with implications for understanding metacognition in LLMs and improving calibration.",
+   "abs_url": "https://arxiv.org/abs/2603.17839",
+   "pdf_url": "https://arxiv.org/pdf/2603.17839",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-09-18",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.82,
+   "type": "empirical",
+   "why": "Mechanistically investigates how LLMs compute confidence through activation steering, patching, and probing to understand internal reasoning processes beyond surface behavior.",
+   "idea": {
+    "problem": "Understanding how LLMs internally generate verbal confidence estimates and whether they represent simple fluency or richer quality evaluation",
+    "approach": "Activation steering, patching, noising, swap experiments, attention blocking, and linear probing to trace information flow and cached representations in models",
+    "result": "Confidence is cached at answer-adjacent positions and retrieved later; cached representations explain variance beyond log-probabilities, suggesting sophisticate"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.19199",
+   "title": "Code-as-Auditor: Executable Compliance Reasoning via Regulation-to-Code",
+   "authors": [
+    "Jisoo Kim",
+    "Taeyoon Kwack",
+    "Jinwoo Jang",
+    "Woo Kyung Kim",
+    "Honguk Woo"
+   ],
+   "abstract": "Large Language Models (LLMs) are increasingly adopted for compliance and legal reasoning tasks, yet their outputs often lack explicit grounding in legal logic and evidence. We present Code-as-Auditor, an LLM-based framework that extends the model's reasoning capability toward structured and evidence-grounded compliance assessment. The framework translates regulatory information into (1) formalized checklists and executable decision trees, encoding regulations and conditions as interpretable code structures. During inference, each checklist item is (2) dynamically expanded into factual and counterfactual questions, guiding the model to reason over case-specific evidence and potential violations. This process establishes a reasoning pipeline that proceeds from evidence identification, through rule application, to final decision-making, while a self-verification loop improves the logical consistency of the generated code and the traceability of outcomes. Experiments on privacy and data protection scenarios demonstrate that Code-as-Auditor delivers more accurate and evidence-backed evaluations, enabling automated compliance regulation checking grounded in explicit regulatory criteria.",
+   "abs_url": "https://arxiv.org/abs/2609.19199",
+   "pdf_url": "https://arxiv.org/pdf/2609.19199",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-09-16",
+   "venue": "35th ACM International Conference on Informat",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Translates regulations into formalized executable code structures and decision trees to enable structured compliance reasoning with explicit grounding in regulatory logic and evidence.",
+   "idea": {
+    "problem": "LLMs lack explicit grounding in legal logic when performing compliance reasoning tasks",
+    "approach": "Translate regulations into formalized checklists and executable decision trees; dynamically expand items into factual/counterfactual questions; add self-verific",
+    "result": "Achieves more accurate and evidence-backed compliance evaluations with explicit traceability to regulatory criteria"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.16991",
+   "title": "Autoformalizing Argumentative Material Inferences",
+   "authors": [
+    "Xin Quan",
+    "Reto Gubelmann",
+    "André Freitas"
+   ],
+   "abstract": "Natural language arguments are compelling before they are formally explicit. A premise supports a claim through defeasible warrants, background commitments, and exception conditions that the text leaves implicit. However, formal verification requires the opposite. Making such arguments machine-checkable requires constructing the missing commitments, not only translating given sentences into logic. Construction, however, carries a risk that translation does not: a system free to add premises can make any claim provable, and a formally valid proof may assert the claim outright, prove it without the original premise, or establish more than the claim itself. We address this problem by formulating autoformalization for argumentative material inference as guard completion, in which non-monotonic material support is turned into monotonic formal inference relative to an explicitly constructed guard set. A completion is accepted only when its proof both passes the theorem prover and survives contrastive tests of premise dependence and claim selectivity. We implement this formulation in GUARD, a neuro-symbolic framework in which LLMs construct and formalize candidate guards, Isabelle/HOL verifies the resulting theories and returns step-level feedback for iterative refinement, and the system abstains when no faithful completion can be reached. Our empirical results on Debatepedia and ARCT using different LLMs demonstrate that GUARD yields significant improvements in verified-faithful (+35.3, +32.9 points) and substantial reductions in leakage (-25.9, -21.9 points) over the state-of-the-art LLM-driven theorem proving approach. Moreover, we show that the symbolic soft critique and the explicit assumption layer account for most of these gains, with the soft critique also improving the initial validity of the elicited context and reducing the number of iterations required for successful verification.",
+   "abs_url": "https://arxiv.org/abs/2609.16991",
+   "pdf_url": "https://arxiv.org/pdf/2609.16991",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-09-15",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Proposes GUARD, a neuro-symbolic framework that autoformalizes argumentative inferences by constructing implicit warrants as guards and verifying them with theorem provers, addressing the problem that informal arguments require explicit commitments for formal verification.",
+   "idea": {
+    "problem": "Natural language arguments contain implicit warrants and commitments that must be made explicit for formal machine-checkable verification without risking invali",
+    "approach": "Guard completion framework: LLMs construct candidate guards, Isabelle/HOL verifies them, contrastive tests check premise dependence and claim selectivity, syste",
+    "result": "Significant improvements in verified-faithful completions (+35.3, +32.9 points) and reductions in leakage (-25.9, -21.9 points) over LLM-driven theorem proving "
+   }
+  },
+  {
+   "id": "2609.15318",
+   "title": "LLM-enabled Behavior Driven Development Workflow for Formally Verified Hardware Designs",
+   "authors": [
+    "Luca Müller",
+    "Qian Liu",
+    "Rolf Drechsler"
+   ],
+   "abstract": "Recently, the use of Large Language Models (LLMs) for different tasks in the Electronic Design Automation (EDA) life-cycle has been studied extensively, but an integrated view is lacking. Specifications are the foundation of this life-cycle, but they suffer from ambiguity when written in natural language, which especially affects the quality of LLM output. Formal specifications mitigate these ambiguities, but they come with their own challenges. On the other hand, Controlled Natural Language (CNL) specifications can serve as a middle-ground, reducing ambiguity while retaining interpretability. In this work, we propose an integrated view on the use of LLMs for EDA and establish an LLM-enabled behavior driven hardware development workflow. We introduce and define Formal Verification Gherkin Scenarios (FV Gherkin Scenarios), unlocking CNL specifications as the foundation for formally verified hardware designs via Formal Property Verification (FPV). Experimental evaluation shows that our workflow is able to outperform other established LLM-based methods by 2.48x in functional correctness of generated Register Transfer Level (RTL) designs and by 2.54x in formal coverage of generated assertions for FPV.",
+   "abs_url": "https://arxiv.org/abs/2609.15318",
+   "pdf_url": "https://arxiv.org/pdf/2609.15318",
+   "primary_category": "cs.AR",
+   "categories": [
+    "cs.AR",
+    "cs.SE"
+   ],
+   "published": "2026-09-14",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes a workflow using LLMs to translate controlled natural language (Gherkin) into formal specifications and assertions for hardware verification, reducing ambiguity in natural language specs.",
+   "idea": {
+    "problem": "Natural language hardware specifications are ambiguous, hindering LLM-based hardware design and formal verification quality.",
+    "approach": "LLM-enabled workflow using Controlled Natural Language (Gherkin) as intermediate formal specification foundation for hardware design and property verification.",
+    "result": "2.48x improvement in RTL functional correctness and 2.54x improvement in formal coverage over baseline LLM methods."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.13929",
+   "title": "Specification-Driven Data Architecture Reconstruction: From Physical Code to Logical and Conceptual Specifications",
+   "authors": [
+    "Oleg Grynets",
+    "Olena Pochernina",
+    "Vasyl Lyashkevych"
+   ],
+   "abstract": "Legacy database migrations often begin with incomplete or outdated documentation, leaving physical data definition language (DDL) as the principal evidence of data architecture. However, DDL does not fully encode conceptual intent, and model-generated completions can be plausible without being correct. This study proposes and evaluates a provenance-aware, deterministic-first pipeline for reconstructing logical and conceptual data specifications from Oracle-oriented DDL while explicitly separating observed facts, deterministic derivations, and large language model (LLM) suggestions. The pipeline performs DDL investigation, parsing, consolidation, primary-key backfilling, type normalization, and declared relationship-graph construction before optional LLM-assisted enrichment. It preserves source provenance in the deterministic catalog and declared relationship graph, and records inferred primary-key and foreign-key candidates in a separate reviewable overlay. We evaluated the implementation on 249 artifactized schema samples comprising 1,225 SQL files. The pipeline completed 244 samples (97.99%); 52 completed samples contained no extractable DDL. Across completed samples, the deterministic path reconstructed 208 tables and recovered 278 declared foreign-key records; 168 of the reconstructed tables lacked an explicitly parsed primary key before backfilling. LLM enrichment generated 100 foreign-key candidates in 36 samples, but the parent-table admissibility rate was only 17.9% for logical-specification candidates and 17.5% for conceptual-specification candidates. These findings show that the proposed deterministic-first architecture can preserve an auditable structural baseline, quantify observed primary-key and relationship gaps, and prevent model-generated hypotheses from being silently promoted to source-grounded architectural facts.",
+   "abs_url": "https://arxiv.org/abs/2609.13929",
+   "pdf_url": "https://arxiv.org/pdf/2609.13929",
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.DB",
+    "cs.SE"
+   ],
+   "published": "2026-09-12",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Reconstructs logical and conceptual data specifications from legacy DDL using a deterministic-first pipeline with LLM-assisted enrichment, explicitly separating facts from inferences to preserve auditability.",
+   "idea": {
+    "problem": "Legacy database migrations lack complete documentation; DDL alone doesn't encode conceptual intent and LLM completions can be plausible but incorrect.",
+    "approach": "Deterministic-first pipeline parsing DDL through investigation, consolidation, key backfilling, and relationship-graph construction before optional LLM enrichme",
+    "result": "Successfully reconstructed 244 of 249 schemas with auditable separation of facts, derivations, and LLM suggestions; LLM candidates showed low admissibility rate"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2603.02504",
+   "title": "NeuroProlog: Multi-Task Fine-Tuning for Neurosymbolic Mathematical Reasoning via the Cocktail Effect",
+   "authors": [
+    "Pratibha Zunjare",
+    "Michael Hsiao"
+   ],
+   "abstract": "Large Language Models (LLMs) achieve strong performance on natural language tasks but remain unreliable in mathematical reasoning, frequently generating fluent yet logically inconsistent solutions. We present \\textbf{NeuroProlog}, a neurosymbolic framework that ensures verifiable reasoning by compiling math word problems into executable Prolog programs with formal verification guarantees. We propose a multi-task Cocktail training strategy that jointly optimizes three synergistic objectives in a unified symbolic representation space: (i) mathematical formula-to-rule translation (KB), (ii) natural language-to-program synthesis (SOLVE), and (iii) program-answer alignment. This joint supervision enables positive transfer, where symbolic grounding in formula translation directly improves compositional reasoning capabilities. At inference, we introduce an execution-guided decoding pipeline with fine-grained error taxonomy that enables iterative program repair and quantifies model self-debugging capacity. Evaluation on GSM8K across multiple model scales demonstrates that cocktail training improves accuracy over single-task baselines, with statistically significant gains for most evaluated models. Error analysis reveals scale-associated differences in repair behavior: larger models exhibit more readily correctable errors, whereas smaller models show reduced syntactic errors but persistent semantic failures. These findings suggest that model capacity influences the acquisition of reliable symbolic reasoning and self-correction capabilities.",
+   "abs_url": "https://arxiv.org/abs/2603.02504",
+   "pdf_url": "https://arxiv.org/pdf/2603.02504",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-09-12",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes neurosymbolic framework compiling math problems into executable Prolog with formal verification to ensure sound reasoning, combining symbolic grounding with LLM multi-task training for verifiable mathematical reasoning.",
+   "idea": {
+    "problem": "LLMs generate fluent but logically inconsistent mathematical solutions lacking verification guarantees.",
+    "approach": "Compile math problems to executable Prolog programs; jointly train on formula-to-rule translation, NL-to-program synthesis, and program-answer alignment; use ex",
+    "result": "Cocktail training improves accuracy over single-task baselines; larger models show more correctable errors; demonstrates capacity influences symbolic reasoning "
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2601.19847",
+   "title": "Identifying and Transferring Reasoning-Critical Neurons: Improving LLM Inference Reliability via Activation Steering",
+   "authors": [
+    "Fangan Dong",
+    "Zuming Yan",
+    "Xuri Ge",
+    "Zhiwei Xu",
+    "Mengqi Zhang",
+    "Xuanang Chen",
+    "Ben He",
+    "Xin Xin",
+    "Zhumin Chen",
+    "Ying Zhou"
+   ],
+   "abstract": "Despite the strong reasoning capabilities of recent large language models (LLMs), achieving reliable performance on challenging tasks often requires post-training or computationally expensive sampling strategies, limiting their practical efficiency. In this work, we first show that a small subset of neurons in LLMs exhibits strong predictive correlations with reasoning correctness. Based on this observation, we propose AdaRAS (Adaptive Reasoning Activation Steering), a lightweight test-time framework that improves reasoning reliability by selectively intervening on neuron activations. AdaRAS identifies Reasoning-Critical Neurons (RCNs) via a polarity-aware mean-difference criterion and adaptively steers their activations during inference, enhancing incorrect reasoning traces while avoiding degradation on already-correct cases. Experiments on 10 mathematics and coding benchmarks demonstrate consistent improvements, including over 13% gains on AIME-24 and AIME-25. Moreover, AdaRAS exhibits strong transferability across datasets and scalability to stronger models, outperforming post-training methods without additional training or sampling cost.",
+   "abs_url": "https://arxiv.org/abs/2601.19847",
+   "pdf_url": "https://arxiv.org/pdf/2601.19847",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-09-12",
+   "venue": "EMNLP 2026",
+   "code": "",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes activation steering to identify and intervene on reasoning-critical neurons, improving LLM reasoning reliability through mechanistic interpretability and representation engineering.",
+   "idea": {
+    "problem": "LLMs struggle with reliable reasoning on challenging tasks without expensive post-training or sampling.",
+    "approach": "Identify reasoning-critical neurons via polarity-aware mean-difference, then adaptively steer their activations during inference.",
+    "result": "Consistent improvements on math and coding benchmarks (13%+ on AIME-24/25) with transfer across datasets and models."
+   }
+  },
+  {
+   "id": "2609.11085",
+   "title": "Beyond Solver Verdicts: Generative Reward Models for Autoformalization",
+   "authors": [
+    "Vikash Singh",
+    "Debargha Ganguly",
+    "Aman Goel",
+    "Ali Torkamani",
+    "Xiaoxue Han",
+    "Joseph Lilien",
+    "Ferhat Erata",
+    "Vipin Chaudhary"
+   ],
+   "abstract": "Neurosymbolic systems rely on mathematical solvers to guarantee reasoning correctness, yet solvers are fundamentally blind to whether a formal translation maintains strict reference-equivalence to a designated formalization. We formalize this vulnerability as Verdict-Preserving-Unfaithfulness (VPU): a failure mode where an incorrect encoding executes successfully and matches the expected verdict. We theoretically prove that structural, verdict-only verification heuristics are mathematically bounded to chance-level detection on these deceptively valid traces. To resolve this, we introduce Generative Verification (GenV), which distills an offline Z3-equivalence oracle into a reference-free, continuous reference-equivalence score by repurposing the language model's native vocabulary space. Mechanistic analysis via decision-projected logit lenses and sparse autoencoders shows this generative readout natively extracts precise spatial error coordinates without explicit localization training. Empirically, our oracle-mined verifier (GenV+HN) achieves 0.961 AUROC in reference-equivalence verification, generalizes zero-shot across unseen translators and divergent formal styles, and yields an 11.3-point downstream accuracy gain in agentic test-time compute allocation.",
+   "abs_url": "https://arxiv.org/abs/2609.11085",
+   "pdf_url": "https://arxiv.org/pdf/2609.11085",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CL"
+   ],
+   "published": "2026-09-11",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes Generative Verification to detect unfaithful formalizations by learning reference-equivalence scoring, advancing reliability of LLM-based autoformalization through mechanistic understanding of model internals.",
+   "idea": {
+    "problem": "Formal translations can produce correct solver verdicts while being unfaithful to the original specification (Verdict-Preserving-Unfaithfulness)",
+    "approach": "Distill Z3-equivalence oracle into continuous reference-equivalence score using language model logits and mechanistic analysis via decision-projected lenses and",
+    "result": "GenV+HN achieves 0.961 AUROC in reference-equivalence verification, generalizes zero-shot across translators, yields 11.3-point downstream accuracy gain"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2606.16893",
+   "title": "Symbolic Informalization: Fluent, Productive, Multilingual",
+   "authors": [
+    "Aarne Ranta"
+   ],
+   "abstract": "Symbolic informalization enables a reliable conversion of formal mathematics to natural language. It has the potential to make machine-checked content human-readable without loss of precision. In a traditional proof system usage, symbolic informalization generalizes the limited mechanisms of syntactic sugar into the ordinary language of mathematics. In a setting where proofs are constructed by artificial intelligence and autoformalization, symbolic informalization can explain what precisely has been constructed. This paper outlines the project Informath, which aims to show how symbolic informalization can produce fluent text with a reasonable development effort and address multiple formal and natural languages. Informath is based on an interlingual architecture, where Dedukti works as a hub between different proof systems (Agda, Lean, Rocq) and Grammatical Framework (GF) takes care of linguistic correctness and variation in different natural languages.",
+   "abs_url": "https://arxiv.org/abs/2606.16893",
+   "pdf_url": "https://arxiv.org/pdf/2606.16893",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LO"
+   ],
+   "published": "2026-09-08",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.85,
+   "type": "tool",
+   "why": "Develops a system for converting formal proofs to natural language, the inverse of autoformalization, enabling human interpretation of machine-checked mathematics while preserving precision.",
+   "idea": {
+    "problem": "Formal proofs are machine-checkable but not human-readable; need reliable conversion to natural language.",
+    "approach": "Interlingual architecture using Dedukti as hub for multiple proof systems and Grammatical Framework for linguistic variation.",
+    "result": "Informath system produces fluent, multilingual natural-language explanations of formal mathematics across Agda, Lean, Rocq."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.07365",
+   "title": "Trust the Spec, Not the Code - A Specification-First, AI-Assisted Case Study in Online Banking",
+   "authors": [
+    "Eitan Farchi"
+   ],
+   "abstract": "Formal specification promises early error detection, explicit invariants, and correctness by design, yet its notational cost has kept it out of mainstream practice. We argue that AI removes much of that cost: natural language enriched with lightweight mathematics, written in \\LaTeX, can serve as an intermediate specification language that is precise enough to reason over and prove, while a large language model (LLM) reviews it for ambiguity, drafts proofs, and generates the implementation. The specification becomes the artifact one authors, reviews, proves, and refines; the code becomes regenerable output. This paper is a follow-on to a prior study that established the discipline on an organizational-knowledge-growth simulation~\\cite{predecessor2026}. Here we replicate the discipline in a different domain---an online-banking fund-transfer service---and extend it. The two domains share one spine: a conservation invariant (knowledge in the prior study, money here), which suggests the approach generalizes across domains. We contribute: (i) a second, independent case study of the method; (ii) a stress-test of the method on a richer problem---\\emph{scheduled/recurring} transfers---whose generated code grows substantially while the invariant and its proof do not; (iii) an \\emph{AI-proposed runtime coverage model} for invariants (``never violated $\\neq$ covered''); and (iv) a Z formalization, including paired success/failure operation schemas and an invariant proved over the inductive set of all reachable configurations, together with an experiment in which the AI proposes the Z interfaces itself. We are explicit about the method's limits: the proofs and runtime checks live at the specification level and do not establish that the generated code refines the specification---that step is delegated to the AI. This is a case study, not a controlled experiment.",
+   "abs_url": "https://arxiv.org/abs/2609.07365",
+   "pdf_url": "https://arxiv.org/pdf/2609.07365",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-09-07",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "specification_mining",
+    "autoformalization"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Case study demonstrating AI-assisted specification-first development where natural language with lightweight mathematics is formalized in Z, proven, and used to generate code, with analysis of the method's effectiveness across domains.",
+   "idea": {
+    "problem": "Formal specification has high notational cost, limiting mainstream adoption despite its correctness guarantees.",
+    "approach": "Use LLMs to review natural-language specifications for ambiguity, draft proofs, and generate code; treat specification as primary artifact, code as regenerable ",
+    "result": "Specification-first discipline validated across two domains (banking and prior organizational simulation), with conservation invariants generalized and runtime "
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2602.06533",
+   "title": "LogicSkills: A Structured Benchmark for Formal Reasoning in Large Language Models",
+   "authors": [
+    "Brian Rabern",
+    "Philipp Mondorf",
+    "Barbara Plank"
+   ],
+   "abstract": "Large language models perform well on many logical reasoning benchmarks, but it remains unclear which core logical skills they truly master. To address this, we introduce LogicSkills, a benchmark that isolates three fundamental logical skills: (i) $\\textit{formal symbolization}\\unicode{x2014}{}$translating premises into first-order logic; (ii) $\\textit{countermodel construction}\\unicode{x2014}$showing that an argument is logically invalid by constructing a finite countermodel; and (iii) $\\textit{validity assessment}\\unicode{x2014}$determining whether a conclusion follows from a set of premises. Items are drawn from the two-variable fragment of first-order logic without identity and are presented in both English and a Carrollian nonce-word language. All instances are solver-verified with Z3 for correctness and non-triviality. Across conventional instruction-tuned LLMs, performance is high on $\\textit{validity assessment}$ but substantially lower on $\\textit{formal symbolization}$ and $\\textit{countermodel construction}$, highlighting that high task-level accuracy can mask weaknesses in core logical skills. In contrast, recent reasoning-tuned models perform strongly across all three tasks, suggesting a more systematic logical skill profile.",
+   "abs_url": "https://arxiv.org/abs/2602.06533",
+   "pdf_url": "https://arxiv.org/pdf/2602.06533",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-09-06",
+   "venue": "",
+   "code": "",
+   "license": "CC BY-SA 4.0",
+   "license_url": "http://creativecommons.org/licenses/by-sa/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "benchmark",
+   "why": "Introduces a structured benchmark isolating core logical skills (symbolization, countermodel construction, validity assessment) to analyze what LLMs genuinely understand about formal reasoning, with Z3-verified correctness.",
+   "idea": {
+    "problem": "Unclear which fundamental logical skills LLMs truly master despite high benchmark performance",
+    "approach": "Create LogicSkills benchmark isolating three core logical skills with solver-verified instances in FOL-2",
+    "result": "Instruction-tuned models weak at symbolization/countermodels but strong at validity; reasoning-tuned models stronger across all tasks"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2608.29270",
+   "title": "SHADOWBENCH: Toward Reliable Automatic Evaluation of Semantic Alignment in Autoformalization",
+   "authors": [
+    "Hojae Han",
+    "Jongyoon Kim",
+    "Sanghyeok Park",
+    "Dongwook Cheon",
+    "Yeachan Park",
+    "Myeong Jae Jeon",
+    "Sunjong Choe",
+    "Soonho Kong",
+    "Wonseok Hur",
+    "Seung-won Hwang",
+    "Donghoon Hyeon"
+   ],
+   "abstract": "Autoformalization translates informal mathematical theorems into code for proof assistants such as Lean. A central challenge is that current evaluation metrics can accept type-correct but misaligned statements or reject correct statements written in a different formulation. Inspired by Pass@$k$, we propose SA-Pass (*Semantic Alignment Pass*), which tests formal statements using auxiliary statements called *shadows* that characterize the intended statement. A generated statement receives full credit only when it compiles, implies each shadow (forward check), and is implied by their conjunction (backward check). We instantiate SA-Pass in ShadowBench, a Lean 4 full autoformalization benchmark of 178 postgraduate- to research-level problems spanning eight mathematical areas. Claude Code (Opus 4.8) with Numina-Lean-Agent reaches $61.8\\%$ compile rate and $11.2\\%$ SA-Pass. Across outputs generated by six agentic configurations, SA-Pass achieves $98.8\\%$ binary agreement with expert judgments. An early version of ShadowBench served as the benchmark for Track 4 of the ICML 2026 AI4Math Challenge.",
+   "abs_url": "https://arxiv.org/abs/2608.29270",
+   "pdf_url": "https://arxiv.org/pdf/2608.29270",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-09-05",
+   "venue": "The 2026 Conference on Empirical Methods in Nat…",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Introduces ShadowBench, a benchmark with a novel evaluation metric (SA-Pass) for assessing semantic correctness of automatically formalized mathematical theorems in Lean, addressing core autoformalization challenges.",
+   "idea": {
+    "problem": "Current evaluation metrics for autoformalization accept type-correct but semantically misaligned statements or reject valid alternative formulations.",
+    "approach": "Propose SA-Pass, which uses auxiliary 'shadow' statements to test that formalized statements compile, imply shadows (forward check), and are implied by their co",
+    "result": "ShadowBench benchmark with 178 problems achieves 98.8% agreement with expert judgment; Claude Opus reaches 11.2% SA-Pass rate."
+   },
+   "figure_tries": 1
+  }
+ ]
+}
