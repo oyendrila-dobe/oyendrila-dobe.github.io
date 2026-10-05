@@ -392,7 +392,7 @@ function NamePronunciation() {
 function HomePage({ onNavigate }) {
   return (
     <PaperShell>
-      <ArxivBar tag="2026.08" />
+      <ArxivBar tag="2026.10" />
 
       {/* Two explicit columns: left = name/abstract/contact, right = headshot/updates.
           Right column is wider (1.15fr vs 0.85fr) to give the headshot+contact
