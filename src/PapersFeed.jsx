@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { ExternalLink, FileText, Search } from "lucide-react";
+import { Code2, FileText, Search } from "lucide-react";
 
 // Same palette/fonts as the rest of the site (kept local so this file is
 // self-contained; if you ever export these from one module, import them here).
@@ -37,6 +37,17 @@ function Chip({ active, onClick, children }) {
   );
 }
 
+function FilterRow({ label, children }) {
+  return (
+    <div className="mb-2 flex flex-wrap items-center gap-2">
+      <span className="w-12 shrink-0 text-xs" style={{ fontFamily: MONO, color: MUTED }}>
+        {label}
+      </span>
+      {children}
+    </div>
+  );
+}
+
 function LinkPill({ href, Icon, label }) {
   return (
     <a
@@ -51,14 +62,28 @@ function LinkPill({ href, Icon, label }) {
   );
 }
 
-function PaperEntry({ p, themes, expanded, onToggle }) {
+function PaperEntry({ p, themes, types, expanded, onToggle }) {
   const shown = p.authors.slice(0, 5);
+  const cats = p.categories && p.categories.length ? p.categories : [p.primary_category].filter(Boolean);
+  const why = p.why || p.summary;
   return (
     <div className="flex flex-col gap-2 border-b py-4 sm:flex-row sm:gap-4" style={{ borderColor: PEACH }}>
+      {/* left: date + every arXiv category as a small chip */}
       <div className="shrink-0 sm:w-28" style={{ fontFamily: MONO, color: RUST, fontSize: "0.87rem" }}>
         {p.published}
-        <div style={{ color: MUTED }}>{p.primary_category}</div>
+        <div className="mt-1 flex flex-wrap gap-1">
+          {cats.map((c) => (
+            <span
+              key={c}
+              className="px-1 leading-snug"
+              style={{ fontSize: "0.7rem", color: MUTED, border: `1px solid ${PEACH}` }}
+            >
+              {c}
+            </span>
+          ))}
+        </div>
       </div>
+
       <div className="flex-1">
         <a
           href={p.abs_url}
@@ -73,7 +98,27 @@ function PaperEntry({ p, themes, expanded, onToggle }) {
           {shown.join(", ")}
           {p.authors.length > shown.length && " et al."}
         </p>
-        <div className="mt-1.5 flex flex-wrap gap-1.5">
+
+        {/* [type] [venue] [code] then topic tags */}
+        <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+          {p.type && (
+            <span
+              className="px-1.5 py-0.5 text-xs font-semibold"
+              style={{ fontFamily: MONO, color: RUST, border: `1px solid ${RUST}` }}
+            >
+              {types[p.type] || p.type}
+            </span>
+          )}
+          {p.venue && (
+            <span
+              className="px-1.5 py-0.5 text-xs"
+              title="Venue as stated by the authors in arXiv metadata"
+              style={{ fontFamily: MONO, background: INK, color: PEACH }}
+            >
+              {p.venue}
+            </span>
+          )}
+          {p.code && <LinkPill href={p.code} Icon={Code2} label="code" />}
           {p.tags.map((t) => (
             <span
               key={t}
@@ -84,9 +129,11 @@ function PaperEntry({ p, themes, expanded, onToggle }) {
             </span>
           ))}
         </div>
-        {p.summary && (
+
+        {why && (
           <p className="mt-2 text-[0.95rem] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
-            {p.summary}
+            <span style={{ fontFamily: MONO, color: RUST, fontSize: "0.8rem" }}>why selected — </span>
+            {why}
           </p>
         )}
         {expanded && (
@@ -95,7 +142,6 @@ function PaperEntry({ p, themes, expanded, onToggle }) {
           </p>
         )}
         <div className="mt-2 flex flex-wrap items-center gap-1.5">
-          <LinkPill href={p.abs_url} Icon={ExternalLink} label="arXiv" />
           <LinkPill href={p.pdf_url} Icon={FileText} label="PDF" />
           <button
             onClick={onToggle}
@@ -115,6 +161,7 @@ export default function PapersFeed() {
   const [error, setError] = useState(null);
   const [query, setQuery] = useState("");
   const [theme, setTheme] = useState(null);
+  const [type, setType] = useState(null);
   const [windowDays, setWindowDays] = useState(0);
   const [visible, setVisible] = useState(PAGE);
   const [open, setOpen] = useState({});
@@ -129,7 +176,7 @@ export default function PapersFeed() {
       .catch((e) => setError(String(e)));
   }, []);
 
-  useEffect(() => setVisible(PAGE), [query, theme, windowDays]);
+  useEffect(() => setVisible(PAGE), [query, theme, type, windowDays]);
 
   const filtered = useMemo(() => {
     if (!data) return [];
@@ -142,16 +189,18 @@ export default function PapersFeed() {
     }
     return data.papers.filter((p) => {
       if (theme && !p.tags.includes(theme)) return false;
+      if (type && p.type !== type) return false;
       if (cutoff && p.published < cutoff) return false;
       if (!q) return true;
       return (
         p.title.toLowerCase().includes(q) ||
         p.abstract.toLowerCase().includes(q) ||
-        (p.summary || "").toLowerCase().includes(q) ||
+        (p.why || p.summary || "").toLowerCase().includes(q) ||
+        (p.venue || "").toLowerCase().includes(q) ||
         p.authors.some((a) => a.toLowerCase().includes(q))
       );
     });
-  }, [data, query, theme, windowDays]);
+  }, [data, query, theme, type, windowDays]);
 
   if (error) {
     return (
@@ -169,32 +218,21 @@ export default function PapersFeed() {
   }
 
   const themes = data.themes || {};
+  const types = data.types || {};
+  // only offer type filters that at least one paper actually has
+  const presentTypes = Object.keys(types).filter((k) => data.papers.some((p) => p.type === k));
 
   return (
     <div>
-      <div className="mb-5 border px-4 py-2.5" style={{ borderColor: PEACH, background: "#FFF9F5" }}>
-        <p className="text-sm leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
-          <span style={{ fontFamily: MONO, color: RUST, fontWeight: 600 }}>Credit —</span> this page is an adaptation
-          of the idea behind{" "}
-          <a href="https://github.com/soonhokong/paperswithlean" target="_blank" rel="noreferrer" className="underline" style={{ color: TEAL }}>
-            Papers with Lean
-          </a>{" "}
-          by{" "}
-          <a href="https://soonhokong.github.io/" target="_blank" rel="noreferrer" className="underline" style={{ color: TEAL }}>
-            Soonho Kong
-          </a>
-          , a daily-updated, LLM-screened index of arXiv papers. It's reworked here for different topics.
-        </p>
-      </div>
-
       <p className="mb-1 text-justify text-[1.03rem] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
-        A running reading list of new arXiv papers on getting LLMs to reason beyond next-token prediction, formalizing
-        natural language into something provable, and mining specifications to understand what systems actually do.
+        Reading radar: new arXiv papers are crawled daily and screened by Claude against my research interests, which
+        are getting LLMs to reason beyond next-token prediction, formalizing natural language into something provable,
+        and mining specifications to understand what systems actually do.
       </p>
       <p className="mb-5 text-sm" style={{ fontFamily: MONO, color: MUTED }}>
         {data.papers.length} papers
-        {data.generated && <> · updated {data.generated}</>} · screened and summarized automatically by Claude, so
-        expect the occasional miss or misread
+        {data.generated && <> · updated {data.generated}</>} · selected automatically, so expect the occasional miss
+        or misread
       </p>
 
       <div className="mb-3 flex items-center gap-2 border px-3 py-1.5" style={{ borderColor: INK, background: WHITE }}>
@@ -202,28 +240,42 @@ export default function PapersFeed() {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="search title, abstract, authors"
+          placeholder="search title, abstract, authors, venue"
           className="w-full bg-transparent text-sm outline-none"
           style={{ fontFamily: MONO, color: INK }}
         />
       </div>
 
-      <div className="mb-2 flex flex-wrap gap-2">
-        <Chip active={theme === null} onClick={() => setTheme(null)}>
-          all topics
-        </Chip>
-        {Object.entries(themes).map(([key, label]) => (
-          <Chip key={key} active={theme === key} onClick={() => setTheme(theme === key ? null : key)}>
-            {label}
+      <div className="mb-6">
+        <FilterRow label="topic">
+          <Chip active={theme === null} onClick={() => setTheme(null)}>
+            all
           </Chip>
-        ))}
-      </div>
-      <div className="mb-6 flex flex-wrap gap-2">
-        {WINDOWS.map((w) => (
-          <Chip key={w.days} active={windowDays === w.days} onClick={() => setWindowDays(w.days)}>
-            {w.label}
-          </Chip>
-        ))}
+          {Object.entries(themes).map(([key, label]) => (
+            <Chip key={key} active={theme === key} onClick={() => setTheme(theme === key ? null : key)}>
+              {label}
+            </Chip>
+          ))}
+        </FilterRow>
+        {presentTypes.length > 0 && (
+          <FilterRow label="type">
+            <Chip active={type === null} onClick={() => setType(null)}>
+              all
+            </Chip>
+            {presentTypes.map((key) => (
+              <Chip key={key} active={type === key} onClick={() => setType(type === key ? null : key)}>
+                {types[key]}
+              </Chip>
+            ))}
+          </FilterRow>
+        )}
+        <FilterRow label="when">
+          {WINDOWS.map((w) => (
+            <Chip key={w.days} active={windowDays === w.days} onClick={() => setWindowDays(w.days)}>
+              {w.label}
+            </Chip>
+          ))}
+        </FilterRow>
       </div>
 
       {data.papers.length === 0 && (
@@ -242,6 +294,7 @@ export default function PapersFeed() {
           key={p.id}
           p={p}
           themes={themes}
+          types={types}
           expanded={!!open[p.id]}
           onToggle={() => setOpen((o) => ({ ...o, [p.id]: !o[p.id] }))}
         />

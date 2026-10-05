@@ -715,7 +715,7 @@ function ResearchPage() {
          options={[
           { id: "topic", label: "Topics" },
           { id: "publications", label: "Publications" },
-          { id: "fetched_papers", label: "Papers" },
+          { id: "fetched_papers", label: "Reading Radar" },
           { id: "blog", label: "Blog" },
         ]}
         active={view}
