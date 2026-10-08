@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07",
+ "generated": "2026-10-08",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,248 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.09944",
+   "title": "AgentTime: Can Agents Estimate and Control Their Own Runtime?",
+   "authors": [
+    "Michael Ofengenden",
+    "Maksym Andriushchenko"
+   ],
+   "abstract": "An essential control of AI agents is their ability to manage runtime. This ability requires a sense of time-awareness, to predict and estimate wall-clock time and to control their own actions. Prior work has focused on time-awareness, but duration-following and control in native agent harnesses remain unexplored. We present AgentTime, a benchmark for testing whether agents can work for a requested duration, predict their runtime, and estimate elapsed time afterward. It comprises 222 tasks from 18 sources spanning coding, computer use, agentic work, and automated research. Duration-following experiments append a single instruction specifying how long to work, with requests ranging from about a minute to multiple days. Accuracy on these instructions varies substantially: Fable 5.1 in Claude Code deviates from requested runtimes by a typical factor of 2.9$\\times$, compared with only 1.2$\\times$ for GPT-6 Astra in Codex. However, matching the requested runtime does not, by itself, establish continued work on the task. Among 158 reviewed Astra runs with classifiable transcripts, 14 explicitly slept after appearing to finish. In forecasting experiments, predictions tend to overestimate natural runtimes. In retrospective experiments, removing temporal information more than doubles deviation for Sol and Astra and nearly doubles it for Fable. An agent's ability to complete a task does not guarantee that it can control its own time or work for the whole requested duration. For agents to run reliably, safely, and autonomously over long horizons, we require the evaluation of both.",
+   "abs_url": "https://arxiv.org/abs/2610.09944",
+   "pdf_url": "https://arxiv.org/pdf/2610.09944",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-07",
+   "venue": "",
+   "code": "https://github.com/michaelofengenden/agenttimebench",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "benchmark",
+   "why": "Introduces a benchmark for evaluating whether LLM agents can predict, control, and follow time constraints on their actions—a guardrail aspect of agent harnesses and reliability.",
+   "idea": {
+    "problem": "LLM agents lack time-awareness to predict runtimes, follow duration constraints, and control their own execution safely",
+    "approach": "Benchmark 222 tasks testing agents' ability to estimate wall-clock time, follow duration instructions, and retrospectively assess elapsed time",
+    "result": "Most agents significantly deviate from requested runtimes (1.2–2.9× error); task completion does not guarantee duration control or continued work"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.09906",
+   "title": "Constrained-Action AI Remediation for SIEM/XDR via a NeMo-Guardrails Proxy",
+   "authors": [
+    "Georgios Koutidis",
+    "Nikolaos Kekatos",
+    "Tom Nianios",
+    "Alexios Lekidis"
+   ],
+   "abstract": "Security Operations Centers (SOCs) for information technology and operational technology share one incident-response problem: a flood of correlated alerts and too few analysts. Large Language Models (LLMs) are increasingly proposed as reasoning engines that triage alerts and, in autonomous deployments, issue commands that block IPs, kill processes, or quarantine files on production hosts. This coupling introduces a new risk: a single adversarial alert can become a remote code path through the LLM's reasoning, leading it to recommend an action the SOC then executes. We present a constrained-action architecture with two coordinated layers: (i) a SIEM/XDR control plane that grounds remediation in correlated host events and confines the LLM's output to a closed intent vocabulary whose templated commands are executed by thin endpoint agents, backstopped by an argument validator; and (ii) a NeMo-Guardrails proxy that wraps the SOC-analyst LLM with input- and output-rail policies, evaluated out-of-the-box against a SOC-specific adversarial corpus we release. The stock proxy lifts injection recall from 25.0% to 94.5% at a 0.1% false-positive rate, and a live red-team exercise confirms that the closed intent vocabulary and argument validator contain the observed LLM failure modes before any command crosses the trust boundary. As an architectural fit (not yet a measured operational-technology deployment), the constrained-action property suits critical-infrastructure settings where a wrong remediation has physical, not merely operational, consequences. The loop is best run human-in-the-loop or delayed: the measured rail latency keeps inline control out of scope.",
+   "abs_url": "https://arxiv.org/abs/2610.09906",
+   "pdf_url": "https://arxiv.org/pdf/2610.09906",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-10-07",
+   "venue": "2026 IEEE International Conference on Cyber S",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a constrained-action architecture with NeMo-Guardrails proxy and policy enforcement to prevent adversarial LLM-driven actions in security operations, demonstrating logic-based guardrails on agent tool calls.",
+   "idea": {
+    "problem": "LLM-based SOC agents can be exploited via adversarial alerts to execute harmful remediation commands",
+    "approach": "Two-layer architecture: SIEM control plane with closed intent vocabulary and argument validators; NeMo-Guardrails proxy with input/output policies",
+    "result": "Injection detection improves from 25% to 94.5% recall at 0.1% false-positive rate; red-team confirms LLM failures contained before command execution"
+   }
+  },
+  {
+   "id": "2610.09793",
+   "title": "Formal Runtime Verification for Tool-Using LLM Agents: An Offline Same-Benchmark Study on AgentDojo and STAC",
+   "authors": [
+    "Nikolaos Kekatos",
+    "Stylianos Basagiannis",
+    "Marinelio Chintri",
+    "Alexios Lekidis",
+    "Tom Nianios",
+    "Ioannis Seitoglou",
+    "Anastasios Temperekidis",
+    "Panagiotis Katsaros"
+   ],
+   "abstract": "Guardrails for tool-using LLM agents are usually application-specific rules, which makes multi-step, data-dependent safety policies hard to specify, audit and reuse. As a declarative alternative, we evaluate metric first-order temporal logic (MFOTL), replaying the recorded trajectories that AgentDojo, STAC and R-Judge already ship through the unmodified MonPoly monitor, offline and without running an agent. On these corpora, five generic obligations flag 71.8% of STAC attack chains and 70.1% of successful AgentDojo attacks, but also fire on 29.3% of benign runs. This imprecision stems from the corpora rather than the logic: they rarely record approvals and never record timestamps, so history-dependent obligations reduce to detecting risky action types. Where the trace does carry relational context, provenance-aware policies discriminate better; that context, however, is itself attackable, and one planted line defeats a naive provenance check on 94-99% of the runs it would otherwise flag. Binding provenance to the lookup that produced it closes this evasion at no cost in detection or benign firing. Taken together, these results show that formal temporal monitoring adds value exactly when the trace exposes trustworthy history. We therefore quantify how far current benchmarks are from that point and propose a twelve-field enforcement-ready trace schema.",
+   "abs_url": "https://arxiv.org/abs/2610.09793",
+   "pdf_url": "https://arxiv.org/pdf/2610.09793",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-07",
+   "venue": "8th Workshop on CPS&IoT Security and Privacy",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Evaluates formal temporal logic as guardrails for tool-using LLM agents, demonstrating how runtime monitoring can detect unsafe behaviors and identifying trace-schema requirements for effective enforcement.",
+   "idea": {
+    "problem": "Tool-using LLM agents lack reusable, auditable safety policies beyond application-specific rules",
+    "approach": "Apply metric first-order temporal logic (MFOTL) monitoring to offline agent trajectories; identify provenance-awareness and trustworthy trace data as key to…",
+    "result": "Generic MFOTL obligations flag 71.8% of attacks but need trustworthy history and provenance binding; proposes enforcement-ready trace schema"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2608.29615",
+   "title": "Forward-Deployed Full-Stack Engineering for Autonomous Cloud MLOps",
+   "authors": [
+    "Sagar Srinivas Sakhinana",
+    "Venkataramana Runkana"
+   ],
+   "abstract": "Across industries, machine-learning systems support applications ranging from prediction and anomaly detection to forecasting, optimization, and scheduling, yet operationalizing these systems requires coordinating application development, model pipelines, cloud infrastructure, security, deployment, monitoring, retraining, recovery, and rollback. We present an evidence-gated multi-agent framework for transforming a natural-language MLOps cloud engineering task into a verified repository and operational cloud deployment. The framework combines graph engineering, loop engineering, and agent harness engineering. A stateful Graph Orchestrator coordinates specialized agents for repository generation, review, execution, verification, release, and monitoring while governing workflow dependencies, evidence gates, retry bounds, recovery paths, and termination. Consequential lifecycle transitions proceed only when their required predicates are supported by verifiable execution or runtime evidence. Verification failures activate bounded reflection, repair, and re-verification, while runtime evidence of failure, drift, degradation, or policy violation can trigger bounded adaptation, recovery, or rollback. Agent harness engineering constrains repository generation, review, and repair, artifact execution, and cloud operations through controlled capabilities and isolated execution environments. We realize the framework on Google Cloud Platform and evaluate repository completeness, controlled execution, evidence-gated transitions, cloud promotion, and bounded recovery. Our experimental results show that the framework prevents unsupported lifecycle transitions and drives each run toward either a verified operational deployment or an auditable terminal failure.",
+   "abs_url": "https://arxiv.org/abs/2608.29615",
+   "pdf_url": "https://arxiv.org/pdf/2608.29615",
+   "primary_category": "cs.MA",
+   "categories": [
+    "cs.MA",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-07",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes an agent harness and orchestration framework with evidence-gated guardrails to control and verify multi-agent workflows in cloud MLOps, constraining agent capabilities and enforcing formal verification before critical lifecycle transitions.",
+   "idea": {
+    "problem": "MLOps requires coordinating many complex tasks with safety and verification requirements",
+    "approach": "Evidence-gated orchestrator coordinates specialized agents with harness constraints, verifying predicates before lifecycle transitions",
+    "result": "Framework prevents unsupported transitions and drives runs toward verified deployment or auditable failure"
+   }
+  },
+  {
+   "id": "2602.04892",
+   "title": "Doc2Spec: Synthesizing Formal Programming Specifications from Natural Language via Grammar Induction",
+   "authors": [
+    "Shihao Xia",
+    "Mengting He",
+    "Haomin Jia",
+    "Xinyan Zhao",
+    "Linhai Song"
+   ],
+   "abstract": "Ensuring that API implementations and usage comply with natural language programming rules is critical for software correctness, security, and reliability. Formal verification can provide strong guarantees but requires precise specifications, which are difficult and costly to write manually. To address this challenge, we present Doc2Spec, a multi-agent framework that automatically induces a domain-specific grammar from natural-language API rules and uses it to guide specification generation. Doc2Spec fixes a domain-agnostic logical skeleton as a grammar template, prompts LLMs to infer domain-specific predicates and sorts, and formalizes each rule within the resulting grammar, turning an unreliable one-shot translation into a sequence of constrained, checkable steps. Across six benchmarks spanning Solidity and Rust, Doc2Spec improves precision by 0.28 and recall by 0.37 over baselines that lack grammar induction or perform it in one unstaged step, demonstrating the benefits of grammar-guided formalization and the staged pipeline. Moreover, its formalized rules enable symbolic-execution tools to uncover 142 previously unknown rule violations, confirming the rules' correctness and practical usefulness.",
+   "abs_url": "https://arxiv.org/abs/2602.04892",
+   "pdf_url": "https://arxiv.org/pdf/2602.04892",
+   "primary_category": "cs.PL",
+   "categories": [
+    "cs.PL",
+    "cs.AI",
+    "cs.SE"
+   ],
+   "published": "2026-10-07",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Automatically translates natural-language API rules into formal specifications using grammar induction and multi-stage LLM prompting, enabling symbolic verification of rule compliance.",
+   "idea": {
+    "problem": "Manual formal specifications of API rules are costly; natural-language rules must be precisely formalized for verification",
+    "approach": "Multi-agent framework induces domain-specific grammar from rules, then stages LLM prompts to fill grammar templates with predicates and formalized…",
+    "result": "Improves precision by 0.28 and recall by 0.37; enables symbolic execution to find 142 previously unknown rule violations"
+   }
+  },
+  {
+   "id": "2610.09087",
+   "title": "U-Space: Uncovering When and Why Uncertainty Arises in Language Models",
+   "authors": [
+    "Tobias Braun",
+    "Nils Loose",
+    "Alexander Herzog",
+    "Virginia Ceccatelli",
+    "Marcus Rohrbach",
+    "Thomas Eisenbarth",
+    "Lorenzo Cavallaro"
+   ],
+   "abstract": "Large language models are informing decisions with ever-higher stakes. As the consequences of their errors grow, a central question becomes harder to ignore: how much can we trust an individual answer? Yet recognizing when to defer remains difficult because language models can present incorrect conclusions with fluent explanations and an authoritative tone. Uncertainty quantification seeks to address this disconnect by estimating the reliability of individual predictions. However, many existing methods require repeated generations or separately trained components, and their scalar estimates do not reveal where uncertainty arises or how it evolves during reasoning. Recent work has also shown that generation length can be strongly associated with uncertainty estimates and correctness, raising the question of how much of an estimator's predictive power comes from uncertainty-specific information rather than output length alone. Mechanistic interpretability offers a way to address these limitations by connecting human-interpretable concepts to intermediate model states. Building on this capability, we introduce the U-Space, a low-dimensional subspace that makes a model's evolving uncertainty measurable and interpretable. We identify semantic anchors for doubt and certainty, map their unembedding directions back into the residual space, and combine their contrasts into an orthogonal basis. The U-Lens projects each token state onto these basis vectors, yielding an interpretable token-level uncertainty map that can be inspected directly or aggregated into a scalar uncertainty score. Our approach requires no correctness labels, repeated generations, or training. Across reasoning benchmarks, its confidence score outperforms established baselines under both standard and length-controlled evaluation and transfers more reliably than supervised estimators. Code: https://github.com/s2labres/U-Space.",
+   "abs_url": "https://arxiv.org/abs/2610.09087",
+   "pdf_url": "https://arxiv.org/pdf/2610.09087",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-06",
+   "venue": "",
+   "code": "https://github.com/s2labres/U-Space",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Uses mechanistic interpretability to understand and measure uncertainty in LLM reasoning by identifying semantic anchors and projecting model states onto an interpretable uncertainty subspace.",
+   "idea": {
+    "problem": "LLMs present incorrect conclusions confidently; existing uncertainty quantification methods lack interpretability into where uncertainty arises during reasoning.",
+    "approach": "Identify semantic anchors for doubt and certainty, project token states onto orthogonal basis vectors to create interpretable uncertainty subspace.",
+    "result": "U-Lens uncertainty scores outperform baselines on reasoning benchmarks without requiring labels, repeated generations, or training."
+   }
+  },
+  {
+   "id": "2610.08928",
+   "title": "Multi-Aspect Runtime Verification for Simulation-Based V&V of LLM-Enabled Autonomous Agents",
+   "authors": [
+    "Nikolaos Kekatos",
+    "Dimitrios Nikou",
+    "Anastasios Temperekidis",
+    "Alexios Lekidis",
+    "Nikolaos Kolokotronis",
+    "Panagiotis Katsaros",
+    "Stylianos Basagiannis"
+   ],
+   "abstract": "LLM-based agents are entering decision-support roles in defence staff work, where the obligations they must respect are already written down and binding, and where retraining is not available as a control because models arrive as procured components. What can be placed under engineering control is the interface between the agent and the systems it acts on. Those obligations are at once spatial, temporal and text-semantic, and a violation typically lives in the composition of a multi-step interaction, which is why per-event guardrails miss sequential tool-attack chains. We present a multi-aspect runtime-verification framework that decomposes a natural-language policy clause into a typed spatial/temporal/semantic triple over one canonical event stream, checks each aspect with its own monitoring specification, and fuses the verdicts through a four-valued algebra that carries provenance. The spatial aspect is interpreted over a weighted two-sorted location graph in which mission geometry and information-release topology are one object; we show that these spatial obligations are not in general subsumed by a first-order temporal specification. The past-time aspect runs on the unmodified MonPoly engine, which agrees with our reference monitor at every time point. Across two mission domains, casualty evacuation and contested sustainment, and one civil domain, composition under the precautionary blocking policy drives attack success to zero with no observed false positives and microsecond-scale per-event cost, while every single aspect and every pair leaves a substantial share of attacks succeeding. In a closed-loop experiment a policy-naive planner reaches a violating state in most unshielded missions and in none when shielded, and four refused episodes in five still recover to a compliant outcome.",
+   "abs_url": "https://arxiv.org/abs/2610.08928",
+   "pdf_url": "https://arxiv.org/pdf/2610.08928",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.LO"
+   ],
+   "published": "2026-10-06",
+   "venue": "Modelling and Simulation for Autonomous Syste",
+   "code": "",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Presents a runtime-verification framework that decomposes natural-language policies into formal specifications (spatial/temporal/semantic) to monitor and constrain LLM-agent behavior, enforcing guardrails at the agent-system interface.",
+   "idea": {
+    "problem": "LLM agents must respect binding obligations but arrive as fixed components; per-event guardrails miss sequential attacks across multi-step…",
+    "approach": "Decompose natural-language policies into typed spatial/temporal/semantic triples with independent monitoring specifications fused via four-valued…",
+    "result": "Prevents all tested attacks across casualty evacuation and sustainment domains with microsecond-scale overhead and no false positives"
+   }
+  },
   {
    "id": "2610.08144",
    "title": "Navier-Stokes lost in translation: Why Lean verification of AI autoformalisation does not guarantee correct natural language proofs",
@@ -81,7 +323,7 @@
     "approach": "Corrupt tool outputs and test verification designs: baseline, mandatory reflection, optional fresh-context, and optional structural verification.",
     "result": "Mandatory verification fully recovers performance; optional verification helps only when agents actively invoke it, showing policy matters as much as verifier quality."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.08082",
@@ -117,7 +359,7 @@
     "approach": "Two-layer ontology assigns graded reversibility scores by deriving inverse action sequences; actions below threshold are pruned.",
     "result": "Improves task reward on some domains/models but regresses on others; provides auditable structural checks with measurable trade-offs."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.07832",
@@ -154,7 +396,7 @@
     "approach": "Create modular Dev-Primitives pairing repository artifacts with resident LLMs, enabling agent-native interfaces and dependency-aware activation through a harness…",
     "result": "HERMES outperforms baselines by 12.4% on average; maintains performance near GPT-4 while reducing inference cost 26.2%"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.07639",
@@ -231,7 +473,7 @@
     "approach": "Framework of 40 explicit specification practices across 10 quality dimensions, grounded in ISO standards",
     "result": "Top-third specs reduce bug-fix commits from 20.4% to 11.8% and attract 4x more contributors"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2512.11147",
@@ -332,7 +574,7 @@
     "approach": "Two-stage framework: rule-based filtering selects suspicious actions, then LLM auditor examines them in trace context",
     "result": "Reduces audits from 8.15 to 2.33 per run, 72.8% detection rate on OpenAgentSafety benchmark"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.07089",
@@ -401,7 +643,7 @@
     "approach": "HEAR protocol standardizes bidirectional communication between harness layer (workflow dependencies, objectives) and engine layer (queue state, KV-cache, resources).",
     "result": "1.61× batch speedup and 2.23× reduction in median time-to-first-token on memory-constrained concurrent serving without task degradation."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.06563",
@@ -524,7 +766,7 @@
     "approach": "Dual-hypothesis reasoning considering safe/unsafe interpretations plus multi-component supervised fine-tuning with LoRA",
     "result": "Better performance than reasoning-based and non-reasoning baselines with faithful evidence explanations"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2607.06906",
@@ -585,7 +827,7 @@
     "approach": "Control swap experiment isolating harness orchestration layer effects across six models on 22 locked evaluation tasks.",
     "result": "Harness design cuts cost 41%, tokens 38%, wall-clock time 44% with parity/improved quality; efficiency gains model-invariant (33-61%)."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2606.22673",
@@ -693,7 +935,7 @@
     "approach": "Decouple into three permission-bounded roles: Retrieval Policy proposes actions, Memory Operator validates state updates, Summary Auditor checks termination sufficiency via…",
     "result": "Improves Recall by 4.60–27.92 points and Final-Answer Recall by 12.34–30.13 points over baselines on seven benchmarks."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.05300",
@@ -766,7 +1008,7 @@
     "approach": "Agentic framework with dependency-aware planning, RAG, agentic repair revisiting dependent specs, and critique for semantic strength",
     "result": "96.82% precision, 88.95% recall on 50 programs; successfully discharges 604/811 real-world verification targets"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.04967",
@@ -799,7 +1041,7 @@
     "approach": "Apply steering directions over short span (prefix steering) instead of every token; analyze attention-level conditions for equivalence",
     "result": "Single-token steering often retains full steering's control while better preserving capabilities across four models and five tasks"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.04921",
@@ -909,7 +1151,7 @@
     "approach": "Train a lightweight retrieval copilot over a self-evolving experience graph to decide what past experiences to inject per task.",
     "result": "12.1-21.4% improvement over baselines on static and agentic tasks with reduced interaction steps."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2605.07782",
@@ -950,7 +1192,7 @@
     "approach": "CKTLEAN embedded formal hardware DSL in Lean with REPL; CKTFORMALIZER agent loop uses compilation diagnostics and proof-state feedback to guide repair and…",
     "result": "91-99% compilation rates; 95-100% synthesis/layout pass rates; proof feedback improves equivalence proof completion from 53% to 63%; synthesis-area reductions up to…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.04504",
@@ -982,7 +1224,7 @@
     "approach": "Apply Verification Autonomy Levels (VAL) taxonomy to 22 defenses; compare VAL-guided stack (confirmation gate + schema sandbox) vs mainstream stack…",
     "result": "VAL stack maintains 0% ASR across testbeds; intuition stack's zero drifts unpredictably, showing zero is outcome not guarantee"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.04378",
@@ -1047,7 +1289,7 @@
     "approach": "Structured Rust-based harness orchestrating domain-specialized agents with POMDP belief tracking, cross-model voting, and guardrails preventing lockout and unauthorized actions.",
     "result": "Harness achieves 96-100% technique coverage with 90-97% precision versus direct invocation's 21-54% coverage and 3.2x more false positives."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.04178",
@@ -1083,7 +1325,7 @@
     "approach": "Saliency-based ablation to measure each module's contribution to performance and efficiency, then prune low-saliency components.",
     "result": "Most studied harnesses are redundant and maintain comparable performance after substantial pruning, revealing optimization opportunities in harness design."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.04137",
@@ -1118,7 +1360,7 @@
     "approach": "Learn a policy and value function from search to construct harnesses via MCTS without per-query execution",
     "result": "Achieves 80% mean accuracy across six benchmarks, outperforming 17 baselines by 7.2 percentage points"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.03434",
@@ -1555,7 +1797,7 @@
     "approach": "Multi-LLM semantic criterion (Lean compilation + GPT & Gemini agreement) validated against human auditors on graduate-level math statements",
     "result": "Criterion agrees with human majority 91.5%; compile-faithfulness gap ranges 1.3–29.5 percentage points across systems"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2606.30163",
@@ -1621,7 +1863,7 @@
     "approach": "Define Expected Recovery Regret (ERR) and derive first-order relationship with Efficiency Score (ES) to create falsifiable recovery law",
     "result": "Predicted regret matches observed post-failure regret within delta ≤0.05 across five benchmarks, revealing recoverability as governed property"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2506.20747",
@@ -1688,7 +1930,7 @@
     "approach": "Digital twin learns user-specific preferences from interaction history to enforce dynamic least-privilege policies at the resource layer.",
     "result": "Pincer outperforms LLM judge and Conseca baselines on security and utility, with significant improvements on certain attack types."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.02391",
@@ -1788,7 +2030,7 @@
     "approach": "Multi-stage verification pipeline combining LLM validation, sandboxed execution, and deterministic canonicalization to extract verifiable rewards",
     "result": "No open-weight model exceeds 42% exact-command accuracy; fine-tuning with verifiable rewards improves 8B model performance significantly"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.02001",
@@ -1853,7 +2095,7 @@
     "approach": "Continuous framework combining outcome and process-level checks: tool selection, arguments, execution order, database integrity, with programmatic and LLM-based…",
     "result": "92.6% of passing final checks contained process-level deviations; dependency attribution reduced failure root causes"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.01769",
@@ -1992,7 +2234,7 @@
     "approach": "Framework combining isolated workspaces, statement comparison, axiom audits, independent proof checking, and decision tracing",
     "result": "Raises verification success to 100% on VeriSoftBench subset while reducing cost; all PutnamBench problems accepted with evidence"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.40324",
