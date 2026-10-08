@@ -25,6 +25,7 @@ import { marginaliaBlogPosts } from "./data/marginalia/marginaliaBlogPosts.js";
 import { publications } from "./data/research/publications.js";
 import { researchBlogPosts } from "./data/research/researchBlogPosts.js";
 import PapersFeed from "./PapersFeed.jsx";
+import { LAST_UPDATED } from "./data/site.js";
 
 // ---- palette (coolors.co/588b8b-ffffff-ffd5c2-f28f3b-c8553d) ----
 const TEAL = "#2E7D52";
@@ -256,13 +257,13 @@ function TableTitle({ n, children }) {
   );
 }
 
-function ArxivBar({ tag }) {
+function ArxivBar() {
   return (
     <div
       className="mb-8 flex flex-wrap items-center justify-between gap-2 px-3 py-1.5 text-sm"
       style={{ fontFamily: MONO, background: INK, color: PEACH }}
     >
-      <span>last updated:{tag} [cs.FM]</span>
+      <span>last updated:{LAST_UPDATED} [cs.FM]</span>
       <span>preprint · not peer reviewed</span>
     </div>
   );
@@ -392,7 +393,7 @@ function NamePronunciation() {
 function HomePage({ onNavigate }) {
   return (
     <PaperShell>
-      <ArxivBar tag="2026.10" />
+      <ArxivBar />
 
       {/* Two explicit columns: left = name/abstract/contact, right = headshot/updates.
           Right column is wider (1.15fr vs 0.85fr) to give the headshot+contact
@@ -400,7 +401,7 @@ function HomePage({ onNavigate }) {
           left-block then right-block, in that order. */}
       <div
         className="home-two-col grid gap-10 sm:gap-12"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))" }}
       >
         <style>{`
           @media (min-width: 700px) {
@@ -408,7 +409,7 @@ function HomePage({ onNavigate }) {
           }
         `}</style>
         {/* LEFT: Name + Abstract + Contact info */}
-        <div>
+        <div className="min-w-0">
           <div className="mb-6">
             <h1 className="mb-2 text-4xl sm:text-3xl" style={{ fontFamily: SERIF, fontWeight: 700, color: INK }}>
               Oyendrila Dobe
@@ -458,8 +459,8 @@ function HomePage({ onNavigate }) {
         </div>
 
         {/* RIGHT: Headshot + Contact (side by side) + Recent Updates */}
-        <div>
-          <div className="mb-8 flex items-start gap-5">
+        <div className="min-w-0">
+          <div className="mb-8 flex flex-col items-start gap-4 lg:flex-row lg:gap-5">
             <img
               src="/assets/img/oyendrila.jpeg"
               alt="Oyendrila Dobe"
@@ -476,14 +477,14 @@ function HomePage({ onNavigate }) {
                   );
               }}
             />
-            <div style={{ marginTop: "-6px" }}>
+            <div className="min-w-0 lg:-mt-1.5">
               <h2
                 className="mb-3 text-3xl"
                 style={{ fontFamily: SERIF, fontWeight: 700, color: INK, marginTop: 0, lineHeight: 1 }}
               >
                 Contact
               </h2>
-              <ul className="mb-4 space-y-1 text-base" style={{ fontFamily: MONO, color: TEAL }}>
+              <ul className="mb-4 space-y-1 break-words text-base" style={{ fontFamily: MONO, color: TEAL }}>
                 <li>
                   <span style={{ color: RUST }}>Personal —</span>{" "}
                   <a href="mailto:oyendrila.dobe@gmail.com" className="underline hover:opacity-80" style={{ color: TEAL }}>
@@ -603,7 +604,7 @@ function UpdatesPage() {
 
   return (
     <PaperShell>
-      <ArxivBar tag="2026.08" />
+      <ArxivBar />
       <h1 className="mb-1 text-center text-3xl" style={{ fontFamily: SERIF, fontWeight: 700, color: INK }}>
         Updates: A Timeline
       </h1>
@@ -706,7 +707,7 @@ function ResearchPage() {
   const [view, setView] = useState("topic");
   return (
     <PaperShell>
-      <ArxivBar tag="2026.08" />
+      <ArxivBar />
       <h1 className="mb-1 text-center text-3xl" style={{ fontFamily: SERIF, fontWeight: 700, color: INK }}>
         Research
       </h1>
@@ -847,7 +848,7 @@ function ResumeCvPage() {
 
   return (
     <PaperShell>
-      <ArxivBar tag="2026.08" />
+      <ArxivBar />
       <h1 className="mb-1 text-center text-3xl" style={{ fontFamily: SERIF, fontWeight: 700, color: INK }}>
         Resume / CV
       </h1>
@@ -898,7 +899,7 @@ function MarginaliaPage() {
   const [view, setView] = useState("movies");
   return (
     <PaperShell>
-      <ArxivBar tag="2026.08" />
+      <ArxivBar />
       <h1 className="mb-1 text-center text-3xl" style={{ fontFamily: SERIF, fontWeight: 700, color: INK }}>
         Marginalia
       </h1>
