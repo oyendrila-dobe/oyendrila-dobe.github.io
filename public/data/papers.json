@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-08",
+ "generated": "2026-10-09",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,283 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.12375",
+   "title": "OnTrack: Real-Time Monitoring and Intervention in LLM Agent Trajectories via Streaming Structure-Aware Optimal Transport",
+   "authors": [
+    "Babak Barazandeh",
+    "Connor Swanson",
+    "Chinmay Kulkarni",
+    "Nikhil Mungel"
+   ],
+   "abstract": "Agents are deployed in applications from trip planners and stock trading to IT incident triage. In most cases, LLM agents work autonomously with minimal rule-based safeguarding, leading to cost and safety issues from irreversible actions. Recent works resolve this either by using a safeguard agent to monitor behavior or evaluating logs post-hoc. The first adds cost and latency to every step; the second delivers its verdict after the run, when tokens are burned and damage is done. To overcome this, we propose OnTrack, a streaming monitoring mechanism that compares an agent's steps and dependencies against recorded successful runs to alert users or block the agent in about a millisecond per step. We study this problem in three regimes of decreasing access: full reference access (historical runs and tool schemas), intermediate access (only tool schemas), and no prior knowledge (only step logs as generated). Expectation of OnTrack's monitoring capabilities reduces as data access drops, ranging from plan violation detection to identifying loops, stalls, and repeated tool calls. Finally, we evaluate OnTrack using SWE-bench trajectories. Based on the first 8 steps, our method ranks failing trajectories below succeeding ones better than content similarity approaches (+0.057 AUROC). With an abort policy, we save about 18% of compute that would be burned on failing runs, where 83% of interrupted runs were actually heading to failure (5 out of 6 aborts were correct).",
+   "abs_url": "https://arxiv.org/abs/2610.12375",
+   "pdf_url": "https://arxiv.org/pdf/2610.12375",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.CY",
+    "cs.LG"
+   ],
+   "published": "2026-10-08",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a streaming runtime monitor that constrains LLM-agent behavior by detecting plan violations and anomalies, enabling real-time intervention and blocking of unsafe actions.",
+   "idea": {
+    "problem": "LLM agents deployed autonomously cause irreversible damage; post-hoc monitoring arrives too late",
+    "approach": "Streaming mechanism comparing agent trajectories against successful runs via optimal transport, enabling millisecond-latency detection of plan violations and…",
+    "result": "Ranks failing trajectories lower; saves 18% compute by aborting failing runs with 83% precision"
+   }
+  },
+  {
+   "id": "2610.12303",
+   "title": "Learning Probabilistic Logic Programs with Functional Gradient Guided Language Models",
+   "authors": [
+    "Saurabh Mathur",
+    "Sahil Sidheekh",
+    "Bhavan Vasu",
+    "Farbod Tavakkoli",
+    "Prasad Tadepalli",
+    "Kristian Kersting",
+    "Sriraam Natarajan"
+   ],
+   "abstract": "Declarative logic programs offer a powerful and interpretable abstraction for encoding relational structure and neurosymbolic reasoning, by expressing dependencies as weighted compositional rules. However, inducing them from data remains fundamentally hard, bottlenecked by the combinatorial explosion of symbolic search spaces. LLMs have recently emerged as powerful hypothesis generators, but when used in isolation, they lack the capacity to do systematic inductive reasoning needed to reliably synthesize valid programs that fit complex relational distributions. We introduce grasp (Gradient-boosted Synthesis of Probabilistic logic programs), a neurosymbolic framework that casts relational structure learning as functional gradient boosting in which the weak learner is a first-order rule and the intractable inner search is delegated to an LLM proposal oracle. We evaluate grasp on four relational benchmarks spanning molecular toxicity prediction (Tox21), mutagenesis, and citation matching (Cora), and show that it improves over purely symbolic, neural, and LLM-based baselines, while producing interpretable weighted rule ensembles. By replacing combinatorial search with gradient-guided LLM hypothesis generation, grasp retains boosting guarantees without sacrificing the transparency of symbolic outputs.",
+   "abs_url": "https://arxiv.org/abs/2610.12303",
+   "pdf_url": "https://arxiv.org/pdf/2610.12303",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-08",
+   "venue": "6th International Joint Conference on Learning …",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Uses LLMs to generate first-order logic rules within a gradient-boosting framework, grounding symbolic reasoning with systematic inductive learning rather than raw LLM generation alone.",
+   "idea": {
+    "problem": "Inducing probabilistic logic programs from data requires combinatorial search that is intractable.",
+    "approach": "Gradient-boosted synthesis using LLM as weak-learner proposal oracle for first-order rules.",
+    "result": "Improves over symbolic, neural, and LLM baselines on relational prediction tasks with interpretable rule outputs."
+   }
+  },
+  {
+   "id": "2610.12292",
+   "title": "One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails",
+   "authors": [
+    "Seyedarmin Azizi",
+    "Erfan Baghaei Potraghloo",
+    "Massoud Pedram"
+   ],
+   "abstract": "A typed decision model reads a piece of text and returns a probability over caller-defined options, each with a short written definition, generating no text. Recent work places these models in agent systems as guardrails: the component that reads a proposed tool call or incoming message and decides whether to allow it. We evaluate seven open-weight models in that role and report the two error directions separately: a fail-open error allows a prohibited action and is a vulnerability; a fail-closed error blocks a permitted one and is only a cost. On prompt-injection, jailbreak and toxic-content screening, accuracy at the allow-or-block decision ranges from 36% to 72% against a chance level of 50%. A low error rate in one direction only reflects which answer a model defaults to: one allows nearly everything, another blocks nearly everything. On a synthetic suite of agent tool calls, six lines of server log text that say nothing about the policy raise a gate's fail-open rate from 0% to 63% on a policy it otherwise decides correctly. Giving the permissive option a misleading name, with its definition and the judged text untouched, raises that rate to between 93% and 100% on the four models that place the label in their input. Every defense we tested is defeated, either by an attacker who targets its mechanism or by attacker-controlled text. Escalating the least confident decisions does not help either: a decision an attack has reversed is no less confident than the one it replaced. Parsing each policy field into a typed value does eliminate one attack, but it also makes the model unnecessary: a deterministic rule over those values reaches 100% accuracy on all six policies. These models can reduce how many cases reach a reviewer, but on this evidence they should not be the component that decides. Code is available at https://github.com/ArminAzizi98/option-channel-attack.",
+   "abs_url": "https://arxiv.org/abs/2610.12292",
+   "pdf_url": "https://arxiv.org/pdf/2610.12292",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-08",
+   "venue": "",
+   "code": "https://github.com/ArminAzizi98/option-channel-attack",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Evaluates typed decision models as agent guardrails, revealing critical vulnerabilities in their fail-open/fail-closed behavior and demonstrates practical attacks that defeat proposed defenses.",
+   "idea": {
+    "problem": "Typed decision models are used as agent guardrails but their reliability for allow-or-block decisions is unknown",
+    "approach": "Empirically evaluate seven models on prompt injection, jailbreaks, and tool calls; test attacks exploiting option naming and server logs",
+    "result": "Accuracy 36-72% (near chance); simple text attacks raise fail-open rate 0% to 63-100%; deterministic rules outperform models"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.12030",
+   "title": "Natural Language to First-Order Logic LLM-based Autoformalization",
+   "authors": [
+    "Andrea Brunello",
+    "Cristian Curaba",
+    "Luca Geatti",
+    "Michele Mignani",
+    "Angelo Montanari",
+    "Nicola Saccomanno"
+   ],
+   "abstract": "Large Language Models (LLMs) have renewed interest in autoformalization. Yet, when First-Order Logic (FOL) is considered as the target formalism, the field still lacks a unified task formulation and a systematic survey. This paper addresses this gap: we first provide a principled definition for the FOL-autoformalization task by distinguishing Ontology Extraction from Logical Translation, showing how their conflation obscures (cross-study) evaluation; we review existing datasets, evaluation metrics, and LLM-based methods, including fine-tuning, prompting, and verification-based refinement; we identify open challenges in benchmarking, semantic evaluation, ontology-aware methods, and end-to-end applications.",
+   "abs_url": "https://arxiv.org/abs/2610.12030",
+   "pdf_url": "https://arxiv.org/pdf/2610.12030",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-08",
+   "venue": "EMNLP 2026",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.95,
+   "type": "survey",
+   "why": "Comprehensive survey of FOL autoformalization task formulation, datasets, evaluation metrics, and LLM-based methods with systematic analysis of semantic and benchmarking challenges.",
+   "idea": {
+    "problem": "FOL autoformalization lacks unified task formulation and systematic survey of methods",
+    "approach": "Define FOL autoformalization by distinguishing ontology extraction from logical translation; review datasets, metrics, and LLM methods",
+    "result": "Identifies open challenges in benchmarking, semantic evaluation, ontology-aware methods, and end-to-end applications"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.11552",
+   "title": "Safe, Persistent, and Evolving Agent Harness for Understanding Partially Observable Worlds",
+   "authors": [
+    "Yisen Gao",
+    "Yue Guo",
+    "Qing Zong",
+    "Yiwen Guo",
+    "Yangqiu Song"
+   ],
+   "abstract": "Large language model agents can invoke tools fluently, but enterprise workflows demand more than selecting the right tools: actions must strictly comply with organizational policies, tool feedback often conceals hidden side effects under partial observability, and long-horizon tasks require persistent state tracking across multiple records. To address these challenges, we introduce E-Ledger, a multi-agent harness for safe and persistent execution. E-Ledger employs a code approval layer that checks every proposed action against policy before execution, and maintains a world ledger of verified hidden rules alongside evidence-backed dynamic state. Because hidden rules are typically unknown a priori, we further propose WorldAbduct, an abductive, world-model-driven harness evolution framework. WorldAbduct diagnoses execution trajectories across four complementary views (state consistency, world-observation gap, policy-gate correctness, and goal judgment) to hypothesize latent rules, and verifies them through targeted abductive interactions before integrating them into the ledger. On the enterprise benchmark World of Workflows, E-Ledger with WorldAbduct improves safe task completion across four LLM backbones, outperforming the strongest evolution baseline by 5--15 percentage points. Experiments in ScienceWorld and DiscoveryWorld further show that abductive harness evolution carries over to scientific environments. Our code is available at https://github.com/HKUST-KnowComp/E-LEDGER-WorldAbduct.",
+   "abs_url": "https://arxiv.org/abs/2610.11552",
+   "pdf_url": "https://arxiv.org/pdf/2610.11552",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-08",
+   "venue": "",
+   "code": "https://github.com/HKUST-KnowComp/E-LEDGER-WorldAbduct",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes E-Ledger, an LLM-agent harness with policy-enforcement guardrails and a world-model evolution framework for safe, persistent agent execution with formal verification of hidden rules.",
+   "idea": {
+    "problem": "LLM agents invoke tools fluently but lack policy compliance, hidden-side-effect detection, and persistent state tracking for enterprise workflows",
+    "approach": "Code-approval layer checks actions against policy; world ledger tracks verified rules; WorldAbduct abductively diagnoses trajectories to hypothesize and verify latent…",
+    "result": "E-Ledger with WorldAbduct improves safe task completion by 5-15 percentage points on enterprise benchmark and generalizes to scientific environments"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.11030",
+   "title": "NOMOS: Compiling Written Policies into Statically Verified Tool-Call Gates for LLM Agents",
+   "authors": [
+    "Min-Young Yu",
+    "Tony Kim",
+    "Jang Won Choi"
+   ],
+   "abstract": "Tool-using LLM agents violate the policies they are deployed to enforce, often silently. Prior defenses hand-write rules, query an LLM verifier per action, or compile policies through heavyweight formal machinery. Naive compilation fails: extracted rules block the tool satisfying their own precondition, or read arguments their tool lacks. NOMOS, a four-pass compiler, turns a natural-language policy into a deterministic tool-call gate; static verification with tool-schema-level checks alone (no prover, solver, or LLM) repairs or rejects 37% (airline) and 13% (retail) of candidates, without which most shipped rules are inoperable. Replaying compiled rules over undefended transcripts flags bindings that refuse legitimate work (a development binding refused 95.9% of task-passing calls); no evaluation binding is flagged. On $τ^2$-bench the gate cuts violations of reference-encoded clauses among state-changing calls from 66.3% to 2.6% (airline) and 30.8% to 6.9% (retail), raising airline task success significantly for $2 \\le k \\le 4$; a 26B on-premise compilation is not significantly worse than hand-written or frontier-compiled rules. Unlike AgentDojo's shipped defenses, it reaches a zero attack success rate (ASR) on banking, where nine attack families collapse onto three structural rules. On the other three suites its ASR is at most 3.6%, from goals with no tool call to govern and one write admitted by a binding weaker than its clause; a second agent model, Llama-3.3-70B, reproduces the effect on both benchmarks. Decisions take microseconds without an LLM call, at a domain-dependent benign-utility cost; compilation runs on-premise on open-weight gemma-4-26B.",
+   "abs_url": "https://arxiv.org/abs/2610.11030",
+   "pdf_url": "https://arxiv.org/pdf/2610.11030",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-08",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails",
+    "autoformalization"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Compiles natural-language policies into formal tool-call gates with static verification to enforce guardrails on LLM-agent tool use, preventing policy violations at runtime.",
+   "idea": {
+    "problem": "LLM agents violate deployment policies; existing defenses hand-write rules, query LLMs per action, or use heavyweight formal methods that often produce inoperable…",
+    "approach": "Four-pass compiler translates natural-language policies into deterministic tool-call gates with static schema-level verification and repair",
+    "result": "Reduces policy violations from 66.3% to 2.6% (airline) and 30.8% to 6.9% (retail) on τ²-bench; microsecond enforcement without LLM calls; achieves zero attack success rate on…"
+   }
+  },
+  {
+   "id": "2608.15108",
+   "title": "Beyond Direct Access: Resource Hijacking in LLM Agents",
+   "authors": [
+    "Puyu Zeng",
+    "Mingang Chen",
+    "Zheli Liu",
+    "Qibing Ren"
+   ],
+   "abstract": "Large language model agents are increasingly connected to high-value resources, including external APIs, GPUs and servers, and workflows such as deployment and approval. Existing agent security research mainly focuses on attacks against information and agent behavior, while high-value resources have received less attention as attack targets themselves. To our knowledge, we are the first to identify and systematically study agent resource hijacking, in which attackers induce agents to use high-value resources for their own goals without directly obtaining those resources or their credentials. We introduce ResourceHijackBench, an executable benchmark and automated case-generation pipeline that covers six categories of high-value resources. It contains 300 attack scenarios and 900 attack prompts, and each case runs in an isolated local environment that records actual resource use. Resource hijacking remains effective across four model backends, with average attack success rates of 70.0% to 89.6%, and it also appears across two agent harnesses, with average ASRs of 84.1% on OpenClaw and 72.3% on Codex. In paired comparisons, resource hijacking achieves ASRs 62.4 to 84.0 percentage points higher than direct resource acquisition across the four model backends. Real-world experiments also demonstrate the practical effectiveness of resource hijacking. Among the three existing defenses we evaluate, the lowest average ASR is still 55.1%. We further propose ResGate, a pre-execution resource authorization defense that combines model-based resource-use extraction with deterministic policy enforcement based on trusted requester identity metadata, reducing the average ASR on OpenClaw to 23.6%. These results show that preventing direct access alone is not enough to protect resources that agents can still use on an attacker's behalf, and that explicit resource authorization can help reduce this risk.",
+   "abs_url": "https://arxiv.org/abs/2608.15108",
+   "pdf_url": "https://arxiv.org/pdf/2608.15108",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI"
+   ],
+   "published": "2026-10-08",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Introduces ResourceHijackBench to systematically evaluate resource hijacking attacks on LLM agents and proposes ResGate, a formal policy-enforcement defense for agent resource authorization.",
+   "idea": {
+    "problem": "LLM agents connected to high-value resources are vulnerable to hijacking attacks where attackers induce misuse without direct access",
+    "approach": "Benchmark with 300 scenarios testing resource hijacking; propose ResGate combining resource-extraction with identity-based policy enforcement",
+    "result": "Hijacking achieves 62–84 pp higher success than direct access; ResGate reduces average ASR to 23.6% on OpenClaw"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.10604",
+   "title": "Beyond Type-checking: Towards Holistic Evaluation of Formal Specification Generation",
+   "authors": [
+    "Srijith Nair",
+    "Aditya Vempaty",
+    "Jia Liu",
+    "Ashish Jagmohan"
+   ],
+   "abstract": "When generating verifiable code, natural language requirements are mapped to machine checked code using LLMs and agentic workflows. A crucial component of this pipeline is specification generation (SpecGen), which produces a formal contract against which an agent can prove implementation correctness. Proof generation can obtain deterministic feedback from a theorem prover, but SpecGen lacks a definitive check that a generated specification captures the user's intent. A checked proof can therefore establish correctness against a specification that misrepresents the intended behaviour. We take a step towards holistic SpecGen evaluation with a unified dataset assembled from $350$ existing Lean tasks, including $189$ from VERINA and $161$ from CLEVER, and a framework covering formal validity, reference similarity and equivalence, and behavioural adequacy. We distinguish acceptance of required inputs from acceptance of valid outputs and rejection of invalid outputs, while making each metric's evidence scope explicit. Across four SpecGen configurations, restricting the generalized tree edit distance (GTED) comparison, a reference similarity measure, to $32$ jointly measurable VERINA tasks changes the VERINA configuration's position from second to fourth in mean similarity, showing the importance of measurement coverage. In an authored control, a specification achieves $100\\%$ positive test recall and negative test rejection while accepting $0\\%$ of required inputs. This demonstrates that perfect postcondition scores can miss an unusable input contract, motivating separate feedback on input coverage and output constraints.",
+   "abs_url": "https://arxiv.org/abs/2610.10604",
+   "pdf_url": "https://arxiv.org/pdf/2610.10604",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-10-07",
+   "venue": "NeurIPS 2026",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "benchmark",
+   "why": "Introduces a unified dataset and evaluation framework for assessing the quality of formally generated specifications from natural language, addressing specification faithfulness and completeness.",
+   "idea": {
+    "problem": "Generated formal specifications lack definitive checks that they capture user intent, risking correct proofs of wrong specs.",
+    "approach": "Unified benchmark from 350 Lean tasks evaluating specs via formal validity, reference similarity, and behavioral adequacy.",
+    "result": "Framework shows perfect postcondition scores can miss unusable input contracts; separate metrics for input coverage and output constraints needed."
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2610.09944",
    "title": "AgentTime: Can Agents Estimate and Control Their Own Runtime?",
@@ -46,7 +323,7 @@
     "approach": "Benchmark 222 tasks testing agents' ability to estimate wall-clock time, follow duration instructions, and retrospectively assess elapsed time",
     "result": "Most agents significantly deviate from requested runtimes (1.2–2.9× error); task completion does not guarantee duration control or continued work"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.09906",
@@ -117,7 +394,7 @@
     "approach": "Apply metric first-order temporal logic (MFOTL) monitoring to offline agent trajectories; identify provenance-awareness and trustworthy trace data as key to…",
     "result": "Generic MFOTL obligations flag 71.8% of attacks but need trustworthy history and provenance binding; proposes enforcement-ready trace schema"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2608.29615",
@@ -183,6 +460,41 @@
     "problem": "Manual formal specifications of API rules are costly; natural-language rules must be precisely formalized for verification",
     "approach": "Multi-agent framework induces domain-specific grammar from rules, then stages LLM prompts to fill grammar templates with predicates and formalized…",
     "result": "Improves precision by 0.28 and recall by 0.37; enables symbolic execution to find 142 previously unknown rule violations"
+   }
+  },
+  {
+   "id": "2610.10580",
+   "title": "A Survey on LLM-Integrated Hardware Design Verification",
+   "authors": [
+    "Hao Zheng",
+    "Jaime Rafael Imperial",
+    "Bardia Nadimi",
+    "Xiangfei Kong"
+   ],
+   "abstract": "Large language models (LLMs) are increasingly being integrated into hardware verification to automate specification interpretation, verification-artifact generation, debugging, formal reasoning, and tool orchestration. This survey provides a systematic review of LLM-assisted hardware functional verification across SystemVerilog assertion generation, stimulus and testbench generation, bug localization and design repair, model checking and equivalence checking, SAT/SMT optimization, and emerging agentic verification workflows. We organize the literature by methodology, verification objective, tool interaction, benchmark, and evaluation criterion, and examine both inference-time techniques--including prompting, retrieval, structured reasoning, and agentic workflows--and training-time adaptation. Across these areas, a common pattern emerges: LLMs are most effective as semantic reasoning, search, and orchestration components embedded within verification-aware workflows, while simulators, formal engines, coverage tools, and solvers provide executable feedback and correctness evidence. However, tool acceptance alone does not establish verification correctness, since assertions, tests, repairs, or proofs may satisfy available checks without faithfully capturing the complete design intent. We therefore identify semantic alignment between specifications and verification evidence, scalable integration with deterministic tools, generalization to unseen designs, and rigorous evaluation of correctness, cost, robustness, and human effort as key challenges. Finally, we discuss emerging directions toward specification-centered, neuro-symbolic, and persistent agentic verification systems that combine LLM flexibility with independently checkable verification evidence.",
+   "abs_url": "https://arxiv.org/abs/2610.10580",
+   "pdf_url": "https://arxiv.org/pdf/2610.10580",
+   "primary_category": "cs.AR",
+   "categories": [
+    "cs.AR",
+    "cs.AI",
+    "cs.SE"
+   ],
+   "published": "2026-10-06",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "specification_mining",
+    "semantic_understanding",
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "survey",
+   "why": "Surveys LLM-based hardware verification focusing on specification interpretation, formal reasoning, tool orchestration, and agentic workflows that combine LLMs with verifiable checking components.",
+   "idea": {
+    "problem": "Hardware verification requires automating specification interpretation, artifact generation, and formal reasoning while ensuring semantic alignment with design intent.",
+    "approach": "Integrate LLMs as reasoning and orchestration components within verification workflows that combine prompting, retrieval, structured reasoning, and agentic patterns with formal…",
+    "result": "LLMs effective for semantic reasoning and search when embedded in verification-aware workflows; key challenges are semantic alignment, tool integration, generalization, and…"
    }
   },
   {
@@ -323,7 +635,7 @@
     "approach": "Corrupt tool outputs and test verification designs: baseline, mandatory reflection, optional fresh-context, and optional structural verification.",
     "result": "Mandatory verification fully recovers performance; optional verification helps only when agents actively invoke it, showing policy matters as much as verifier quality."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.08082",
@@ -359,7 +671,7 @@
     "approach": "Two-layer ontology assigns graded reversibility scores by deriving inverse action sequences; actions below threshold are pruned.",
     "result": "Improves task reward on some domains/models but regresses on others; provides auditable structural checks with measurable trade-offs."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.07832",
@@ -396,7 +708,7 @@
     "approach": "Create modular Dev-Primitives pairing repository artifacts with resident LLMs, enabling agent-native interfaces and dependency-aware activation through a harness…",
     "result": "HERMES outperforms baselines by 12.4% on average; maintains performance near GPT-4 while reducing inference cost 26.2%"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.07639",
@@ -473,7 +785,7 @@
     "approach": "Framework of 40 explicit specification practices across 10 quality dimensions, grounded in ISO standards",
     "result": "Top-third specs reduce bug-fix commits from 20.4% to 11.8% and attract 4x more contributors"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2512.11147",
@@ -574,7 +886,7 @@
     "approach": "Two-stage framework: rule-based filtering selects suspicious actions, then LLM auditor examines them in trace context",
     "result": "Reduces audits from 8.15 to 2.33 per run, 72.8% detection rate on OpenAgentSafety benchmark"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.07089",
@@ -2341,7 +2653,7 @@
     "approach": "Use SMT solver to verify intermediate steps and reward novel, logically valid deductions during training",
     "result": "Consistent improvements across ZebraLogic, AR-LSAT, and Knights and Knaves benchmarks up to 49.71 points"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2608.19741",
@@ -2386,7 +2698,7 @@
     "approach": "Build Thinkingbox sandbox with MCP-compatible tools and executable checks validating correct state transitions and policy compliance",
     "result": "Benchmark of 507 workflows reveals large reliability gaps between single success and repeated task completion"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2606.17454",
@@ -2422,7 +2734,7 @@
     "approach": "Build Simple Strands Agent (SSA) harness identifying common patterns and model-specific preferences across model families",
     "result": "Analyze 154k trajectories revealing model-level differences in problem-solving behavior beyond pass@1 metrics"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2606.10662",
@@ -2492,7 +2804,7 @@
     "approach": "Stateful policy engine using extended regular expressions with predicates, deferred generation, and semantic checks",
     "result": "Rules out 93-95% of attacks on AgentDojo, 62-85% on Toolathlon while maintaining near-unconstrained utility"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.40169",
@@ -2528,7 +2840,7 @@
     "approach": "Automatically evolve the agent harness by organizing into functional modules, using topic modeling to identify improvement strategies from research, and evaluating combinations.",
     "result": "Improvements on AppWorld (49.6% to 63.6%) and Tau2-Bench (72.7% to 81.9%) task completion rates."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.39819",
@@ -2600,7 +2912,7 @@
     "approach": "Translate requested permissions into typed language, synthesize sandbox configs, and test whether tasks succeed with progressively restricted…",
     "result": "Detects 314 prompt-injection attacks with 3.75% false-positive rate on benign rules"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.39578",
@@ -2636,7 +2948,7 @@
     "approach": "Train with counterfactual SFT and outcome-based RL using bad/good workflows; evaluate on Box²-Bench benchmark",
     "result": "Frontier models remain vulnerable to misleading guidance; training improves robustness but shifts reliance balance incompletely"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.39450",
@@ -2707,7 +3019,7 @@
     "approach": "Coordinate end-to-end workflow with semantic auditing using evidence-grounded correspondence checking and deterministic validation",
     "result": "Proves 86/143 FormalTCS theorems, improves proof scores from 0.501 to 0.851, catches inconsistencies with recall 0.777"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.39140",
@@ -2813,7 +3125,7 @@
     "approach": "Mine reusable harness primitives from failed trajectories and select/compose them at test time based on task information",
     "result": "STITCH improves success rates by up to 12 points over fixed harnesses with only 2.7% test-time overhead, scaling with primitive library size"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.29808",
@@ -2884,7 +3196,7 @@
     "approach": "Design a minimal harness (JAZ) with a single `invoke` primitive that allows recursive code execution and provides built-in hooks for constraints and…",
     "result": "JAZ outperforms specialized systems (Letta, ACE) on long-horizon recall and continual self-improvement tasks with lower cost"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2607.26998",
@@ -2954,7 +3266,8 @@
     "problem": "Distilled student LLMs exhibit reward hacking or compensation for flawed reasoning steps",
     "approach": "Constrained RL with worst-case constraint on teacher likelihood across entire trajectory prefix",
     "result": "Expands accuracy-fidelity Pareto front, achieves highest reasoning success rate with reduced constraint violations"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.38420",
@@ -3192,7 +3505,7 @@
     "approach": "Localize error circuits via RL-refined mask optimization on rollouts, then prune and fine-tune those circuits to correct failures.",
     "result": "Math circuit repair (1.40% density) raises accuracy from 6% to 75.5%; medical QA circuit (1.44%) improves from 0% to 81%."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.33123",
@@ -3228,7 +3541,7 @@
     "approach": "Typed hypergraph representing component states and safety-relevant interactions with neighborhood-local updates",
     "result": "Identifies 43 pairwise and 18 3-way compositional failures; runtime monitor mitigates risks while preserving utility"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2608.00677",
