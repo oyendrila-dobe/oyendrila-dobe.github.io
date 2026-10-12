@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09",
+ "generated": "2026-10-12",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,211 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.13075",
+   "title": "LongHarness: Advancing Agentic Reasoning over 100M-Token Corpora via Stateful Evidence Management",
+   "authors": [
+    "Songtao Huang",
+    "Zhijie Zhong",
+    "Xiaohan He",
+    "Shuaiyu Zhang",
+    "Zhiyin Yu",
+    "Li Kang",
+    "Heng Zhou",
+    "Yutao Fan",
+    "Xiangchao Yan",
+    "Bo Zhang",
+    "Shiyang Feng"
+   ],
+   "abstract": "Corpus-level long-context reasoning requires agents to acquire and integrate evidence across document collections that exceed their context windows. Existing agent harnesses enable incremental access to these corpora, but acquired evidence and evolving conclusions often remain entangled in a growing interaction history. This implicit state management can lead to two coupled failure modes: unbounded exploration, where retrieval expands the interaction history without resolving decision-relevant information gaps, and evidence-state drift, where previously acquired evidence or subsequent corrections fail to inform the current conclusion. We present LongHarness, a model-agnostic harness that makes the interaction between acquired evidence and evolving conclusions explicit. Its core mechanism, Evidence-Conclusion Coevolution, uses unresolved conclusions to guide exploration toward missing information, while newly acquired evidence strengthens or revises the conclusions that directed the search. LongHarness couples this process with Evidence Lifecycle Management, which keeps accumulated evidence current and traceable throughout the interaction. Together, these mechanisms focus retrieval on remaining information needs and keep conclusions aligned with current evidence. We evaluate LongHarness on OfficeQA Pro V1 and V2, AA-LCR, and LongBench v2 using GLM-5.3-Flash and Qwen3.8-Flash. Compared with direct reasoning using the same backbone, LongHarness improves GLM-5.3-Flash exact match on OfficeQA Pro from 15.8% to 60.2% on V1 and from 4.4% to 61.1% on V2. Against state-of-the-art agent harnesses, it surpasses Claude Code by 12.0 percentage points on V1 and Codex by 18.9 points on V2. With Qwen3.8-Flash, LongHarness reaches 61.7% on V1, outperforming Claude Code by 8.3 points and Codex by 12.0 points.",
+   "abs_url": "https://arxiv.org/abs/2610.13075",
+   "pdf_url": "https://arxiv.org/pdf/2610.13075",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-09",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes LongHarness, a model-agnostic agent harness with explicit evidence and conclusion management to guide long-context corpus reasoning and prevent exploration failures.",
+   "idea": {
+    "problem": "Agents struggle with reasoning over 100M-token corpora due to unbounded exploration and evidence-state drift in interaction history.",
+    "approach": "Evidence-Conclusion Coevolution guides retrieval toward missing information while tracking evidence lifecycle throughout interaction.",
+    "result": "LongHarness improves OfficeQA Pro V1 exact match from 15.8% to 60.2% and surpasses Claude Code by 12.0 percentage points."
+   }
+  },
+  {
+   "id": "2610.13025",
+   "title": "Evo$^2$: Evolving the Evolver through Weight-Harness Co-Evolution",
+   "authors": [
+    "Chejian Xu",
+    "Shujian Zhang",
+    "Wenxuan Zhou",
+    "John Lambert",
+    "Beck Chen",
+    "Bo Li",
+    "Andrew Hard",
+    "Rajiv Mathews"
+   ],
+   "abstract": "Self-evolving agents are increasingly used to improve language model systems without human intervention through either weight updates or harness improvements. Existing approaches typically pursue these directions separately: some methods update model weights using self-generated experience, while others rewrite the harness that defines how an agent uses prompts, tools, context, and execution feedback. However, these approaches overlook the relationship between model weights and the agent harness. To connect these processes and ensure effective and smooth agent self-evolving, we propose Evo$^2$, a framework for weight-harness co-evolution. For harness updates, we design a unified dual-role pipeline that a single policy serves as both a Proposer, which writes harness edits, and a Reflector, which diagnoses their effects and guides revision. For weight updates, harness modifications and their execution outcomes guide the training of both the Proposer and the Reflector. We further develop EvoTIDE, a training pipeline that recovers usable trajectories through edit extraction and prefix continuation, then combines SFT with interleaved GRPO across the two roles. Extensive experiments across three coding benchmarks demonstrate that Evo$^2$ significantly outperforms existing self-evolution methods. It achieves 82.1% on Polyglot and 48.3% on SWE-bench Verified, compared with 62.6% and 41.0% for the strongest baseline, respectively. We also show that the evolved harnesses transfer to different tasks without further evolution and rank first in cross-benchmark evaluations. Our dual-role harness improvement framework is also able to extend to self-evolution with proprietary models, improving a GPT-5-mini agent's performance from 24.4% to 48.3%. These results demonstrate the applicability of the framework Evo$^2$ across domains and its broad transferability across models and tasks.",
+   "abs_url": "https://arxiv.org/abs/2610.13025",
+   "pdf_url": "https://arxiv.org/pdf/2610.13025",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-09",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a framework for evolving agent harnesses—how agents use prompts, tools, context, and feedback—through co-evolution with model weights, directly addressing how to structure and improve LLM-agent behavior.",
+   "idea": {
+    "problem": "Model weight updates and agent harness improvements are pursued separately, missing their interdependence",
+    "approach": "Dual-role policy (Proposer writes edits, Reflector diagnoses effects) with co-evolutionary training combining SFT and GRPO",
+    "result": "82.1% on Polyglot, 48.3% on SWE-bench; evolved harnesses transfer across tasks and models"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2607.17710",
+   "title": "Planning with Transformers: Chain of Computation and Structured Context Windows",
+   "authors": [
+    "Ehsan Futuhi",
+    "Nathan R. Sturtevant"
+   ],
+   "abstract": "Large Language Models (LLMs) have had a remarkable impact across many areas of machine learning. However, recent studies have shown that they struggle to reliably solve planning problems, particularly when compared with classical planners. Even with recent advances in reasoning-oriented models, the extent to which LLMs can genuinely perform planning remains an open question. At the same time, theoretical results have shown that transformers, the core architecture underlying modern LLMs, are Turing-complete. In this work, we investigate this apparent gap between the theoretical computational power of LLMs and their empirical planning performance. We propose Chain of Computation (COC), a computational architecture that places a transformer-based LM inside an iterative loop and leverages its strength as a pattern-matching system. COC uses a Structured Context Window (SCW) as external memory, allowing the model to access only the portion of the accumulated context required at each planning step and thereby maintain an approximately constant input size. Within this architecture, the LM learns the planning policy and world model and performs the arithmetic operations required during planning. We show that relatively small LMs trained from scratch can learn planning procedures from a small number of training instances and generalize to unseen problems, achieving success rates above 99\\% on BlocksWorld and the Pancake puzzle. We further show that COC can be formulated as a pushdown automaton (PDA). This formulation can solve Tower of Hanoi (TOH) instances with up to 20 disks and enables the planner to execute the depth-first search (DFS) algorithm. Theoretically, we characterize how the accumulation of irrelevant context increases planning failure probability under the standard full-context setup and how the SCW mitigates this effect.",
+   "abs_url": "https://arxiv.org/abs/2607.17710",
+   "pdf_url": "https://arxiv.org/pdf/2607.17710",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "published": "2026-10-09",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a transformer-based architecture with structured memory to enable genuine planning reasoning, grounded in formal computational theory (Turing-completeness, pushdown automata).",
+   "idea": {
+    "problem": "LLMs struggle with planning despite theoretical Turing-completeness; context accumulation degrades performance",
+    "approach": "Chain of Computation with Structured Context Window: transformer in loop accessing only relevant context, learning planning policy and world model",
+    "result": "Small models achieve 99%+ on BlocksWorld/Pancake, solve Tower of Hanoi with 20 disks via DFS as PDA"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2607.04528",
+   "title": "Measuring Harness-Induced Belief Divergence in Multi-Step LLM Agents",
+   "authors": [
+    "Haiwen Yi",
+    "Xinyuan Song"
+   ],
+   "abstract": "Software agents are becoming increasingly important in modern coding workflows, where they solve complex tasks through multi-step interaction with code repositories. A central component of these systems is the execution harness, which governs how the underlying LLM observes, acts on, and verifies its environment. We show that the harness can in turn shape the agent's evolving beliefs about the environment, even when the task, environment, and base LLM remain fixed. To reveal this effect, we introduce a belief-rollout diagnostic that traces how an agent's anticipated world state and future decisions evolve under alternative harnesses. We further separate immediate divergence introduced by the interface from divergence that develops over longer horizons. Across controlled coding tasks include HIBench-Code, SWE-bench Verified and Terminal-Bench, we find substantial cross-harness belief divergence that is often invisible from terminal success alone and can propagate into different downstream actions. Building on this observation, we introduce \\textbf{Belief-Invariant World-Modeling (BIWM)}, which exposes evidence hidden or compressed by harness execution and aligns the resulting belief trajectories across different harnesses. Our findings reveal that harness design can systematically shape how software agents understand and act on their environments, providing practical guidance for building and evaluating more reliable coding agents.",
+   "abs_url": "https://arxiv.org/abs/2607.04528",
+   "pdf_url": "https://arxiv.org/pdf/2607.04528",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-09",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "empirical",
+   "why": "Analyzes how execution harnesses shape LLM-agent behavior and beliefs, proposing methods to align agent understanding across different harness designs for more reliable agents.",
+   "idea": {
+    "problem": "Execution harnesses shape agent beliefs differently even with fixed tasks and models",
+    "approach": "Belief-rollout diagnostics trace belief divergence; BIWM aligns beliefs across harnesses",
+    "result": "Substantial cross-harness belief divergence found; harness design systematically affects agent understanding"
+   }
+  },
+  {
+   "id": "2606.27045",
+   "title": "The Spec Growth Engine: Spec-Anchored, Code-Coupled, Drift-Enforced Architecture for AI-Assisted Software Development",
+   "authors": [
+    "Hartwig Grabowski"
+   ],
+   "abstract": "AI coding agents dramatically accelerate implementation speed but introduce two structural failure modes that existing spec-driven approaches do not fully solve: (1) context explosion -- the agent must reason over an entire repository at once, degrading output quality as the context window fills; and (2) silent spec-code drift -- code evolves, the specification does not, and the divergence becomes invisible until it is costly to repair. We present the Spec Growth Engine, a lightweight framework that addresses both failure modes through a machine-readable spec graph whose nodes carry explicit contract/design separation, a Spine context assembler that scopes agent context to an ownership path, a vertical-slice growth protocol that enforces hardest-first ordering, and a drift gate that makes spec-code divergence a blocking merge condition. The design synthesises well-established software engineering principles (Parnas information hiding, C4, ADRs, Walking Skeleton, Reflexion Models, Fitness Functions) into a lean, code-coupled, machine-enforced whole -- without the overhead of heavy-weight frameworks such as RUP or MDA.",
+   "abs_url": "https://arxiv.org/abs/2606.27045",
+   "pdf_url": "https://arxiv.org/pdf/2606.27045",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-10-09",
+   "venue": "",
+   "code": "https://github.com/grabow/spec-growth-engine",
+   "tags": [
+    "specification_mining",
+    "agent_guardrails"
+   ],
+   "confidence": 0.82,
+   "type": "tool",
+   "why": "Proposes a framework that uses machine-readable specifications to constrain AI coding agents, enforce spec-code consistency as a blocking condition, and manage agent context through ownership paths.",
+   "idea": {
+    "problem": "AI coding agents suffer from context explosion and silent spec-code drift that existing approaches don't fully address",
+    "approach": "Machine-readable spec graph with contract/design separation, context scoping via ownership paths, vertical-slice growth protocol, and drift gate blocking…",
+    "result": "Framework synthesizing established SE principles into a code-coupled, machine-enforced system for spec-driven agent development"
+   }
+  },
+  {
+   "id": "2610.12813",
+   "title": "VEPA: Verified Evolving Formal Policy for Lifelong LLM Agent Guardrails",
+   "authors": [
+    "Duy Nguyen",
+    "Lesly Miculicich",
+    "Bhavana Dalvi Mishra",
+    "Shuo Li",
+    "Krishnamurthy Dj Dvijotham",
+    "Mohit Bansal",
+    "Tomas Pfister",
+    "Long T. Le"
+   ],
+   "abstract": "LLM agents increasingly operate over sensitive resources, such as private documents and mutable system states, which can create serious safety and security risks. Runtime guardrails should therefore make inspectable, reproducible, and deterministic allow or refuse decisions before potentially irreversible agent actions are executed. However, safety and security requirements are rarely complete before deployment, so guardrails need to keep adapting as new risks emerge. Existing adaptive guardrails learn from deployment experience, but they usually apply safety policies through LLM inference, which can lead to inconsistent decisions and ambiguous policy interpretations. Formal guardrails, on the other hand, enforce policies deterministically, but they usually rely on pre-deployment or task-specific policies and have no mechanism to adapt to newly observed risks. We introduce VEPA, a framework for the verified evolution of formal agent guardrails. VEPA represents the guardrail as a formal policy of executable symbolic rules over typed agent events. During deployment, we use an LLM guided by deployment feedback to propose policy patches that fix newly observed failures while preserving previously correct behavior. Then, a deterministic verifier only accepts policies that are structurally valid and conflict-free. Finally, an evidence-aware authority layer activates a verified rule only when it has enough supporting evidence, so uncertain updates cannot directly affect guardrail decisions. Across ASSEBench-Safety, ASSEBench-Security, and ATBench, VEPA consistently outperforms baselines while expanding the scope of deterministic formal-policy enforcement. These gains also hold under more challenging deployment conditions, including mixed streams, corrupted feedback, and longer horizons.",
+   "abs_url": "https://arxiv.org/abs/2610.12813",
+   "pdf_url": "https://arxiv.org/pdf/2610.12813",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.CR",
+    "cs.LG"
+   ],
+   "published": "2026-10-08",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Proposes VEPA, a framework for building verified, evolving formal guardrails on LLM agents using symbolic rules, deterministic verification, and evidence-aware policy updates.",
+   "idea": {
+    "problem": "LLM agents need adaptive, deterministic guardrails that enforce policies consistently while adapting to new risks post-deployment.",
+    "approach": "Represent guardrails as formal symbolic rules; use LLMs to propose patches from feedback; verify with deterministic checker; gate rules with evidence thresholds.",
+    "result": "VEPA outperforms baselines on safety and security benchmarks while maintaining deterministic formal-policy enforcement under deployment drift."
+   }
+  },
   {
    "id": "2610.12375",
    "title": "OnTrack: Real-Time Monitoring and Intervention in LLM Agent Trajectories via Streaming Structure-Aware Optimal Transport",
@@ -116,7 +321,7 @@
     "approach": "Empirically evaluate seven models on prompt injection, jailbreaks, and tool calls; test attacks exploiting option naming and server logs",
     "result": "Accuracy 36-72% (near chance); simple text attacks raise fail-open rate 0% to 63-100%; deterministic rules outperform models"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.12030",
@@ -152,7 +357,7 @@
     "approach": "Define FOL autoformalization by distinguishing ontology extraction from logical translation; review datasets, metrics, and LLM methods",
     "result": "Identifies open challenges in benchmarking, semantic evaluation, ontology-aware methods, and end-to-end applications"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.11552",
@@ -187,7 +392,7 @@
     "approach": "Code-approval layer checks actions against policy; world ledger tracks verified rules; WorldAbduct abductively diagnoses trajectories to hypothesize and verify latent…",
     "result": "E-Ledger with WorldAbduct improves safe task completion by 5-15 percentage points on enterprise benchmark and generalizes to scientific environments"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.11030",
@@ -255,7 +460,7 @@
     "approach": "Benchmark with 300 scenarios testing resource hijacking; propose ResGate combining resource-extraction with identity-based policy enforcement",
     "result": "Hijacking achieves 62–84 pp higher success than direct access; ResGate reduces average ASR to 23.6% on OpenClaw"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.10604",
@@ -291,7 +496,7 @@
     "approach": "Unified benchmark from 350 Lean tasks evaluating specs via formal validity, reference similarity, and behavioral adequacy.",
     "result": "Framework shows perfect postcondition scores can miss unusable input contracts; separate metrics for input coverage and output constraints needed."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.09944",
@@ -323,7 +528,7 @@
     "approach": "Benchmark 222 tasks testing agents' ability to estimate wall-clock time, follow duration instructions, and retrospectively assess elapsed time",
     "result": "Most agents significantly deviate from requested runtimes (1.2–2.9× error); task completion does not guarantee duration control or continued work"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.09906",
@@ -394,7 +599,7 @@
     "approach": "Apply metric first-order temporal logic (MFOTL) monitoring to offline agent trajectories; identify provenance-awareness and trustworthy trace data as key to…",
     "result": "Generic MFOTL obligations flag 71.8% of attacks but need trustworthy history and provenance binding; proposes enforcement-ready trace schema"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2608.29615",
@@ -2653,7 +2858,7 @@
     "approach": "Use SMT solver to verify intermediate steps and reward novel, logically valid deductions during training",
     "result": "Consistent improvements across ZebraLogic, AR-LSAT, and Knights and Knaves benchmarks up to 49.71 points"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2608.19741",
@@ -2698,7 +2903,7 @@
     "approach": "Build Thinkingbox sandbox with MCP-compatible tools and executable checks validating correct state transitions and policy compliance",
     "result": "Benchmark of 507 workflows reveals large reliability gaps between single success and repeated task completion"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2606.17454",
@@ -2734,7 +2939,7 @@
     "approach": "Build Simple Strands Agent (SSA) harness identifying common patterns and model-specific preferences across model families",
     "result": "Analyze 154k trajectories revealing model-level differences in problem-solving behavior beyond pass@1 metrics"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2606.10662",
@@ -2804,7 +3009,7 @@
     "approach": "Stateful policy engine using extended regular expressions with predicates, deferred generation, and semantic checks",
     "result": "Rules out 93-95% of attacks on AgentDojo, 62-85% on Toolathlon while maintaining near-unconstrained utility"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.40169",
@@ -2840,7 +3045,7 @@
     "approach": "Automatically evolve the agent harness by organizing into functional modules, using topic modeling to identify improvement strategies from research, and evaluating combinations.",
     "result": "Improvements on AppWorld (49.6% to 63.6%) and Tau2-Bench (72.7% to 81.9%) task completion rates."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.39819",
@@ -2912,7 +3117,7 @@
     "approach": "Translate requested permissions into typed language, synthesize sandbox configs, and test whether tasks succeed with progressively restricted…",
     "result": "Detects 314 prompt-injection attacks with 3.75% false-positive rate on benign rules"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.39578",
@@ -2948,7 +3153,7 @@
     "approach": "Train with counterfactual SFT and outcome-based RL using bad/good workflows; evaluate on Box²-Bench benchmark",
     "result": "Frontier models remain vulnerable to misleading guidance; training improves robustness but shifts reliance balance incompletely"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.39450",
@@ -3019,7 +3224,7 @@
     "approach": "Coordinate end-to-end workflow with semantic auditing using evidence-grounded correspondence checking and deterministic validation",
     "result": "Proves 86/143 FormalTCS theorems, improves proof scores from 0.501 to 0.851, catches inconsistencies with recall 0.777"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.39140",
@@ -3125,7 +3330,7 @@
     "approach": "Mine reusable harness primitives from failed trajectories and select/compose them at test time based on task information",
     "result": "STITCH improves success rates by up to 12 points over fixed harnesses with only 2.7% test-time overhead, scaling with primitive library size"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.29808",
@@ -3196,7 +3401,7 @@
     "approach": "Design a minimal harness (JAZ) with a single `invoke` primitive that allows recursive code execution and provides built-in hooks for constraints and…",
     "result": "JAZ outperforms specialized systems (Letta, ACE) on long-horizon recall and continual self-improvement tasks with lower cost"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2607.26998",
@@ -3267,7 +3472,7 @@
     "approach": "Constrained RL with worst-case constraint on teacher likelihood across entire trajectory prefix",
     "result": "Expands accuracy-fidelity Pareto front, achieves highest reasoning success rate with reduced constraint violations"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.38420",
@@ -3505,7 +3710,7 @@
     "approach": "Localize error circuits via RL-refined mask optimization on rollouts, then prune and fine-tune those circuits to correct failures.",
     "result": "Math circuit repair (1.40% density) raises accuracy from 6% to 75.5%; medical QA circuit (1.44%) improves from 0% to 81%."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.33123",
@@ -3541,7 +3746,7 @@
     "approach": "Typed hypergraph representing component states and safety-relevant interactions with neighborhood-local updates",
     "result": "Identifies 43 pairwise and 18 3-way compositional failures; runtime monitor mitigates risks while preserving utility"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2608.00677",
@@ -3580,7 +3785,7 @@
     "approach": "OpenART provides 10,000+ scenarios across 50 domains with evolutionary black-box policy (EMHA) to find safety failures via environment state changes",
     "result": "EMHA achieves 85% attack success rate; environment evolution advantage grows to 17% on complex tasks; runtime implementation significantly impacts…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2605.09278",
@@ -3703,7 +3908,8 @@
     "problem": "Tool-use agents must decide whether to keep, patch, or discard cached results when user intent changes mid-task",
     "approach": "Model plan as commitment hierarchy; single classification with deterministic propagation layer; prove no local policy can be both safe and optimal",
     "result": "Recovers 43% cost savings versus restart with 100% correctness across three environments"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.36362",
@@ -3775,7 +3981,8 @@
     "problem": "Deploying LLM agents at scientific facilities requires reliable control, tool integration, and governance",
     "approach": "Propose reusable harness design patterns: inference endpoints, tool-server architectures, shared memory, deterministic orchestration",
     "result": "Practical design principles distilled from APS deployments applicable across instruments"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.35659",
