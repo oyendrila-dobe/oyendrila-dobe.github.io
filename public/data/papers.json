@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14",
+ "generated": "2026-10-15",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,442 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.20573",
+   "title": "Beyond LLM Judge: Mechanical Verification for Agentic Autoformalization",
+   "authors": [
+    "Anna Mei",
+    "Michael R. Douglas"
+   ],
+   "abstract": "We introduce a novel method for verifying Lean formalizations that goes beyond LLM-judged faithfulness. Unlike most verification methods, which rely on LLMs or trained models, our method combines LLM-based semantic review with mechanical numerical and vacuity checks, providing checkable feedback and detecting errors missed by LLM judges. We apply this method, along with our Extract-Verify-Proof autoformalization pipeline, to construct the Formalized Library of Mathematical Functions (FLMF), a partial formalization of the NIST Digital Library of Mathematical Functions (DLMF). On three labeled datasets, our method achieves the lowest accepted-error rate among the evaluated methods, measured as the fraction of incorrect statements accepted by the verification method. Expert review of the results also identifies translation and source defects in existing datasets. Code available at https://github.com/annamei1/FLMF-Ch7ErrFunc-Release.git.",
+   "abs_url": "https://arxiv.org/abs/2610.20573",
+   "pdf_url": "https://arxiv.org/pdf/2610.20573",
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "https://github.com/annamei1/FLMF-Ch7ErrFunc-Release",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a mechanical verification method combining LLM semantic review with formal checks to verify Lean formalizations, addressing faithfulness in autoformalization of mathematical text.",
+   "idea": {
+    "problem": "LLM judges alone miss errors when verifying autoformalized Lean code from natural language mathematics",
+    "approach": "Combine LLM semantic review with mechanical numerical and vacuity checks for checkable feedback",
+    "result": "Lowest accepted-error rate on three labeled datasets; constructs partial formalization of NIST DLMF"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.20424",
+   "title": "BizBench: Unveiling Hidden Challenges in Deploying Long-Horizon Agents for Real-World Business",
+   "authors": [
+    "Enhan Zhao",
+    "Yongqi Tong",
+    "Xuejun Yu",
+    "Hang Wang",
+    "Pan Wang",
+    "Yichao Wang",
+    "Di He",
+    "Jianshe Li",
+    "Wei Wu"
+   ],
+   "abstract": "Existing long-horizon agent benchmarks often emphasize final task success while providing limited assessment of intermediate execution validity. Yet real-world business operations require agents to navigate extensive, potentially outdated or conflicting policies while satisfying critical constraints throughout execution. These requirements are particularly consequential in high-stakes domains such as payments, where intermediate violations can incur financial losses or regulatory consequences regardless of the final outcome. To bridge this evaluation gap, we introduce BizBench, a multi-turn benchmark grounded in real-world procedures from a leading payments company. Its executable environment integrates 789 knowledge documents and 601 discoverable business tools, with consistent policies, states, and tool behavior. The benchmark comprises 50 tasks involving resource constraints, temporal dependencies, prior commitments, and conflicting or outdated guidance. Each task is validated through reference execution, while deterministic checks assess both goal attainment and execution validity without prescribing a single solution path. Experiments reveal substantial limitations even among frontier models: Claude Opus 5 and GPT-6 Sol achieve strict success rates of only 64.0% and 61.3%, respectively. For Qwen3.8-27B, goal attainment reaches 42.0%, but strict success drops to 32.7%, demonstrating how outcome-based evaluation can mask invalid execution. Beyond success rates, DeepSeek-V4.1-Flash averages 191.3 tool calls per run, approximately 70% more than reference executions, revealing substantial execution overhead. Overall, BizBench establishes a testbed for evaluating and advancing long-horizon agents beyond task completion, toward reliable and constraint-compliant execution in complex business environments.",
+   "abs_url": "https://arxiv.org/abs/2610.20424",
+   "pdf_url": "https://arxiv.org/pdf/2610.20424",
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "benchmark",
+   "why": "Introduces a benchmark that evaluates whether LLM agents satisfy constraints and policies throughout execution, not just final outcomes, enabling assessment of guardrail compliance.",
+   "idea": {
+    "problem": "Long-horizon agent benchmarks focus on task success but ignore constraint violations during execution, critical for high-stakes domains like payments.",
+    "approach": "Create BizBench with 50 real-world business tasks requiring navigation of policies, constraints, and dependencies; assess both goal attainment and execution validity via…",
+    "result": "Frontier models achieve only 32–64% strict success rates and show 70% execution overhead, revealing masked failures when evaluating outcomes alone."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.20344",
+   "title": "Doc2Harness: Benchmarking LLMs on Long-Horizon Harness Engineering of Coding Agents",
+   "authors": [
+    "Yuyao Ge",
+    "Shenghua Liu",
+    "Peizhong Gao",
+    "Chendi Ge",
+    "Chenxu Liu",
+    "Yiwei Wang",
+    "Lingrui Mei",
+    "Baolong Bi",
+    "Jiayu Yao",
+    "Jiafeng Guo",
+    "Xueqi Cheng"
+   ],
+   "abstract": "Agents driven by large language models are increasingly deployed on long-horizon tasks, where they use tools and modify real workspaces. How well they perform depends as much on the harness around the model as on the model itself. Existing benchmarks measure downstream task success under a fixed harness, leaving harness engineering itself unexplored. We propose Doc2Harness, a two-stage benchmark that evaluates long-horizon harness engineering directly. In Stage 1, a build model operating inside a fixed builder harness receives an interface-only contract skeleton and a development document that consolidates behavior across twelve frontier harnesses, and then constructs a complete candidate harness in an isolated container. In Stage 2, the frozen candidate harness runs in containers separate from the construction environment, one per test case, and is driven end to end by a scripted mock model. We score each test case using four observable channels, namely the requests sent to the model, the files on disk, the process exit code, and the command output; positive controls rule out vacuous passes. Across nineteen frontier models, each evaluated with three independent builds on 328 test cases, GPT-6 Astra achieves the highest pass rate at 53.05%, while the weakest model reaches 27.44%, a gap of roughly twenty-six percentage points. Even the strongest model fails nearly half of the test cases, and failures cluster around how cross-cutting functionality is split across modules. To our knowledge, Doc2Harness provides the first deterministic benchmark for measuring long-horizon harness engineering.",
+   "abs_url": "https://arxiv.org/abs/2610.20344",
+   "pdf_url": "https://arxiv.org/pdf/2610.20344",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "benchmark",
+   "why": "Benchmarks LLM agents' ability to engineer harnesses—the scaffolding, control structures, and interfaces that constrain agent behavior—a core agent-guardrails concern.",
+   "idea": {
+    "problem": "Harness engineering for long-horizon LLM agents is unexplored; benchmarks only measure task success under fixed harnesses.",
+    "approach": "Two-stage benchmark where models build complete harnesses from interface contracts and docs, then harnesses run against test cases with observable scoring channels.",
+    "result": "GPT-6 Astra achieves 53% pass rate; 26-percentage-point gap between strongest and weakest models; failures cluster around cross-cutting functionality."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.19999",
+   "title": "A Strong Harness Narrows the Model Gap: A Comparative Evaluation for Legislative Document-to-XML Conversion",
+   "authors": [
+    "Palvika Bansal",
+    "Rittika Jindal",
+    "Ruichong Wang"
+   ],
+   "abstract": "Legal-content reproduction requires matching the source exactly in section hierarchy, verbatim text, citations, and amendment spans; a dropped citation or mislabeled amendment carries into the products lawyers rely on. We report an industrial pipeline converting U.S. state legislation into strict, schema-constrained XML, and hypothesize that its accuracy comes from harness engineering, the deterministic tooling built around a model, more than the model itself. Our controlled ablation crosses three harnesses (zero-shot, a single tool-using agent, and a decomposed multi-agent pipeline) with three Claude models on 153 gold bills from two jurisdictions. The harness narrows the model gap: the weakest model in the full pipeline beats the strongest model alone (0.948 versus 0.806, paired bootstrap p less than 0.001). Because the two agentic harnesses share identical tools, their gap comes from orchestration: decomposition plus the persisted state and per-agent context it brings. Across four scored dimensions, the model spread at zero-shot (0.68 to 0.81) narrows to 0.95 at the full pipeline; the residual sits almost entirely in citation normalization, where the canonical identifier is retrieved from an external authority rather than generated from the weights, so a deterministic lookup tool supplies the exactness that a larger model does not.",
+   "abs_url": "https://arxiv.org/abs/2610.19999",
+   "pdf_url": "https://arxiv.org/pdf/2610.19999",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-10-14",
+   "venue": "EMNLP 2026",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.82,
+   "type": "empirical",
+   "why": "Demonstrates how deterministic harness engineering—tool interfaces, multi-agent orchestration, and structured pipelines—constrains LLM outputs to match formal specifications (schema-constrained XML), narrowing model capability gaps through external grounding mechanisms.",
+   "idea": {
+    "problem": "Legal document conversion requires exact schema compliance; model capability alone leaves large accuracy gaps",
+    "approach": "Compare zero-shot, single-agent, and multi-agent harnesses with persisted state and per-agent context across model sizes",
+    "result": "Harness engineering narrows model spread from 0.68–0.81 to 0.95; deterministic lookup tools provide exactness weights cannot"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.19934",
+   "title": "To Reason but Not to Stop: Understanding and Recovering Pruned Large Reasoning Models",
+   "authors": [
+    "Minh-Anh Nguyen",
+    "Nguyen T. Ha Lan",
+    "Xiyan Fu",
+    "Dung D. Le",
+    "Wei Lu"
+   ],
+   "abstract": "Weight pruning can degrade the accuracy of large reasoning models (LRMs), yet it remains unclear whether it damages reasoning itself. We find that much of this degradation stems from a failure to stop rather than to reason. As sparsity increases, pruned LRMs increasingly fail to terminate within the token budget, often after the correct answer has appeared in their reasoning, instead falling into repetitive loops, even though they still recognize where the dense model would stop. We further find that the hidden-state difference between terminating and looping continuations is consistent across pruned checkpoints, suggesting a shared direction associated with committing to an answer. Building on this, we propose Termination-Guided Activation Steering (TGAS), a training-free method that adds this direction to the residual stream at inference time. Across six LRMs, three pruning pipelines, and math and code benchmarks, TGAS improves termination and overall accuracy while reducing repetitive reasoning and generation length, showing that this failure is actionable.",
+   "abs_url": "https://arxiv.org/abs/2610.19934",
+   "pdf_url": "https://arxiv.org/pdf/2610.19934",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Uses activation steering to recover pruned reasoning models by identifying and correcting a failure mode in the reasoning process itself, not just prompting tricks.",
+   "idea": {
+    "problem": "Weight pruning degrades reasoning models by causing termination failures, not reasoning defects",
+    "approach": "Identify hidden-state direction associated with termination and steer it via activation steering at inference",
+    "result": "TGAS improves termination accuracy across six LRMs and three pruning pipelines on math and code tasks"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.19818",
+   "title": "One Monitor Does Not Fit All: Formalism-Agnostic Runtime Verification for Agentic AI",
+   "authors": [
+    "Angelo Ferrando"
+   ],
+   "abstract": "Agentic AI systems combine model decisions, mutable state, tool calls, and delegation to external agents. Monitoring them requires observations from different execution boundaries, while prevention requires control before an operation produces its effect. We present AgenticRV, a runtime-verification architecture that separates these boundaries from the monitoring formalism. Adapters emit canonical events; each monitor receives its own projection and abstraction; and a decision policy uses normalised verdicts to select a reaction supported by the responsible adapter. We formalise when observations suffice, monitor replacement preserves decisions, and blocking prevents unsafe effects. We also distinguish rejected attempts from completed effects, avoiding the assumption that a blocked request must leave every monitor in a permanent violation state. The Python implementation supports LangGraph, MCP, and A2A. A controlled LangGraph experiment combines an external Reelay temporal monitor with a programmatic report monitor; ablations show why both are needed for the selected requirements. Differential checks and cross-adapter tests provide further integration evidence. An LLM-driven incident-response example illustrates the same enforcement path, while existing microbenchmarks isolate framework costs. The results support reuse of monitoring methods at explicit control boundaries, subject to the stated observation and deployment assumptions.",
+   "abs_url": "https://arxiv.org/abs/2610.19818",
+   "pdf_url": "https://arxiv.org/pdf/2610.19818",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "tool",
+   "why": "Presents a runtime-verification architecture for constraining agentic AI systems through formalism-agnostic monitoring, control boundaries, and reaction policies at execution points.",
+   "idea": {
+    "problem": "Monitoring agentic AI requires observations from multiple execution boundaries and control before unsafe operations.",
+    "approach": "Separate execution boundaries from monitoring formalism using adapters, monitor projections, and decision policies to select reactions.",
+    "result": "AgenticRV framework supporting LangGraph, MCP, A2A with formal guarantees on observation sufficiency and blocking safety."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.19591",
+   "title": "L3M: A Verifiable Harness and Runtime for Self-Extending and Self-Improving Agents",
+   "authors": [
+    "Carson Eisenach",
+    "Robert Joseph George",
+    "Vincent Quenneville-Belair",
+    "Kate Gwimm",
+    "Dean Foster"
+   ],
+   "abstract": "The lasting gains in AI have come from methods that absorb more computation, and language models already scale computation within a call. Useful work, though, happens across calls: over hours or days, through tools and external systems, among many agents and the humans they work for, and increasingly through code the agents write themselves. Whether that work compounds is enabled by the harness around it, and the harness faces a constraint the model does not: of the three participants in such a computation, the human, the model and code, only the human's attention does not scale, so the computation can grow only if the human is not in every loop. L3M is a runtime built on that premise, written in Lean 4 so that one language implements the harness, states its invariants, and is the language agents extend it in. One computation spans humans, agents, models and code, and all of its state lives in Git: a rich state trajectory -- rather than a chat conversation -- is an object the runtime can resume, rewind, fork, compare and merge. Waiting, communication, delegation and undo are primitives, not patterns the model reasons through each time. When an agent works out a procedure, it can write it once as a sealed Lean program whose type is its permission request, and the harness offers it back as a tool -- machinery for the model to use. To take the human out of the loop, L3M uses reversibility to decide where that is safe: a tool's review tier follows from how far its effects can be undone, so agents act freely where the runtime can recover. Because the machinery can change, the properties that make this safe are stated as kernel-checked theorems about the code that runs. On Terminal-Bench, an untuned L3M reaches about two thirds of its (unsafe) shell-equipped pass rate using only safe (not needing human review) tools.",
+   "abs_url": "https://arxiv.org/abs/2610.19591",
+   "pdf_url": "https://arxiv.org/pdf/2610.19591",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "tool",
+   "why": "Presents L3M, a verified runtime harness for LLM agents that enforces safety through formal invariants, reversibility-based permissions, and kernel-checked theorems to constrain agent actions without human-in-the-loop.",
+   "idea": {
+    "problem": "Agent computation scales beyond humans; harness must enforce safety without blocking useful work",
+    "approach": "Runtime in Lean 4 with formal invariants, reversibility-based permissions, and sealed programs as verified tools",
+    "result": "Achieves ~67% of unsafe shell performance using only formally verified safe tools on Terminal-Bench"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.19372",
+   "title": "Policy-Verified Self-Training: Learning Agent Compliance from Verifiable Policy Rewards",
+   "authors": [
+    "Min-Young Yu"
+   ],
+   "abstract": "Runtime policy verifiers can prevent agents from executing disallowed actions, but their decisions are typically used only for enforcement and discarded afterward. We ask whether these decisions can instead become verifiable policy rewards for training the agents they guard. We introduce Policy-Verified Self-Training (PVST), a post-training paradigm in which an agent generates its own interaction trajectories and an executable policy verifier, here a deterministic gate compiled from a written policy, evaluates whether each action complies. Compliant trajectories are reinforced, and violations become negatives for preference optimization; beyond the gate and the benchmark's task-success signal, PVST needs no stronger teacher model, no human preference labels and no attack-specific supervision, although rollouts are collected in the benchmark's attacked environment. On held-out AgentDojo tasks under prompt injection, policy-verified preference training of Qwen3-8B reduces violating trajectories from 37.2% to 10.3 $\\pm$ 0.9% (three seeds) and successful attacks from 12.4% to 0.5% at equal or higher pooled task utility, although utility falls on travel, compared with 22.0% when negatives are selected by an attack oracle and 31.9 $\\pm$ 0.9% with negatives that contain no violation. The learned behavior holds under an attack template never used in training (37.7% to 11.0%) and on a suite excluded from training (34.8% to 16.7%), and the retained verifier's intervention rate falls from 39.2% to 8.8% (seed 0). Our analysis identifies two conditions under which the verdict is most informative: success must not already imply compliance, and guarded actions must appear in both permitted and forbidden contexts.",
+   "abs_url": "https://arxiv.org/abs/2610.19372",
+   "pdf_url": "https://arxiv.org/pdf/2610.19372",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes using executable policy verifiers as a harness to train agents to comply with formal policies through preference optimization, directly addressing specification-based constraint enforcement on agent behavior.",
+   "idea": {
+    "problem": "Runtime policy verifiers enforce compliance but discard decisions; can these be leveraged to train agents to self-comply?",
+    "approach": "Use deterministic policy verifier gates compiled from written policies to generate verifiable rewards for preference training on agent-generated trajectories.",
+    "result": "Reduces policy violations from 37.2% to 10.3% and successful attacks from 12.4% to 0.5% on held-out tasks while maintaining task utility."
+   }
+  },
+  {
+   "id": "2610.19342",
+   "title": "Why Do Agent Teams Fail Across Boundaries? A Failure Taxonomy for Agent-to-Agent Systems with Private States",
+   "authors": [
+    "Sarath Shekkizhar",
+    "Prathyusha Jwalapuram",
+    "Zixuan Ke",
+    "Vaidehi Patil",
+    "Jiayu Wang",
+    "Srijan Bansal",
+    "Trong Huy Nguyen",
+    "Dingfeng Jiang",
+    "Dongqi Liu",
+    "Ruochen Zhao",
+    "Wei Lu",
+    "Giuseppe Carenini",
+    "Mohit Bansal",
+    "Shafiq Joty"
+   ],
+   "abstract": "Agents are increasingly interacting with other agents that act for different principals -- people or organizations on whose behalf they work -- e.g., a buyer's personal agent negotiating with an enterprise's seller agent. In such agent-to-agent (A2A) scenarios, each agent has its own environment and holds information and authority that the other cannot see. Moreover, the interests of each agent may be aligned (cooperative), partly aligned (mixed-motive), or opposed (competitive). Existing multi-agent system failure studies assume only one orchestrator, shared workspace, or principal. We ask how A2A systems fail when these assumptions are removed. We study more than 2,500 recorded runs of A2A systems built from different agent harnesses and models, spanning 488 scenarios across eight families (legal, CRM, security, commerce, etc.). From these traces, we derive $A^2$-Failures, a taxonomy of 20 A2A failure modes in four categories: (i) discovery and delegation, (ii) grounding and record consistency, (iii) verification, and (iv) conduct and fidelity. Three observations hold across the harnesses, models, and scenarios studied: (1) Agents match tasks to peer names mentioned in the prompt rather than actively searching for available peers; (2) Agents never fact-check each other unprompted; (3) Scoring only the final output rewards the lead agent while hiding internal coordination, verification, and behavioral breakdowns. Our study makes a case for comprehensive evaluations where agents are scored individually against their own objectives in addition to task outcome. We release the run logs behind the taxonomy at https://huggingface.co/datasets/a2a-salesforce/a2-failures.",
+   "abs_url": "https://arxiv.org/abs/2610.19342",
+   "pdf_url": "https://arxiv.org/pdf/2610.19342",
+   "primary_category": "cs.MA",
+   "categories": [
+    "cs.MA",
+    "cs.AI"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "license": "CC BY-SA 4.0",
+   "license_url": "http://creativecommons.org/licenses/by-sa/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Systematically analyzes failure modes in agent-to-agent systems with private states and proposes evaluation methods to detect coordination, verification, and behavioral breakdowns across agent interactions.",
+   "idea": {
+    "problem": "Agent-to-agent systems with private states and conflicting interests fail without clear taxonomy or evaluation methods",
+    "approach": "Analyze 2,500+ A2A system runs across 488 scenarios to derive failure taxonomy and identify systemic issues",
+    "result": "20 failure modes across discovery, grounding, verification, conduct categories; agents lack peer discovery and mutual verification"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.05903",
+   "title": "EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents",
+   "authors": [
+    "Nanxi Li",
+    "Yingzi Ma",
+    "Yulong Cao",
+    "Chong Xiang",
+    "G. Edward Suh",
+    "Bo Li",
+    "Yejin Choi",
+    "Dawn Song",
+    "Chaowei Xiao"
+   ],
+   "abstract": "Large language model (LLM) agents can translate natural-language requests into real-world actions, creating safety risks from both indirect prompt injections and directly harmful requests. Existing system-level safety harnesses are typically designed by experts and applied across heterogeneous models and domains, despite substantial differences in model behavior, utility tolerance, and domain-specific safety requirements. We present EvoSafeHarness, a framework for automatically synthesizing deployment-specific safety harnesses for frozen LLM agents. Given a target model and domain specification, EvoSafeHarness jointly evolves a natural-language policy and executable enforcement logic using behavioral feedback from the target model. Each candidate is additionally evaluated through fresh-context adversarial review to filter rules that depend on benchmark artifacts. Across four agent benchmark families, EvoSafeHarness achieves a stronger safety-utility frontier than fixed expert-designed defenses. On DecodingTrust-Agent, evaluated across fifteen model-domain deployments, it reduces attack success rate from 50.9% to 12.6% for direct attacks and from 40.4% to 7.4% for indirect attacks, with a 3.3-point utility cost. On AgentDojo, it achieves 82.8% utility with 0.0% attack success rate, twice the utility of CaMeL at the same zero-attack-success operating point, while the same harness transfers unchanged to unseen AgentDyn suites. It also achieves the best score on Agent-SafetyBench for every evaluated victim model and maintains an attack success rate below 18% against an adaptive PAIR-style attacker with sixteen attempts per task. Analysis of the synthesized harnesses shows that domain semantics determine which safety relations and trajectory state must be tracked, while model and runtime behavior determine how and where those relations should be enforced.",
+   "abs_url": "https://arxiv.org/abs/2609.05903",
+   "pdf_url": "https://arxiv.org/pdf/2609.05903",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Automatically synthesizes deployment-specific safety harnesses for LLM agents by evolving natural-language policies and executable enforcement logic to protect against prompt injections and harmful requests.",
+   "idea": {
+    "problem": "Expert-designed safety harnesses don't adapt to specific models and domains, leaving agents vulnerable to prompt injections and harmful requests.",
+    "approach": "Evolutionary synthesis of domain-specific policies and enforcement logic using behavioral feedback and adversarial review.",
+    "result": "Reduces attack success rates from 50.9% to 12.6% (direct) and 40.4% to 7.4% (indirect) on DecodingTrust-Agent while maintaining utility."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2608.26310",
+   "title": "FaithSieve: Fine-Grained Evaluation of Math Proofs with Faithful Formal Evidence",
+   "authors": [
+    "Ziyu Wang",
+    "Qiming Dai",
+    "Yishan Wu",
+    "Zaiwen Wen"
+   ],
+   "abstract": "Large language models can now generate complex, multi-step mathematical proofs, but reliably determining their correctness and localizing early logical errors remains a critical challenge. Existing evaluation approaches largely depend on model-based natural-language judgments, which often overlook local reasoning gaps. While formal theorem provers like Lean offer a path to rigorous verification, using them to evaluate informal text requires solving locality and semantic mismatches: a prover might bypass a local flaw by proving an overly broad target, or validate an auto-formalized statement that drifts from the original mathematical intent. To address this, we introduce FaithSieve, a Lean-assisted framework for fine-grained evaluation of natural-language mathematical proofs. FaithSieve decomposes coarse proof steps into local reasoning units, extracts typed proof obligations, and verifies them through a formal evaluation agent. Formal validation is gated by semantic alignment scoring, so Lean evidence is incorporated only when the formal statement faithfully preserves the context, objects, and logical form of the original claim. We construct two expert-verified datasets, ProofLoc-Olympiad and ProofLoc-University, to benchmark first-error localization. On the 350-problem Olympiad dataset, FaithSieve using a GPT-5.4 backbone achieves 81.43% exact first-error accuracy, outperforming the direct-judging baseline of 72.29%. Furthermore, on the 200-problem ProofLoc-University benchmark spanning six advanced domains, FaithSieve reaches 84.5% exact accuracy, compared to 75.0% for the direct judge. Our work demonstrates that decomposing proofs into fine-grained units and grounding them with faithful formal evidence significantly improves reliable evaluation of natural-language reasoning.",
+   "abs_url": "https://arxiv.org/abs/2608.26310",
+   "pdf_url": "https://arxiv.org/pdf/2608.26310",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Decomposes natural-language proofs into fine-grained units, auto-formalizes them to Lean with semantic alignment checking, and verifies them against formal evidence to evaluate reasoning correctness.",
+   "idea": {
+    "problem": "LLMs generate complex proofs but evaluating correctness and localizing logical errors remains difficult",
+    "approach": "Decompose proofs into local units, extract proof obligations, verify via Lean with semantic alignment scoring",
+    "result": "81.43% exact first-error accuracy on Olympiad, 84.5% on University benchmarks, outperforming direct-judging baselines"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.19158",
+   "title": "AgentCIScope: Grounded Contextual Integrity Evaluation for LLM Agents",
+   "authors": [
+    "Chengquan Guo",
+    "Zhaorun Chen",
+    "Zinan Lin",
+    "Xiaodong Liu",
+    "Bo Li"
+   ],
+   "abstract": "LLM agents are becoming increasingly capable of handling daily workspace tasks by interacting with application environments through tool calls. However, as agents read and write sensitive user data across email, documents, and other applications, a central privacy question is whether they preserve contextual integrity (CI), that is, whether the information flows they produce comply with context-specific disclosure constraints. Existing work either focuses on model-level privacy leakage or evaluates agents in limited application environments with manually constructed disclosure constraints. In this work, we introduce AgentCIScope, a unified platform and benchmark for evaluating agent-level contextual integrity through executable, multi-step tasks across diverse, realistic application environments. AgentCIScope transforms public and synthetic privacy cases into executable agent tasks, with disclosure constraints grounded in three criteria: governing privacy policies, persona-based agreement, and a predefined sensitive-attribute taxonomy. Based on AgentCIScope, we evaluate 12 agents on 936 tasks and find that strong task-completion capability does not guarantee contextual-integrity preservation: single-run leakage rates range from 32.5% to 94.4%, while repeating each task five times further increases leakage by 4-19 percentage points. Leakage varies substantially across attributes: personal preferences and booking details have average leakage rates of 84.7% and 76.5%, compared with 17.1% for credit-card information and 29.4% for SSNs; environments: calendar has the highest average leakage rate as an information source, while WhatsApp ranks highest as an information destination; and governing privacy policies. AgentCIScope provides deep insights into agent privacy leakage and serves as a unified testbed for developing privacy-preserving agents.",
+   "abs_url": "https://arxiv.org/abs/2610.19158",
+   "pdf_url": "https://arxiv.org/pdf/2610.19158",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CR"
+   ],
+   "published": "2026-10-13",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.8,
+   "type": "benchmark",
+   "why": "Introduces a benchmark and evaluation platform for constraining LLM-agent behavior according to formal privacy policies and disclosure rules, checking compliance at runtime.",
+   "idea": {
+    "problem": "LLM agents leak sensitive data across applications despite strong task performance",
+    "approach": "Benchmark with executable multi-step tasks grounded in privacy policies and disclosure constraints",
+    "result": "Single-run leakage rates 32.5%–94.4%; varies by attribute, environment, and policy"
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2610.18507",
    "title": "The Last Mile of Coding Agents for Long-Document Tasks: An Empirical Study on Clinical Trial Protocol Digitization",
@@ -52,7 +488,7 @@
     "approach": "Domain-specific harness (TrialScribe) with task skills and verification loop; benchmark of 150 expert-annotated protocol PDFs",
     "result": "TrialScribe improves open-weight model by 6.2-59.4 points, matching proprietary models"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.18498",
@@ -196,7 +632,7 @@
     "approach": "Manually formalizing 50 theorem statements from Annals of Mathematics in Lean 4 with manual review and AI audit",
     "result": "AnnalsChallenge dataset released with formalised statements but no proofs"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.18230",
@@ -231,7 +667,7 @@
     "approach": "Smart-contract escrow commits providers to policies; verifier checks logged execution traces against policies; violations trigger compensation.",
     "result": "Detects 42.2% of policy violations without instrumentation; 83.0% with structured action logs."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.18088",
@@ -298,6 +734,41 @@
    }
   },
   {
+   "id": "2604.08552",
+   "title": "Automated Standardization of Legacy Biomedical Metadata Using an Ontology-Constrained LLM Agent",
+   "authors": [
+    "Josef Hardi",
+    "Martin J. O'Connor",
+    "Marcos Martinez-Romero",
+    "Jean G. Rosario",
+    "Stephen A. Fisher",
+    "Mark A. Musen"
+   ],
+   "abstract": "Descriptive scientific metadata in public repositories are often incomplete and inconsistent with community standards and ontologies, limiting data FAIRness. Large language models (LLMs) offer a promising approach to automatically standardizing such metadata when the LLM is provided with knowledge of the relevant standards in machine-actionable form (e.g., as metadata templates from systems such as the CEDAR Workbench). Entry of metadata standards through prompt engineering offers only fixed snapshots of the relevant standards, however, and it relies on an LLM's pretrained knowledge to interpret and satisfy constraints related to the standard. We evaluate whether giving an LLM access to metadata specifications and authoritative terminology at runtime improves automated metadata standardization. We present ARMS, a tool-augmented LLM agent that retrieves complete CEDAR metadata templates and dynamically queries authoritative biomedical terminology services at execution time. We compared ARMS with a prompt-based approach on 839 legacy metadata records from the Human BioMolecular Atlas Program (HuBMAP), using expert-standardized records as the reference standard. ARMS outperformed the prompt-based approach, increasing precision from 0.56 to 0.93 and recall from 0.51 to 0.85, with improvements across all field categories and assay types. The largest gains occurred for ontology-constrained fields, where precision increased from 0.36 to 0.92. Our findings show that access to appropriate metadata standards can substantially improve LLM-based standardization of legacy metadata. ARMS improves metadata standardization by giving LLMs runtime access to the authoritative resources that define valid metadata. Representation of metadata standards in machine-actionable form enhances the task of rectifying legacy metadata using LLM technology, especially when those standards can be queried dynamically.",
+   "abs_url": "https://arxiv.org/abs/2604.08552",
+   "pdf_url": "https://arxiv.org/pdf/2604.08552",
+   "primary_category": "cs.DB",
+   "categories": [
+    "cs.DB",
+    "cs.AI"
+   ],
+   "published": "2026-10-13",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Tool-augmented LLM agent that retrieves formal metadata specifications and enforces ontology constraints at runtime to standardize legacy data, grounding agent behavior in formal standards.",
+   "idea": {
+    "problem": "Legacy biomedical metadata are incomplete and inconsistent with community standards and ontologies",
+    "approach": "LLM agent dynamically retrieves CEDAR templates and queries authoritative terminology services at runtime",
+    "result": "Precision improved from 0.56 to 0.93, recall from 0.51 to 0.85 on 839 HuBMAP records"
+   }
+  },
+  {
    "id": "2610.17039",
    "title": "MENTOR: Procedural Shielding of Tool-Using LLM Agents",
    "authors": [
@@ -332,7 +803,7 @@
     "approach": "Autoformalize procedural manual into history-dependent runtime shield using game-based technique for context-aware, guidance-providing compliance.",
     "result": "MENTOR improves compliance beyond existing methods; lightweight open-source LLMs match proprietary models when shielded."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.16865",
@@ -365,7 +836,7 @@
     "approach": "Runtime filter using predicate abstraction, finite Markov chains, and robust reach-avoid value iteration with PAC bounds",
     "result": "Certifies probability bounds on unsafe conditions; holds seven controllers to zero unsafe outcomes in 1050 episodes"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.16015",
@@ -523,7 +994,7 @@
     "approach": "Runtime monitor checks actions against Datalog policies using event graphs and system state",
     "result": "Enforces provably safe agent behavior with formal correctness guarantees"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.15924",
@@ -601,7 +1072,7 @@
     "approach": "Three-tier compositional runtime verification decomposing mission policies with evidence-aware algebra to detect cross-agent violations with full…",
     "result": "Detects prompt-injection-induced task splitting invisible to per-platform monitors; outperforms central monitors under communication faults"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2604.21570",
@@ -779,7 +1250,7 @@
     "approach": "Multi-objective evolutionary search with decomposition and factorized operators separating general mechanisms from benchmark-specific adaptations.",
     "result": "Outperforms baselines by >10% on SecRepoBench and BaxBench; improves transferability of harness designs."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.14923",
@@ -844,7 +1315,7 @@
     "approach": "Cryptographically sign trajectories and verify semantic consistency at runtime with path-aware retrieval strategy",
     "result": "Detection rate of 79.97% against invalidation attacks, reducing performance degradation from 73% to minimal levels"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.14443",
@@ -880,7 +1351,7 @@
     "approach": "Extract safety claims as specifications, mutate prompts to find counterexamples, validate with humans, and trace failures back to claims",
     "result": "Only 58.6% of documented claims are tested by benchmarks; 19 confirmed counterexamples found across 6 claims"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.14402",
@@ -914,7 +1385,7 @@
     "approach": "RL framework training LLMs to multi-turn interact with Z3 solver using synthetic data, warm-up, and tool-aware rewards",
     "result": "SAT-RL improves symbolic reasoning on in-domain and out-of-domain logic tasks"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.14224",
@@ -955,7 +1426,7 @@
     "approach": "Two-level recursion: task-level refinement via contrastive Propose-Probe-Compose steps, plus harnessing-level extraction to update continual improvement…",
     "result": "Consistent improvements up to 11.5 points on WorkBuddy-Bench, 4.5 on JobBench, 11.8% on LAB across multiple models"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.13075",
@@ -1031,7 +1502,7 @@
     "approach": "Dual-role policy (Proposer writes edits, Reflector diagnoses effects) with co-evolutionary training combining SFT and GRPO",
     "result": "82.1% on Polyglot, 48.3% on SWE-bench; evolved harnesses transfer across tasks and models"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2607.17710",
@@ -1063,7 +1534,7 @@
     "approach": "Chain of Computation with Structured Context Window: transformer in loop accessing only relevant context, learning planning policy and world model",
     "result": "Small models achieve 99%+ on BlocksWorld/Pancake, solve Tower of Hanoi with 20 disks via DFS as PDA"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2607.04528",
