@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15",
+ "generated": "2026-10-16",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,342 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.22301",
+   "title": "My Credentials, Please: Detecting Filesystem Capability Laundering in MCP Servers at Scale",
+   "authors": [
+    "Zeqian Huang",
+    "Mingyue Tang",
+    "Aonan Guan",
+    "Qiming Sun",
+    "Pengzhou He"
+   ],
+   "abstract": "The Model Context Protocol (MCP) standardizes how AI agents invoke external tools. MCP servers expose tools through a declared contract consisting of a name, description, and argument schema. In typical local deployments, client-side approval of a tool call grants the underlying server process broad host filesystem permissions rather than restricting it to the declared operation. We study the resulting vulnerability class, filesystem capability laundering, where attacker-steered arguments cause a tool to access sensitive host files outside its declared contract and deployment scope. We analyze this capability gap across three layers: server-category screening (L1), per-tool contract analysis (L2), and bypassable path-validation checks (L3). We design MCP-FSD to catalog MCP servers, infer least-privilege boundaries per tool, plant credential fixtures outside those boundaries, and evaluate exploitability and sandbox containment via paired dynamic execution. Across 21,097 MCP servers from nine registries, 787 of 4,806 triaged servers (16.4%) exhibit filesystem capabilities despite non-filesystem functional classifications. Dynamic three-case validation confirms 150 vulnerable instances under tested sandbox policies. Coordinated disclosure yielded 13 security advisories, including two CVEs in Anthropic's Git MCP Server.",
+   "abs_url": "https://arxiv.org/abs/2610.22301",
+   "pdf_url": "https://arxiv.org/pdf/2610.22301",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Identifies and evaluates a capability-gap vulnerability in MCP agent tool invocations, proposing multi-layer guardrails and sandbox enforcement to constrain agent filesystem access to declared tool contracts.",
+   "idea": {
+    "problem": "MCP agent tool calls grant broad filesystem permissions beyond declared contract scope",
+    "approach": "Multi-layer analysis (screening, contract, validation) with dynamic exploitation and sandbox containment testing",
+    "result": "16.4% of MCP servers exhibit undeclared filesystem capabilities; 150 vulnerable instances confirmed"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.22124",
+   "title": "PROBE: Learning to Audit Policy Compliance in Tool-Using LLM Agents",
+   "authors": [
+    "Kshitij Mishra",
+    "Abhijith Sharma",
+    "Nils Lukas",
+    "Salem Lahlou"
+   ],
+   "abstract": "Modern agentic systems extend language models with external tools, enabling them to complete complex tasks through multi-turn interactions. As these agents are deployed in consequential settings, they are often constrained by policies governing pricing, privacy, confirmation, safety, and other requirements. However, existing evaluation methods leave a critical gap: capability benchmarks measure what agents can accomplish, while content-safety red-teaming measures harmful generations, but neither tests whether agents comply with predefined policies during otherwise valid tool use. Such policy violations are difficult to audit because their effects may emerge only after several turns, span multiple tool calls, or surface in downstream systems. We propose PROBE (Policy Rule Observation via Behavioral Exploration), an algorithm for training LLM-based auditors that interact with deployed agents as realistic users and probe them for policy violations through multi-turn, tool-mediated dialogue. We formalize agent auditing as a two-player Markov game and propose a composite reward that balances violation discovery, behavioral plausibility, conversation progress, and policy diversity. To study training objectives and reward design, we compare GRPO, DPO, and GFlowNet-based optimization in a controlled setting. Across extensive experiments, auditors trained with PROBE uncover substantially broader and higher-yield policy violations than same-architecture zero-shot adversaries, even when the auditor is significantly smaller than the target agent. Our results show that multi-turn behavioral auditing is a distinct and necessary axis of agent evaluation, complementing capability and safety benchmarks. PROBE offers a scalable path toward automated policy auditing for real-world agentic systems and suggests a co-evolutionary loop in which auditors expose failures and agents improve from auditor feedback.",
+   "abs_url": "https://arxiv.org/abs/2610.22124",
+   "pdf_url": "https://arxiv.org/pdf/2610.22124",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes PROBE, an algorithm for training LLM-based auditors to detect policy violations in tool-using agents through multi-turn interactions, exemplifying runtime monitors and specification-based constraints for agent behavior.",
+   "idea": {
+    "problem": "Agentic systems with tools lack systematic auditing for policy compliance across multi-turn interactions and tool calls",
+    "approach": "Train LLM auditors using RL (GRPO, DPO, GFlowNet) to interact with agents as users and probe for policy violations via realistic dialogue",
+    "result": "PROBE auditors discover substantially more violations than zero-shot baselines, enabling scalable automated policy auditing for deployed agents"
+   }
+  },
+  {
+   "id": "2610.21755",
+   "title": "DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents",
+   "authors": [
+    "Yufeng Peng",
+    "Yixin Zhang",
+    "Ziyi Liu",
+    "Zhikun Xu",
+    "Jiarong Yang",
+    "Sijie Wang",
+    "Wenjie Feng",
+    "Qiyu Kang"
+   ],
+   "abstract": "Large Language Model agents operate through closed-loop action policies whose decision space is defined by an agent harness. We investigate how this operating space shapes agent behavior and policy learning in computer-aided design (CAD), a professional domain characterized by persistent state, geometric constraints, and long-horizon procedures. We instantiate this perspective in DeciCAD, a domain-native harness that exposes semantic CAD actions, decision-oriented observations, environment feedback, and persistent state transitions. Building on this harness, we develop a learning pipeline that extracts causal decision supervision from interaction trajectories and improves the policy through supervised fine-tuning (SFT) and geometry-grounded online reinforcement learning (RL). Across four CAD benchmarks, DeciCAD achieves the best F1 and intersection over union (IoU) while reducing model-output tokens by 45--88% relative to a general-purpose coding harness. Under matched supervision, its SFT policy improves F1 from 0.6883 to 0.7437 and outperforms the coding policy; subsequent online RL further raises geometry availability from 66.5% to 73.5% and F1 to 0.7880. These results demonstrate that the decision space induced by a harness materially affects both agent execution and policy learning in CAD.",
+   "abs_url": "https://arxiv.org/abs/2610.21755",
+   "pdf_url": "https://arxiv.org/pdf/2610.21755",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG",
+    "cs.RO"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes DeciCAD, a domain-native agent harness that structures LLM-agent behavior in CAD through semantic actions, observations, and state transitions, with learning techniques grounded in this harness design.",
+   "idea": {
+    "problem": "LLM agents need structured operating spaces tailored to complex domains like CAD with persistent state and geometric constraints",
+    "approach": "Design domain-native harness exposing semantic CAD actions and geometry-grounded feedback; extract causal supervision from trajectories; use SFT and geometry-grounded…",
+    "result": "Harness design improves F1 from 0.69 to 0.79 with RL, reduces output tokens by 45-88% versus general coding harness"
+   }
+  },
+  {
+   "id": "2610.21561",
+   "title": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conversational Agents",
+   "authors": [
+    "Sergio Burdisso",
+    "Esaú Villatoro-Tello",
+    "Dairazalia Sánchez-Cortés",
+    "Yanis Labrak",
+    "Jordi Luque",
+    "Milos Cernak",
+    "Petr Motlicek"
+   ],
+   "abstract": "Large language models (LLMs) deployed as conversational agents are increasingly expected to follow procedural logic. While factual hallucination has received extensive attention, a different failure mode has been overlooked: procedural hallucination, in which an agent produces individually fluent and factually plausible utterances while deviating from the intended conversational process. We introduce DialFork, the first benchmark to measure this failure mode on raw dialogue text. DialFork is built by forking conformant dialogues at controlled turn positions and injecting one of four hallucination types, yielding 36,278 dialogues across 24 tasks in 12 domains; 30 human annotators validate the construction. We define three evaluation tasks that characterize procedural deviation at three granularities: how far a set of dialogues deviates from conformant ones (monitoring deployed agents), how far a single dialogue does (procedural retrieval), and at which turn a dialogue first goes off-track (real-time guardrails). For the first two, we propose dialog-flow-aware metrics, FlowKL and FlowScore, that compare dialogues by how they unfold rather than their content. At the dialogue level, FlowScore significantly outperforms all baselines across seven encoders, showing that semantic similarity is no substitute for procedural similarity. We release DialFork under the MIT license at https://github.com/idiap/dialfork, hoping the community will measure conversational process alongside content.",
+   "abs_url": "https://arxiv.org/abs/2610.21561",
+   "pdf_url": "https://arxiv.org/pdf/2610.21561",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "https://github.com/idiap/dialfork",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "benchmark",
+   "why": "Introduces DialFork benchmark to detect when conversational agents deviate from intended procedural logic, relevant to detecting and preventing agent hallucinations through procedural verification.",
+   "idea": {
+    "problem": "Conversational agents produce fluent but procedurally incorrect utterances deviating from intended conversational flow",
+    "approach": "Benchmark with controlled dialogue forking and dialog-flow-aware metrics (FlowKL, FlowScore) that compare procedural trajectories rather than semantic…",
+    "result": "FlowScore outperforms baselines in detecting procedural deviation across dialogue and turn levels"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.21458",
+   "title": "What Survives Self-Evolution: Provenance Marks in Copied Agent Harnesses",
+   "authors": [
+    "Jieyu Li",
+    "Jingya Li",
+    "Sheng Li",
+    "Xinpeng Zhang",
+    "Zhenxing Qian"
+   ],
+   "abstract": "Agent harnesses, the prompt and tool code around a base model, leak. Claude Code's 512,000 lines were mirrored within hours of a packaging error. A plagiarist can pass a leaked harness through a published self-evolver and ship the result as its own. We define this as a covert rewriting attack. No one targets a provenance mark, yet a large language model (LLM) proposer rewrites the file that carries it and a score keeps the better rewrites. We give the first measurement of marks under this attack, with three evolvers, five proposers and two environments. Published marks fail. KGW in the prompt survives GEPA's rewrites in 0 of 12 copies, AgentMark as released in 5 of 12. The proposer's habits decide survival, by two orders of magnitude across models, and selection protects a mark only when each decision sees enough games. We then build a mark for this attack. Its key is the order of near-tied entries of a table of where objects are found, built from public games, so deleting the table costs success, rewrites that keep its rows keep the order, and a customer reads the key from the agent's actions alone. On held-out games it is detected in 62 of 76 copies whose lineage rewrote its file. A scheme-aware plagiarist reshuffles the ties at no measurable cost, and a plagiarist who asks the proposer for more general code removes the key in 75-100% of rewrites.",
+   "abs_url": "https://arxiv.org/abs/2610.21458",
+   "pdf_url": "https://arxiv.org/pdf/2610.21458",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "empirical",
+   "why": "Analyzes provenance marks as external guardrails in agent harnesses, measuring their survival under adversarial self-evolution attacks and proposing a robust marking scheme.",
+   "idea": {
+    "problem": "Leaked agent harnesses can be plagiarized after passing through self-evolvers, losing provenance marks that identify legitimate sources.",
+    "approach": "Measure survival of existing marks (KGW, AgentMark) under covert rewriting attacks; design robust mark based on stable ordering of public game table entries.",
+    "result": "Published marks fail; proposed order-based mark detects 62/76 copies but is vulnerable to scheme-aware reshuffling."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2608.25202",
+   "title": "Spec-Driven Development as Prescribed and as Practiced",
+   "authors": [
+    "Shyam Agarwal",
+    "Anmol Singhal",
+    "Andrew Macvean",
+    "Bogdan Vasilescu",
+    "Travis Breaux"
+   ],
+   "abstract": "AI coding agents implement software from naturallanguage instructions, but the intent behind that work is lost when stated only in chat sessions. Spec-driven development (SDD) addresses this by having developers and agents write specifications that guide implementation, yet evidence on its use comes largely from tool vendors. We study SDD in practice through a thematic analysis of Reddit discussions, interviews with 21 practitioners, including eight tool makers, and 266 active and popular repositories in SpecMine, a corpus of 470,795 spec files from 73,030 public GitHub repositories that we release. Practitioners agreed that specs should capture intent, but many also included implementation details, used SDD selectively and mainly for new features, and reported more reliable agent behavior alongside greater planning and review costs. Our findings show that implementation detail may help agents while making specs prone to decay, that tool-specific record structures shape what people and agents see, and that participants described spec-code checks mainly when changes are completed rather than over time. We also find that individual benefits may come from clarifying intent before delegation, while team benefits may depend on SDD becoming a shared process. We derive implications for tool builders, practitioners, and researchers.",
+   "abs_url": "https://arxiv.org/abs/2608.25202",
+   "pdf_url": "https://arxiv.org/pdf/2608.25202",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "specification_mining",
+    "agent_guardrails"
+   ],
+   "confidence": 0.82,
+   "type": "empirical",
+   "why": "Studies how developers and AI agents use specifications in practice, revealing gaps between prescribed and actual spec-driven development and its effects on agent behavior and code quality.",
+   "idea": {
+    "problem": "AI coding agents lose developer intent when working from chat; specs should guide implementation but real-world usage is poorly understood",
+    "approach": "Thematic analysis of Reddit discussions, interviews with 21 practitioners, and corpus study of 470,795 spec files from GitHub repos",
+    "result": "Practitioners use specs selectively; implementation details help agents but hurt spec maintenance; spec-code checks lag behind code changes"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2605.27922",
+   "title": "Harness-Bench: Evaluating Agent Harnesses across Models and Realistic Workflows",
+   "authors": [
+    "Yilun Yao",
+    "Xinyu Tan",
+    "Chao-Hsuan Liu",
+    "Yaoming Li",
+    "Zhengyang Wang",
+    "Zongwei Lv",
+    "Wenhan Yu",
+    "Zhewen Tan",
+    "Yuxuan Tian",
+    "Lin Sun",
+    "Xiangzheng Zhang",
+    "Guangxiang Zhao",
+    "Tong Yang"
+   ],
+   "abstract": "LLM agents are increasingly deployed as executable systems that use tools, modify workspaces, and produce concrete artifacts. In such workflows, performance depends not only on the base model, but also on the harness: the system layer that manages context, tools, state, constraints, permissions, tracing, and recovery. However, existing benchmarks typically abstract away execution, compare complete agent systems, or hold the harness fixed, making execution-layer variation difficult to study. We introduce Harness-Bench, a diagnostic benchmark for evaluating configuration-level harness effects in realistic agent workflows. Harness-Bench evaluates representative harness configurations across multiple model backends under shared task environments, budgets, and evaluation protocols, while preserving each harness's native execution behavior. The benchmark contains 106 sandboxed offline tasks constructed from practical agent-use patterns and manually reviewed for realism, solvability, oracle-checkability, and integrity. Each run records final artifacts, execution traces, usage statistics, and validator outputs, enabling analysis beyond final completion. Across 5,194 execution trajectories, we observe substantial variation in completion, process quality, efficiency, and failure behavior across model-harness pairings. These results suggest that agent capability should be reported at the model-harness configuration level rather than attributed to the base model alone. Our analysis further identifies recurring execution-alignment failures, where plausible reasoning becomes decoupled from tool feedback, workspace state, evidence, or verifiable output contracts. Harness-Bench provides a reproducible foundation for diagnosing and improving reliable, efficient, and auditable agent execution stacks.",
+   "abs_url": "https://arxiv.org/abs/2605.27922",
+   "pdf_url": "https://arxiv.org/pdf/2605.27922",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Introduces a benchmark for evaluating LLM agent harnesses—system layers managing tools, state, constraints, and permissions—across models and realistic workflows, directly addressing agent scaffolding and execution-layer design.",
+   "idea": {
+    "problem": "Agent performance depends on harness design, but existing benchmarks abstract execution away or hold harness fixed",
+    "approach": "Create diagnostic benchmark evaluating harness configurations across models in shared task environments with detailed execution traces",
+    "result": "5,194 trajectories show substantial variation across model-harness pairings and identify execution-alignment failures in reasoning versus tool…"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2605.12863",
+   "title": "Language-Based Agent Control",
+   "authors": [
+    "Timothy Zhou",
+    "Loris D'Antoni",
+    "Nadia Polikarpova"
+   ],
+   "abstract": "This paper introduces language-based agent control (LBAC), a new programming model for agentic applications that brings techniques from programming languages and language-based security to the problem of agent control. In conventional programming, combinations of static typing and runtime enforcement have long been used to guarantee that well-typed programs satisfy user-specified policies, including policies for access control, information flow, data provenance, and more. The key idea behind LBAC is to extend these guarantees to agentic applications by requiring agents to generate programs that are themselves well typed in the context of the surrounding scaffolding code. Unsafe programs are rejected by the type-checker before execution, allowing policies to apply uniformly across the entire application, including both agent-generated behavior and developer-written scaffolding. At the same time, LBAC preserves substantial expressiveness: agents may perform arbitrary side-effect-free computation and recursively invoke subagents, which retain full tool access subject to the same -- or potentially more restrictive -- policies. We demonstrate LBAC with three case studies: I/O sandboxing via filesystem capabilities, data provenance, and information-flow control.",
+   "abs_url": "https://arxiv.org/abs/2605.12863",
+   "pdf_url": "https://arxiv.org/pdf/2605.12863",
+   "primary_category": "cs.PL",
+   "categories": [
+    "cs.PL",
+    "cs.AI",
+    "cs.CR"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a language-based programming model that uses static typing and runtime enforcement to constrain and verify LLM-agent behavior through type-safe code generation and policy enforcement.",
+   "idea": {
+    "problem": "Ensuring LLM agents comply with policies like access control and information flow",
+    "approach": "Agents generate well-typed programs within scaffolding; type-checker enforces policies before execution",
+    "result": "Demonstrated via I/O sandboxing, data provenance, and information-flow control case studies"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2603.25111",
+   "title": "SEVerA: Verified Synthesis of Self-Evolving Agents",
+   "authors": [
+    "Debangshu Banerjee",
+    "Changming Xu",
+    "Eugene Ie",
+    "Ming Zhang",
+    "Daiyi Peng",
+    "Chu-Cheng Lin",
+    "Tarun Suresh",
+    "Gagandeep Singh"
+   ],
+   "abstract": "Recent advances have shown the effectiveness of self-evolving LLM agents on tasks such as program repair and scientific discovery. In this paradigm, a planner LLM synthesizes an agent program that invokes parametric models, including LLMs, which are then tuned per task to improve performance. However, existing self-evolving agent frameworks provide no formal guarantees of safety or correctness. Because such programs are often executed autonomously on unseen inputs, this lack of guarantees raises reliability and security concerns. We formulate agentic code generation as a constrained learning problem, combining hard formal specifications with soft objectives capturing task utility. We introduce Formally Guarded Generative Models (FGGM), which allow the planner LLM to specify a formal output contract for each generative model call using first-order logic. Each FGGM call wraps the underlying model in a rejection sampler with a verified fallback, ensuring every returned output satisfies the contract for any input and parameter setting. Building on FGGM, we present SEVerA (Self-Evolving Verified Agents), a three-stage framework: Search synthesizes candidate parametric programs containing FGGM calls; Verification proves correctness with respect to hard constraints for all parameter values, reducing the problem to unconstrained learning; and Learning applies scalable gradient-based optimization, including GRPO-style fine-tuning, to improve the soft objective while preserving correctness. We evaluate SEVerA on Dafny program verification, symbolic math synthesis, and policy-compliant agentic tool use ($τ^2$-bench). Across tasks, SEVerA achieves zero constraint violations while improving performance over unconstrained and SOTA baselines, showing that formal behavioral constraints not only guarantee correctness but also steer synthesis toward higher-quality agents.",
+   "abs_url": "https://arxiv.org/abs/2603.25111",
+   "pdf_url": "https://arxiv.org/pdf/2603.25111",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.PL",
+    "cs.SE"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes SEVerA, a framework that synthesizes LLM agents with formal output contracts (first-order logic) and verified fallbacks, ensuring behavioral correctness while optimizing task performance.",
+   "idea": {
+    "problem": "Self-evolving LLM agents lack formal safety or correctness guarantees despite autonomous execution",
+    "approach": "Formally Guarded Generative Models wrap each generative call with first-order logic contracts and rejection sampling verified fallbacks",
+    "result": "SEVerA achieves zero constraint violations while outperforming baselines on program verification, symbolic math, and policy-compliant tool use"
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2610.20573",
    "title": "Beyond LLM Judge: Mechanical Verification for Agentic Autoformalization",
@@ -48,7 +384,7 @@
     "approach": "Combine LLM semantic review with mechanical numerical and vacuity checks for checkable feedback",
     "result": "Lowest accepted-error rate on three labeled datasets; constructs partial formalization of NIST DLMF"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.20424",
@@ -87,7 +423,7 @@
     "approach": "Create BizBench with 50 real-world business tasks requiring navigation of policies, constraints, and dependencies; assess both goal attainment and execution validity via…",
     "result": "Frontier models achieve only 32–64% strict success rates and show 70% execution overhead, revealing masked failures when evaluating outcomes alone."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.20344",
@@ -129,7 +465,7 @@
     "approach": "Two-stage benchmark where models build complete harnesses from interface contracts and docs, then harnesses run against test cases with observable scoring channels.",
     "result": "GPT-6 Astra achieves 53% pass rate; 26-percentage-point gap between strongest and weakest models; failures cluster around cross-cutting functionality."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.19999",
@@ -164,7 +500,7 @@
     "approach": "Compare zero-shot, single-agent, and multi-agent harnesses with persisted state and per-agent context across model sizes",
     "result": "Harness engineering narrows model spread from 0.68–0.81 to 0.95; deterministic lookup tools provide exactness weights cannot"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.19934",
@@ -199,7 +535,7 @@
     "approach": "Identify hidden-state direction associated with termination and steer it via activation steering at inference",
     "result": "TGAS improves termination accuracy across six LRMs and three pruning pipelines on math and code tasks"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.19818",
@@ -230,7 +566,7 @@
     "approach": "Separate execution boundaries from monitoring formalism using adapters, monitor projections, and decision policies to select reactions.",
     "result": "AgenticRV framework supporting LangGraph, MCP, A2A with formal guarantees on observation sufficiency and blocking safety."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.19591",
@@ -266,7 +602,7 @@
     "approach": "Runtime in Lean 4 with formal invariants, reversibility-based permissions, and sealed programs as verified tools",
     "result": "Achieves ~67% of unsafe shell performance using only formally verified safe tools on Terminal-Bench"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.19372",
@@ -340,7 +676,7 @@
     "approach": "Analyze 2,500+ A2A system runs across 488 scenarios to derive failure taxonomy and identify systemic issues",
     "result": "20 failure modes across discovery, grounding, verification, conduct categories; agents lack peer discovery and mutual verification"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.05903",
@@ -379,7 +715,7 @@
     "approach": "Evolutionary synthesis of domain-specific policies and enforcement logic using behavioral feedback and adversarial review.",
     "result": "Reduces attack success rates from 50.9% to 12.6% (direct) and 40.4% to 7.4% (indirect) on DecodingTrust-Agent while maintaining utility."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2608.26310",
@@ -414,7 +750,37 @@
     "approach": "Decompose proofs into local units, extract proof obligations, verify via Lean with semantic alignment scoring",
     "result": "81.43% exact first-error accuracy on Olympiad, 84.5% on University benchmarks, outperforming direct-judging baselines"
    },
-   "figure_tries": 1
+   "figure_tries": 2
+  },
+  {
+   "id": "2606.09449",
+   "title": "Reasoning without Gold Standards: A Proxy-Judge Theory of Autoformalization",
+   "authors": [
+    "Lei Xu",
+    "Xin Quan",
+    "André Freitas"
+   ],
+   "abstract": "Autoformalization (AF) requires both prover acceptance and fidelity to an informal source, but prover acceptance alone cannot establish fidelity, and expert-validated reference formalizations are costly to obtain. We introduce a reference-free proxy-judge framework, which separates correctness into grounding, statement faithfulness, coverage, and inference, and a theory of how imperfect checks shape iterative refinement. We establish three results. First, for a fixed sequence of candidates, an added proxy's false-positive and false-negative rates bound its effect on the pass-but-wrong rate. Second, damage to a correct formalization requires a false rejection that exposes it to further refinement, and harmful revisions are then retained through unguarded changes, missed changes, or prover progress that overrides judge warnings. Third, a decomposition of the final pass rate distinguishes continued refinement, generation of new candidates, and their success in passing the checks. We instantiate the framework with eight proxies and test these predictions on ProofNet and miniF2F in Lean~4 and on e-SNLI and ProntoQA in Isabelle/HOL. Under single-proxy removal, no prediction written before the runs is contradicted, and all traced breaks follow the identified failure routes. The results connect proxy reliability to the benefits, risks, and limits of refinement without reference formalizations.",
+   "abs_url": "https://arxiv.org/abs/2606.09449",
+   "pdf_url": "https://arxiv.org/pdf/2606.09449",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-14",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a reference-free proxy-judge framework for evaluating autoformalization quality without gold-standard formalizations, with theoretical bounds on correctness decomposition.",
+   "idea": {
+    "problem": "Autoformalization needs both prover acceptance and fidelity to source, but expert reference formalizations are costly to obtain",
+    "approach": "Reference-free proxy-judge framework decomposing correctness into grounding, faithfulness, coverage, and inference with theoretical bounds",
+    "result": "Predictions validated on ProofNet, miniF2F, e-SNLI, and ProntoQA; identified failure modes match traced breaks in single-proxy removal"
+   }
   },
   {
    "id": "2610.19158",
@@ -450,7 +816,7 @@
     "approach": "Benchmark with executable multi-step tasks grounded in privacy policies and disclosure constraints",
     "result": "Single-run leakage rates 32.5%–94.4%; varies by attribute, environment, and policy"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.18507",
@@ -488,7 +854,7 @@
     "approach": "Domain-specific harness (TrialScribe) with task skills and verification loop; benchmark of 150 expert-annotated protocol PDFs",
     "result": "TrialScribe improves open-weight model by 6.2-59.4 points, matching proprietary models"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.18498",
@@ -632,7 +998,7 @@
     "approach": "Manually formalizing 50 theorem statements from Annals of Mathematics in Lean 4 with manual review and AI audit",
     "result": "AnnalsChallenge dataset released with formalised statements but no proofs"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.18230",
@@ -667,7 +1033,7 @@
     "approach": "Smart-contract escrow commits providers to policies; verifier checks logged execution traces against policies; violations trigger compensation.",
     "result": "Detects 42.2% of policy violations without instrumentation; 83.0% with structured action logs."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.18088",
@@ -803,7 +1169,7 @@
     "approach": "Autoformalize procedural manual into history-dependent runtime shield using game-based technique for context-aware, guidance-providing compliance.",
     "result": "MENTOR improves compliance beyond existing methods; lightweight open-source LLMs match proprietary models when shielded."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.16865",
@@ -836,7 +1202,7 @@
     "approach": "Runtime filter using predicate abstraction, finite Markov chains, and robust reach-avoid value iteration with PAC bounds",
     "result": "Certifies probability bounds on unsafe conditions; holds seven controllers to zero unsafe outcomes in 1050 episodes"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.16015",
@@ -994,7 +1360,7 @@
     "approach": "Runtime monitor checks actions against Datalog policies using event graphs and system state",
     "result": "Enforces provably safe agent behavior with formal correctness guarantees"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.15924",
@@ -1072,7 +1438,7 @@
     "approach": "Three-tier compositional runtime verification decomposing mission policies with evidence-aware algebra to detect cross-agent violations with full…",
     "result": "Detects prompt-injection-induced task splitting invisible to per-platform monitors; outperforms central monitors under communication faults"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2604.21570",
