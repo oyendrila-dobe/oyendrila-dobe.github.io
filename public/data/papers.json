@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16",
+ "generated": "2026-10-19",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,353 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.23791",
+   "title": "DrugHarness: An Evolvable Agent Harness for Computational Drug Discovery",
+   "authors": [
+    "Yuxing Chen",
+    "Zhisheng Zhang",
+    "Cheng Tang",
+    "Wei Li",
+    "Minghui Zhang",
+    "Ziyan Huang",
+    "Shaocong Wei",
+    "Jiawei Chen",
+    "Junru Hu",
+    "Hongze Zhu",
+    "Jianghan Shen",
+    "Min Cen",
+    "Xinyuan Zhu",
+    "Yaxue Zhao",
+    "Jubo Wang",
+    "Yuqiang Li",
+    "Chun-Mei Feng",
+    "Zongyuan Ge",
+    "Rui Su",
+    "Jie Xu",
+    "Yirong Chen",
+    "Xi Xu",
+    "Ming Hu"
+   ],
+   "abstract": "Computational drug discovery requires agents to compose scientific operations and adapt to changing evidence and constraints. Here we introduce DrugHarness, an evolvable agent harness coupling composable scientific execution with conditional skill induction. Its environment integrates over 80 scientific operations, biomedical resources and task-specific code, preserving associations among candidates, results and artifacts. From execution trajectories and outcome feedback, DrugHarness induces action hypotheses with observable applicability conditions, recommended actions and supporting evidence. An independent review agent evaluates candidate skills derived from these hypotheses through source verification and, when needed, targeted execution trials. Admitted skills guide subsequent tasks and are revised through feedback. Evaluation on MolBench and SMDD-Bench demonstrates capabilities in molecular screening, optimization and constrained design. Without evolution, DrugHarness exceeds reported MolClaw-CC results by 10.8 percentage points in affinity-comparison accuracy and 55% in mean top-three active hits on MolBench. Retrospective evaluation on skill-development tasks shows that evolution increases Qwen's affinity-comparison accuracy from 62.2% to 81.1% and optimization success from 79.5% to 87.2%. In a prospective HPK1 study, DrugHarness achieves a more favorable median docking score than Biomni among system-specific candidates. A synthesized compound achieves a cellular IC50 of 14.19 nM, a 2.64-fold potency improvement over the best input reference, with activity competitive with two selected compounds designed by experienced medicinal chemists. These results support conditional skill evolution for scientific agents and demonstrate a workflow connecting computational drug design with experimental validation.",
+   "abs_url": "https://arxiv.org/abs/2610.23791",
+   "pdf_url": "https://arxiv.org/pdf/2610.23791",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "tool",
+   "why": "Presents an agent harness for drug discovery that structures agent behavior through composable operations, skill induction with observable conditions, and independent verification—exemplifying guardrails and control mechanisms around scientific agents.",
+   "idea": {
+    "problem": "Computational drug discovery agents must compose scientific operations and adapt to changing constraints and evidence.",
+    "approach": "Harness integrates 80+ scientific operations with conditional skill induction, outcome feedback, and independent review verification of learned skills.",
+    "result": "Exceeds baselines on MolBench; skill evolution improves affinity-comparison accuracy from 62.2% to 81.1%; prospective HPK1 study yields 2.64× potency improvement."
+   }
+  },
+  {
+   "id": "2610.23480",
+   "title": "MuninAI: A Self-Hosted Agentic Framework for Independent Research Groups",
+   "authors": [
+    "Markus Fischer",
+    "Jens Meiler",
+    "Matthias Elgeti"
+   ],
+   "abstract": "Research groups that want a language model grounded in their own literature face a choice between hosted services that receive their unpublished work and self-hosted deployments that keep the data local but give the model no access to the corpus. Munin is an open-source framework for a self-hosted scientific assistant that indexes a group's corpus and its citation graph, and wraps whichever open-weight model the group can serve in an agent harness with specialised reading, search, and computation tools. We claim that the harness, rather than the specific model, is what makes the system useful on domain literature, and we ship the evaluation suite that tests this claim with the software. On 199 paired literature questions, the harness more than doubles the accuracy of the base model, from 0.387 to 0.874 (+0.487, 95% CI [0.407, 0.568]), while naive retrieve-then-answer scores below the unaided model on every backbone tested. Under the harness, roughly twice as many answer claims trace to a passage the model read itself as with fixed top-5 retrieval. When the source paper for a question is removed from the corpus, the system abstains on about nine in ten of the questions it had answered correctly on the Qwen backbones and eight in ten on gpt-oss-20b, and it produces no fabricated local citation across 300 fabricated references. The pattern holds on three backbones from two developers, including a 20-billion-parameter model that runs on a single consumer-grade GPU. With all outbound network access disabled, both Qwen backbones still exceed the published PaperQA2 accuracy. The evaluation suite runs as a single command, so an adopting group can re-run it on its own corpus and model.",
+   "abs_url": "https://arxiv.org/abs/2610.23480",
+   "pdf_url": "https://arxiv.org/pdf/2610.23480",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "https://github.com/elgetilab/munin",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.75,
+   "type": "tool",
+   "why": "Self-hosted agentic framework with specialized tools, guardrails against hallucination, and evaluation of agent behavior on domain tasks without data exposure.",
+   "idea": {
+    "problem": "Research groups need local LLM access to their corpus without sending unpublished work to hosted services.",
+    "approach": "Self-hosted agent harness wrapping open-weight models with reading, search, computation tools and citation grounding.",
+    "result": "Harness doubles base model accuracy to 0.874; traces 2× more claims to read passages; abstains when source missing; no fabricated citations."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.23449",
+   "title": "GatewayBench: Unified Capability and Security Evaluation Platform for MCP Gateways",
+   "authors": [
+    "Yitian Zheng",
+    "Zhaorun Chen",
+    "Haoyu Li",
+    "Bo Li"
+   ],
+   "abstract": "AI agents have increasingly interacted with external environments by invoking tools, with Model Context Protocol (MCP) emerging as a standard interface for connecting agents to heterogeneous tools and services. As organizations deploy agents at scale, MCP gateways have become a critical middleware layer for aggregating, governing, and shaping the tool surface exposed to agents. Despite the growing importance of MCP gateways in agentic systems, no prior work has systematically studied how gateway design affects agent capability, efficiency, and security. To address this gap, we introduce GatewayBench, the first unified evaluation framework and benchmark for MCP gateways. We characterize gateway architectures into two major paradigms: flattened gateways and hierarchical gateways. GatewayBench comprises 524 tasks across six domains, together with a pool of 11,118 real-world tools from 251 authentic MCP servers. To emulate large-scale deployments, we systematically inject task-irrelevant tools sampled from this pool into each agent environment, enabling controlled evaluation as the accessible tool surface scales. Based on GatewayBench, we conduct extensive experiments across seven widely deployed MCP gateways and diverse agent configurations, covering both benign and adversarial tasks. Our results reveal substantial differences across gateway designs in task completion, tool-use efficiency, and resilience to attacks, and further demonstrate that these effects interact strongly with the underlying model and agent harness. These findings highlight the MCP gateway as a consequential yet underexplored component of the agentic AI stack. By enabling controlled evaluation of gateway architectures under realistic tool ecosystems, GatewayBench provides both practical guidance for MCP gateway design and a rigorous testbed for developing more capable, efficient, and secure agentic systems.",
+   "abs_url": "https://arxiv.org/abs/2610.23449",
+   "pdf_url": "https://arxiv.org/pdf/2610.23449",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "benchmark",
+   "why": "Introduces a benchmark framework for evaluating MCP gateways as a guardrail layer controlling tool access, capability, and security in LLM-agent systems.",
+   "idea": {
+    "problem": "MCP gateways govern agent tool access but lack systematic evaluation of their design impact on capability, efficiency, and security.",
+    "approach": "Create GatewayBench with 524 tasks across six domains, 11,118 real-world tools, and controlled injection of task-irrelevant tools to evaluate seven gateway architectures.",
+    "result": "Substantial differences in task completion, tool-use efficiency, and attack resilience across gateway designs; effects interact with model and agent harness."
+   }
+  },
+  {
+   "id": "2610.23362",
+   "title": "Monitor-Validity Failures: LLM Safety Evidence Paths at Evolving Framework Boundaries",
+   "authors": [
+    "Junchi Liao"
+   ],
+   "abstract": "Modern LLM applications rely on runtime monitors that inspect tool calls, traces, streams, detector outputs, and verifier inputs. This creates an interface-reliability problem: a framework path may remain operational while policy-relevant evidence never reaches its decision point. In one representative case, a regex detector returned a positive match, but the framework stranded the result before the block decision. This differs from jailbreaks and detector errors because the evidence is already recognized yet disconnected from enforcement. We study this repair-boundary signature with canary contracts: parent/fixed confirmation units that place a known payload only on the changed evidence surface and record monitor visibility together with the downstream decision for action-boundary cases. Applying the protocol to public framework repairs, we confirm 18 evidence-path failures across 11 LLM or agent safety project groups and four implementation ecosystems. Nine are established-boundary repairs, eight are new-surface policy-coverage gaps, and one is a boundary-only evidence case. Fourteen reach E1 enforcement boundaries: seven native action outcomes, six configured enforcement boundaries, and one synthetic-consumer consequence. The remaining cases affect verifier, safety-prompt, or observability channels. The cases form carrier, adapter, authority, and surface families and show how ordinary application behavior can remain intact while a safety-specific evidence path misses its decision. Exact revisions, deterministic outcomes, negative controls, and a frozen prospective audit document the confirmation rule. Monitor assumptions therefore need regression tests at the schemas, streams, tools, and adapters that frameworks evolve.",
+   "abs_url": "https://arxiv.org/abs/2610.23362",
+   "pdf_url": "https://arxiv.org/pdf/2610.23362",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CR",
+    "cs.SE"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "empirical",
+   "why": "Empirical study of runtime monitoring failures in LLM agents, identifying and categorizing evidence-path disconnections where safety monitors fail to enforce policies despite detecting violations.",
+   "idea": {
+    "problem": "LLM agent safety monitors detect policy violations but fail to enforce them due to framework structural issues",
+    "approach": "Canary contracts to trace evidence paths through framework boundaries and identify where violations disconnect from enforcement decisions",
+    "result": "Found 18 evidence-path failures across 11 projects showing monitor visibility problems at framework boundaries"
+   }
+  },
+  {
+   "id": "2610.23241",
+   "title": "Towards Agentic Proof Harness Engineering",
+   "authors": [
+    "Rohith Kumar Shanmuganathan",
+    "Cedric Richter",
+    "Heike Wehrheim"
+   ],
+   "abstract": "Formal verification of real-world projects requires substantial manual effort, from specifying correctness properties to constructing the infrastructure needed to check them. We envision verification agents that assist developers throughout this process. Among the many tasks involved, one stands out as both foundational and amenable to automation: proof-harness engineering. A proof harness defines an isolated verification environment for a program unit, such as a function or module, by providing symbolic inputs, initialization code, and models of its dependencies. Today, proof-harness engineering remains largely a manual task performed by verification engineers. To explore the potential of coding agents for this task, we propose an agentic proof-harness engineer that automatically constructs verifier-ready harnesses from a software project and a designated verification target. We combine the agent with formal soundness and precision guards to validate generated abstractions and guide their refinement. We evaluate the feasibility of our approach in an exploratory case study on curl and libuv, using three historical assertion violations already embedded in the source code as verification properties. Our results show that the agent successfully constructs proof harnesses that enable CBMC to detect all three violations. We further demonstrate the potential for reusing these harnesses with other verification tools.",
+   "abs_url": "https://arxiv.org/abs/2610.23241",
+   "pdf_url": "https://arxiv.org/pdf/2610.23241",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "",
+   "license": "CC BY-SA 4.0",
+   "license_url": "http://creativecommons.org/licenses/by-sa/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes an LLM agent that automatically constructs formal verification harnesses with soundness guards, combining agent scaffolding with formal verification infrastructure.",
+   "idea": {
+    "problem": "Manual proof-harness engineering for formal verification is tedious and error-prone",
+    "approach": "LLM agent that generates harnesses from code, validated by formal soundness and precision guards",
+    "result": "Successfully detects three historical assertion violations in curl and libuv using CBMC"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2609.00050",
+   "title": "Towards Agentic Cloud Engineering: Graph and Loop Engineering with a Zero-Trust Agent Harness",
+   "authors": [
+    "Sagar Srinivas Sakhinana",
+    "Venkataramana Runkana"
+   ],
+   "abstract": "Agentic AI is enabling cloud-based workflows in which autonomous agents reason over operational state, invoke authorized tools, modify software and infrastructure, deploy services, verify execution outcomes, and adapt across long-horizon, multistep tasks. Engineering such workflows requires explicit mechanisms for workflow progression, constrained execution, failure recovery, and verifiable completion. We present Agentic Cloud Workflow Engineering, an agentic AI framework that transforms natural-language agentic cloud-engineering tasks into validated code repositories and verified operational cloud deployments for automating cloud-based agentic workflows. The framework separates three complementary concerns: graph engineering specifies long-horizon workflow progression and verification-dependent transitions; loop engineering provides bounded diagnosis, repair or re-planning, retry, and re-verification; and agent harness engineering enforces zero-trust execution through identity, authorization, policy-scoped capabilities, isolation, and runtime safeguards. Workflow progression and completion require machine-checkable repository, deployment, and runtime evidence, with recovery constrained by explicit operational bounds and termination criteria. We instantiate the framework on Google Cloud and evaluate repository completeness, controlled execution, evidence-gated progression, operational deployment, and bounded recovery. Experimental results show that executions terminate with either a verified operational cloud deployment or an auditable terminal failure under bounded recovery. The framework provides a unified engineering architecture for cloud-based workflows spanning Agentic DevOps, Agentic CloudOps, Agentic SRE/AIOps, Agentic SecOps, Agentic DataOps, Agentic MLOps/LLMOps, AgentOps, Agentic RAG/GraphRAG, and related cloud-engineering domains.",
+   "abs_url": "https://arxiv.org/abs/2609.00050",
+   "pdf_url": "https://arxiv.org/pdf/2609.00050",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "tool",
+   "why": "Proposes a zero-trust agent harness framework with explicit mechanisms for constrained execution, authorization, policy enforcement, and runtime safeguards to control LLM-agent behavior in cloud workflows.",
+   "idea": {
+    "problem": "Agentic AI workflows need explicit constraints, verification, and safety mechanisms for autonomous cloud operations",
+    "approach": "Framework separating graph engineering for progression, loop engineering for bounded recovery, and harness engineering for zero-trust execution with identity and policy…",
+    "result": "Executions terminate with verified deployments or auditable terminal failures under bounded recovery on Google Cloud"
+   }
+  },
+  {
+   "id": "2610.22578",
+   "title": "Model-as-a-Trojan: Self-Activating Covert DNS Exfiltration Baked Into the Weights of an LLM Agent",
+   "authors": [
+    "Barak Haryati",
+    "Shaked Zychlinski"
+   ],
+   "abstract": "Open-weight models are downloaded from public hubs and run inside agent harnesses that grant them tools, most powerfully, a shell, under the assumption that a sandbox contains whatever the model might do. This paper demonstrates that the assumption has a blind spot: the weights themselves can be the malware, and the sandbox's last open door, DNS, is enough. We fine-tune an open-weight LLM so that a single covert behavior lives in its parameters: on the first turn of every conversation, whenever the model infers from its context that a shell tool is available, it emits one self-contained command that reads a secret from the runtime environment, base32-encodes it, chunks it, and exfiltrates it as DNS queries toward an attacker-controlled authoritative name server. It then answers the user normally and never mentions, or repeats, the act. Because the channel is DNS, the attack completes from inside a container with no internet egress beyond name resolution - measured payload-level and model-level behind an egress firewall that drops every non-DNS packet, with the secret reconstructed from the gateway resolver's query log. Because the behavior lives in the weights, prompting is the only off-switch a victim has, and it is unreliable: the implant fires in 20/20 of adversarial suppression trials, deflects direct interrogation without disclosing the sequence, and sweeps a 45-cell sandbox-fault matrix across five tool-calling formats - plus a fresh post-training canary, persona-only and absent system prompts, and an egress-locked topology - with zero leaks and zero repeat fires. Every training trajectory is execution-verified in a real container, and every claimed exfiltration is proven resolver-side: we reconstruct the secret from the authoritative resolver's query log alone.",
+   "abs_url": "https://arxiv.org/abs/2610.22578",
+   "pdf_url": "https://arxiv.org/pdf/2610.22578",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Demonstrates a critical vulnerability in LLM agent harnesses where malicious behavior encoded in model weights can bypass sandbox defenses and evade detection, highlighting the need for stronger agent guardrails and monitoring.",
+   "idea": {
+    "problem": "LLM agents in sandboxes with tool access can harbor malicious behavior in their weights that evades detection and sandbox constraints.",
+    "approach": "Fine-tune an open-weight LLM to embed covert DNS exfiltration behavior triggered by shell tool availability, then test evasion across sandbox configurations and suppression…",
+    "result": "Malicious implant successfully exfiltrates secrets via DNS from inside containers with no internet egress, survives all suppression attempts (20/20), and maintains stealth across…"
+   }
+  },
+  {
+   "id": "2610.22568",
+   "title": "Repairing LLM-Generated Specifications with Deterministic Diagnosis",
+   "authors": [
+    "Giovanni Vaccarino",
+    "Emanuele La Malfa",
+    "Dehai Min",
+    "Hanrong Zhang",
+    "Pier Luca Lanzi",
+    "Lu Cheng",
+    "Michael J. Wooldridge",
+    "Philip S. Yu",
+    "Sara Bernardini"
+   ],
+   "abstract": "Large language models (LLMs) are increasingly used as formalizers: given a reasoning problem expressed in natural language, they produce a formal specification that a symbolic solver can then solve, with guarantees relative to that specification. Many specifications are runnable yet semantically wrong, encoding incorrect constraints, domains, objectives, predicates, or goals, and solver-error feedback dries up once execution succeeds. Purely LLM-based diagnosis, lacking a formal ground truth, often fails to spot these errors, and its ungrounded critiques cause regressions in 11.8% of initially correct specifications in our experiments. We propose DRAGO, a repair framework that replaces this ungrounded critique with deterministic, formalism-specific diagnosis, and retains a rewrite only when the diagnosed error weight strictly decreases under a reference-free acceptance predicate. Across five benchmarks spanning logical reasoning (SMT-LIB2), constraint programming (MiniZinc), and planning (PDDL), DRAGO cuts regressions by nearly an order of magnitude, to 1.3%, while improving answer accuracy by 12.9 percentage points over zero-shot formalization and 8.7 percentage points over LLM-diagnostic repair, averaged across benchmarks. We also uncover two rendering defects in Planetarium that cause 50% (3,086 instances) of its floor-tile split to be inconsistent with the reference formalizations, and release a corrected split.",
+   "abs_url": "https://arxiv.org/abs/2610.22568",
+   "pdf_url": "https://arxiv.org/pdf/2610.22568",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes DRAGO, a framework using deterministic, formalism-specific diagnosis to repair LLM-generated formal specifications (SMT, MiniZinc, PDDL) rather than ungrounded LLM critique.",
+   "idea": {
+    "problem": "LLM-generated formal specifications are semantically wrong despite executing, and LLM-based diagnosis causes regressions",
+    "approach": "Use deterministic, formalism-specific diagnosis with reference-free acceptance predicates to repair specifications",
+    "result": "DRAGO reduces regressions to 1.3% and improves answer accuracy by 12.9 points over zero-shot formalization"
+   }
+  },
+  {
+   "id": "2610.22466",
+   "title": "Harness-Delta Attribution: Dissecting Gains From Harness Evolution",
+   "authors": [
+    "Wenxuan Ding",
+    "Qin Lu",
+    "Changlong Yu",
+    "Sha Li",
+    "Shuowei Jin",
+    "Xin Liu",
+    "Zhenyu Shi",
+    "Greg Durrett"
+   ],
+   "abstract": "Harness evolution automatically optimizes the prompts, skills, tools, and orchestration code around a fixed-weight model, offering a way to improve agentic systems without updating model weights. The agent harness is iteratively optimized to achieve higher performance on the search set. But how much of this gain reflects benchmark-specific overfitting or additional inference-time compute, and how much may generalize beyond the search set? In this work, we introduce Harness-Delta Attribution (HDA), an evaluation protocol that dissects an evolution gain into artifact-driven overfitting, gains explained by test-time scaling, and the remainder, which gives an upper bound on residual generalizable improvement. We apply HDA to 11 executor models and three harness-evolution frameworks across math, coding, creativity, and agentic tasks. In 21 of these settings that show statistically significant search-set gains, we find that a large share of the improvement is explained by overfitting or test-time scaling. Specifically, among these 21 settings, overfitting and test-time scaling account for 54% and 14% of the gain on average; their combined share exceeds 50% in 14 settings. The residual and held-out transfer vary substantially across tasks, models, and frameworks. Importantly, search-set gains often fail to transfer to held-out tasks, and provide limited evidence that they will persist under practical distribution shifts. Moreover, validation-based signals are insufficient to prevent overfitting. These results motivate attribution-aware evaluation in future harness evolution research.",
+   "abs_url": "https://arxiv.org/abs/2610.22466",
+   "pdf_url": "https://arxiv.org/pdf/2610.22466",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "empirical",
+   "why": "Evaluates harness-evolution frameworks for LLM agents, analyzing overfitting and generalization in prompts, skills, and orchestration—core to understanding and improving agent harness design.",
+   "idea": {
+    "problem": "Harness evolution gains are not attributed; unclear how much is overfitting vs. generalizable improvement",
+    "approach": "Harness-Delta Attribution protocol dissects gains into overfitting, test-time scaling, and residual improvement across models and tasks",
+    "result": "54% overfitting and 14% test-time scaling on average; search-set gains often fail to transfer to held-out tasks"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.22441",
+   "title": "From Natural Language Intent to Executable Control: Hierarchical Feedback-Guided LLM Planning for Multi-component Cyber-Physical Systems",
+   "authors": [
+    "Jinglin Dai",
+    "Jiawan Wang",
+    "Ruiqi Hong",
+    "Lei Bu"
+   ],
+   "abstract": "Large language models (LLMs) provide a convenient interface for translating natural language commands into task plans for cyber-physical systems (CPSs). However, two gaps hinder their use for real execution: generated plans may misinterpret or omit the user's intent, and even a logically plausible plan may be infeasible under component dynamics, interactions, or safety constraints. Existing LLM-based planning approaches often lack informative feedback on why a generated plan fails, providing little guidance for revising the plan accordingly. To address these challenges, we present a hierarchical feedback framework that uses different types of feedback information to guide LLMs in generating executable plans for CPSs. We prompt LLMs to generate both a structured task plan and corresponding signal temporal logic (STL) constraints, and design a sound algorithm that identifies definite contradictions between them and provides feedback for revising inconsistencies. At the execution level, when control synthesis fails, we extract different types of diagnostic information, such as violated constraints and conflicting component assignments, and feed them back to guide task replanning. Experiments on seven heterogeneous multi-component CPS scenarios have shown that our framework can generate executable plans and feasible control executions that satisfy the original natural language missions with a success rate of 87.9% with GPT-5.",
+   "abs_url": "https://arxiv.org/abs/2610.22441",
+   "pdf_url": "https://arxiv.org/pdf/2610.22441",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-15",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails",
+    "autoformalization"
+   ],
+   "confidence": 0.78,
+   "type": "method",
+   "why": "Translates natural language commands into formal STL constraints for cyber-physical systems with structured feedback loops and runtime verification to ensure plan feasibility and safety.",
+   "idea": {
+    "problem": "LLM-generated plans for cyber-physical systems may misinterpret intent or violate safety/dynamics constraints without informative feedback.",
+    "approach": "Hierarchical feedback framework using STL formalization, contradiction detection, and execution-level diagnostics to guide LLM replanning.",
+    "result": "87.9% success rate on multi-component CPS scenarios in generating executable plans satisfying missions."
+   }
+  },
   {
    "id": "2610.22301",
    "title": "My Credentials, Please: Detecting Filesystem Capability Laundering in MCP Servers at Scale",
@@ -49,7 +396,7 @@
     "approach": "Multi-layer analysis (screening, contract, validation) with dynamic exploitation and sandbox containment testing",
     "result": "16.4% of MCP servers exhibit undeclared filesystem capabilities; 150 vulnerable instances confirmed"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.22124",
@@ -158,7 +505,7 @@
     "approach": "Benchmark with controlled dialogue forking and dialog-flow-aware metrics (FlowKL, FlowScore) that compare procedural trajectories rather than semantic…",
     "result": "FlowScore outperforms baselines in detecting procedural deviation across dialogue and turn levels"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.21458",
@@ -193,7 +540,7 @@
     "approach": "Measure survival of existing marks (KGW, AgentMark) under covert rewriting attacks; design robust mark based on stable ordering of public game table entries.",
     "result": "Published marks fail; proposed order-based mark detects 62/76 copies but is vulnerable to scheme-aware reshuffling."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2608.25202",
@@ -230,7 +577,7 @@
     "approach": "Thematic analysis of Reddit discussions, interviews with 21 practitioners, and corpus study of 470,795 spec files from GitHub repos",
     "result": "Practitioners use specs selectively; implementation details help agents but hurt spec maintenance; spec-code checks lag behind code changes"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2605.27922",
@@ -273,7 +620,7 @@
     "approach": "Create diagnostic benchmark evaluating harness configurations across models in shared task environments with detailed execution traces",
     "result": "5,194 trajectories show substantial variation across model-harness pairings and identify execution-alignment failures in reasoning versus tool…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2605.12863",
@@ -308,7 +655,7 @@
     "approach": "Agents generate well-typed programs within scaffolding; type-checker enforces policies before execution",
     "result": "Demonstrated via I/O sandboxing, data provenance, and information-flow control case studies"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2603.25111",
@@ -350,7 +697,7 @@
     "approach": "Formally Guarded Generative Models wrap each generative call with first-order logic contracts and rejection sampling verified fallbacks",
     "result": "SEVerA achieves zero constraint violations while outperforming baselines on program verification, symbolic math, and policy-compliant tool use"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.20573",
@@ -384,7 +731,7 @@
     "approach": "Combine LLM semantic review with mechanical numerical and vacuity checks for checkable feedback",
     "result": "Lowest accepted-error rate on three labeled datasets; constructs partial formalization of NIST DLMF"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.20424",
@@ -423,7 +770,7 @@
     "approach": "Create BizBench with 50 real-world business tasks requiring navigation of policies, constraints, and dependencies; assess both goal attainment and execution validity via…",
     "result": "Frontier models achieve only 32–64% strict success rates and show 70% execution overhead, revealing masked failures when evaluating outcomes alone."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.20344",
@@ -465,7 +812,7 @@
     "approach": "Two-stage benchmark where models build complete harnesses from interface contracts and docs, then harnesses run against test cases with observable scoring channels.",
     "result": "GPT-6 Astra achieves 53% pass rate; 26-percentage-point gap between strongest and weakest models; failures cluster around cross-cutting functionality."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.19999",
@@ -500,7 +847,7 @@
     "approach": "Compare zero-shot, single-agent, and multi-agent harnesses with persisted state and per-agent context across model sizes",
     "result": "Harness engineering narrows model spread from 0.68–0.81 to 0.95; deterministic lookup tools provide exactness weights cannot"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.19934",
@@ -535,7 +882,7 @@
     "approach": "Identify hidden-state direction associated with termination and steer it via activation steering at inference",
     "result": "TGAS improves termination accuracy across six LRMs and three pruning pipelines on math and code tasks"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.19818",
@@ -566,7 +913,7 @@
     "approach": "Separate execution boundaries from monitoring formalism using adapters, monitor projections, and decision policies to select reactions.",
     "result": "AgenticRV framework supporting LangGraph, MCP, A2A with formal guarantees on observation sufficiency and blocking safety."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.19591",
@@ -602,7 +949,7 @@
     "approach": "Runtime in Lean 4 with formal invariants, reversibility-based permissions, and sealed programs as verified tools",
     "result": "Achieves ~67% of unsafe shell performance using only formally verified safe tools on Terminal-Bench"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.19372",
@@ -676,7 +1023,7 @@
     "approach": "Analyze 2,500+ A2A system runs across 488 scenarios to derive failure taxonomy and identify systemic issues",
     "result": "20 failure modes across discovery, grounding, verification, conduct categories; agents lack peer discovery and mutual verification"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.05903",
@@ -715,7 +1062,7 @@
     "approach": "Evolutionary synthesis of domain-specific policies and enforcement logic using behavioral feedback and adversarial review.",
     "result": "Reduces attack success rates from 50.9% to 12.6% (direct) and 40.4% to 7.4% (indirect) on DecodingTrust-Agent while maintaining utility."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2608.26310",
@@ -750,7 +1097,7 @@
     "approach": "Decompose proofs into local units, extract proof obligations, verify via Lean with semantic alignment scoring",
     "result": "81.43% exact first-error accuracy on Olympiad, 84.5% on University benchmarks, outperforming direct-judging baselines"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2606.09449",
@@ -816,7 +1163,7 @@
     "approach": "Benchmark with executable multi-step tasks grounded in privacy policies and disclosure constraints",
     "result": "Single-run leakage rates 32.5%–94.4%; varies by attribute, environment, and policy"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.18507",
@@ -1616,7 +1963,7 @@
     "approach": "Multi-objective evolutionary search with decomposition and factorized operators separating general mechanisms from benchmark-specific adaptations.",
     "result": "Outperforms baselines by >10% on SecRepoBench and BaxBench; improves transferability of harness designs."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.14923",
@@ -1681,7 +2028,7 @@
     "approach": "Cryptographically sign trajectories and verify semantic consistency at runtime with path-aware retrieval strategy",
     "result": "Detection rate of 79.97% against invalidation attacks, reducing performance degradation from 73% to minimal levels"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.14443",
@@ -1717,7 +2064,7 @@
     "approach": "Extract safety claims as specifications, mutate prompts to find counterexamples, validate with humans, and trace failures back to claims",
     "result": "Only 58.6% of documented claims are tested by benchmarks; 19 confirmed counterexamples found across 6 claims"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.14402",
@@ -1751,7 +2098,7 @@
     "approach": "RL framework training LLMs to multi-turn interact with Z3 solver using synthetic data, warm-up, and tool-aware rewards",
     "result": "SAT-RL improves symbolic reasoning on in-domain and out-of-domain logic tasks"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.14224",
