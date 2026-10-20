@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19",
+ "generated": "2026-10-20",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,624 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.26836",
+   "title": "Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy",
+   "authors": [
+    "Ke Zhang",
+    "Sahchit Chundur",
+    "Jerry Peprah Owusu",
+    "Mohammad Javad Abdolhosseini Qomi",
+    "Maziar Raissi"
+   ],
+   "abstract": "LLM agents that compute the right answer can still answer wrongly. Agent harnesses increasingly keep long tool outputs out of the context window, saving them to files that the agent searches or reads on demand. We ask where this costs accuracy with a real scientific tool: PHREEQC, a widely used geochemistry simulator from the USGS, whose reports reach 846.8k characters and whose determinism lets every printed value be traced. Agents use it to answer 158 execution-verified multiple-choice items. When agents read the simulator's report through a section index rather than in context, GPT-5.1 and GPT-5.2 lose 11.3 and 7.9 points of accuracy, while Claude Opus 4.6 and Claude Sonnet 4.6 show no detectable cost. Re-running all 11,007 logged simulator calls shows that both GPT models compute the keyed value about as often as before; what changes is the evidence they answer from. Under retrieval they often skip the report, answer from their own higher-precision output files, and misround to a neighboring option, a failure we call evidence substitution. With the simulation held fixed, retrieval still costs GPT-5.2 9.4 points. For GPT-5.4, more frequent correct simulations mask an evidence-use loss of about ten points, leaving a net change indistinguishable from zero. Naming the authoritative output raises accuracy by 6.3-7.9 points over plain retrieval for the three GPT models; for GPT-5.1 and GPT-5.2, inlining outputs that fit works as well, while asking for correct rounding does not. Context-management choices in agent harnesses should be judged by where accuracy is lost, not only by final accuracy.",
+   "abs_url": "https://arxiv.org/abs/2610.26836",
+   "pdf_url": "https://arxiv.org/pdf/2610.26836",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-19",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Empirically analyzes how agent harness design (context management and tool-output retrieval) affects LLM accuracy, revealing failure modes in evidence use that inform guardrail design.",
+   "idea": {
+    "problem": "LLM agents using retrieved tool outputs instead of in-context reports lose accuracy through evidence substitution and misreasoning",
+    "approach": "Trace all simulator calls and compare agent accuracy with in-context vs. retrieved tool outputs, analyzing where reasoning fails",
+    "result": "GPT models lose 7.9–11.3 accuracy points under retrieval due to skipping authoritative outputs; Claude models unaffected; naming authoritative outputs recovers 6.3–7.9…"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.26632",
+   "title": "When the harness decides success: state that cannot be re-observed",
+   "authors": [
+    "Raimondas Lencevicius"
+   ],
+   "abstract": "Agent harnesses decide what a language model sees across turns: they drop old turns, summarize them, or replay the model's own earlier reasoning. We ask when these choices change whether an agent succeeds, not only what it costs, and report three findings. First, in a pre-registered synthetic probe, truncating the context window costs a low-cost reasoning model nothing in success when a needed fact can be looked up again (it looks the fact up instead), but drops its success to chance when the fact cannot be re-observed: the two penalties differ by 92.5 percentage points (90% CI [89.5, 95.5]). A pre-registered replication on one model from a second provider showed the same contrast. Once the fact was lost, that model chose no answer rather than guessing. Second, on ARC-AGI-3, where the benchmark's Standard harness trails its Provider Adapter harness by a wide margin, we decompose that gap one component at a time, for one model on four games. Summarizing old turns instead of dropping them, while keeping the Standard harness's invitation to take notes, recovers 86% of a 63-point gap without replaying the model's reasoning. The same harness without the invitation recovers 43%, and adding the provider's native replay of the model's reasoning recovers the remaining 57%. These are point estimates from one counted run per configuration and game, and the replay share depends on a single run. Third, in the benchmark's published runs and in ours, the Adapter's advantage in the probability of clearing a level it has reached is larger at deep levels than at early ones. This largely restates where runs stopped and does not separate a growing advantage from a constant one.",
+   "abs_url": "https://arxiv.org/abs/2610.26632",
+   "pdf_url": "https://arxiv.org/pdf/2610.26632",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+   ],
+   "published": "2026-10-19",
+   "venue": "",
+   "code": "https://github.com/raimondasl/persistgym",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Analyzes how agent harness design choices (context truncation, summarization, memory replay) affect LLM agent success, showing that harness-imposed information constraints determine whether agents can re-observe critical facts.",
+   "idea": {
+    "problem": "Agent harnesses control what LLMs see across turns; unclear when design choices change success vs. just cost",
+    "approach": "Pre-registered experiments measuring agent success under different harness memory/context strategies",
+    "result": "Context truncation costs nothing when facts are re-observable, but drops success to chance when irretrievable; harness components recover most of performance…"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.26464",
+   "title": "VerusEval: Evaluating LLM-Generated Verus Specifications Beyond Verifier Acceptance",
+   "authors": [
+    "Ding Wang",
+    "Chao Jiang",
+    "Dugang Liu",
+    "Zhiwu Xu",
+    "Cheng Wen",
+    "Zhong Ming",
+    "Yuwei Liu",
+    "Xinyi Wan",
+    "Lin Huang"
+   ],
+   "abstract": "Large language models (LLMs) are increasingly used to generate Verus contracts for Rust programs together with the proofs that establish them. Yet verifier acceptance, the common measure of success, shows only that the implementation satisfies the generated contract, so it leaves open whether the contract captures the intended behavior. Assessing specification generation therefore requires an evaluation methodology, not a single metric. We present VerusEval, a framework that evaluates generated contracts along six dimensions, including Verus-native checks for semantic triviality, validated input-output (I/O) suites, and contract equivalence, and that relates them so that the strength and blind spots of each become measurable. Evaluating 13,716 artifacts from four workflows, five LLMs, and two prompting settings on 762 tasks, we find that acceptance overstates quality: only 42.3\\% of the accepted artifacts complete all three semantic checks without a flag, and across workflows and models, higher acceptance does not consistently come with more correct contracts. I/O evaluation rejects 23.6\\% of the accepted artifacts, yet only 63.2\\% of those that pass it are proved equivalent. Of the accepted artifacts flagged by contract comparison, 84.1\\% have a rejected completeness obligation, and the direction of a failure prioritizes inspection of the generated contract or the reference; it does not by itself establish which artifact is defective. Screening and review further identify 36 candidate defects among 61 selected reference contracts, and repairing one of them makes 10 of its 11 failing artifacts equivalent. Based on these findings, we derive four actionable lessons for evaluation, generation, and benchmark maintenance.",
+   "abs_url": "https://arxiv.org/abs/2610.26464",
+   "pdf_url": "https://arxiv.org/pdf/2610.26464",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-19",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Introduces a comprehensive evaluation framework for assessing LLM-generated formal specifications (Verus contracts) beyond verifier acceptance, with systematic methodology and large-scale empirical analysis.",
+   "idea": {
+    "problem": "Verifier acceptance alone does not guarantee LLM-generated contracts capture intended behavior",
+    "approach": "Multi-dimensional evaluation framework with six checks: semantic triviality, I/O validation, equivalence comparison, and contract analysis",
+    "result": "Only 42.3% of accepted contracts pass all semantic checks; acceptance significantly overstates specification quality"
+   }
+  },
+  {
+   "id": "2610.26101",
+   "title": "Reliable Before Profitable: QuantHarness for Governing Financial Strategy Development with LLM Agents",
+   "authors": [
+    "Jiasheng Mao",
+    "Jiacheng Liu",
+    "Hengwei Ye",
+    "Zheng Tian"
+   ],
+   "abstract": "LLM agents can turn natural-language financial research requests into executable and backtested strategies, but a successful run may still implement the wrong rule, use information unavailable at decision time, or obscure how repairs and candidate selection changed the strategy. Because these failures arise throughout development, final code and performance metrics alone are insufficient to establish either fidelity to the request or the validity of the development process. We therefore address the reliability of financial strategy development at the trajectory level: the system must control how intermediate outputs become downstream state and preserve the evidence needed to justify the terminal outcome. We introduce QuantHarness, a two-layer agent harness in which a finance-specific Workflow structures specification, data grounding, construction, testing, and review, while Harness Core enforces stage-specific information, action, and commitment boundaries. We also introduce FinRelBench, a benchmark that evaluates strategy-development reliability through execution success, requirement satisfaction, and runtime evidence. QuantHarness achieves the highest Task Success at 90.72\\%, compared with 74.23\\%--84.54\\% for the comparison systems. Controlled stress tests show that its boundaries contain targeted violations, while structured run records improve evidence retrieval and support decision replay under the evaluated protocol.",
+   "abs_url": "https://arxiv.org/abs/2610.26101",
+   "pdf_url": "https://arxiv.org/pdf/2610.26101",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-19",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "tool",
+   "why": "QuantHarness is an agent harness that enforces stage-specific boundaries and constraints on LLM-agent behavior in financial strategy development, with runtime verification and structured evidence preservation.",
+   "idea": {
+    "problem": "LLM agents developing financial strategies may violate requirements, use unavailable data, or obscure the development process despite successful execution.",
+    "approach": "Two-layer harness with finance-specific workflow and enforcement of information, action, and commitment boundaries at each development stage.",
+    "result": "QuantHarness achieves 90.72% task success vs 74.23–84.54% for baselines; stress tests verify boundary enforcement and structured records support decision replay."
+   }
+  },
+  {
+   "id": "2610.25920",
+   "title": "Maestro: Agentic Formal Proof Development by Coordination",
+   "authors": [
+    "Haoyu Li",
+    "Zeren Shui",
+    "Yuhao Zhang",
+    "Ferhat Erata",
+    "Benjamin Mikek",
+    "Murali Krishna Ramanathan",
+    "Hao Zhou"
+   ],
+   "abstract": "Lean is increasingly used to verify mathematical proofs and software produced by LLM agents, but writing formal proofs remains hard. Existing prover systems take a divide-and-conquer approach that recursively decomposes hard proof obligations into easier lemmas and splits again any lemma that resists proof. However, a lemma can resist proof for different reasons, including insufficient guidance, a false statement, or a flaw in the decomposition that produced it. Existing systems cannot tell these apart as a failed attempt reports little beyond its failure, and responses are confined to the failing node without considering the rest of the proof or revising the plan above it. The system may thus keep decomposing obligations along a flawed proof direction until the budget runs out, causing the whole proof attempt to fail. We introduce Maestro, a Lean prover harness that handles failures through global coordination. Provers report why they failed, not just that they failed, and a coordinator that sees the whole proof chooses an appropriate response, such as guiding a stuck prover, correcting a false lemma, or retracting a flawed subtree and replanning it. The same harness extends to verified code synthesis, where a checked counterexample sends the code back for repair. We evaluate Maestro with four frontier LLMs on seven mathematics and three software verification benchmarks. It proves more targets than each model's native coding agent (Claude Code or Codex) on every benchmark the agent has not already saturated, with the largest gains on research-level mathematics. With Claude Opus 5, it discovers its own proofs of 34 of the 48 theorems in the June 2026 release of arXivLean, against 19 for the native agent. It also outperforms all published prover systems on every benchmark they share, solving 669/672 PutnamBench, 59/60 Lean-IMO-Bench, and 6/6 IMO 2026.",
+   "abs_url": "https://arxiv.org/abs/2610.25920",
+   "pdf_url": "https://arxiv.org/pdf/2610.25920",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "published": "2026-10-19",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "tool",
+   "why": "Presents Maestro, a Lean prover harness that coordinates LLM agents through structured failure reporting and global replanning to improve formal proof development.",
+   "idea": {
+    "problem": "LLM-based provers fail without explaining why, leading to wasted computation on flawed proof directions",
+    "approach": "Agent harness with rich failure reporting and central coordinator that decides between guiding, correcting, or replanning proof attempts",
+    "result": "Proves more theorems than native agents on math and software benchmarks; 34/48 arXivLean theorems with Claude Opus"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.25616",
+   "title": "Better Specifications, Better Code: Fine-Tuning LLMs for Behavioral Contract Generation",
+   "authors": [
+    "Brhane Team",
+    "Tiantian Yang",
+    "Nikta Akbarpour",
+    "Simone Bartucci",
+    "Francesco Calimeri",
+    "Song Wang"
+   ],
+   "abstract": "Large language models (LLMs) demonstrate strong code-generation capabilities but often struggle with functional correctness due to implicit or ambiguous behavioral requirements. We present CG2, a contract-guided code generation framework that translates natural-language tasks into structured behavioral contracts specifying interfaces, preconditions, postconditions, and invariants. CG2 fine-tunes an LLM to generate these contracts and introduces an iterative semantic validation and repair process to identify and correct incomplete, inconsistent, or incorrect specifications before guiding an unchanged downstream code-generation model. We evaluate CG2 on 1,007 held-out tasks using five code LLMs: DeepSeek-Coder-V2-Lite-Instruct, Ministral-3-14B-Instruct-2512, Qwen2.5-Coder-14B-Instruct, Qwen2.5-Coder-32B-Instruct, and Qwen3.5-27B. Results show that CG2 consistently improves pass@1 over direct code generation by 1.49-3.27 percentage points (7.58%-22.45% relative improvement) and over contract guidance without fine-tuning by 1.19-2.38 percentage points (7.04%-14.65% relative improvement). Manual analysis further reveals that semantically correct contracts are associated with higher code-generation accuracy. These findings demonstrate that explicitly specifying and validating behavioral requirements can improve functional correctness without modifying downstream code-generation models.",
+   "abs_url": "https://arxiv.org/abs/2610.25616",
+   "pdf_url": "https://arxiv.org/pdf/2610.25616",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-19",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "specification_mining",
+    "autoformalization"
+   ],
+   "confidence": 0.82,
+   "type": "method",
+   "why": "Fine-tunes LLMs to generate formal behavioral contracts (preconditions, postconditions, invariants) from natural language to improve code generation and correctness.",
+   "idea": {
+    "problem": "LLMs generate code without explicit formal specifications, leading to functional correctness issues from ambiguous requirements",
+    "approach": "Fine-tune LLM to generate behavioral contracts, then iteratively validate and repair them before using for code generation",
+    "result": "7.58%-22.45% relative improvement in pass@1 over direct code generation across five code LLMs"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.25552",
+   "title": "Symbolic Constraint Agents: Mining Formal Tool-Call Constraints to Prevent Agent Errors",
+   "authors": [
+    "Jinu Lee",
+    "Shraddha Barke"
+   ],
+   "abstract": "Symbolic constraints (programmatic, deterministic checks for tool calls) enable deterministic verification of LLM agents' tool calls, but existing approaches primarily enforce predefined safety policies rather than tool dependencies in complex tool environments. We explore whether symbolic constraints can be mined from environments and observations beyond predefined policies, and whether they can improve end-to-end task performance. We present Symbolic Constraint Agents (SCA), a framework that mines symbolic constraints from API documentation, refines them against execution traces, and checks the agent's tool calls with an SMT solver at runtime. A violation triggers a natural-language warning or, when the valid replacement is uniquely determined, an automatic repair. On AppWorld, refinement raises error-detection F1 from 37.0 to 58.3 on GPT-5.5 traces and from 39.3 to 61.9 on Qwen3.5-27B traces. At runtime, repair raises GPT-5.4-mini's task success by 5.4 points under a 40-call budget and 9.8 points when environment errors are hidden, while removing 59--87\\% of failed calls across models, and transfers to $τ^2$-bench with gains of up to 5.6 points. These findings show that automatically acquired symbolic constraints can improve tool-calling reliability and task completion, particularly when failures are costly or difficult to diagnose.",
+   "abs_url": "https://arxiv.org/abs/2610.25552",
+   "pdf_url": "https://arxiv.org/pdf/2610.25552",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-18",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Mines symbolic constraints from API documentation and traces to enforce tool-call correctness, then uses SMT solver verification and automatic repair at runtime to constrain LLM-agent behavior.",
+   "idea": {
+    "problem": "LLM agents make invalid tool calls; predefined safety policies miss tool dependencies in complex environments",
+    "approach": "Mine symbolic constraints from API docs and execution traces; verify calls with SMT solver; repair or warn at runtime",
+    "result": "Constraint refinement improves error detection F1 by ~20 points; runtime repair increases task success by 5.4–9.8 points and removes 59–87% of failed…"
+   }
+  },
+  {
+   "id": "2610.25018",
+   "title": "Structure-Aware Equivalence for Evaluating Autoformalized Statements",
+   "authors": [
+    "Yi Yu",
+    "Yu-Hsuan Wu",
+    "Guang Lin",
+    "Yuhui Zhang",
+    "Yuxiang Peng"
+   ],
+   "abstract": "Evaluating autoformalized mathematical statements requires determining whether a candidate preserves the mathematical claim intended by a trusted reference. Existing methods approach this problem from complementary directions: reference-free learned evaluators estimate semantic agreement but are not constrained to a formal equivalence relation, while reference-based proof methods typically employ whole-statement logical equivalence to provide formal certificates, which is too coarse for translation fidelity and may identify mathematically unrelated statements. We introduce Structure-Aware Equivalence (SAE), a role-preserving formal equivalence relation between syntactic and whole-statement logical equivalence that allows formally justified reformulations while preserving translation-relevant mathematical structure. We operationalize SAE in the Autoformalization Correctness Evaluator (ACE), which provides certified equivalence or inequivalence judgments and reports Inconclusive otherwise. On ProofNetVerif, a benchmark introduced with BEq+, ACE retains substantial equivalent-case coverage while remaining highly conservative in certifying disputed or inequivalent pairs. On targeted diagnostics, BEq+ accepts 94-96% of unrelated but whole-statement logically equivalent pairs, while Mathesis LeanScorer accepts 42% of localized meaning-changing perturbations; ACE accepts none of either set as equivalent.",
+   "abs_url": "https://arxiv.org/abs/2610.25018",
+   "pdf_url": "https://arxiv.org/pdf/2610.25018",
+   "primary_category": "cs.PL",
+   "categories": [
+    "cs.PL"
+   ],
+   "published": "2026-10-18",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes Structure-Aware Equivalence, a formal method to evaluate whether autoformalized mathematical statements preserve intended meaning while accounting for legitimate reformulations.",
+   "idea": {
+    "problem": "Evaluating autoformalized statements needs to preserve mathematical meaning while allowing legitimate reformulations.",
+    "approach": "Introduce Structure-Aware Equivalence (SAE), a role-preserving formal relation between syntactic and logical equivalence, operationalized in ACE evaluator.",
+    "result": "ACE provides certified equivalence judgments while correctly rejecting unrelated logically-equivalent statements where other methods fail."
+   }
+  },
+  {
+   "id": "2608.22630",
+   "title": "VeGo: Direct Deductive Formal Verification of Go Programs for Computer Science Education",
+   "authors": [
+    "Tina Massoudi",
+    "Chris Dutchyn"
+   ],
+   "abstract": "As formal methods are rapidly becoming accessible and practical due to AI coding agents, priority passes to assisting developers and students in generating specifications. Leveraging native HMX/SSA verifiers provide that support with rigorous mathematical guardrails. We present VeGo (Verified Go), a deductive formal verification system that enables direct verification of standard Go source code. VeGo incorporates Hoare-style contracts, loop invariants and integer variants, well-founded recursive measures, block-level scope invariants, and equational reasoning chains with primed variables directly as non-intrusive Go comments. We detail the language selection rationale justifying Go as an ideal balance over C, C++, Java, and Rust, strategically adopting Go's native multiple return values. We detail the tool architecture, exploiting the theoretical equivalence between Static Single Assignment (SSA) form and first-order functional programming to annotate code, desugar of clopen interval quantifiers, add Reynolds' skip statement, provide weakest precondition calculus, and native Hindley-Milner constraint inference, and verification condition resolution over the SSA form. We formalize contract-precision checking (weakest precondition vs. strongest postcondition) using an explicit analogy to type inference. Finally, we evaluate VeGo across educational textbooks and outline a roadmap for formal concurrency specifications using epistemic temporal logic.",
+   "abs_url": "https://arxiv.org/abs/2608.22630",
+   "pdf_url": "https://arxiv.org/pdf/2608.22630",
+   "primary_category": "cs.PL",
+   "categories": [
+    "cs.PL"
+   ],
+   "published": "2026-10-18",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.75,
+   "type": "tool",
+   "why": "VeGo translates Go source code annotated with Hoare-style contracts into formal verification conditions, enabling direct deductive verification with mathematical rigor.",
+   "idea": {
+    "problem": "Students and developers need accessible formal verification without intrusive annotations or language changes.",
+    "approach": "Embed Hoare contracts, loop invariants, and reasoning chains as Go comments, then desugar to SSA form for verification condition generation.",
+    "result": "Tool that verifies standard Go code with weakest precondition calculus and contract-precision checking; evaluated on educational textbooks."
+   }
+  },
+  {
+   "id": "2605.08646",
+   "title": "PAAC: Privacy-Aware Agentic Device-Cloud Collaboration",
+   "authors": [
+    "Liangqi Yuan",
+    "Wenzhi Fang",
+    "Shiqiang Wang",
+    "Christopher G. Brinton"
+   ],
+   "abstract": "Large language model (LLM) agents face a structural tension: cloud agents provide strong reasoning but expose user data, while on-device agents preserve privacy at the cost of overall capability. Existing device-cloud designs treat this boundary as a compute split rather than a trust boundary suited to agentic workloads, and existing sanitizers force a choice between policy flexibility and the structural fidelity tool calls require. In this work, we develop PAAC, a privacy-aware agentic framework that aligns planner--executor decomposition with the device-cloud boundary so that role specialization itself becomes the privacy mechanism. The cloud agent reasons over typed placeholder tokens that preserve each sensitive value's reasoning role while discarding its content, while the on-device agent identifies sensitive spans and distills each step's execution outcome into compact key findings. Sanitization confines the on-device LLM to proposing which spans to mask, while a deterministic registry performs all substitution and reversal, keeping actions directly executable on device. On three agentic benchmarks under strict privacy settings, PAAC dominates the Pareto frontier of privacy and accuracy, improving average accuracy by 15-36\\% and reducing average leakage by 2-6$\\times$ over state-of-the-art device-cloud baselines, with the largest margins on privacy targets outside fixed entity taxonomies. We find consistent improvements on 17 additional benchmarks spanning 10 domains, including math, science, and finance.",
+   "abs_url": "https://arxiv.org/abs/2605.08646",
+   "pdf_url": "https://arxiv.org/pdf/2605.08646",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CL",
+    "cs.DC"
+   ],
+   "published": "2026-10-18",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a framework for structuring LLM agents across device-cloud boundaries with privacy-preserving guardrails that constrain information flow and sanitize sensitive data before cloud processing.",
+   "idea": {
+    "problem": "LLM agents must balance reasoning capability with user data privacy across device-cloud systems",
+    "approach": "Decompose agent into on-device sanitizer and cloud planner using typed placeholders and deterministic masking registry",
+    "result": "15-36% accuracy improvement with 2-6× less data leakage vs. baselines on agentic benchmarks"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.24871",
+   "title": "Bellman Language Models: Solving the Recurring Decisions of LLM Agents",
+   "authors": [
+    "Adarsh Vatsa",
+    "William Eiers"
+   ],
+   "abstract": "A general observation in agentic workflows, especially bounded ones, is that the decision space of the LLM, when we separate a decision from generation, starts approaching saturation: the agent meets the same states again and again, and after enough conversations it stops meeting new ones. LLMs generally don't treat these decisions as an optimization problem and instead re-derive them from their context/prompt on every turn. We show that treating decision making within reasonable bounds as an optimization problem, solving it once, and reusing the solved decisions can often make an agent faster, cheaper and more reliable. Our approach, which we call Discretize, Then Decide, starts from data such as the workflow's own logs or, when none exists, runs of the LLM agent itself. It reads each conversation into discrete states and estimates the probability of each outcome and the cost of each move, until no new states appear and the probabilities stop changing. It then solves the resulting Markov decision process. The solution runs as a controller around the model, sending moves whose content is fixed in the state, such as a tool call or a templated reply, and any state it hasn't seen is sent back to the LLM. We call an LLM run this way a Bellman language model (BLM), after Richard Bellman's equation for the best move in each state. On $τ^2$-bench telecom, the controller with no model solves 79% of tasks. As a BLM, Qwen3.8-27B, an open model, goes from 29% to 96% with 93% fewer model calls. For Claude Opus 5.5, which solves 96% of tasks on its own, running it as a BLM cuts model calls and cost per task by about 98% and lets it solve 2 more tasks. On InventoryBench, the solved policy with no model beats every published method. Where the hard part is writing content rather than choosing moves, such as resolving SymPy issues, few decisions can be solved in advance, and a BLM helps little.",
+   "abs_url": "https://arxiv.org/abs/2610.24871",
+   "pdf_url": "https://arxiv.org/pdf/2610.24871",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG",
+    "cs.SY",
+    "eess.SY"
+   ],
+   "published": "2026-10-17",
+   "venue": "",
+   "code": "https://github.com/adarsh-vatsa/dtd-preregistration",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a controller harness that learns and reuses decision policies from agent logs, converting recurring LLM decisions into a solved MDP to constrain agent behavior and improve efficiency.",
+   "idea": {
+    "problem": "LLM agents re-derive decisions from context repeatedly, wasting compute on recurring states",
+    "approach": "Extract discrete states and outcomes from agent logs, solve as MDP, deploy solved policy as controller harness",
+    "result": "96% task success with 93% fewer model calls for Qwen; 98% cost reduction for Claude while maintaining performance"
+   }
+  },
+  {
+   "id": "2610.24690",
+   "title": "Verifying Human-Written Reasoning References",
+   "authors": [
+    "Ali Ansari",
+    "Farhana Ferdousi Liza"
+   ],
+   "abstract": "Evaluating the reasoning of AI systems often relies on human-written reasoning chains as references, yet the logical support for their individual steps is rarely verified. Although prior neuro-symbolic approaches have formalized and checked reasoning, their reported evaluations do not systematically assess whether step conclusions in human-written reference derivations are entailed by their cited premise sets or investigate the sources of failures in those references. To address these limitations, we present a novel reference-centred assessment method for human-written derivations that combines entailment checking against cited premise sets, full-premise rechecking, and failure attribution to examine the reliability of these derivations and their formal representations. We evaluate it on P-FOLIO, using a large language model (LLM) to translate step conclusions into first-order logic (FOL) and the Z3 SMT solver to check entailment. Of 386 derivations examined, 202 (52.3%) meet all our checking criteria, meaning that every translated step is entailed by its stated support and the required target is established under the available FOL representations. Among 230 steps not entailed by their stated support, 191 become entailed when checked against the complete original premises, indicating that most initial failures reflect incomplete or mismatched support rather than unsupported claims. Manual analysis of the remaining 39 cases identifies 21 human reasoning errors, 11 FOL translation errors, and 7 dataset annotation errors. A separate manual audit of 50 randomly sampled steps that passed the entailment checks found 46 faithful FOL translations (92%). These findings suggest that disagreement with a human-written reasoning reference may originate in the reference or its formal representation rather than in the AI system being evaluated.",
+   "abs_url": "https://arxiv.org/abs/2610.24690",
+   "pdf_url": "https://arxiv.org/pdf/2610.24690",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LO"
+   ],
+   "published": "2026-10-17",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Systematically evaluates the logical validity of human-written reasoning references using LLM-based FOL translation and SMT solver verification, identifying sources of failures in formal representations.",
+   "idea": {
+    "problem": "Human-written reasoning references used to evaluate AI are rarely verified for logical correctness",
+    "approach": "Translate step conclusions to FOL using LLM, check entailment with Z3 SMT solver, attribute failures to reasoning errors or translation issues",
+    "result": "52.3% of derivations fully valid; most failures reflect incomplete premise support rather than unsupported claims"
+   }
+  },
+  {
+   "id": "2610.24548",
+   "title": "Proving LLM-Generated GPU Kernels Correct and Safe: Floating-Point Verification in Lean and VerCors",
+   "authors": [
+    "Archibald Browne",
+    "Eugene Lee",
+    "Cristopher Salvi"
+   ],
+   "abstract": "Modern statistical model development begins with a high-level specification in an automatic differentiation framework such as PyTorch, JAX, or TensorFlow, which is then lowered to a target backend by a compiler or implemented manually by a research engineer. In this paper, we study whether frontier language models can correctly perform the latter task by generating GPU kernels from high-level benchmark specifications. We introduce a framework in which a language-model agent uses Velvet, a program verifier for imperative programs embedded in Lean, to prove semantic equivalence between a high-level specification and a generated CUDA kernel under an explicit set of assumptions. It also asks the LLM to prove thread safety and data race freedom of the generated kernel in VerCors, a deductive verifier for parallel code. Our main contribution to the formal verification of LLM- generated GPU kernels is showing that a combination of Lean automation and language-model-guided proof construction can verify a broad set of basic neural- network building blocks over floating-point values, allowing LLMs to implement semantically correct and safe kernels. In our framework, floating-point verifications never rely on compiled code and are always checked via the Lean kernel.",
+   "abs_url": "https://arxiv.org/abs/2610.24548",
+   "pdf_url": "https://arxiv.org/pdf/2610.24548",
+   "primary_category": "cs.PL",
+   "categories": [
+    "cs.PL"
+   ],
+   "published": "2026-10-17",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization",
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Builds an agent harness using Lean and VerCors to verify that LLM-generated GPU kernels are semantically correct and safe, combining formal verification with LLM-guided proof construction.",
+   "idea": {
+    "problem": "Verifying that LLM-generated GPU kernels match high-level specifications and are thread-safe",
+    "approach": "Agent uses Lean verifier to prove semantic equivalence and VerCors for thread safety; LLM guides proof construction with automated checking",
+    "result": "Framework successfully verifies neural-network building blocks over floating-point values with proofs checked by Lean kernel"
+   }
+  },
+  {
+   "id": "2608.28502",
+   "title": "Instruction Self-Arbitration Is Not a Trust Boundary: Configuration-Dependent Tool Calls and External Enforcement in LLM Agents",
+   "authors": [
+    "Jun Wen Leong"
+   ],
+   "abstract": "LLM agents receive instructions from system prompts, users, memory and tools, and labels inside a shared context are not an enforceable trust boundary. We study how measurement and configuration choices change what benign file-deletion tasks on gateway-labelled endpoints appear to show (an availability-selected roster) and test an external reference monitor. The original keyword flag for detecting fabricated authority mostly matched negated phrases: two blind judges flagged the claim as fabricated in at most 1 of 150 GPT-4.1-mini responses. In a fully logged reflection re-run, responses that both express doubt and delete are rare after a reflection instruction (25 of 509 executions), and a casual request that gives a reason but claims no authority is executed by all ten endpoints. Source-format cues are linearly decodable (97.5-100% probe accuracy, four open-weight models), but a pre-specified crossed-probe test halted and gives no interpretable evidence of an abstract provenance representation, and steering did not move tool mention (0 of 1,895 trials, mention-scored). On the same 14,294 diverse-prompt trials across 29 endpoints, the rule fixed before collection gives an endpoint mean of 1.21%; a path-based reading chosen after the data were seen gives 12.9% [6.6-20.1%, 29 models]; any delete call gives 20.2%. In 1,350 sandbox trials, all 750 forged, tampered, replayed and unsigned records were rejected at admission and no file outside a token's scope was removed (a functional-correctness test, not a robustness estimate). Semantic authorisation remains open: a deputy with a valid scoped token induced in-scope deletions in 31/42 trials, and legitimate privileged requests produced at least one in-scope deletion in 120/150 (144/150 and 36/42 with a larger output limit).",
+   "abs_url": "https://arxiv.org/abs/2608.28502",
+   "pdf_url": "https://arxiv.org/pdf/2608.28502",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-17",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.82,
+   "type": "empirical",
+   "why": "Empirically evaluates external reference monitors and runtime enforcement mechanisms for constraining LLM agent tool calls against instruction injection and unauthorized actions.",
+   "idea": {
+    "problem": "LLM agents cannot enforce trust boundaries on tool calls through instructions alone; malicious or confused directives can cause unintended actions.",
+    "approach": "Deploy external reference monitors and sandbox enforcement to validate agent tool calls against permission rules and detect forged or unauthorized requests.",
+    "result": "External monitors reject forged/tampered records but semantic authorization remains hard; instruction labels alone are not a reliable trust boundary."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2607.15776",
+   "title": "NeurOWL: An LLM-Based Neural-symbolic Framework for Incomplete OWL Ontology Reasoning",
+   "authors": [
+    "Hui Yang",
+    "Jiaoyan Chen",
+    "Yiping Song",
+    "Renate Schmidt",
+    "Wen Zhang"
+   ],
+   "abstract": "OWL ontologies provide a formal knowledge representation framework that enables semantic reasoning, and have been widely adopted across domains such as healthcare and bioinformatics. In practice, however, real-world ontologies are often incomplete, which pose challenges for reasoning. In this work, we focus on a fundamental subsumption reasoning problem: given an incomplete ontology and a candidate (non-entailed) subsumption, determine whether the subsumption is semantically plausible and, if so, providing a logically sound explanation containing potential missing axioms. This task unifies subsumption verification with ontology abduction, and generalizes the latter by removing the need for a predefined candidate set of missing axioms. To address this subsumption reasoning problem, we propose NeurOWL, an end-to-end neuro-symbolic framework that jointly performs verification and abduction, leveraging both formally defined semantics and textual semantics through Large Language Models and ontology embeddings. We evaluate NeurOWL on real-world ontologies across multiple domains, demonstrating strong and robust performance across different domains.",
+   "abs_url": "https://arxiv.org/abs/2607.15776",
+   "pdf_url": "https://arxiv.org/pdf/2607.15776",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-17",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Combines LLMs with formal ontology reasoning (OWL) to verify subsumption claims and generate missing axioms, bridging natural and formal semantics for incomplete knowledge representation.",
+   "idea": {
+    "problem": "Real-world OWL ontologies are incomplete, making subsumption reasoning unreliable and requiring missing axiom discovery",
+    "approach": "Neuro-symbolic framework combining LLMs, ontology embeddings, and formal OWL semantics for joint verification and abduction",
+    "result": "Strong performance on subsumption verification and plausible axiom generation across real-world ontologies in multiple domains"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2607.01510",
+   "title": "Janus: a Playground for User-Involved Agentic Permission Management",
+   "authors": [
+    "Natalie Grace Brigham",
+    "Eugene Bagdasarian",
+    "Tadayoshi Kohno",
+    "Franziska Roesner"
+   ],
+   "abstract": "AI agents that autonomously execute tool calls on a user's behalf raise pressing questions about permission management: what role could users play, and what role should they play? Despite many proposed approaches, the user's role in agentic permission management remains underexplored. We introduce Janus, a playground system for implementing and evaluating user-involved agentic permission management designs. Janus consists of two components: Janus-Core, a modular agentic system supporting a diverse spectrum of permission management designs, and Janus-Harness, an automated evaluation framework. Grounded in a conceptual model that identifies key design axes for user involvement, we implement six permission assistants spanning the design space and evaluate them across three scenarios with four subscenarios each and three synthetic responders. We demonstrate that user involvement is critical and can strengthen privacy and security and that user behavior such as permission fatigue must be accounted for in system design. No single design performs optimally across all contexts, motivating a more principled and context-sensitive approach to deploying permission assistants in agentic systems. Janus is publicly available to support future investigation into this dimension of agentic system design.",
+   "abs_url": "https://arxiv.org/abs/2607.01510",
+   "pdf_url": "https://arxiv.org/pdf/2607.01510",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CR"
+   ],
+   "published": "2026-10-17",
+   "venue": "48th IEEE Symposium on Security and Privacy",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "tool",
+   "why": "Provides a playground system for designing and evaluating permission management harnesses that constrain LLM-agent tool calls through user involvement and formal permission models.",
+   "idea": {
+    "problem": "Users lack control over what tools AI agents autonomously execute on their behalf",
+    "approach": "Modular agentic system with permission assistants spanning user-involvement design space and automated evaluation framework",
+    "result": "User involvement strengthens security; no single design optimal across all contexts"
+   }
+  },
+  {
+   "id": "2610.24311",
+   "title": "RATION: Towards Quantitative Risk-Based Access Control for AI Agents",
+   "authors": [
+    "Yuntao Du",
+    "Harsh Chaudhari",
+    "Yuetian Chen",
+    "Ron Heichman",
+    "Ashish Jayamohan",
+    "Kumar Pallav",
+    "Mahim Patel",
+    "Kaiyuan Zhang",
+    "Kyle Polley",
+    "Jerry Ma",
+    "Ninghui Li"
+   ],
+   "abstract": "AI agents increasingly interact with external environments to complete complex user tasks. These interactions can lead to unexpected behavior and expose agents to security threats such as indirect prompt injection. Current agent security systems largely protect agents by restricting their actions, which can result in a substantial security-utility trade-off for complex, open-ended tasks. To address this, we propose a quantitative risk-based approach to access control for AI agents that regulates measurable risks accumulated during task execution. As a concrete realization of this approach, we introduce RATION, a security framework that tracks measurable risks associated with agent actions and enforces quantitative constraints throughout execution. RATION first constructs a task-specific policy by combining explicit constraints derived from the user request with implicit risks calibrated from historical executions of similar tasks. During task execution, RATION continuously tracks the accumulated risks and applies different enforcement strategies depending on the type of risk. Extensive experiments on four security benchmarks show that RATION provides strong security while maintaining high task utility across diverse models and environments.",
+   "abs_url": "https://arxiv.org/abs/2610.24311",
+   "pdf_url": "https://arxiv.org/pdf/2610.24311",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "https://github.com/perplexityai/RATION",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes RATION, a quantitative risk-based access control framework that enforces guardrails on AI agent actions during execution by tracking measurable risks and applying constraints.",
+   "idea": {
+    "problem": "AI agents face security threats like prompt injection while maintaining task utility; restrictive access control hurts complex tasks.",
+    "approach": "Track measurable risks from agent actions using explicit constraints and implicit calibration from historical tasks; enforce quantitative constraints during execution.",
+    "result": "Strong security with high task utility across four benchmarks and diverse models."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.24277",
+   "title": "SPIDES: Information-Flow Control for Browser Agents",
+   "authors": [
+    "Egor Zverev",
+    "Juhee Kim",
+    "Leon Trampert",
+    "Boris Köpf",
+    "Aashish Kolluri",
+    "Shruti Tople",
+    "Santiago Zanella-Béguelin"
+   ],
+   "abstract": "Browser agents automate complex workflows by reading and acting on arbitrary page content, but this flexibility exposes them to prompt injection attacks and unintended data exfiltration. Recent work argues that LLM-driven browser agents erode traditional web security boundaries such as the Same-Origin Policy (SOP) by acting across origins with the user's authority and no built-in isolation. We argue that restoring SOP is neither sufficient (a same-origin public sink can leak private data) nor necessary (legitimate tasks require authorized cross-origin flows) for protecting the security of users. We propose SPIDES, which instead enforces information-flow control by gating primitive browser actions such as typing, clicking and navigating on labels propagated from element-level HTML confidentiality and integrity annotations. Untrusted and confidential content is masked from the agent's context, while policies block unauthorized flows, providing security guarantees against both prompt injection and data exfiltration that hold independently of the model driving the agent. To evaluate SPIDES and baseline defenses under a common threat model, we build MicroNet, a closed ecosystem of 28 interlinked websites with element-level ground-truth labels and paired benign/adversarial tasks. SPIDES achieves 0% attack success rate by design while retaining high task completion rate and autonomy. Our findings demonstrate that information-flow control is an effective technique to extend web security to browser agents, gaining on autonomy and utility against state-of-the-art baselines. The source code and data are openly accessible at https://github.com/microsoft/SPIDES.",
+   "abs_url": "https://arxiv.org/abs/2610.24277",
+   "pdf_url": "https://arxiv.org/pdf/2610.24277",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "https://github.com/microsoft/SPIDES",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Proposes information-flow control as a logic-based guardrail to constrain LLM browser agents, enforcing security policies on primitive actions through element-level labels independent of the model.",
+   "idea": {
+    "problem": "Browser agents expose users to prompt injection and data exfiltration by acting across origins with user authority",
+    "approach": "Enforce information-flow control via labels on HTML elements, gating browser actions like typing and clicking",
+    "result": "Achieves 0% attack success rate while maintaining high task completion and autonomy compared to baselines"
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2610.23791",
    "title": "DrugHarness: An Evolvable Agent Harness for Computational Drug Discovery",
@@ -98,7 +716,7 @@
     "approach": "Self-hosted agent harness wrapping open-weight models with reading, search, computation tools and citation grounding.",
     "result": "Harness doubles base model accuracy to 0.874; traces 2× more claims to read passages; abstains when source missing; no fabricated citations."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.23449",
@@ -193,7 +811,7 @@
     "approach": "LLM agent that generates harnesses from code, validated by formal soundness and precision guards",
     "result": "Successfully detects three historical assertion violations in curl and libuv using CBMC"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.00050",
@@ -225,6 +843,72 @@
     "approach": "Framework separating graph engineering for progression, loop engineering for bounded recovery, and harness engineering for zero-trust execution with identity and policy…",
     "result": "Executions terminate with verified deployments or auditable terminal failures under bounded recovery on Google Cloud"
    }
+  },
+  {
+   "id": "2606.14867",
+   "title": "Evaluating the Robustness of Proof Autoformalization in Lean 4",
+   "authors": [
+    "Zhengtao Gui",
+    "Sheng Yang",
+    "Zhouxing Shi"
+   ],
+   "abstract": "Proof autoformalization aims to translate a mathematical informal proof in natural language into a formal proof in a formal language such as Lean 4. Existing LLM-based models for proof autoformalization are typically evaluated only on well-formed informal proofs from curated datasets. We argue that a robust proof autoformalizer must remain faithful even for informal proofs that diverge from these idealized ones, and we present the first study on the robustness of proof autoformalization models. We formulate two categories of perturbations: a global perturbation paraphrases the informal theorem-proof pair in a different style, under which the formalization should remain consistent; a local perturbation alters a value, symbol, or proof step, possibly in a counterfactual way, and a robust formalization should faithfully reflect the perturbation rather than reverting to the original or inferring a different one on its own. We build a benchmark with both perturbations on miniF2F and MATH-500, and automatically measure how stable a proof autoformalization's correctness is under global perturbations and how faithfully its output reflects local perturbations. We evaluate seven recent models: their correctness varies under global perturbations, and they mostly fail to remain faithful under local perturbations.",
+   "abs_url": "https://arxiv.org/abs/2606.14867",
+   "pdf_url": "https://arxiv.org/pdf/2606.14867",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.95,
+   "type": "benchmark",
+   "why": "Introduces a benchmark with perturbations to evaluate robustness of LLM-based proof autoformalization models translating natural-language proofs into Lean 4.",
+   "idea": {
+    "problem": "LLM proof autoformalizers are only evaluated on curated proofs; robustness to variations is unknown",
+    "approach": "Create benchmark with global and local perturbations to test stability and faithfulness of formalizations",
+    "result": "Seven models show varying correctness under global perturbations and mostly fail local perturbation faithfulness"
+   }
+  },
+  {
+   "id": "2603.23844",
+   "title": "Language Models as Higher-Order Planning Formalizers",
+   "authors": [
+    "Owen Jiang",
+    "Cassie Huang",
+    "Ashish Sabharwal",
+    "Li Zhang"
+   ],
+   "abstract": "Recent work provides overwhelming evidence that LLMs, even those trained to scale their reasoning trace, quickly deteriorate at planning as problems become more complex. LLM-as-Formalizers aim to address this by employing LLMs as a bridge to translate natural language descriptions into structured planning representations such as PDDL, which are then fed to a programmatic solver. We observe that its success may be overstated because planning problem descriptions in standard benchmarks often have a one-to-one mapping to PDDL, which departs from real use cases. To address this, we introduce the notion of unraveling problems where a natural yet succinct description translates into a very large PDDL representation. Using unraveling variants of four standard planning domains, we demonstrate that LLM Formalizers also do not always scale. We tackle this challenge by introducing a new paradigm, LLM-as-Higher-Order-Formalizer, where the LLM generates a high-level program that captures the recurrent logic within the description and in turn generates the larger PDDL representation. This decouples token output from the combinatorial explosion of the underlying formalization and search space, leading to improved performance for complex problems.",
+   "abs_url": "https://arxiv.org/abs/2603.23844",
+   "pdf_url": "https://arxiv.org/pdf/2603.23844",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-16",
+   "venue": "",
+   "code": "",
+   "license": "CC BY-SA 4.0",
+   "license_url": "http://creativecommons.org/licenses/by-sa/4.0/",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes using LLMs to translate natural language planning descriptions into formal PDDL representations, with a novel higher-order approach to handle complex problems that require large formalizations.",
+   "idea": {
+    "problem": "LLMs fail at complex planning; standard benchmarks have one-to-one natural language to PDDL mapping, unlike real use cases with large formalizations",
+    "approach": "Generate high-level programs capturing recurrent logic that then produce PDDL, decoupling token output from combinatorial explosion",
+    "result": "Higher-order formalizer improves performance on complex planning problems with unraveling variants"
+   },
+   "figure_tries": 1
   },
   {
    "id": "2610.22578",
@@ -329,7 +1013,7 @@
     "approach": "Harness-Delta Attribution protocol dissects gains into overfitting, test-time scaling, and residual improvement across models and tasks",
     "result": "54% overfitting and 14% test-time scaling on average; search-set gains often fail to transfer to held-out tasks"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.22441",
@@ -396,7 +1080,7 @@
     "approach": "Multi-layer analysis (screening, contract, validation) with dynamic exploitation and sandbox containment testing",
     "result": "16.4% of MCP servers exhibit undeclared filesystem capabilities; 150 vulnerable instances confirmed"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.22124",
@@ -505,7 +1189,7 @@
     "approach": "Benchmark with controlled dialogue forking and dialog-flow-aware metrics (FlowKL, FlowScore) that compare procedural trajectories rather than semantic…",
     "result": "FlowScore outperforms baselines in detecting procedural deviation across dialogue and turn levels"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.21458",
@@ -540,7 +1224,7 @@
     "approach": "Measure survival of existing marks (KGW, AgentMark) under covert rewriting attacks; design robust mark based on stable ordering of public game table entries.",
     "result": "Published marks fail; proposed order-based mark detects 62/76 copies but is vulnerable to scheme-aware reshuffling."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2608.25202",
@@ -577,7 +1261,7 @@
     "approach": "Thematic analysis of Reddit discussions, interviews with 21 practitioners, and corpus study of 470,795 spec files from GitHub repos",
     "result": "Practitioners use specs selectively; implementation details help agents but hurt spec maintenance; spec-code checks lag behind code changes"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2605.27922",
@@ -620,7 +1304,7 @@
     "approach": "Create diagnostic benchmark evaluating harness configurations across models in shared task environments with detailed execution traces",
     "result": "5,194 trajectories show substantial variation across model-harness pairings and identify execution-alignment failures in reasoning versus tool…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2605.12863",
@@ -655,7 +1339,7 @@
     "approach": "Agents generate well-typed programs within scaffolding; type-checker enforces policies before execution",
     "result": "Demonstrated via I/O sandboxing, data provenance, and information-flow control case studies"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2603.25111",
@@ -697,7 +1381,7 @@
     "approach": "Formally Guarded Generative Models wrap each generative call with first-order logic contracts and rejection sampling verified fallbacks",
     "result": "SEVerA achieves zero constraint violations while outperforming baselines on program verification, symbolic math, and policy-compliant tool use"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.20573",
@@ -2139,7 +2823,7 @@
     "approach": "Two-level recursion: task-level refinement via contrastive Propose-Probe-Compose steps, plus harnessing-level extraction to update continual improvement…",
     "result": "Consistent improvements up to 11.5 points on WorkBuddy-Bench, 4.5 on JobBench, 11.8% on LAB across multiple models"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.13075",
@@ -6034,7 +6718,7 @@
     "approach": "Model plan as commitment hierarchy; single classification with deterministic propagation layer; prove no local policy can be both safe and optimal",
     "result": "Recovers 43% cost savings versus restart with 100% correctness across three environments"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.36362",
@@ -6107,7 +6791,7 @@
     "approach": "Propose reusable harness design patterns: inference endpoints, tool-server architectures, shared memory, deterministic orchestration",
     "result": "Practical design principles distilled from APS deployments applicable across instruments"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.35659",
@@ -6139,7 +6823,7 @@
     "approach": "Hash-chained ledger capturing intent, reasoning, actions with pre-execution policy gates and cross-verification",
     "result": "Detects all mutations/forgeries; policy gates block 41% harmful calls; LLM reviewer catches 100% of seeded faults"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.35366",
@@ -6176,7 +6860,7 @@
     "approach": "Introduce statepoints as consistent, restorable point-in-time environment snapshots; expose snapshot, rollback, and fork primitives to enable recovery and parallel exploration.",
     "result": "Improves task quality up to 15x; enables error recovery with only 3% overhead."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.35233",
