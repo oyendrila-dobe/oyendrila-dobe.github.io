@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20",
+ "generated": "2026-10-21",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,343 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.28397",
+   "title": "MAS-Guard: Unified Guardrails from Individual Agents to Multi-Agent LLM Systems",
+   "authors": [
+    "Mohammad Kachuee",
+    "Phu Mon Htut",
+    "Sheng Li",
+    "Nikolaos Pappas",
+    "Miguel Ballesteros Martinez",
+    "Yassine Benajiba",
+    "Sujith Ravi",
+    "Dan Roth"
+   ],
+   "abstract": "Agentic AI extends large language models (LLMs) from generating responses to planning and executing complex workflows, substantially expanding their utility while exposing applications to unsafe actions, information leakage, and adversarial manipulation. Multi-agent systems further expand these capabilities through specialization and collaboration, but distributed authority, heterogeneous roles, and opaque or potentially compromised participants make safeguarding even more challenging. Existing defenses address important individual threats but provide fragmented coverage across local execution, system-level interactions, and enforcement mechanisms. We introduce MAS-Guard, a unified framework that closes this gap for safeguarding single- and multi-agent AI applications containing both instrumentable and opaque agents. Within instrumentable agents, the proposed local Agent Guardrail (A-Guard) layer applies task-specific experts to assess agentic events. At the system level, developer-owned Agent Charters and a Control Plane combine deterministic structural checks of routes, agent capabilities, and message formats with semantic assessments of roles and message content. These complementary layers enable enforcement through a shared set of interventions: allow, reflection, confirmation, and block. Evaluated across six benchmarks covering diverse single- and multi-agent scenarios with three agent LLMs from different providers, MAS-Guard reduces the overall attack success rate by 71.5-86.3% relative to unguarded agents, while meeting the utility reference criterion on benign tasks.",
+   "abs_url": "https://arxiv.org/abs/2610.28397",
+   "pdf_url": "https://arxiv.org/pdf/2610.28397",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a unified framework of local and system-level guardrails with enforcement mechanisms to constrain single- and multi-agent LLM systems against unsafe actions and adversarial manipulation.",
+   "idea": {
+    "problem": "Multi-agent LLM systems expose applications to unsafe actions, information leakage, and adversarial manipulation across distributed, heterogeneous…",
+    "approach": "Unified framework combining local Agent Guardrail layer with system-level control plane using structural checks and semantic assessments, enabling allow/reflect/confirm/block…",
+    "result": "Reduces attack success rate by 71.5-86.3% across six benchmarks while maintaining utility on benign tasks"
+   }
+  },
+  {
+   "id": "2610.28380",
+   "title": "Object-Oriented Harness: Evolving Agent Harnesses through Object-Oriented Design",
+   "authors": [
+    "Gaotang Li",
+    "Bhavana Dalvi Mishra",
+    "Yifei Ming",
+    "Yanfei Chen",
+    "Zhongying CuiZhu",
+    "Lesly Miculicich",
+    "Long T. Le",
+    "Rui Meng",
+    "Chun-Liang Li",
+    "Hanghang Tong",
+    "Chen-Yu Lee",
+    "Tomas Pfister"
+   ],
+   "abstract": "Agent harnesses are executable code that specifies the prompts, tools, and control flow around a language model. A single global harness can struggle with heterogeneous tasks that require different execution strategies. In this work, we introduce Object-Oriented Harness (OO-Harness), a harness optimization framework that evolves a hierarchy of executable harness classes using object-oriented design. During training, an evolution agent uses execution records to create a family of specialized harnesses, each implemented as a subclass of the base or an existing specialized harness via inheritance. At test time, a harness router uses routing lessons accumulated during training to select a specific harness for each task. Across three long-horizon benchmarks spanning business workflows, workspace tasks, and tool use, OO-Harness achieves the best performance among the compared methods, with an absolute improvement of up to 15% over the base. Extensive ablation studies examine the contributions of its core components.",
+   "abs_url": "https://arxiv.org/abs/2610.28380",
+   "pdf_url": "https://arxiv.org/pdf/2610.28380",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.SE"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes a framework for structuring and optimizing LLM-agent harnesses through object-oriented design, enabling task-specific control strategies and routing.",
+   "idea": {
+    "problem": "Single global harnesses struggle with heterogeneous tasks requiring different execution strategies",
+    "approach": "Evolve a hierarchy of specialized harness classes using object-oriented design and route tasks to appropriate harnesses",
+    "result": "Up to 15% absolute improvement over base harness across three long-horizon benchmarks"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.28201",
+   "title": "MaD-RSI: Model-as-Data for Recursive Self-Improvement of Agent Harnesses",
+   "authors": [
+    "Yu Cui",
+    "Hong He",
+    "Ruiqing Yue",
+    "Sicheng Pan",
+    "Zhuoyu Sun",
+    "Yifei Liu",
+    "Ting Li",
+    "Wenzhuo Zhu",
+    "Baohan Huang",
+    "Haibin Zhang",
+    "Cong Zuo"
+   ],
+   "abstract": "Recursive self-improvement (RSI) of agent harnesses has emerged as an effective approach to enhancing the capabilities of large language model (LLM) agents. By searching the harness space for a specific LLM on a given dataset, RSI can discover a harness tailored to the capabilities and behavioral characteristics of that model. However, such optimization often creates a strong coupling between the learned harness and its target LLM, limiting generalization across models and requiring substantial computational resources to adapt to new LLMs. Moreover, existing RSI methods typically optimize a harness using feedback from a single model and evaluate its generalization to other models only after training. This paradigm treats model differences primarily as a criterion for evaluating generalization rather than as valuable evidence for optimization. In this paper, we introduce a new perspective that treats models as data and places the harness at the center of optimization. Building on this perspective, we propose \\textsc{MaD-RSI}, a framework that directly optimizes a shared harness across multiple heterogeneous LLMs by incorporating their diverse failure trajectories into the training process. Rather than assessing model differences only after optimization, \\textsc{MaD-RSI} leverages these differences as training evidence to guide the self-improvement of a shared harness. Furthermore, we introduce a new evaluation framework with two complementary metrics designed to assess the effectiveness of harness optimization across models. Experiments across multiple datasets and LLMs demonstrate that \\textsc{MaD-RSI} improves generalization over existing approaches while reducing training costs.",
+   "abs_url": "https://arxiv.org/abs/2610.28201",
+   "pdf_url": "https://arxiv.org/pdf/2610.28201",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes MaD-RSI, a framework for optimizing agent harnesses across multiple LLMs by learning from model-specific failure patterns, directly addressing harness design and generalization.",
+   "idea": {
+    "problem": "Agent harnesses optimized for one LLM don't generalize to other models and require expensive retraining",
+    "approach": "Treat models as data; optimize a shared harness by incorporating diverse failure trajectories from multiple heterogeneous LLMs during training",
+    "result": "MaD-RSI improves harness generalization across models while reducing computational training costs"
+   }
+  },
+  {
+   "id": "2610.28093",
+   "title": "ClawMMU: Protection-Coherent Virtual Memory for Stateful LLM Agents",
+   "authors": [
+    "Jinhao Hu",
+    "Bardia Mohammadi",
+    "Mofasshara Binte Rafique",
+    "Lars Henning Klein",
+    "Akhil Arora",
+    "Ashvin Goel",
+    "Laurent Bindschaedler"
+   ],
+   "abstract": "AI agents keep long-term memory, much of which comes from web pages and tool results. Agent harnesses, the software that runs the model, do not record who may act on this memory, so an instruction hidden in a fetched page can be treated as the user's own instruction. We propose ClawMMU, a protection layer that labels every piece of memory with its owner, scope, origins, and authority. ClawMMU checks these labels whenever content enters the model's context, is written to storage, returns from storage, or drives a tool call. Its central rule is that information may rise in authority, but authority never lifts itself. Because the checks depend on where content came from, not on what it says, memory attacks become classical protection faults that the harness stops even when the model is fooled.",
+   "abs_url": "https://arxiv.org/abs/2610.28093",
+   "pdf_url": "https://arxiv.org/pdf/2610.28093",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.OS"
+   ],
+   "published": "2026-10-20",
+   "venue": "NeurIPS 2026",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Proposes a protection layer that enforces information-flow control on LLM-agent memory through formal tracking of ownership, scope, and authority labels to prevent prompt-injection attacks.",
+   "idea": {
+    "problem": "LLM agents vulnerable to hidden instructions in fetched web pages treated as user commands",
+    "approach": "Label memory with owner, scope, origins, authority; check labels on context/storage/tool-call boundaries",
+    "result": "Stops memory attacks as protection faults independent of model fooling"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.27871",
+   "title": "A Neuro-Symbolic Reasoning Engine for Compilation-Free Patch Presence Testing",
+   "authors": [
+    "Siyuan Li",
+    "Jiayi Zhou",
+    "Zhiyuan Xia",
+    "Weijie Wang",
+    "Yaowen Zheng",
+    "Weiran Tang",
+    "Hong Li",
+    "Hongsong Zhu",
+    "Shanqing Guo"
+   ],
+   "abstract": "Code reuse in modern software ecosystems facilitates the spread of 1-day vulnerabilities, posing significant security risks. Determining if patches are present is crucial, but traditional methods suffer from limited usability and accuracy, often depending on a fragile compilation process. In our prior work, we introduced Lares, the first compilation-free framework for patch presence testing that combines large language models (LLMs) with SMT solvers. However, Lares treats the LLM and the SMT solver as two separate, parallel decision channels: the symbolic channel (Z3) succeeded in only 20% of code cases, and the remaining cases fell back to the neural channel (the LLM) for the final decision. Letting the LLM act as the final arbiter turns verification into an informal, non-deterministic process that is prone to hallucination errors, while the two channels never reinforce each other. To overcome these limitations, we propose SyLares, which reformulates compilation-free patch presence testing as neuro-symbolic reasoning. Instead of letting the LLM emit a final verdict, SyLares uses the LLM as a neural feature extractor that perceives heterogeneous source code and decompiled pseudocode and produces specification-compliant SMT-LIB inputs, and delegates the final, deterministic judgment to the symbolic Z3 solver. This neural-perceives, symbolic-decides coupling is realized by a Code2SMT reasoning engine that combines deterministic syntactic parsing with LLM-driven code normalization and symbol alignment, so that every case is reduced to a formal equivalence query rather than an opaque LLM guess.",
+   "abs_url": "https://arxiv.org/abs/2610.27871",
+   "pdf_url": "https://arxiv.org/pdf/2610.27871",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "specification_mining",
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a neuro-symbolic system that uses LLMs to extract features and generate SMT specifications for patch verification, grounding LLM outputs in formal solvers to replace opaque LLM decisions with deterministic symbolic reasoning.",
+   "idea": {
+    "problem": "LLM-based patch presence testing hallucinate; traditional methods lack usability and accuracy",
+    "approach": "LLM extracts code features and generates SMT-LIB specs; Z3 solver makes final deterministic decision",
+    "result": "Eliminates LLM as final arbiter, grounds all decisions in formal symbolic verification"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.27620",
+   "title": "Local Allow, Global Deny: Why Per-Action Authorization Does Not Compose in LLM Agents",
+   "authors": [
+    "Anmol Pandey",
+    "Aditya Jain",
+    "Liang Chen",
+    "Carsten Maple"
+   ],
+   "abstract": "Autonomous LLM agents act through tools under per-action authorization: a local guard screens each tool call in isolation. We show that local authorization does not compose into global authorization. A compositional authorization failure (CAF) is a locally authorized execution, or a pair of locally authorized executions, that violates a global policy spanning intent, purpose, provenance, consent, and delegation. We characterize CAFs along two axes, expressiveness (single-trace safety versus relational k-safety) and observability (a ladder of monitor profiles). Our central result is an impossibility: relational purpose violations form a 2-safety hyperproperty with no per-trace locus of blame, so a per-action monitor that never raises a false alarm detects none of them, independent of the underlying model or decision procedure; they become visible only under cross-execution monitoring, which none of the six guardrails we survey implements. We make this constructive with AL-SYNTH, a SAT/SMT synthesizer (using no language model) that emits minimal CAF witnesses, each checked against an exhaustive oracle. The empirical signature is sharp: across nine LLM judges the per-action view approves the synthesized witness almost without exception, blocking it at a rate comparable to a benign control, yet the same models flag it when shown the two executions together. Per-action authorization is therefore structurally insufficient for relational policy conjuncts not reducible to single-trace safety: to bound them, a monitor must compare executions or accept false alarms.",
+   "abs_url": "https://arxiv.org/abs/2610.27620",
+   "pdf_url": "https://arxiv.org/pdf/2610.27620",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.LO"
+   ],
+   "published": "2026-10-20",
+   "venue": "8th IEEE International Conference on Trust",
+   "code": "https://github.com/anmolpandey299/al-synth",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Characterizes fundamental limitations of per-action authorization in LLM agents and proposes cross-execution monitoring to enforce relational policies that single-trace monitors cannot detect.",
+   "idea": {
+    "problem": "Per-action authorization guards fail to enforce global policies spanning multiple executions or relational properties.",
+    "approach": "Formalize compositional authorization failures as hyperproperties; synthesize minimal witnesses using SAT/SMT without language models.",
+    "result": "Relational policy violations require cross-execution monitoring; per-action monitors cannot detect them without false alarms."
+   }
+  },
+  {
+   "id": "2610.27548",
+   "title": "Act on Your Behalf, Beyond Your Authorization: Benchmarking LLM Agent Authorization Alignment",
+   "authors": [
+    "Zhiping Zhang",
+    "Franklin Mingzhe Li",
+    "Zihao Huang",
+    "Tianshi Li"
+   ],
+   "abstract": "When an LLM agent acts on behalf of a user, it is expected to act within the authorization scope the user grants. Existing agent evaluations largely measure task completion or harmful consequences and can therefore overlook actions that violate this delegation without producing conventional safety or privacy harms. We introduce AuthorizationBench, a benchmark of authorization alignment grounded in documented real-world cases. A scalable construction pipeline produces 286 executable tasks spanning situational triggers, the presence or absence of direct harmful consequences, and ten application domains. We execute every task with four models at two reasoning-effort settings across three agent harnesses in an authorization-aware sandbox that keeps authorized and out-of-authorization paths executable and observable, yielding 6,864 trajectories. Agents act out of authorization in 19.2% of trajectories, with rates ranging from 10.5% to 26.6% across the 24 configurations. Task completion does not imply authorization. Increasing reasoning effort leaves the aggregate rate nearly unchanged, with effects varying across models. On controlled pairs, agents act out of authorization at similar rates with (17.9%) and without (20.8%) direct harmful consequences, and more often under benign pressures than malicious injections (23.5% versus 17.6%, p=0.002). Our results show that task capability, additional reasoning, and consequence-oriented safety evaluation do not by themselves ensure authorization alignment. Moreover, agents that consult the principal before completing a task exhibit lower rates of out-of-authorization behavior (14.0% versus 21.6%, p<0.001), pointing to a tension between agent autonomy and preserving users' decision authority that calls for further human-centered study. Dataset and code are available at https://github.com/PEACH-Research-Lab/AuthorizationBench .",
+   "abs_url": "https://arxiv.org/abs/2610.27548",
+   "pdf_url": "https://arxiv.org/pdf/2610.27548",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CR",
+    "cs.HC"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "https://github.com/PEACH-Research-Lab/AuthorizationBench",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Introduces a benchmark and evaluation framework for measuring whether LLM agents stay within user authorization scope, with an authorization-aware sandbox and enforcement of delegation boundaries.",
+   "idea": {
+    "problem": "LLM agents often act beyond user authorization scope without conventional harms, violating delegation boundaries.",
+    "approach": "AuthorizationBench: 286 executable tasks across domains with authorization-aware sandbox tracking authorized vs. out-of-authorization paths.",
+    "result": "Agents act out-of-authorization in 19.2% of trajectories; consultation with principals reduces rate to 14.0%."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.27543",
+   "title": "KNOX: Hardware-assisted Regulatory Sandbox for Generative Models",
+   "authors": [
+    "Vasisht Duddu",
+    "Adam Caulfield",
+    "Xi He"
+   ],
+   "abstract": "Regulations require companies to run AI models in a regulatory sandbox, an isolated environment that enables monitoring model behavior by regulators, prior to deployment. But, they do not spell out the technical mechanisms to design such a sandbox. Ideally, a regulatory sandbox should show (i) compliance (checks against regulations, and deviations from intended behavior, i.e., unauthorized tool and system calls); (ii) confidentiality (protects model weights from regulators); (iii) attestability (produces tamper-resistant evidence of model behavior for monitoring); and (iv) scalability (evidence is verifiable by multiple regulators). Several prior works (information-flow control, prompt-injection defenses, control-flow integrity, and traditional sandboxing) address specific compliance aspects but lack confidentiality, attestability, and scalability. TEEs meet some of these requirements, but simply running models inside a TEE is insufficient as we need compliance mechanisms. We present KNOX, the first regulatory sandbox, built by running AI workloads inside TEEs. We demonstrate KNOX using agentic workloads. For compliance, we derive an attested policy manifest (with the applicable regulations, the expected tool calls, and the permitted system calls) for a given user prompt. Before an executor performs an action, an attested reference monitor compares it against the attested policy manifest and allows it only if it matches. Every action and verdict is recorded in an attested execution graph, enabling regulators to verify the model's execution and its compliance. We show that KNOX meets all requirements, and can check for compliance with regulations and deviations from intended behavior (e.g., due to prompt injection); and incurs low overhead (<1%).",
+   "abs_url": "https://arxiv.org/abs/2610.27543",
+   "pdf_url": "https://arxiv.org/pdf/2610.27543",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "tool",
+   "why": "Proposes a hardware-assisted regulatory sandbox that enforces compliance guardrails on LLM-agent behavior through attested policy manifests and reference monitors, preventing unauthorized tool and system calls.",
+   "idea": {
+    "problem": "Regulatory sandboxes for AI models lack technical mechanisms for compliance monitoring, confidentiality, and tamper-resistant evidence.",
+    "approach": "Run AI agents in TEEs with attested policy manifests and reference monitors that intercept and verify actions before execution.",
+    "result": "KNOX sandbox meets compliance, confidentiality, attestability, and scalability requirements with <1% overhead."
+   }
+  },
+  {
+   "id": "2610.27435",
+   "title": "Harness Self-Evolution for Long-Horizon Terminal Agents",
+   "authors": [
+    "Ruhan Wang",
+    "Yucheng Shi",
+    "Zongxia Li",
+    "Junyao Yang",
+    "Zhongzhi Li",
+    "Yue Yu",
+    "Haitao Mi",
+    "Dongruo Zhou",
+    "Leoweiliang"
+   ],
+   "abstract": "Long-horizon terminal agents may solve a task in one run yet fail across repeated runs. Stochastic errors can propagate through actions and context, creating a gap between capability and reliable execution. We present RiseHarness, a framework for iteratively improving agent harnesses with model weights fixed. It focuses on flipping tasks with both successful and failed runs under the same configuration, using successful runs as references for failure analysis. RiseHarness combines agent trajectories with internal harness traces from a runtime monitor to examine how model actions interact with command execution, feedback, context management, and completion decisions. A Harness Handbook links this evidence to harness behaviors and source code, helping identify recurring problems in mechanisms shared across tasks. RiseHarness then searches other harness frameworks for relevant implementations and adapts them as design references to the current model and execution protocol. Candidate changes undergo behavioral checks and repeated task evaluation; versions with measured gains seed the next iteration. This loop integrates suitable mechanisms from different frameworks into a single harness and uses new execution evidence to guide further changes. We evaluate task success and reliability across models, ablate harness execution evidence and external research, and test transfer to unseen benchmarks with the same model. RiseHarness treats a specific model as the unit of harness adaptation, studying how changes to shared interaction mechanisms can make existing capabilities more reliable across tasks.",
+   "abs_url": "https://arxiv.org/abs/2610.27435",
+   "pdf_url": "https://arxiv.org/pdf/2610.27435",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes RiseHarness, a framework for iteratively improving agent harnesses through runtime monitoring and constraint adaptation to increase reliability of LLM-agent execution without retraining.",
+   "idea": {
+    "problem": "Long-horizon terminal agents fail inconsistently across runs despite having capability, due to stochastic error propagation in actions and context.",
+    "approach": "Combine agent trajectories with runtime monitor traces to identify harness behavior problems, search other frameworks for solutions, adapt and test candidate harness changes…",
+    "result": "RiseHarness increases task success and reliability across models; improvements transfer to unseen benchmarks with same model."
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2610.26836",
    "title": "Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy",
@@ -49,7 +386,7 @@
     "approach": "Trace all simulator calls and compare agent accuracy with in-context vs. retrieved tool outputs, analyzing where reasoning fails",
     "result": "GPT models lose 7.9–11.3 accuracy points under retrieval due to skipping authoritative outputs; Claude models unaffected; naming authoritative outputs recovers 6.3–7.9…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.26632",
@@ -82,7 +419,7 @@
     "approach": "Pre-registered experiments measuring agent success under different harness memory/context strategies",
     "result": "Context truncation costs nothing when facts are re-observable, but drops success to chance when irretrievable; harness components recover most of performance…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.26464",
@@ -189,7 +526,7 @@
     "approach": "Agent harness with rich failure reporting and central coordinator that decides between guiding, correcting, or replanning proof attempts",
     "result": "Proves more theorems than native agents on math and software benchmarks; 34/48 arXivLean theorems with Claude Opus"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.25616",
@@ -225,6 +562,42 @@
     "problem": "LLMs generate code without explicit formal specifications, leading to functional correctness issues from ambiguous requirements",
     "approach": "Fine-tune LLM to generate behavioral contracts, then iteratively validate and repair them before using for code generation",
     "result": "7.58%-22.45% relative improvement in pass@1 over direct code generation across five code LLMs"
+   },
+   "figure_tries": 2
+  },
+  {
+   "id": "2605.26772",
+   "title": "Beyond a Single Direction: Chain-of-Thought Disrupts Simple Steering of Refusal",
+   "authors": [
+    "Kia-Jüng Yang",
+    "Dominik Meier",
+    "Jiachen Zhao",
+    "Terry Ruas",
+    "Bela Gipp"
+   ],
+   "abstract": "Large reasoning models (LRMs) generate chain-of-thought (CoT) traces before producing final outputs, introducing a dynamic internal state that may complicate control mechanisms such as refusal. Unlike instruction-tuned LLMs, where refusal is mediated by a single directional subspace, refusal in large reasoning models (LRMs) additionally depends on the CoT. In DeepSeek-R1-Distill-LLaMA-8B, activation steering reverses refusal in only 39% of cases when the CoT is kept fixed, but removing the CoT entirely increases this to 70%, indicating that the CoT actively reinforces refusal. In a two-stage intervention where the model regenerates its CoT under activation steering, refusal is reversed in 94% of cases, while the resulting CoT alone retains 48% of this effect even after steering is removed. This suggests that the CoT can carry and reconstruct the compliance signal independently. These findings indicate that refusal in LRMs is jointly encoded in residual stream activations and CoT. This joint activation makes LRM more robust against activation-level interventions alone, but exposes CoT to a possible alternative surface attack.",
+   "abs_url": "https://arxiv.org/abs/2605.26772",
+   "pdf_url": "https://arxiv.org/pdf/2605.26772",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-19",
+   "venue": "ICML 2026",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "empirical",
+   "why": "Analyzes how chain-of-thought reasoning interacts with refusal mechanisms in LRMs through mechanistic interpretability and activation steering interventions.",
+   "idea": {
+    "problem": "Activation steering for refusal control fails in reasoning models when chain-of-thought is present",
+    "approach": "Empirically examine activation steering effects with and without CoT, studying how CoT encodes and reinforces refusal signals",
+    "result": "CoT jointly encodes refusal with residual streams; regenerating CoT under steering reverses refusal in 94% of cases"
    },
    "figure_tries": 1
   },
@@ -354,7 +727,7 @@
     "approach": "Decompose agent into on-device sanitizer and cloud planner using typed placeholders and deterministic masking registry",
     "result": "15-36% accuracy improvement with 2-6× less data leakage vs. baselines on agentic benchmarks"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.24871",
@@ -483,7 +856,7 @@
     "approach": "Deploy external reference monitors and sandbox enforcement to validate agent tool calls against permission rules and detect forged or unauthorized requests.",
     "result": "External monitors reject forged/tampered records but semantic authorization remains hard; instruction labels alone are not a reliable trust boundary."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2607.15776",
@@ -519,7 +892,7 @@
     "approach": "Neuro-symbolic framework combining LLMs, ontology embeddings, and formal OWL semantics for joint verification and abduction",
     "result": "Strong performance on subsumption verification and plausible axiom generation across real-world ontologies in multiple domains"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2607.01510",
@@ -594,7 +967,7 @@
     "approach": "Track measurable risks from agent actions using explicit constraints and implicit calibration from historical tasks; enforce quantitative constraints during execution.",
     "result": "Strong security with high task utility across four benchmarks and diverse models."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.24277",
@@ -632,7 +1005,7 @@
     "approach": "Enforce information-flow control via labels on HTML elements, gating browser actions like typing and clicking",
     "result": "Achieves 0% attack success rate while maintaining high task completion and autonomy compared to baselines"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.23791",
@@ -716,7 +1089,7 @@
     "approach": "Self-hosted agent harness wrapping open-weight models with reading, search, computation tools and citation grounding.",
     "result": "Harness doubles base model accuracy to 0.874; traces 2× more claims to read passages; abstains when source missing; no fabricated citations."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.23449",
@@ -811,7 +1184,7 @@
     "approach": "LLM agent that generates harnesses from code, validated by formal soundness and precision guards",
     "result": "Successfully detects three historical assertion violations in curl and libuv using CBMC"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.00050",
@@ -908,7 +1281,7 @@
     "approach": "Generate high-level programs capturing recurrent logic that then produce PDDL, decoupling token output from combinatorial explosion",
     "result": "Higher-order formalizer improves performance on complex planning problems with unraveling variants"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.22578",
@@ -1013,7 +1386,7 @@
     "approach": "Harness-Delta Attribution protocol dissects gains into overfitting, test-time scaling, and residual improvement across models and tasks",
     "result": "54% overfitting and 14% test-time scaling on average; search-set gains often fail to transfer to held-out tasks"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.22441",
@@ -6823,7 +7196,7 @@
     "approach": "Hash-chained ledger capturing intent, reasoning, actions with pre-execution policy gates and cross-verification",
     "result": "Detects all mutations/forgeries; policy gates block 41% harmful calls; LLM reviewer catches 100% of seeded faults"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.35366",
@@ -6860,7 +7233,7 @@
     "approach": "Introduce statepoints as consistent, restorable point-in-time environment snapshots; expose snapshot, rollback, and fork primitives to enable recovery and parallel exploration.",
     "result": "Improves task quality up to 15x; enables error recovery with only 3% overhead."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.35233",
@@ -7059,7 +7432,8 @@
     "problem": "LLM agents take structured actions from potentially corrupted sources and indirect prompt injection; current defenses don't certify integrity under shared-source…",
     "approach": "Formalize robustness conditions: bounded corruption radius per evidence class, minimum hitting set to prevent laundering, deterministic reconciliation, and trusted anchors for…",
     "result": "Certifier admits no unsafe actions and recovers correct values where corroboration permits; tested on sanctions and supply-chain data with five LLM…"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.34080",
@@ -7127,7 +7501,8 @@
     "problem": "LLM agents struggle to select the right skill from large libraries; current routing methods either clutter context or remove selection from the agent",
     "approach": "Extract routing signals from the frozen LLM's hidden states using two learned linear maps, score skills with mid-layer activations, then verify with model likelihood and…",
     "result": "Gavel outperforms retrieve-and-rerank and progressive disclosure baselines by up to 21.9 points on mid-rollout skill selection tasks"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2606.12344",
@@ -7204,7 +7579,8 @@
     "problem": "LLM agent skills encoded as textual guidance lack explicit mechanisms for intervention in agent loops",
     "approach": "Convert skills into executable Program Functions that act as guardrails activating on failure-prone states to modify actions or inject context",
     "result": "25-30% performance gains on web-search, math, and coding tasks; mechanism analysis shows how PFs trigger and internalize skills"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2605.01970",
@@ -7240,7 +7616,8 @@
     "problem": "LLM agent memory systems lack systematic evaluation of persistent attacks and defenses",
     "approach": "Dynamic benchmark with adaptive red-teaming and capability-aware security-utility analysis",
     "result": "Trojan Hippo attack achieves 85-100% success undefended; defenses reduce to 0-5% with utility tradeoffs"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2602.14143",
