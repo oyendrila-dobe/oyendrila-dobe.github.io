@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21",
+ "generated": "2026-10-22",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,397 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.30114",
+   "title": "The End of Consensus Research?",
+   "authors": [
+    "Clément Burgelin",
+    "Rachid Guerraoui",
+    "Zicong Hong",
+    "Yinan Hu",
+    "Anne-Marie Kermarrec",
+    "Rafael Pires",
+    "Rasmus Moorits Veski",
+    "Martijn de Vos"
+   ],
+   "abstract": "Consensus is a fundamental problem in distributed computing and at the core of state machine replication (SMR). Despite decades of active human research, discovering practical low-latency solutions to the problem is still open, as it requires combining protocol knowledge, correctness reasoning, implementation, and experimental evaluation. We report on how AI helped us discover A-greement, a new consensus protocol for geo-replicated state machines that significantly outperforms state-of-the-art solutions. Averaged across six deployments with 5 or 9 replicas, A-greement reduces the mean latency of a geo-distributed key-value store over the fastest baseline by 12.2% and 33.3% on write-heavy and read-heavy workloads, respectively, and matches the fastest baseline on read-only workloads. A-greement combines lease-authorized local reads, direct client learning for leader-ordered writes, and a fast fixed-quorum per-key write path, selected according to network topology and workload. At the heart of our discovery lies AI-greement, an agent harness for the \"autonomous\" discovery, implementation, experimentation, and verification of candidate protocols. AI-greement integrates (1) a concept-oriented protocol knowledge base, (2) a modular implementation skeleton, and (3) a Lean-based verification framework with reusable safety definitions, reference specifications, and proofs. AI-greement is of independent interest: its Lean formalization uncovers several previously unreported vulnerabilities in existing consensus protocols, and it provides guidelines on how domain-specific harnesses can turn general-purpose coding agents into effective tools for (distributed) computing research. Yet we argue that human consensus experts remain essential before, during, and after the search: agents reshape the researcher's role rather than end consensus research.",
+   "abs_url": "https://arxiv.org/abs/2610.30114",
+   "pdf_url": "https://arxiv.org/pdf/2610.30114",
+   "primary_category": "cs.DC",
+   "categories": [
+    "cs.DC",
+    "cs.AI"
+   ],
+   "published": "2026-10-21",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.75,
+   "type": "tool",
+   "why": "Presents AI-greement, an agent harness integrating protocol knowledge bases, modular implementations, and Lean verification to autonomously discover and verify consensus protocols, combining formalization and harness design.",
+   "idea": {
+    "problem": "Discovering practical low-latency consensus protocols requires integrating protocol knowledge, correctness reasoning, implementation, and evaluation",
+    "approach": "Domain-specific agent harness combining concept-oriented knowledge base, modular implementation skeleton, and Lean-based verification with reusable…",
+    "result": "Discovered A-greement protocol reducing geo-distributed latency by 12.2%–33.3% over baselines; uncovered vulnerabilities in existing protocols"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.30059",
+   "title": "Validating Autoformalized Specifications via Contrapuntal Languages",
+   "authors": [
+    "Yihan Dai",
+    "Xuanlin Liu",
+    "Haoxiang Jia",
+    "Tianchi Li",
+    "Xin Zhang",
+    "Sergey Mechtaev"
+   ],
+   "abstract": "Formal specifications can make AI-generated code mechanically checkable. Because user intent is typically expressed in natural language rather than formal logic, specifications must first be derived from it, e.g., via LLM-based autoformalization. Yet autoformalized specifications are themselves untrusted, so a key challenge is validating whether they capture user intent without relying on a costly oracle such as human review. In this oracle-free setting, a natural strategy is to vote among model outputs, but because model errors are often correlated, agreement among outputs may reflect shared mistakes rather than correctness. Our key insight is that these errors can be decorrelated through representational diversity. We achieve this diversity with contrapuntal languages: pairs of task-specific formal languages, each designed to express the intended specification, yet admitting no structure-preserving translation between them. An LLM formalizes the intent independently in each language, and we accept a specification only if a solver proves the two formalizations equivalent. To construct such languages, we present a synthesis algorithm that reuses fragments of sampled seed specifications as syntactic sugar over a base specification language. We implement the approach for first-order logic specifications and evaluate it on HumanEval+ and LiveCodeBench using GPT-5.4 mini and Qwen3.6-Flash with and without thinking. Over the strongest baseline, our method increases the proportion of accepted specifications that are correct, i.e., complete and sound, by 12.0% on HumanEval+ and 42.9% on LiveCodeBench. The accepted specifications judged complete reject 98.6% of buggy program variants on HumanEval+ and 96.2% on LiveCodeBench, compared with 92.8% and 78.3% for the strongest baseline.",
+   "abs_url": "https://arxiv.org/abs/2610.30059",
+   "pdf_url": "https://arxiv.org/pdf/2610.30059",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-21",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a method to validate LLM-autoformalized specifications by checking equivalence across contrapuntal formal languages, decorrelating model errors through representational diversity.",
+   "idea": {
+    "problem": "Autoformalized specifications are untrusted; validating them without human review is difficult because model errors are correlated.",
+    "approach": "Formalize intent independently in pairs of task-specific formal languages with no structure-preserving translation, then check solver-proven equivalence.",
+    "result": "12% and 42.9% improvement in correctness proportion over strongest baseline on two benchmarks; accepted specs reject 96-98.6% of buggy programs."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.30042",
+   "title": "HGM-Dual: Lineage-Aware Guided Agent Harness Optimization for Long-Horizon Planning",
+   "authors": [
+    "Sudipta Paul",
+    "Pengrui Quan",
+    "Aounon Kumar",
+    "Nicholas Tzou",
+    "Vivek Kulkarni",
+    "Srinivas Chappidi"
+   ],
+   "abstract": "Harness optimization, which improves an agent's prompts, tools, and workflows, is an increasingly effective way to enhance agents built on frozen or closed-source LLMs. Leading approaches such as the Darwin--Godel Machine and the Huxley--Godel Machine (HGM) rely on recursive self-improvement and were developed mainly for coding, where the competence needed to improve the agent coincides with the competence being improved. Planning tasks, in which an agent must produce a sequence of tool calls that jointly satisfies interacting constraints, break this alignment. There, open-ended self-modification repeatedly explores ineffective changes and consumes substantial evaluation budgets. We introduce HGM-Dual, a diagnostic-guided framework for budget-efficient harness evolution for planning agents. First, HGM-Dual represents agent evolution as lineage-aware context. This context records what each ancestor changed, which behaviors improved or regressed, and which modifications were ineffective, giving the editor explicit edit-outcome attribution instead of an unstructured archive of past agents. Second, HGM-Dual introduces error-conditioned dual-path child generation. For each selected parent, it generates a general child that preserves open-ended exploration and specialized children that target the harness components most likely responsible for the parent's highest-ranked constraint violations. HGM-Dual outperforms the strongest baseline by up to 14.45% relative improvement in case accuracy while matching HGM variants' final performance with 2x-4x fewer evaluation budget.",
+   "abs_url": "https://arxiv.org/abs/2610.30042",
+   "pdf_url": "https://arxiv.org/pdf/2610.30042",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.NE"
+   ],
+   "published": "2026-10-21",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a harness optimization framework for LLM-based planning agents that improves prompts, tools, and workflows through structured evolution with diagnostic guidance and constraint targeting.",
+   "idea": {
+    "problem": "Planning agents need efficient harness optimization within tight evaluation budgets while balancing exploration and targeted fixes.",
+    "approach": "Lineage-aware context tracking edit outcomes plus error-conditioned dual-path generation targeting constraint violations.",
+    "result": "14.45% relative improvement in case accuracy with 2x-4x fewer evaluations than baselines."
+   }
+  },
+  {
+   "id": "2610.29870",
+   "title": "PAUSE: Search-Free Steering of Coding Agents Before Their First Source-Code Edit",
+   "authors": [
+    "Viral Patel",
+    "Boyin Tan",
+    "Jason Xue",
+    "Youcheng Sun"
+   ],
+   "abstract": "Coding agents can invest substantial effort in repository exploration and testing yet still produce unsuccessful patches. Existing online steering methods review trajectories periodically or invoke an advisor when a monitor detects behavioral problems; frequent reviews are costly, and the absence of anomalous behavior does not mean that an agent is on the right track. We propose PAUSE, a framework for steering coding agents with a single planning intervention. Agents reach their first source-code edit at a median of 60% of trajectory progress, after exploration, bug reproduction, and testing. PAUSE intercepts this edit request before it executes, which requires no learned monitor, no search over checkpoints, and no extra model call (search-free). A separate Planner reads the task and the pre-edit transcript and writes one repair plan; the same agent, the Executor, resumes with this plan, keeping its context and workspace. PAUSE applies online, during a live run, and offline, from a recorded trajectory prefix. We evaluate PAUSE on SWE-bench Verified and SWE-bench Multilingual with two Executors and three agent harnesses. With Qwen3-coder as Executor and GPT-5.6 Sol as Planner, online steering improves resolution by 16.8% on Verified in OpenHands and by 14.7% on Multilingual in SWE-agent. In SWE-agent, PAUSE outperforms LivePlan, a rule-triggered advisor, by 3.2% on Verified and 3.7% on Multilingual at similar Planner cost, and is comparable to SICA's periodic overseer at about 11-15% of its Planner cost. Offline, PAUSE recovers 35.4% of eligible failed Verified tasks, and resuming from the recorded prefix uses 33-41% fewer Executor tokens than restarting.",
+   "abs_url": "https://arxiv.org/abs/2610.29870",
+   "pdf_url": "https://arxiv.org/pdf/2610.29870",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-10-21",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes PAUSE, a framework to steer coding agents before their first code edit by intercepting at a critical decision point, using external planning guidance to constrain agent behavior.",
+   "idea": {
+    "problem": "Coding agents explore repositories extensively but still produce unsuccessful patches despite no obvious behavioral anomalies.",
+    "approach": "Intercept agent at first source-code edit request; external Planner reads task and transcript, writes repair plan; Executor resumes with plan guidance.",
+    "result": "16.8% improvement on SWE-bench Verified with online steering; recovers 35.4% of failed tasks offline with 33-41% fewer tokens."
+   }
+  },
+  {
+   "id": "2610.29458",
+   "title": "Harness Scaling for Generalizable Agentic Reinforcement Learning",
+   "authors": [
+    "Fei Bai",
+    "Huatong Song",
+    "Chuan Hao",
+    "Ran Tao",
+    "Jian Yang",
+    "Bryan Dai",
+    "Wayne Xin Zhao",
+    "Ji-Rong Wen"
+   ],
+   "abstract": "Agent harnesses have become a central component of modern agentic systems, shaping how models use tools, manage context, and coordinate long-horizon interaction. Realizing the benefits of these harnesses depends on how effectively the underlying model can make use of them, motivating reinforcement learning directly through the harness. However, existing approaches typically train through a single fixed harness, which can lead to specialization and limited transfer across harness configurations. To address this, we introduce \\textbf{Harness Scaling}, a new scaling dimension for agentic RL that extends training from a single harness to diverse execution configurations. Concretely, we construct a factorized harness space, select a compact training subset with balanced factorial coverage, and organize cross-harness training to combine global coverage with controlled variation for the same task. Across multiple benchmarks, model scales, and RL algorithms, Harness Scaling consistently improves generalization to unseen white-box configurations. Moreover, models trained through structured white-box variation transfer effectively to unseen external black-box harnesses, outperforming models trained through a single complex black-box harness. These results establish harness diversity as a meaningful scaling dimension for agentic RL and highlight the importance of how this diversity is organized for cross-harness generalization.",
+   "abs_url": "https://arxiv.org/abs/2610.29458",
+   "pdf_url": "https://arxiv.org/pdf/2610.29458",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-10-21",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes training methods to improve how LLM agents generalize across different harness configurations, directly addressing agent harness design and structured agent scaffolding.",
+   "idea": {
+    "problem": "Models trained on single harnesses specialize and fail to transfer to different harness configurations",
+    "approach": "Introduce Harness Scaling: construct factorized harness space, select compact training subset with factorial coverage, organize cross-harness RL…",
+    "result": "Models trained through diverse harnesses generalize better to unseen white-box and black-box harness configurations"
+   }
+  },
+  {
+   "id": "2610.29147",
+   "title": "VERDICT: Multi-Agent Parallel Modular Verification",
+   "authors": [
+    "Tengjie Lin",
+    "Zhongyi Wang",
+    "Haokun Li",
+    "Jianwei Yin",
+    "Mingshuai Chen"
+   ],
+   "abstract": "Deductive verification scales to large software systems through modular reasoning, where formal contracts summarize the behavior of individual functions and enable their independent verification. Its central bottleneck is specification synthesis: constructing the contracts required for modular verification. Recent advances in large language models (LLMs) have enabled automated specification synthesis at unprecedented scale. However, existing approaches remain fundamentally bottom-up, requiring callees to be verified before their callers. This dependency limits parallelism and provides no principled mechanism for resolving interprocedural inconsistencies that propagate across call chains. We present VERDICT, a multi-agent framework for parallelizing modular deductive verification of large-scale programs. VERDICT is built on two key principles. First, assumption-based parallel specification synthesis assigns an agent to each function and allows it to proceed immediately using assumed contracts for its callees, enabling verification to proceed in parallel across the program. Second, bidirectional interprocedural conflict reconciliation resolves the inconsistencies introduced by these assumptions: when a synthesized contract contradicts an assumption, agents propagate the necessary revisions both up and down the call graph until the contracts converge. Experimental results on real-world C programs show that VERDICT synthesizes higher-quality specifications than existing approaches while substantially reducing verification time. In particular, VERDICT is the first approach that scales to the complete 20,000-line X.509 parser, ruling out nearly all the potential runtime errors within hours, whereas prior tools like PREGUSS fall far short even after days of execution.",
+   "abs_url": "https://arxiv.org/abs/2610.29147",
+   "pdf_url": "https://arxiv.org/pdf/2610.29147",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.LO"
+   ],
+   "published": "2026-10-21",
+   "venue": "ICSE 2027",
+   "code": "",
+   "tags": [
+    "specification_mining",
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Multi-agent framework for parallel specification synthesis and verification through LLM-based contract generation and coordinated conflict resolution across function call graphs.",
+   "idea": {
+    "problem": "Specification synthesis bottleneck in deductive verification scales poorly due to sequential bottom-up dependencies",
+    "approach": "Multi-agent framework with parallel assumption-based synthesis and bidirectional interprocedural conflict reconciliation",
+    "result": "Scales to 20K-line programs, synthesizes higher-quality specs than existing approaches with reduced verification time"
+   }
+  },
+  {
+   "id": "2610.29046",
+   "title": "AutoFraming: Synthesizing Dynamic Frames of C Code with LLMs",
+   "authors": [
+    "Han Zhou",
+    "Yu Luo",
+    "Dianxiang Xu"
+   ],
+   "abstract": "Large language models (LLMs) have shown considerable promise in synthesizing formal specifications from source code. However, existing approaches primarily focus on functional contracts and loop invariants, while largely neglecting frame conditions, which specify the memory locations that may or may not be modified during execution and constitute an essential part of formal specifications. To address this limitation, we propose an LLM-based approach for synthesizing ACSL frame specifications alongside functional contracts from C code. Our approach analyzes code property graphs (CPGs) to extract frame-relevant information from the input code and leverages this information to guide the LLM in generating accurate frame conditions. The resulting specifications capture both region-separation constraints and data dependencies that govern variable modifications. Experimental results demonstrate the effectiveness of our approach. On a benchmark of 84 ACSL-compliant functions from non-trivial real-world systems, our method successfully synthesizes error-free frame specifications for 92.9% of the functions, representing a 179% relative improvement over state-of-the-art techniques. On a second benchmark consisting of 51 functions, the success rate increases from 80.4% to 96.1%. Furthermore, when integrated as an auxiliary component into existing LLM-based ACSL-synthesis frameworks, our approach improves frame-specification generation performance by up to 61.9%.",
+   "abs_url": "https://arxiv.org/abs/2610.29046",
+   "pdf_url": "https://arxiv.org/pdf/2610.29046",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-21",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "specification_mining",
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes an LLM-based approach to automatically synthesize formal frame specifications (memory modification contracts) from C code, extracting and formalizing implicit behavioral specifications.",
+   "idea": {
+    "problem": "LLMs neglect frame conditions when synthesizing formal specifications from C code",
+    "approach": "Analyze code property graphs to extract frame-relevant information and guide LLM generation of ACSL frame specifications",
+    "result": "92.9% success rate on benchmark, 179% improvement over state-of-the-art"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.28989",
+   "title": "AgentPolicyForge: From Executable Environments to Policy Benchmarks and Adaptive Guards",
+   "authors": [
+    "Chao Shang",
+    "Wanyu Du",
+    "Yi Zhang",
+    "Sandesh Swamy"
+   ],
+   "abstract": "Customized agent deployments define policies over tools, resources, and execution conditions. Providing these policies in the task agent's prompt does not reliably prevent violations. Training a guard requires examples of tool calls that comply with or violate those policies. We introduce AgentPolicyForge, a framework that uses executable environments to construct policy benchmarks and iteratively train policy guards. With this framework, we construct PolicyGym, a dataset across ten policy families using 698 scenarios for training data generation and 254 separate held-out scenarios for human-reviewed test sets. Tool calls are executed and their outcomes recorded to help determine whether they comply with the policy. Every violating case uses a permitted tool, requiring checks of arguments, resources, and context rather than tool identity alone. The case construction process supports iterative guard training: an attacker generates requests using retrieved strategies, and the guard is fine-tuned on balanced, environment-verified examples. Training improves policy enforcement even with a fixed archive. Updating the archive further reduces in-domain attack success compared with keeping it fixed. We compare policy-aware task agent self-regulation with a trained policy guard. On PolicyGym, the final guard-based configuration achieves a 40-44% relative reduction in attack success rate and fewer benign rejections than policy prompting alone.",
+   "abs_url": "https://arxiv.org/abs/2610.28989",
+   "pdf_url": "https://arxiv.org/pdf/2610.28989",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CR",
+    "cs.LG"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a framework for constructing policy benchmarks and training policy guards to enforce executable policies on LLM-agent tool calls, with specification-based constraint verification.",
+   "idea": {
+    "problem": "Prompt-based policies do not reliably prevent agent policy violations; need trained guards to enforce tool call constraints.",
+    "approach": "Execute tool calls in environments to verify compliance; iteratively train policy guards on balanced, environment-verified examples using adversarial strategies.",
+    "result": "Policy guards achieve 40-44% relative reduction in attack success with fewer benign rejections than prompt-based policies alone."
+   }
+  },
+  {
+   "id": "2610.28987",
+   "title": "PerMIT: Securing Persistent Memory for LLM Agents via Machine-Checked Integrity Theorems and Scalable Community Trust",
+   "authors": [
+    "Tanqiu Jiang",
+    "Min Bai",
+    "Sadat Shahriar",
+    "Wanyu Du",
+    "Sandesh Swamy"
+   ],
+   "abstract": "Persistent memory is a largely undefended surface for injection and poisoning, and the same risk limits memory sharing among agents. We present PerMIT, a memory architecture with provable integrity guarantees under an explicit trust assumption: only user-typed inputs and values confirmed at a gate are trusted. PerMIT mediates the release and use of untrusted environment-derived values through a finite memory interface, while preserving agent-driven multi-turn planning and tool choice. Over this finite interface, we prove two integrity theorems that are also machine-checked in Lean 4, which together ensure that environment-derived memory reaches a sensitive action only if confirmed at the gate and influences the agent's behavior only through what the gate displays. Every attack in our threat model thereby reduces to a single auditable decision, which a human, an LLM verifier, or both can make in practice. On Trojan Hippo, PerMIT records zero observed attack success with self-verification and lightweight verifiers. Because each confirmation is a logged verdict on exact content, endorsements accumulate across users, and sufficiently endorsed items become community-confirmed with no further verification required. Under explicit assumptions, we prove and corroborate in simulation a co-scaling property: as the community grows, the risks of promoting poison and of wrongly evicting benign knowledge fall, while per-user verification effort does not rise. On $τ^2$-bench, communities of up to 90 autonomous agents use PerMIT to build shared knowledge bases with no direct memory injection promoted, and the resulting knowledge significantly improves new agents on held-out tasks, suggesting a path toward agents that safely self-improve at test time.",
+   "abs_url": "https://arxiv.org/abs/2610.28987",
+   "pdf_url": "https://arxiv.org/pdf/2610.28987",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CR"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes PerMIT, a memory architecture with machine-checked integrity theorems in Lean 4 that constrains LLM agent behavior by mediating untrusted memory through a gated interface and verifiable confirmations.",
+   "idea": {
+    "problem": "Persistent memory is undefended against injection, poisoning, and unsafe sharing among agents",
+    "approach": "Memory architecture with machine-checked integrity theorems in Lean 4; gates untrusted values; accumulates community endorsements",
+    "result": "Zero attack success on Trojan Hippo; scalable community verification; improved knowledge base sharing among agents"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.28802",
+   "title": "How Much Does the Harness Matter, and for Whom? A Multi-Model Study of Context in LLM-Driven Vulnerability Discovery",
+   "authors": [
+    "Ganni Galea Curmi",
+    "Ben Wilde"
+   ],
+   "abstract": "How much does an agent harness affect vulnerability discovery, and does its value depend on the model? We study 24 model-runner configurations using an open-source harness on a production codebase whose vulnerabilities were non-public at scan time. The pipeline combines static screening, LLM investigation, model self-revalidation, root-cause mapping, independent source review, and isolated proof-of-concept confirmation. Across 265 confirmed security root causes, the largest two-run configuration covers 60.4%, while 14.3% are found by exactly one model. No single configuration covers all observed findings. In a four-model context experiment, moving from a minimal prompt to an engineered prompt with a CodeQL-derived call graph raises criticality-weighted yield by 20-86% for smaller and mid-tier models, compared with 2% for the frontier model. This comparison changes both prompt and context. Separating those effects shows that the engineered prompt improves yield for all four models, while adding CodeQL context beyond that prompt improves yield only for the smallest model. A held-out CyberGym subset shows the same direction of target-recall improvement for the combined treatment. Frontier models achieve low false-report rates but do not consistently achieve the highest yield. Strong lower-cost models can deliver similar performance at an order of magnitude lower cost. These results support matching models, prompts, and context to the task, and combining configurations for broader coverage.",
+   "abs_url": "https://arxiv.org/abs/2610.28802",
+   "pdf_url": "https://arxiv.org/pdf/2610.28802",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.SE"
+   ],
+   "published": "2026-10-20",
+   "venue": "CAMLIS 2026",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "empirical",
+   "why": "Studies how agent harness design (prompts, context, component pipeline) affects LLM-driven vulnerability discovery across models, demonstrating that harness engineering significantly impacts agent performance.",
+   "idea": {
+    "problem": "Understanding how much agent harness design affects vulnerability discovery across different LLM models",
+    "approach": "Empirical study of 24 model-runner configurations with varying prompts and context (CodeQL call graphs) on production codebase",
+    "result": "Engineered prompts and CodeQL context improve smaller-model yield 20–86%; frontier models achieve low false-report rates but not consistently highest yield; combining…"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.28798",
+   "title": "An Explicit Feedback Contract for Iterative ML-Agent Harnesses",
+   "authors": [
+    "Kehui Yao",
+    "Chuanbo Hu",
+    "Jiao Chen",
+    "Ramin Giahi",
+    "Reza Yousefi Maragheh",
+    "Lalitesh Morishetti",
+    "Ziwei Hong",
+    "Yiyun Su",
+    "Jianpeng Xu",
+    "Evren Korpeoglu",
+    "Kannan Achan"
+   ],
+   "abstract": "Iterative ML agents develop models by editing code, running experiments, reading a validation score, and choosing what to try next. In current harnesses this loop is served by an exact validation score returned after every attempt, which leaves the validation split open to adaptive selection. In this work, we introduce an explicit feedback contract for ML-agent harnesses, which specifies what an agent may observe, when iteration should stop, and when the test split may be touched. The contract releases a validation score only when a submission clears a noise threshold computed from the paired standard error, so no margin has to be tuned. We ran experiments on click-through-rate prediction, learning to rank, and a control task with no signal to find. The control is the sharpest case, because the true gain there is zero by construction: an agent reading exact scores ended by reporting a gain of 0.0157, while under the contract it reported 0.0033. On both real tasks the contract narrows the validation-test gap, and test performance is slightly higher rather than lower. The largest difference is in when the agents stop. Exact feedback used its entire budget of thirty submissions on two of the three tasks, including the one where nothing can be learned, while the contract halted after four to twelve. A run that exhausts its budget is usually read as diligence. It is better read as a symptom: when the feedback channel is unbounded, noise keeps supplying improvements to chase.",
+   "abs_url": "https://arxiv.org/abs/2610.28798",
+   "pdf_url": "https://arxiv.org/pdf/2610.28798",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes an explicit feedback contract that constrains what ML agents can observe during iteration, preventing adaptive overfitting and enforcing principled halting—a structural guardrail on agent behavior.",
+   "idea": {
+    "problem": "ML agents iterating on validation scores enable adaptive selection and overfitting to the validation split",
+    "approach": "Introduce explicit feedback contract specifying what agents observe and when to stop, releasing validation scores only above noise threshold",
+    "result": "Contract reduces validation-test gap, lowers false gains on control task, and causes agents to halt earlier rather than exhaust budget"
+   }
+  },
   {
    "id": "2610.28397",
    "title": "MAS-Guard: Unified Guardrails from Individual Agents to Multi-Agent LLM Systems",
@@ -94,7 +485,7 @@
     "approach": "Evolve a hierarchy of specialized harness classes using object-oriented design and route tasks to appropriate harnesses",
     "result": "Up to 15% absolute improvement over base harness across three long-horizon benchmarks"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.28201",
@@ -171,7 +562,7 @@
     "approach": "Label memory with owner, scope, origins, authority; check labels on context/storage/tool-call boundaries",
     "result": "Stops memory attacks as protection faults independent of model fooling"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.27871",
@@ -212,7 +603,7 @@
     "approach": "LLM extracts code features and generates SMT-LIB specs; Z3 solver makes final deterministic decision",
     "result": "Eliminates LLM as final arbiter, grounds all decisions in formal symbolic verification"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.27620",
@@ -281,7 +672,7 @@
     "approach": "AuthorizationBench: 286 executable tasks across domains with authorization-aware sandbox tracking authorized vs. out-of-authorization paths.",
     "result": "Agents act out-of-authorization in 19.2% of trajectories; consultation with principals reduces rate to 14.0%."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.27543",
@@ -351,7 +742,79 @@
     "approach": "Combine agent trajectories with runtime monitor traces to identify harness behavior problems, search other frameworks for solutions, adapt and test candidate harness changes…",
     "result": "RiseHarness increases task success and reliability across models; improvements transfer to unseen benchmarks with same model."
    },
+   "figure_tries": 2
+  },
+  {
+   "id": "2608.14590",
+   "title": "Toward Safe LLM Agents: A Survey of Specification, Verification, and Enforcement",
+   "authors": [
+    "Pierre Dantas",
+    "Lucas Cordeiro",
+    "Ehsan Nowroozi",
+    "Norbert Tihanyi"
+   ],
+   "abstract": "Large Language Model (LLM) agents take irreversible real-world actions, yet no system gives formally grounded, task-level safety guarantees for their plans. In a PRISMA 2020 systematic review, we searched six databases (20-29 May 2026) for work on LLM agent specification, verification, and enforcement published in 2022-2026. We narratively synthesized 38 studies, assessed risk of bias per study, and graded evidence certainty with GRADE. Three authors independently screened a repeated search to validate the single-reviewer screening (agreement: Fleiss' $κ= 0.81$). First, specification is the bottleneck: on one benchmark, only 24.8-34.2% of LLM translations from natural language into Planning Domain Definition Language (PDDL) are semantically correct. Second, runtime monitoring is the most mature enforcement strategy; it reduced unsafe actions by 65.37% in one household-agent study, but its guarantees cover only single steps or short horizons. Third, in one $τ$-Bench study of transactional tool-use agents, blocking 94% of unsafe actions still left fewer than 5% of tasks completed both safely and correctly in most settings, because agents found other unsafe routes (the verifier tax). Fourth, no approach simultaneously achieves soundness, completeness, scalability, semantic grounding, and utility preservation. For seven of the nine principal claims, GRADE gives the lowest certainty rating (Very Low), meaning further studies are likely to produce substantially different figures; each rests on one or two studies in narrow domains. Two of the open problems we rank highest are translating requirements into formal specifications that keep their meaning and enforcing safety over whole plans rather than single actions. We contribute a three-level taxonomy and an agenda of ten open problems.",
+   "abs_url": "https://arxiv.org/abs/2608.14590",
+   "pdf_url": "https://arxiv.org/pdf/2608.14590",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-20",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "specification_mining",
+    "autoformalization",
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "survey",
+   "why": "Systematic review of LLM agent specification, verification, and enforcement covering formal specifications, PDDL translation, runtime monitoring, and safety guarantees for agent actions.",
+   "idea": {
+    "problem": "LLM agents lack formally grounded safety guarantees; specification, verification, and enforcement methods are immature and fragmented",
+    "approach": "Systematic PRISMA 2020 review of 38 studies on agent specification, verification, and enforcement from 2022-2026",
+    "result": "Specification is bottleneck (24.8-34.2% semantic correctness); runtime monitoring most mature but limited to short horizons; no approach achieves all desiderata; ranked open…"
+   },
    "figure_tries": 1
+  },
+  {
+   "id": "2610.28679",
+   "title": "VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents",
+   "authors": [
+    "Jianing Yin",
+    "Ziyi Chen",
+    "Hao Wang",
+    "Yiyou Sun",
+    "Zijian Jin",
+    "Dawn Song",
+    "Daoan Zhang"
+   ],
+   "abstract": "Agents need reliable ways to validate their outputs, both when completing tasks and when filtering synthetic training data. We study verifier generation: from the instruction and environment available for solving a task, an agent writes an executable verifier that must accept every valid solution and reject invalid ones. We introduce VerifierBench, a benchmark of 222 tasks from six agent benchmarks spanning tool-call, state-based, and code verification, with 4,993 hidden test cases that include alternative valid solutions and attacks; Verifier4Verifier (V4V), a six-check audit, screens its source verifiers and test suites. Across 19 models in a common agent harness, normalized balanced accuracy ranges from 10.6 to 62.1, with generated verifiers consistently rejecting invalid solutions more reliably than they accept valid ones. This apparent strength can mask overly restrictive verification: most false rejections in the analyzed records come from verifiers that accept no tested solution to a task. Case studies reveal unsupported assumptions about solution formats, tool use, and code changes that exclude valid solutions. These errors survive self-testing because agents test solutions that share the verifier's mistaken assumptions, or submit verifiers without confirming that any correct solution passes. These findings suggest testing both whether a verifier accepts a correct solution and whether it accepts other solutions permitted by the task. The project page and dataset are publicly available.",
+   "abs_url": "https://arxiv.org/abs/2610.28679",
+   "pdf_url": "https://arxiv.org/pdf/2610.28679",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-10-19",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.82,
+   "type": "benchmark",
+   "why": "Introduces a benchmark for evaluating LLM agents' ability to generate executable verifiers that validate task solutions, a key guardrail mechanism for constraining agent behavior.",
+   "idea": {
+    "problem": "LLM agents need reliable verifiers to validate outputs and filter synthetic data, but verifier generation quality is unclear and undertested",
+    "approach": "Create VerifierBench with 222 tasks from six agent benchmarks and 4,993 test cases, including alternative solutions and attacks; use Verifier4Verifier to audit verifiers and test…",
+    "result": "Verifiers show 10.6–62.1% normalized balanced accuracy; most failures are overly restrictive due to unsupported format assumptions that pass…"
+   }
   },
   {
    "id": "2610.26836",
@@ -386,7 +849,7 @@
     "approach": "Trace all simulator calls and compare agent accuracy with in-context vs. retrieved tool outputs, analyzing where reasoning fails",
     "result": "GPT models lose 7.9–11.3 accuracy points under retrieval due to skipping authoritative outputs; Claude models unaffected; naming authoritative outputs recovers 6.3–7.9…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.26632",
@@ -419,7 +882,7 @@
     "approach": "Pre-registered experiments measuring agent success under different harness memory/context strategies",
     "result": "Context truncation costs nothing when facts are re-observable, but drops success to chance when irretrievable; harness components recover most of performance…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.26464",
@@ -526,7 +989,7 @@
     "approach": "Agent harness with rich failure reporting and central coordinator that decides between guiding, correcting, or replanning proof attempts",
     "result": "Proves more theorems than native agents on math and software benchmarks; 34/48 arXivLean theorems with Claude Opus"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.25616",
@@ -563,7 +1026,7 @@
     "approach": "Fine-tune LLM to generate behavioral contracts, then iteratively validate and repair them before using for code generation",
     "result": "7.58%-22.45% relative improvement in pass@1 over direct code generation across five code LLMs"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2605.26772",
@@ -599,7 +1062,7 @@
     "approach": "Empirically examine activation steering effects with and without CoT, studying how CoT encodes and reinforces refusal signals",
     "result": "CoT jointly encodes refusal with residual streams; regenerating CoT under steering reverses refusal in 94% of cases"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.25552",
@@ -727,7 +1190,7 @@
     "approach": "Decompose agent into on-device sanitizer and cloud planner using typed placeholders and deterministic masking registry",
     "result": "15-36% accuracy improvement with 2-6× less data leakage vs. baselines on agentic benchmarks"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.24871",
@@ -856,7 +1319,7 @@
     "approach": "Deploy external reference monitors and sandbox enforcement to validate agent tool calls against permission rules and detect forged or unauthorized requests.",
     "result": "External monitors reject forged/tampered records but semantic authorization remains hard; instruction labels alone are not a reliable trust boundary."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2607.15776",
@@ -892,7 +1355,7 @@
     "approach": "Neuro-symbolic framework combining LLMs, ontology embeddings, and formal OWL semantics for joint verification and abduction",
     "result": "Strong performance on subsumption verification and plausible axiom generation across real-world ontologies in multiple domains"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2607.01510",
@@ -967,7 +1430,7 @@
     "approach": "Track measurable risks from agent actions using explicit constraints and implicit calibration from historical tasks; enforce quantitative constraints during execution.",
     "result": "Strong security with high task utility across four benchmarks and diverse models."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.24277",
@@ -1005,7 +1468,7 @@
     "approach": "Enforce information-flow control via labels on HTML elements, gating browser actions like typing and clicking",
     "result": "Achieves 0% attack success rate while maintaining high task completion and autonomy compared to baselines"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.23791",
@@ -1281,7 +1744,7 @@
     "approach": "Generate high-level programs capturing recurrent logic that then produce PDDL, decoupling token output from combinatorial explosion",
     "result": "Higher-order formalizer improves performance on complex planning problems with unraveling variants"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.22578",
@@ -7433,7 +7896,7 @@
     "approach": "Formalize robustness conditions: bounded corruption radius per evidence class, minimum hitting set to prevent laundering, deterministic reconciliation, and trusted anchors for…",
     "result": "Certifier admits no unsafe actions and recovers correct values where corroboration permits; tested on sanctions and supply-chain data with five LLM…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.34080",
@@ -7502,7 +7965,7 @@
     "approach": "Extract routing signals from the frozen LLM's hidden states using two learned linear maps, score skills with mid-layer activations, then verify with model likelihood and…",
     "result": "Gavel outperforms retrieve-and-rerank and progressive disclosure baselines by up to 21.9 points on mid-rollout skill selection tasks"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2606.12344",
@@ -7580,7 +8043,7 @@
     "approach": "Convert skills into executable Program Functions that act as guardrails activating on failure-prone states to modify actions or inject context",
     "result": "25-30% performance gains on web-search, math, and coding tasks; mechanism analysis shows how PFs trigger and internalize skills"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2605.01970",
