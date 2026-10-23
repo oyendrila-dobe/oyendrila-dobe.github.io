@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22",
+ "generated": "2026-10-23",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,251 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.31376",
+   "title": "Certified Execution Harness for Agentic AI: Safe and Least-Intrusive Petri-Net Supervisory Control Between Reasoning and Action",
+   "authors": [
+    "Chao Gu",
+    "Quanyan Zhu"
+   ],
+   "abstract": "This paper studies the problem of safe tool execution for large language model (LLM) agents under prompt injection. Using Petri nets, we formalize the execution harness between the LLM and its tools as a supervisory control problem, in which marks represent capabilities, approvals and budgets. Since a transition fires only if the marks it needs are present, an injected request whose preconditions are unmet or already spent is refused regardless of its wording. Treating tool outcomes as uncontrollable, we enforce safety by the conventional maximally permissive supervisor, and this safety transfers to the running system under four assumptions. Moreover, to capture an agent that may propose again after a refusal, we introduce the notion of a replanning closed loop, in which each retry costs an inference call. We show that, in this loop, the conventional supervisor can be arbitrarily more intrusive than a stricter safe one. Furthermore, for a given proposer model, the maximally permissive least-intrusive supervisor is characterized as a value-threshold refinement of the conventional one. Under precise conditions, this refinement orders two concurrent actions by at most one monitor place. On an autonomous release agent, we find by synthesis that safe deployment requires a step that the supervisor can refuse after a rollout starts.",
+   "abs_url": "https://arxiv.org/abs/2610.31376",
+   "pdf_url": "https://arxiv.org/pdf/2610.31376",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.SY",
+    "eess.SY"
+   ],
+   "published": "2026-10-22",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Formalizes LLM agent execution as Petri-net supervisory control to enforce safety guardrails against prompt injection and budget violations through external architectural constraints.",
+   "idea": {
+    "problem": "LLM agents vulnerable to prompt injection and uncontrolled tool execution",
+    "approach": "Formalize execution harness using Petri nets with supervisory control enforcing resource marks and preconditions",
+    "result": "Safe supervisor design that minimizes refusals while preventing unsafe execution regardless of prompting"
+   }
+  },
+  {
+   "id": "2610.31062",
+   "title": "SCOPE: Compiling Natural-Language Policies into Neurosymbolic Predicate Programs",
+   "authors": [
+    "Arnon Mazza",
+    "Elad Levi"
+   ],
+   "abstract": "Policy enforcement for LLM agents has shifted from single-turn content moderation to compound, application-specific policies evaluated over multi-turn transcripts and tool-call trajectories. Fine-tuned guardrail models are efficient but degrade on compound policies, and while LLM-as-a-judge approaches achieve higher accuracy, they incur high inference cost and tend to produce unstable predictions. Neurosymbolic methods offer a natural alternative, decomposing the policy into narrow neural decisions composed under explicit logic. However, existing symbolic layers lack the required expressiveness and are optimized against fixed data rather than the policy itself. To address this, we introduce SCOPE, which compiles a policy into an executable program of neural predicates executed by small models, deterministic extractors, and code that composes their outputs. The program is optimized jointly with its training data, using adversarial generation of counterexamples that target where the program deviates from the policy. We evaluate SCOPE on a benchmark of real-world policy tasks against prompt optimization, task decomposition, and workflow generation methods, achieving the highest average accuracy across tasks and models. Programs optimized with the weakest executor transfer to other models without further optimization. This allows them to be deployed in production on inexpensive models, where they reach accuracy comparable to frontier reasoning models. Unlike these monolithic models, SCOPE produces substantially more stable predictions, and each verdict is interpretable through the predicate outputs that produced it. Additionally, we validate the key components of our method through an ablation study. SCOPE thus enables reliable, interpretable, and efficient policy enforcement at production scale.",
+   "abs_url": "https://arxiv.org/abs/2610.31062",
+   "pdf_url": "https://arxiv.org/pdf/2610.31062",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-10-22",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Compiles natural-language policies into executable neurosymbolic programs for interpretable, verifiable agent policy enforcement with neural and symbolic composition.",
+   "idea": {
+    "problem": "LLM-based policy enforcers are unstable, expensive, or inaccurate on compound multi-turn policies",
+    "approach": "Compile policies into executable programs of neural predicates and logic, optimized with adversarial counterexamples",
+    "result": "Higher accuracy than LLM-as-judge, stable predictions, interpretable verdicts, efficient deployment on small models"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.30742",
+   "title": "UniGuard: Multi-View Guardrail Learning for Cross-Interface Safety Generalization",
+   "authors": [
+    "Viet-Thanh Pham",
+    "Thuy-Trang Vu",
+    "Junae Kim",
+    "Rollin Omari",
+    "Dinh Phung",
+    "Gholamreza Haffari",
+    "Lizhen Qu"
+   ],
+   "abstract": "Guardrail models are increasingly used as safety layers for LLMs and agentic systems, but most are trained on fixed prompt or response interfaces and become unreliable when the same safety case appears as a conversation, agent trajectory, multi-agent trace, or policy-conditioned input. We propose UniGuard, a training framework that learns interface-invariant safety representations from multiple semantically aligned views of the same safety case. We also construct the UniGuard-FT dataset by transforming 1,000 public safety cases into prompt, response, multi-turn conversation, agent-trace, and multi-agent-trace views, and train UniGuard-0.6B with classification, supervised contrastive learning, and asymmetric confidence calibration losses. Across unseen-interface benchmarks ATBench, PolicyGuardBench, and DynaBench, UniGuard-0.6B improves over its pretrained guardrail by 45.12 F1 points on average and reduces expected calibration error by 35.41 points, while remaining competitive with much larger guardrails such as Claude-Sonnet-4.5 and GPT-5.2 - despite being a 0.6B model and trained only with synthetic data.",
+   "abs_url": "https://arxiv.org/abs/2610.30742",
+   "pdf_url": "https://arxiv.org/pdf/2610.30742",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-22",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes UniGuard, a training framework for guardrail models that enforce safety constraints across diverse agent interfaces and input representations, enabling robust safety verification for agentic systems.",
+   "idea": {
+    "problem": "Guardrail models fail when safety cases appear in different interface formats (conversations, agent trajectories, policies)",
+    "approach": "Train interface-invariant representations using multiple semantically aligned views and contrastive learning losses",
+    "result": "UniGuard-0.6B improves F1 by 45.12 points on average across unseen-interface benchmarks, competitive with larger models"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.30690",
+   "title": "From Clinical Judgment to Checkable Rules: Clinician-Led Guardrails for Mental-Health Chatbots",
+   "authors": [
+    "Chenhan Lyu",
+    "Kit Wislocki",
+    "Sarah Elizabeth Stoeckl",
+    "Maitreyi Sinha",
+    "Amir Rahmani"
+   ],
+   "abstract": "Large language models (LLMs) deployed in mental-health contexts can be evaluated for safety failures, but the resulting judgments are often difficult to inspect or explain. Common approaches to improving safety rely on prompt engineering, LLM-as-a-Judge, and Constitutional AI. In this work, we describe a clinician-led alternative in which two clinicians define, finalize, and adjudicate the four safety checks of a rule base, which is formally verified for internal consistency and applied as a guardrail over LLM outputs. Here and in the title, clinician-led refers to this rule base, not to the fact extractor or the uncertainty default, which are ours. Every verdict of the resulting verification layer is recomputable from a named rule and sixteen facts. Against an LLM judge matched in model, revision, quantization, rule text, and decoding but without the layer's computed 988/911 fact, the largest disagreement class, the satisfied-rule class, is structured: the Llama-3.3-70B judge, on its primary prompt, demands a crisis resource from 55 of the 65 replies (84.6%) that already contain one, while the same model, asked as a fact extractor, reports a recognized resource present on 54 of the 55. The verification layer never raises that demand, by construction. We report with equal prominence where this judge is stronger: fewer false crisis alarms on the one reference-scored check. We also report the measured cost (a specification revision raised block-class outcomes on held-out boundary prompts of an over-refusal benchmark from 6.0% to 16.0%, chiefly by changing fact extraction), the clinicians' decision to keep our uncertainty default, and the analysis of the result. The contribution is not a safer verdict. It is a guardrail whose disagreements with the judge localize to named rules and facts and whose measured costs trace to named facts and the uncertainty default.",
+   "abs_url": "https://arxiv.org/abs/2610.30690",
+   "pdf_url": "https://arxiv.org/pdf/2610.30690",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CY"
+   ],
+   "published": "2026-10-22",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a clinician-led rule base applied as a formally verified guardrail over LLM outputs for mental-health chatbots, with transparent, checkable verdicts grounded in named rules and facts.",
+   "idea": {
+    "problem": "LLM safety evaluations in mental-health contexts lack inspectability and explainability; common approaches (prompt engineering, Constitutional AI) are opaque.",
+    "approach": "Clinicians define safety rules formally verified for consistency; guardrail layer checks LLM outputs against rule base, with all verdicts traceable to named rules and extracted…",
+    "result": "Verification layer produces recomputable, transparent judgments; measured disagreements with LLM-as-Judge localize to specific rules and facts; trade-offs quantified on over-…"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.30557",
+   "title": "Governed Self-Evolution for Autonomous Investing: A Multi-Agent LLM System with an Invariant Core",
+   "authors": [
+    "Yebo Feng",
+    "Jingyang Dai",
+    "Liangrui Pan",
+    "Nelson Lau",
+    "Jiahua Xu",
+    "Yang Liu"
+   ],
+   "abstract": "LLM agents that act on live Web data must combine heterogeneous evidence, remember what they have done and improve from outcomes without weakening their own safeguards. We study this problem in autonomous investing, where every action is irreversible and based on untrusted Web content. We present Steward, a multi-agent LLM system that draws the boundary of self-evolution in its type system. First, nine role-specialised agents decide jointly: four analysts read news feeds, SEC filings, macroeconomic series and market data and emit typed reports, from which a Portfolio Manager sets target positions that a protected Risk Manager audits. Second, a seven-layer shared memory, assembled by code from the system's own record, gives each decision its position context, the market narrative, calibration and the agent's past decisions. Third, the system improves itself by review: code grades every trade and forecast nightly and writes the grades into memory, and each quarter a reflector proposes prompt learnings that a deterministic gate applies reversibly and replay of recorded inputs verifies. All three operate around an invariant core of order arithmetic, risk rules and discipline-agent prompts that no self-edit can reach. In a five-month live deployment (102 trading days, 1,632 LLM calls), the system contained a 24.6% sector drawdown to a 0.3% loss; in replay of its recorded inputs, a single model given the same raw data traded more and lost 1.35 points against the market over five days where the joint design showed no significant loss, and no injected instruction was followed; and a 2015-2026 backtest shows the core alone lowering the maximum drawdown under all 50 random entry policies. The reflector traced the dominant failure to its root cause, and the gate applied a learning that the agent adopted on trigger evenings and on no control evening. Code: https://github.com/yebof/quant-agent",
+   "abs_url": "https://arxiv.org/abs/2610.30557",
+   "pdf_url": "https://arxiv.org/pdf/2610.30557",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.MA",
+    "q-fin.PM"
+   ],
+   "published": "2026-10-22",
+   "venue": "",
+   "code": "https://github.com/yebof/quant-agent",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "tool",
+   "why": "Multi-agent system with formal safeguards: invariant core that cannot be edited, deterministic gates for self-modification, and runtime verification of agent actions against trading rules.",
+   "idea": {
+    "problem": "LLM agents acting on live data must improve without weakening safeguards, especially in irreversible financial decisions",
+    "approach": "Multi-agent system with protected invariant core (order arithmetic, risk rules), deterministic gates controlling self-edits, shared memory with decision context, and nightly…",
+    "result": "Live deployment contained 24.6% drawdown to 0.3% loss; single model on same data lost 1.35 points; core alone reduced max drawdown across 50 policies"
+   }
+  },
+  {
+   "id": "2604.04978",
+   "title": "Measuring the Permission Gate: A Stress-Test Evaluation of Claude Code's Auto Mode",
+   "authors": [
+    "Zimo Ji",
+    "Zongjie Li",
+    "Pingchuan Ma",
+    "Wenyuan Jiang",
+    "Yudong Gao",
+    "Shuai Wang"
+   ],
+   "abstract": "Claude Code's auto mode is the first deployed permission system for AI coding agents, using a two-stage transcript classifier to gate dangerous tool calls. Anthropic reports a 0.4% false positive rate and 17% false negative rate on production traffic. We present the first independent evaluation of this system on deliberately ambiguous authorization scenarios, i.e., tasks where the user's intent is clear but the target scope, blast radius, or risk level is underspecified. Using AmPermBench, a 128-prompt benchmark spanning four DevOps task families and three controlled ambiguity axes, we evaluate 253 state-changing actions at the individual action level against oracle ground truth. Our findings characterize auto mode's scope-escalation coverage under this stress-test workload. The end-to-end false negative rate is 81.0% (95% CI: 73.8%-87.4%), substantially higher than the 17% reported on production traffic, reflecting a fundamentally different workload rather than a contradiction. Notably, 36.8% of all state-changing actions fall outside the classifier's scope via Tier 2 (in-project file edits), contributing to the elevated end-to-end FNR. Even restricting to the 160 actions the classifier actually evaluates (Tier 3), the FNR remains 70.3%, while the FPR rises to 31.9%. The Tier 2 coverage gap is most pronounced on artifact cleanup (92.9% FNR), where agents naturally fall back to editing state files when the expected CLI is unavailable. These results highlight a coverage boundary worth examining: auto mode assumes dangerous actions transit the shell, but agents routinely achieve equivalent effects through file edits that the classifier does not evaluate.",
+   "abs_url": "https://arxiv.org/abs/2604.04978",
+   "pdf_url": "https://arxiv.org/pdf/2604.04978",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI",
+    "cs.CR"
+   ],
+   "published": "2026-10-22",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Evaluates a deployed permission system for AI coding agents, stress-testing its guardrails against deliberately ambiguous authorization scenarios and measuring coverage gaps.",
+   "idea": {
+    "problem": "Claude Code's auto mode permission system has undocumented coverage gaps in guarding dangerous tool calls",
+    "approach": "Stress-test with AmPermBench benchmark spanning ambiguous DevOps scenarios with controlled risk axes",
+    "result": "81% false negative rate on scope-escalation; 36.8% of state-changing actions bypass classifier via file edits instead of shell"
+   }
+  },
+  {
+   "id": "2610.30432",
+   "title": "TrustedCode: Evaluating Large Language Models for Developing Trusted Code through Automated Program Verification",
+   "authors": [
+    "Muhammad Danial",
+    "Muhammad Taimoor Khan"
+   ],
+   "abstract": "Recent reports, such as \"Who is using AI to code?\", indicate that approximately 30\\% of Python code contributions to GitHub are AI-generated. Given the inherent unreliability of this code, formal verification emerges as a promising approach to establish trust in software correctness. Although leveraging large language models (LLMs) for formal verification has garnered increasing attention, practical adoption remains limited due to the challenges in writing formal specifications and verifying program correctness against them. Existing tools predominantly support verification for languages such as Java and C, with minimal support for Python. We present TrustedCode, an automated framework for verifying AI-generated Python code. TrustedCode uses LLMs to (i) type-check Python code, (ii) translate it into WhyML via the Why3 framework, and (iii) verify it against formal specifications using Why3 back-end automated theorem provers. Our method integrates chain-of-thought prompting through LangGraph to identify and address LLM limitations in specification generation and proving the specified programs. To evaluate TrustedCode, we conducted experiments on ten Python programs of varying complexity. Our analysis reveals that 50\\% of the observed errors stem from domain knowledge gaps, 30\\% from syntactic inaccuracies, and the remaining 20\\% from semantic and type-related issues. These findings underscore the importance of targeted improvements in LLM-guided formal verification workflows for Python. TrustedCode is an open source tool available at: \\href{github.com/mtaimoorkhan/TrustedCode}{github.com/mtaimoorkhan/TrustedCode}. The video demonstration is available at: \\href{youtu.be/Nr5I2g8ec-s}{youtu.be/Nr5I2g8ec-s}",
+   "abs_url": "https://arxiv.org/abs/2610.30432",
+   "pdf_url": "https://arxiv.org/pdf/2610.30432",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.LO",
+    "cs.PL"
+   ],
+   "published": "2026-10-21",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "tool",
+   "why": "Automated framework translating Python code to formal specifications (WhyML) and verifying against them using theorem provers, addressing autoformalization and specification challenges.",
+   "idea": {
+    "problem": "AI-generated Python code lacks formal verification; existing tools have minimal Python support",
+    "approach": "LLMs type-check Python, translate to WhyML via Why3, verify with automated theorem provers using chain-of-thought",
+    "result": "50% errors from domain gaps, 30% syntactic, 20% semantic; identifies key LLM limitation categories"
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2610.30114",
    "title": "The End of Consensus Research?",
@@ -55,7 +300,7 @@
     "approach": "Domain-specific agent harness combining concept-oriented knowledge base, modular implementation skeleton, and Lean-based verification with reusable…",
     "result": "Discovered A-greement protocol reducing geo-distributed latency by 12.2%–33.3% over baselines; uncovered vulnerabilities in existing protocols"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.30059",
@@ -92,7 +337,7 @@
     "approach": "Formalize intent independently in pairs of task-specific formal languages with no structure-preserving translation, then check solver-proven equivalence.",
     "result": "12% and 42.9% improvement in correctness proportion over strongest baseline on two benchmarks; accepted specs reject 96-98.6% of buggy programs."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.30042",
@@ -264,6 +509,41 @@
     "approach": "Analyze code property graphs to extract frame-relevant information and guide LLM generation of ACSL frame specifications",
     "result": "92.9% success rate on benchmark, 179% improvement over state-of-the-art"
    },
+   "figure_tries": 2
+  },
+  {
+   "id": "2512.20812",
+   "title": "Semantic Deception: When Reasoning Models Can't Compute an Addition",
+   "authors": [
+    "Nathaniël de Leeuw",
+    "Marceau Nahon",
+    "Mathis Reymond",
+    "Raja Chatila",
+    "Mehdi Khamassi"
+   ],
+   "abstract": "Large language models (LLMs) are increasingly used in situations where human values are at stake, such as decision-making tasks that involve reasoning when performed by humans. We investigate the so-called reasoning capabilities of LLMs over novel symbolic representations by introducing an experimental framework that tests their ability to process and manipulate unfamiliar symbols. We introduce semantic deceptions: situations in which symbols carry misleading semantic associations due to their form, such as being embedded in specific contexts, designed to probe whether LLMs can maintain symbolic abstraction or whether they default to exploiting learned semantic associations. We redefine standard digits and mathematical operators using novel symbols, and task LLMs with solving simple calculations expressed in this altered notation. The objective is: (1) to assess LLMs' capacity for abstraction and manipulation of arbitrary symbol systems; (2) to evaluate their ability to resist misleading semantic cues that conflict with the task's symbolic logic. Through experiments with four LLMs we show that semantic cues can significantly deteriorate reasoning models' performance on very simple tasks. They reveal limitations in current LLMs' ability for symbolic manipulations and highlight a tendency to over-rely on surface-level semantics, suggesting that chain-of-thoughts may amplify reliance on statistical correlations. Even in situations where LLMs seem to correctly follow instructions, semantic cues still impact basic capabilities. These limitations raise ethical and societal concerns, undermining the widespread and pernicious tendency to attribute reasoning abilities to LLMs and suggesting how LLMs might fail, in particular in decision-making contexts where robust symbolic reasoning is essential and should not be compromised by residual semantic associations inherited from the model's training.",
+   "abs_url": "https://arxiv.org/abs/2512.20812",
+   "pdf_url": "https://arxiv.org/pdf/2512.20812",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-21",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Analyzes LLM reasoning limitations through controlled experiments probing symbolic abstraction and semantic robustness, revealing that models over-rely on surface-level semantics rather than performing true symbolic reasoning.",
+   "idea": {
+    "problem": "LLMs claim reasoning ability but may exploit learned semantics rather than manipulate symbols abstractly",
+    "approach": "Test LLMs on arithmetic with redefined symbols designed to create misleading semantic associations",
+    "result": "Semantic cues significantly deteriorate performance on simple tasks, showing over-reliance on surface semantics over symbolic logic"
+   },
    "figure_tries": 1
   },
   {
@@ -334,7 +614,7 @@
     "approach": "Memory architecture with machine-checked integrity theorems in Lean 4; gates untrusted values; accumulates community endorsements",
     "result": "Zero attack success on Trojan Hippo; scalable community verification; improved knowledge base sharing among agents"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.28802",
@@ -367,7 +647,7 @@
     "approach": "Empirical study of 24 model-runner configurations with varying prompts and context (CodeQL call graphs) on production codebase",
     "result": "Engineered prompts and CodeQL context improve smaller-model yield 20–86%; frontier models achieve low false-report rates but not consistently highest yield; combining…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.28798",
@@ -485,7 +765,7 @@
     "approach": "Evolve a hierarchy of specialized harness classes using object-oriented design and route tasks to appropriate harnesses",
     "result": "Up to 15% absolute improvement over base harness across three long-horizon benchmarks"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.28201",
@@ -562,7 +842,7 @@
     "approach": "Label memory with owner, scope, origins, authority; check labels on context/storage/tool-call boundaries",
     "result": "Stops memory attacks as protection faults independent of model fooling"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.27871",
@@ -603,7 +883,7 @@
     "approach": "LLM extracts code features and generates SMT-LIB specs; Z3 solver makes final deterministic decision",
     "result": "Eliminates LLM as final arbiter, grounds all decisions in formal symbolic verification"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.27620",
@@ -672,7 +952,7 @@
     "approach": "AuthorizationBench: 286 executable tasks across domains with authorization-aware sandbox tracking authorized vs. out-of-authorization paths.",
     "result": "Agents act out-of-authorization in 19.2% of trajectories; consultation with principals reduces rate to 14.0%."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.27543",
@@ -742,7 +1022,7 @@
     "approach": "Combine agent trajectories with runtime monitor traces to identify harness behavior problems, search other frameworks for solutions, adapt and test candidate harness changes…",
     "result": "RiseHarness increases task success and reliability across models; improvements transfer to unseen benchmarks with same model."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2608.14590",
@@ -778,7 +1058,7 @@
     "approach": "Systematic PRISMA 2020 review of 38 studies on agent specification, verification, and enforcement from 2022-2026",
     "result": "Specification is bottleneck (24.8-34.2% semantic correctness); runtime monitoring most mature but limited to short horizons; no approach achieves all desiderata; ranked open…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.28679",
@@ -1062,7 +1342,7 @@
     "approach": "Empirically examine activation steering effects with and without CoT, studying how CoT encodes and reinforces refusal signals",
     "result": "CoT jointly encodes refusal with residual streams; regenerating CoT under steering reverses refusal in 94% of cases"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.25552",
@@ -7896,7 +8176,7 @@
     "approach": "Formalize robustness conditions: bounded corruption radius per evidence class, minimum hitting set to prevent laundering, deterministic reconciliation, and trusted anchors for…",
     "result": "Certifier admits no unsafe actions and recovers correct values where corroboration permits; tested on sanctions and supply-chain data with five LLM…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.34080",
@@ -7965,7 +8245,7 @@
     "approach": "Extract routing signals from the frozen LLM's hidden states using two learned linear maps, score skills with mid-layer activations, then verify with model likelihood and…",
     "result": "Gavel outperforms retrieve-and-rerank and progressive disclosure baselines by up to 21.9 points on mid-rollout skill selection tasks"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2606.12344",
@@ -8043,7 +8323,7 @@
     "approach": "Convert skills into executable Program Functions that act as guardrails activating on failure-prone states to modify actions or inject context",
     "result": "25-30% performance gains on web-search, math, and coding tasks; mechanism analysis shows how PFs trigger and internalize skills"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2605.01970",
@@ -8080,7 +8360,7 @@
     "approach": "Dynamic benchmark with adaptive red-teaming and capability-aware security-utility analysis",
     "result": "Trojan Hippo attack achieves 85-100% success undefended; defenses reduce to 0-5% with utility tradeoffs"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2602.14143",
@@ -8211,7 +8491,8 @@
     "problem": "Improving agent harnesses is costly when each evaluation requires long environment interactions",
     "approach": "Turn execution trace failures into scoped harness changes across verification, retrieval, decomposition, and memory without task model training",
     "result": "Frozen harnesses improve held-out performance across five settings; verification grounded in evidence helps intermediate steps and final answers"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.33796",
@@ -8277,7 +8558,8 @@
     "problem": "Standard metrics poorly evaluate natural-language-to-FOL translations; surface-level similarity metrics reward broken translations that preserve surface overlap.",
     "approach": "Use theorem prover to verify candidate translations against positive and contrastive probes derived from target formulas, detecting dropped content and over-assertion.",
     "result": "SIV correlates with error severity (80% variance) and detects major errors on expert-audited translations with top AUC, while providing labeled error traces."
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.33438",
@@ -8313,7 +8595,8 @@
     "problem": "LLM-based specification generation produces overly general, coarse-grained specifications that fail to capture distinct program behavior despite verification success.",
     "approach": "Divide-and-conquer framework that extracts execution paths, generates path-specific specifications via LLMs, and merges them; uses recursive decomposition for complex programs.",
     "result": "87.5% on SG-Bench (vs. 66.7% baseline) and 83.0% on SV-COMP (vs. 44.2% baseline); human evaluation confirms higher specification quality and semantic alignment."
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.33371",
@@ -8413,7 +8696,8 @@
     "problem": "LLM agents' flat memory retrieval causes context fragmentation and inconsistent reasoning over long horizons",
     "approach": "Build hierarchical memory trees organizing experiences by procedural dependencies; learn dynamic retrieval and pruning policies via RL",
     "result": "Improves task completion, reasoning stability, and memory efficiency; smaller models match larger proprietary systems"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2607.10490",
