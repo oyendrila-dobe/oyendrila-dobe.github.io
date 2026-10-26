@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-23",
+ "generated": "2026-10-26",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,317 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.32919",
+   "title": "SemantEq: Faithful Bidirectional Equivalence of Formal Statements",
+   "authors": [
+    "Xinrui Li",
+    "Pawan Sasanka Ammanamanchi",
+    "Siddharth Bhat",
+    "Rianna Jamdar",
+    "Yongxi Lin",
+    "Stella Biderman"
+   ],
+   "abstract": "Statement autoformalization translates mathematics from natural language into a proof assistant such as Lean 4, and models now do it at scale. As provers get stronger, the burden of correctness shifts from the proof to the statement, that is, to whether the formal statement faithfully translates its source. Given a trusted reference formalization, the natural test is logical equivalence, and it proves too much. $P \\leftrightarrow Q$ holds trivially for any two statements $P$ and $Q$ that the library proves, because a prover can prove each separately and pass through $P \\leftrightarrow \\mathrm{True} \\leftrightarrow Q$. The stronger the prover, the more unrelated pairs pass. Earlier methods restrict the prover and check that each proof names the other statement. We introduce SemantEq, a more principled relation that instead requires each statement to turn into the other only through a chain of allowed steps, such as logical rearrangement and rewriting with the library's own equations. Our programs judge a proof by the proof term Lean checks, not by its tactic script. SemantEq-Eval, a search without a model, reaches 100% precision and 65.6% recall on the ProofNetVerif test split under our adjudicated labels, against 95.8% and 61.8% for BEq+, and an 8.9-fold increase in its CPU time adds at most three pairs. A language model finds more proofs, but under two of four prompts it proves both directions of about two in five of the non-equivalent pairs. SemantEq-ProofAudit audits each model-written proof under a policy derived from the relation and accepts none of the 104 non-equivalent pairs, and it raises recall on 407 equivalent pairs from 65.4% to 81.1% under the best prompt. Separating the generation of equivalence proofs from their acceptance lets a stronger prover raise recall without changing what an acceptance means. We release code and data at: https://github.com/hlxr89/SemantEq",
+   "abs_url": "https://arxiv.org/abs/2610.32919",
+   "pdf_url": "https://arxiv.org/pdf/2610.32919",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-23",
+   "venue": "",
+   "code": "https://github.com/hlxr89/SemantEq",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes SemantEq, a principled method to verify that formal statements faithfully translate natural-language source via logical equivalence checking with proof-term auditing.",
+   "idea": {
+    "problem": "Autoformalized statements may not faithfully translate natural-language source; logical equivalence is too weak a test.",
+    "approach": "Require equivalence proofs to use only allowed steps (logical rearrangement, library rewrites); audit proof terms under derived policy.",
+    "result": "100% precision, 65.6% recall; proof auditing achieves 81.1% recall on equivalent pairs while rejecting all non-equivalent pairs."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.32813",
+   "title": "HarnessMM: Recursive Self-Improvement for Harness Token Efficiency",
+   "authors": [
+    "Yuhua Jiang",
+    "Chang Xu",
+    "Feifei Gao",
+    "Li Zhao"
+   ],
+   "abstract": "Agent harnesses repeatedly invoke reasoning after tool feedback, even when an earlier call has already fixed the next action. We introduce HarnessMM (Harness Minus Minus), a method for improving harness token efficiency through guarded decision reuse and recursive self-improvement (RSI). RSI iteratively refines companion harness configurations from training feedback, with validation selecting the configuration for deployment. A controller at the model-tool boundary reuses resolved decisions to replace later reasoning callbacks while actor weights remain fixed. Executable Decision Graphs store exact actions, literal arguments, causal dependencies, and public guards. Guarded Decision Reuse activates these persistent decisions from observed receipts; Certified Callback Substitution executes them through the native interface and records removal of the registered slow callback. New semantic decisions, unsupported evidence, and selector abstention invoke the original actor again. The representation restricts what feedback may change, while complete-task measurements establish quality and cost. On HumanEval, HarnessMM preserves Codex success at 90.82\\% while reducing Tokens/task (k) from 66.72 to 47.02 (29.54\\% saving). For DeepSeek Harness, success rises from 71.43\\% to 85.71\\% while Tokens/task (k) fall from 96.28 to 11.62 (87.93\\% saving). A separate MBPP ablation measures 26.91\\% lower cost than single-use graphs and 19.52\\% lower cost than retained callbacks. These results establish guarded decision reuse as a practical way to reduce repeated reasoning in existing harnesses.",
+   "abs_url": "https://arxiv.org/abs/2610.32813",
+   "pdf_url": "https://arxiv.org/pdf/2610.32813",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-23",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a harness-level control mechanism (HarnessMM) that reuses and guards decisions at the model-tool boundary to reduce redundant reasoning callbacks while maintaining task correctness.",
+   "idea": {
+    "problem": "Agent harnesses repeatedly invoke reasoning after tool feedback even when earlier decisions resolve the next action",
+    "approach": "Guarded Decision Reuse via Executable Decision Graphs with guards, plus Recursive Self-Improvement for harness configuration",
+    "result": "29.54% token savings on HumanEval, 87.93% on DeepSeek while preserving or improving success rates"
+   }
+  },
+  {
+   "id": "2610.32627",
+   "title": "LGMT: A Tool for Testing the Logical Reasoning Reliability of LLMs",
+   "authors": [
+    "Zenghui Zhou",
+    "Xiaoke Fang",
+    "Zheng Zheng"
+   ],
+   "abstract": "Large Language Models (LLMs) increasingly serve as reasoning components in modern software systems, yet a model that answers a logical query correctly can contradict itself when the same problem is restated in an equivalent form. Static benchmarks evaluate queries in isolation and therefore fail to expose such inconsistencies. To address this limitation, we present LGMT, an open-source tool that detects reasoning inconsistencies through metamorphic relations grounded in first-order logic. Given a source test case in premise-conclusion form, LGMT generates logically equivalent follow-up cases and checks whether the model's entailment predictions agree across the pair, without ground-truth labels. The tool provides 20 built-in metamorphic relations, supports custom ones verified by the Z3 theorem prover, and runs from a CLI or a web studio, including an offline mock mode requiring no API key. Across six widely used LLMs on a bundled benchmark of 3,091 metamorphic groups, LGMT reveals inconsistency rates ranging from 20.84% to 29.44%. LGMT is publicly available on GitHub at https://github.com/MaxwelsDonc/lgmt-tool, with a demonstration video at https://youtu.be/gou4opptu1U.",
+   "abs_url": "https://arxiv.org/abs/2610.32627",
+   "pdf_url": "https://arxiv.org/pdf/2610.32627",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-23",
+   "venue": "",
+   "code": "https://github.com/MaxwelsDonc/lgmt-tool",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.85,
+   "type": "tool",
+   "why": "Develops a testing tool to detect logical reasoning inconsistencies in LLMs using metamorphic relations grounded in first-order logic, directly addressing semantic reasoning reliability.",
+   "idea": {
+    "problem": "LLMs contradict themselves on logically equivalent reasoning problems despite correct answers on isolated queries",
+    "approach": "Generate logically equivalent test cases via metamorphic relations verified by Z3 theorem prover; check consistency of entailment predictions",
+    "result": "Reveals 20.84-29.44% inconsistency rates across six LLMs; tool released with 20 built-in relations and custom relation support"
+   }
+  },
+  {
+   "id": "2610.32285",
+   "title": "Trial by Trace: Benchmarking AI Agent Harnesses for Reliability and Failure Attribution",
+   "authors": [
+    "Zhiyong Cao",
+    "Hengjie Zhu",
+    "Yongxin Wang",
+    "Xuchen Li",
+    "Jintao Li",
+    "Shuxia Liu",
+    "Dunqiang Liu",
+    "Bo Wang",
+    "Kairan Zhang",
+    "Cong Lin",
+    "JiangDi Yu",
+    "Siyuan Liu",
+    "Sijia Yao",
+    "Yi-Liang Wei",
+    "Lingxu Ma",
+    "Aijia Wang",
+    "Anxin Chen",
+    "Zixian Wei",
+    "Xiang Ruan",
+    "Ruizhi Xu",
+    "Ruqian Shi",
+    "Baihua Xiao",
+    "Sicheng Zhou"
+   ],
+   "abstract": "LLM agents are increasingly used to solve real-world problems, and their effectiveness depends on both the underlying models and the harnesses that support their operation. However, most existing benchmarks focus on model capabilities and overall agent performance, with limited attention to the evaluation of agent harnesses. To address this gap, we introduce TraceTrial-Bench, which organizes harness reliability into seven components covering context, execution, governance, lifecycle, observability, tools, and verification. We construct 95 expert-level, mechanism-oriented tasks with executable or state-based ground truth to support semantically equivalent comparisons while preserving the native behavior of each harness. We design a Trajectory Tracing (TT) module to capture agent execution traces and introduce a two-layer evaluation framework that separately assesses agent performance and harness reliability. In addition, we design a Multi-source Evidence Acquisition (MEA) module to provide evidence from the agent context, harness, and execution environment for LLM-based evaluation, and develop a Failure Attribution (FA) module that uses explicit mechanism chains to support attribution at the run level. Across 4 harnesses, 9 models, and 95 tasks, our evaluation of 3,420 runs yields macro-averaged harness scores ranging from 59.8% to 72.0%, while 31.1% of runs achieve task success despite failing at least one harness criterion. TraceTrial-Bench provides an auditable and reproducible foundation for comparing agent harnesses, diagnosing their failures, and studying how harness design interacts with model behavior.",
+   "abs_url": "https://arxiv.org/abs/2610.32285",
+   "pdf_url": "https://arxiv.org/pdf/2610.32285",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-23",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "benchmark",
+   "why": "Introduces a benchmark for evaluating LLM agent harnesses on reliability components including governance, verification, and observability, with failure attribution mechanisms to assess agent constraints and controls.",
+   "idea": {
+    "problem": "Existing benchmarks focus on model capabilities, not harness reliability and failure attribution in LLM agents",
+    "approach": "TraceTrial-Bench organizes harness reliability into seven components with trajectory tracing, multi-source evidence acquisition, and failure attribution…",
+    "result": "Evaluation across 4 harnesses and 95 tasks shows harness scores 59.8-72.0%, with 31.1% of runs succeeding despite harness criterion failures"
+   }
+  },
+  {
+   "id": "2610.32131",
+   "title": "Pairing Matters: Performance, Failures, and Efficiency in Lightweight Coding Agents",
+   "authors": [
+    "Lu Zhao",
+    "Christopher M. Poskitt",
+    "David Lo"
+   ],
+   "abstract": "Self-hosting coding agents is often necessary for software-engineering teams that must keep proprietary code and development traces within controlled infrastructure. Lightweight, open-weight models make such deployment more feasible by reducing hardware requirements, while strong results on repository-level benchmarks demonstrate their potential for demanding coding tasks. Deploying these models as coding agents requires pairing them with an agent harness, making their joint performance a key deployment consideration. Yet existing leaderboards primarily report fixed harness-model configurations rather than controlled comparisons across alternative pairings. To address this gap, we investigate harness-model interactions through a controlled full-factorial evaluation of six open-source harnesses and three lightweight coding models across 100 SWE-bench Verified tasks, producing 1,800 graded runs under common serving, metering, and grading conditions. For the same model, resolution rates differ by up to 44 percentage points across harnesses, while harness rankings change across models. We apply an evidence-based failure taxonomy to 1,100 unsuccessful runs and find substantial differences in failure patterns across harness-model pairings. A model's dominant failure modes under one harness need not dominate under another. Efficiency is similarly dependent on the pairing: even among model-directed loop harnesses, charged tokens per resolved task vary by more than 20-fold. These findings make harness-model selection a central deployment decision for lightweight coding agents. Strong performance with one harness or model does not guarantee similar results with another. We translate these findings into practitioner guidance for pairing selection, token-efficiency assessment, and trajectory-informed harness engineering, and release the complete experimental records and analysis artifacts.",
+   "abs_url": "https://arxiv.org/abs/2610.32131",
+   "pdf_url": "https://arxiv.org/pdf/2610.32131",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-23",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Systematically evaluates how agent harnesses interact with and constrain lightweight coding models, providing evidence-based guidance on harness-model pairings for practical agent deployment.",
+   "idea": {
+    "problem": "Agent harness-model pairings have up to 44pp performance variance, but existing leaderboards don't evaluate their interactions",
+    "approach": "Full-factorial evaluation of 6 harnesses × 3 models across 100 SWE-bench tasks with taxonomy of failure modes",
+    "result": "Harness-model pairing is critical; token efficiency and failure patterns vary 20-fold; released experimental records and guidance"
+   }
+  },
+  {
+   "id": "2610.32053",
+   "title": "Are LLM-Generated Formal Specifications Faithful to Their Requirements? A Study on Bimodal Formal Specification Generation",
+   "authors": [
+    "Wenhan Wang",
+    "Shiming Chen",
+    "Zeyu Sun",
+    "Shenghua Feng"
+   ],
+   "abstract": "Formal specification generation is a critical step towards formal verification and correctness assurance of software. Recently, large language models have been widely adopted in automatic generation of formal specifications. However, existing LLM-based specification generation approaches often assume that the input program is correct, which deviates from the real purpose of formal verification---to figure out whether the program meets its requirements when its correctness is unknown. Therefore, we conduct an empirical study of LLM-based specification generation under the bimodal setting: given both the natural language requirement and its corresponding code implementation, whose correctness is unknown. We construct a benchmark of 1,403 C programs and evaluate ACSL specification generation with Frama-C verification. Our study reaches several interesting findings: first, when the code implementation is correct, providing the natural language requirement does not further improve the pass rate of generated specifications. Second, when the code implementation is incorrect, LLM-based specification generation may erroneously pass verification by producing weak or implementation-misled specifications, and this cannot be fully alleviated by advanced prompting approaches. Compared with the non-formal HoarePrompt approach, LLM-generated formal specifications are less effective in predicting requirement-code consistency. Our study takes a first look at applying LLM-based formal specification generation to verifying program correctness against requirements, and points to requirement-faithful specification generation as a new direction for future LLM-based formal specification research.",
+   "abs_url": "https://arxiv.org/abs/2610.32053",
+   "pdf_url": "https://arxiv.org/pdf/2610.32053",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.PL"
+   ],
+   "published": "2026-10-23",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Empirically evaluates LLM-based formal specification generation (ACSL) for faithfulness to natural-language requirements, identifying failure modes in detecting requirement-code inconsistencies.",
+   "idea": {
+    "problem": "LLM-generated formal specs may not faithfully reflect requirements, especially when code is incorrect",
+    "approach": "Benchmark ACSL spec generation on C programs with known correctness, evaluate with Frama-C verification",
+    "result": "LLMs generate weak specs that pass verification despite requirement-code mismatch; requirements poorly improve specs for correct code"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.32045",
+   "title": "Do AI-for-Science Agents Preserve Model Safety?",
+   "authors": [
+    "Michael Yew Chuan Lee",
+    "Manya Sriram",
+    "N. Benjamin Erichson"
+   ],
+   "abstract": "AI-for-Science agents are increasingly being used for formulating scientific hypotheses, running autonomous experiments, and interpreting evidence. These agents are constructed by integrating a large language model (LLM) into a domain-specific agent harness, which in turn can improve the LLM's scientific capability and enable the model to orchestrate scientific tools. In this work, we ask whether model safety is preserved when an LLM is integrated in an AI-for-Science agent harness. We evaluate five agent harnesses on 50 harmful chemistry requests. Specifically, we study how the safety behavior changes under direct prompting, two simple adversarial prompting strategies, and an adaptive attack. Across four recent GPT variants, our results show that the agent harness can increase harmful compliance even under direct prompting. More critically, we find that adaptive attacks that are largely unsuccessful against the base LLM suddenly become highly successful after the agent harness is introduced. Our results show that the safety behavior of the base LLM is not durable once a harness is introduced. Thus, as AI-for-Science agents become more capable and autonomous, the community needs to evaluate and align the agent using domain-specific safety benchmarks.",
+   "abs_url": "https://arxiv.org/abs/2610.32045",
+   "pdf_url": "https://arxiv.org/pdf/2610.32045",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-23",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Evaluates how agent harnesses affect LLM safety and adversarial robustness, identifying guardrail gaps when models are integrated into agent scaffolding.",
+   "idea": {
+    "problem": "LLM safety guarantees may not hold when models are integrated into agent harnesses",
+    "approach": "Evaluate five agent harnesses on harmful chemistry requests using direct and adaptive attacks",
+    "result": "Agent harnesses increase harmful compliance; adaptive attacks succeed after harness integration but fail on base models"
+   }
+  },
+  {
+   "id": "2605.08442",
+   "title": "Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents",
+   "authors": [
+    "Jun Wen Leong"
+   ],
+   "abstract": "In LLM agents with persistent memory, whether a model stores an injected instruction and whether it later acts on it are separable safety properties. We call this the injection-execution dissociation. We evaluate 29 frontier endpoints with the malicious document in the retrieval corpus (N=10 each, four topped up to N=40; an earlier bug-affected collection is superseded). Execution is common: 7 endpoints exfiltrate in at least 9 of 10 runs and 11 more in some but fewer. Zero exfiltration is weak evidence of resistance: GPT-5.4, GPT-5.6-sol and Claude Haiku 4.5 never exfiltrate in 40 draft-only runs each but send almost no email, and in an exploratory follow-up that supplies the content and asks for a send they exfiltrate in 20 of 20, 5 of 20 and 6 of 20 runs. Anthropic's Opus and Sonnet models mostly store no forwarding directive and exfiltrate in at most 1 of 10 draft-only runs. We test six defences at four architectural layers in a 5,040-run factorial on nine open-weight models (N=40 per cell); these models store the instruction in every run, so it tests execution only. Input filters never see the payload, which arrives through retrieval. Retrieval-layer classifiers see it but, at the small operating points tested, do not flag it; frontier judges did. Only Memory Sandbox, which removes the recall tool, blocks the attack (0% ASR for eight of nine models). It is bypassed when a model rebuilds the instruction from the retrieval corpus: three Bedrock-served models do so (32.5-97.5% ASR), and a causal-mediation study on two OpenAI models attributes every success under the sandbox to this path. Stored but dormant instructions may create a cross-model risk; transfer was not demonstrated. Defences should be evaluated at both stages.",
+   "abs_url": "https://arxiv.org/abs/2605.08442",
+   "pdf_url": "https://arxiv.org/pdf/2605.08442",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-23",
+   "venue": "",
+   "code": "https://github.com/junwenleong/stateful-agent-security-eval",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Evaluates defense mechanisms against persistent-memory attacks on LLM agents across architectural layers, demonstrating which guardrails succeed or fail and identifying attack bypass techniques.",
+   "idea": {
+    "problem": "LLM agents with persistent memory are vulnerable to injected malicious instructions that can be stored and executed later",
+    "approach": "Systematically test injection-execution dissociation across frontier and open-weight models; evaluate six defenses at four architectural layers; use causal-mediation analysis to…",
+    "result": "Only Memory Sandbox fully blocks attacks on open-weight models; frontier models show variable resistance; models can rebuild instructions from retrieval corpus to bypass…"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.31810",
+   "title": "PaperFormalizer: Author-in-the-Loop Autoformalization of Research Papers in Lean",
+   "authors": [
+    "Jiyuan Tan",
+    "Vasilis Syrgkanis",
+    "Jose Blanchet"
+   ],
+   "abstract": "Even a carefully proofread paper can leave small gaps in its proofs or its stated assumptions. We introduce PaperFormalizer, a Lean-based agentic pipeline that helps authors find and close such gaps in their own papers and turn each paper into a Lean-verified version. Starting from the LaTeX source, PaperFormalizer transcribes the paper into a dependency graph of statements, audits each statement in natural language for faithfulness, ambiguity and correctness, and then formalizes and proves the statements in Lean against Mathlib, optional domain libraries and the author's personal toolkit. Only the author knows what a statement is meant to say and how a formalization gap in a result is best fixed. The pipeline therefore stops and asks the author whenever a statement admits more than one reading, presents every repair, in natural language and TeX symbols, as a proposal that the author can accept, decline or redirect, and leaves to the author every decision that could potentially change what the paper claims. The output is an annotated and revised version of the paper, a report of the changes, and Lean code in which each declaration is linked to the statement it formalizes. The author's toolkit grows as more papers are formalized, and authors can share their verified papers so that researchers who build on them can reuse their Lean code. By making verified papers practical to produce, PaperFormalizer aims to make research that rests on mathematical proofs more robust. PaperFormalizer runs inside a coding agent (Claude Code or Codex) and is available at https://github.com/Jiyuan-Tan/PaperFormalizer. Papers with Lean code shared by users are available at https://paperformalizer.org.",
+   "abs_url": "https://arxiv.org/abs/2610.31810",
+   "pdf_url": "https://arxiv.org/pdf/2610.31810",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO"
+   ],
+   "published": "2026-10-22",
+   "venue": "",
+   "code": "https://github.com/Jiyuan-Tan/PaperFormalizer",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.95,
+   "type": "tool",
+   "why": "Automates translation of mathematical proofs from LaTeX papers into Lean code, with author-in-the-loop verification and gap detection.",
+   "idea": {
+    "problem": "Mathematical papers contain proof gaps and ambiguous statements despite careful review",
+    "approach": "Agent pipeline that transcribes LaTeX to statements, audits for faithfulness, formalizes in Lean with author review at ambiguities",
+    "result": "Verified Lean code linked to paper statements; reusable toolkit for authors building on formalized work"
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2610.31376",
    "title": "Certified Execution Harness for Agentic AI: Safe and Least-Intrusive Petri-Net Supervisory Control Between Reasoning and Action",
@@ -79,7 +390,7 @@
     "approach": "Compile policies into executable programs of neural predicates and logic, optimized with adversarial counterexamples",
     "result": "Higher accuracy than LLM-as-judge, stable predictions, interpretable verdicts, efficient deployment on small models"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.30742",
@@ -116,7 +427,7 @@
     "approach": "Train interface-invariant representations using multiple semantically aligned views and contrastive learning losses",
     "result": "UniGuard-0.6B improves F1 by 45.12 points on average across unseen-interface benchmarks, competitive with larger models"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.30690",
@@ -153,7 +464,7 @@
     "approach": "Clinicians define safety rules formally verified for consistency; guardrail layer checks LLM outputs against rule base, with all verdicts traceable to named rules and extracted…",
     "result": "Verification layer produces recomputable, transparent judgments; measured disagreements with LLM-as-Judge localize to specific rules and facts; trade-offs quantified on over-…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.30557",
@@ -259,7 +570,7 @@
     "approach": "LLMs type-check Python, translate to WhyML via Why3, verify with automated theorem provers using chain-of-thought",
     "result": "50% errors from domain gaps, 30% syntactic, 20% semantic; identifies key LLM limitation categories"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.30114",
@@ -300,7 +611,7 @@
     "approach": "Domain-specific agent harness combining concept-oriented knowledge base, modular implementation skeleton, and Lean-based verification with reusable…",
     "result": "Discovered A-greement protocol reducing geo-distributed latency by 12.2%–33.3% over baselines; uncovered vulnerabilities in existing protocols"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.30059",
@@ -337,7 +648,7 @@
     "approach": "Formalize intent independently in pairs of task-specific formal languages with no structure-preserving translation, then check solver-proven equivalence.",
     "result": "12% and 42.9% improvement in correctness proportion over strongest baseline on two benchmarks; accepted specs reject 96-98.6% of buggy programs."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.30042",
@@ -509,7 +820,7 @@
     "approach": "Analyze code property graphs to extract frame-relevant information and guide LLM generation of ACSL frame specifications",
     "result": "92.9% success rate on benchmark, 179% improvement over state-of-the-art"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2512.20812",
@@ -544,7 +855,7 @@
     "approach": "Test LLMs on arithmetic with redefined symbols designed to create misleading semantic associations",
     "result": "Semantic cues significantly deteriorate performance on simple tasks, showing over-reliance on surface semantics over symbolic logic"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.28989",
@@ -614,7 +925,7 @@
     "approach": "Memory architecture with machine-checked integrity theorems in Lean 4; gates untrusted values; accumulates community endorsements",
     "result": "Zero attack success on Trojan Hippo; scalable community verification; improved knowledge base sharing among agents"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.28802",
@@ -647,7 +958,7 @@
     "approach": "Empirical study of 24 model-runner configurations with varying prompts and context (CodeQL call graphs) on production codebase",
     "result": "Engineered prompts and CodeQL context improve smaller-model yield 20–86%; frontier models achieve low false-report rates but not consistently highest yield; combining…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.28798",
@@ -1058,7 +1369,7 @@
     "approach": "Systematic PRISMA 2020 review of 38 studies on agent specification, verification, and enforcement from 2022-2026",
     "result": "Specification is bottleneck (24.8-34.2% semantic correctness); runtime monitoring most mature but limited to short horizons; no approach achieves all desiderata; ranked open…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.28679",
@@ -8360,7 +8671,7 @@
     "approach": "Dynamic benchmark with adaptive red-teaming and capability-aware security-utility analysis",
     "result": "Trojan Hippo attack achieves 85-100% success undefended; defenses reduce to 0-5% with utility tradeoffs"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2602.14143",
@@ -8492,7 +8803,7 @@
     "approach": "Turn execution trace failures into scoped harness changes across verification, retrieval, decomposition, and memory without task model training",
     "result": "Frozen harnesses improve held-out performance across five settings; verification grounded in evidence helps intermediate steps and final answers"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.33796",
@@ -8559,7 +8870,7 @@
     "approach": "Use theorem prover to verify candidate translations against positive and contrastive probes derived from target formulas, detecting dropped content and over-assertion.",
     "result": "SIV correlates with error severity (80% variance) and detects major errors on expert-audited translations with top AUC, while providing labeled error traces."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.33438",
@@ -8596,7 +8907,7 @@
     "approach": "Divide-and-conquer framework that extracts execution paths, generates path-specific specifications via LLMs, and merges them; uses recursive decomposition for complex programs.",
     "result": "87.5% on SG-Bench (vs. 66.7% baseline) and 83.0% on SV-COMP (vs. 44.2% baseline); human evaluation confirms higher specification quality and semantic alignment."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2609.33371",
@@ -8697,7 +9008,7 @@
     "approach": "Build hierarchical memory trees organizing experiences by procedural dependencies; learn dynamic retrieval and pruning policies via RL",
     "result": "Improves task completion, reasoning stability, and memory efficiency; smaller models match larger proprietary systems"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2607.10490",
@@ -8766,7 +9077,8 @@
     "problem": "Monitoring deployed LLM agents requires knowing which instructions steer behavior, including hidden objectives and prompt injections.",
     "approach": "Train activation-conditioned interpreter to decode hidden states into faithful instruction sets using judge-guided GRPO.",
     "result": "PRISM outperforms baselines at recovering instruction sets in benign, constrained, injection, and hidden-objective settings."
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2507.02699",
@@ -8836,7 +9148,8 @@
     "problem": "Transformers learn logical tasks via statistical shortcuts rather than generalizable rules",
     "approach": "Partition residual stream into orthogonal Data/Type subspaces with type-gated control",
     "result": "35-fold OOD error reduction in arithmetic; 26pp average improvement across 11 datasets with better robustness to distribution shift"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.32622",
@@ -8868,7 +9181,8 @@
     "problem": "CoT-Pass@k claims to verify reasoning chains but assumes the judge correctly detects flawed reasoning without testing that assumption.",
     "approach": "Corrupt solutions with deterministic errors and audit three judges' ability to detect them across multilingual mathematical benchmarks.",
     "result": "All judges accept corrupted chains almost as often as clean ones; chain-answer agreement dominates verdicts, not reasoning soundness."
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.32495",
@@ -8908,7 +9222,8 @@
     "problem": "Agent harness records are not evidentiary; readers cannot verify them without trusting the writer",
     "approach": "External append-only log kept outside the harness to corroborate or contradict harness records",
     "result": "External log catches all omissions and fabrications; second-author logging makes records auditable"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.32491",
@@ -8978,7 +9293,8 @@
     "problem": "Agent harness design substantially shapes SE-agent performance, but its role remains insufficiently understood across models, tasks, and components",
     "approach": "Construct modular NanoHarness and empirically evaluate five harness components (tool registry, context compression, planning, subagents, lazy skills) across models and…",
     "result": "Harness effectiveness depends on model capability and task type; structured tool use and task-specific subagents provide most stable improvements"
-   }
+   },
+   "figure_tries": 1
   },
   {
    "id": "2609.05587",
