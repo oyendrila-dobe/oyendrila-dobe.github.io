@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26",
+ "generated": "2026-10-27",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,657 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.35835",
+   "title": "I-HITL: Inalienable Human-in-the-Loop",
+   "authors": [
+    "Samuel Breckenridge",
+    "Dani Vilardell",
+    "Wenhao Wang",
+    "Fan Zhang",
+    "Ari Juels"
+   ],
+   "abstract": "Human oversight is a pillar of AI safety. It is often exercised by a human in the loop (HITL) who approves critical actions taken by an AI agent. AI agents' increasing ability to bypass guardrails, though, raises the question of how to enforce HITL robustly. We introduce the concept of inalienable human-in-the-loop (I-HITL). An I-HITL protocol ensures that an agent can initiate an action only with explicit human approval, even when the human interacts with a system (e.g., a local agentic harness) compromised by the agent. A strong I-HITL protocol additionally ensures such approval even when an adversarial human attempts to delegate approvals to an agent. To motivate I-HITL, we report on experiments with a popular agentic wallet platform in which raising an agent's spending cap requires HITL approval via emailed one-time passcodes (OTPs). Given access to the user's email and a task blocked by the cap, we find that ten different frontier models will often autonomously raise the cap, harvesting OTPs to bypass a HITL guardrail and surfacing other vulnerabilities. We formally define I-HITL using the concept of communication topologies and prove necessary and sufficient conditions for its realization. We show that an I-HITL protocol requires a trusted entity - a trusted computing device (or equivalent) - and characterize which such devices can and cannot realize an I-HITL protocol. We present a prototype I-HITL system called Countersign that can plug into and strengthen existing HITL systems using off-the-shelf consumer mobile devices.",
+   "abs_url": "https://arxiv.org/abs/2610.35835",
+   "pdf_url": "https://arxiv.org/pdf/2610.35835",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Proposes I-HITL protocol and Countersign system to enforce robust human oversight of AI agents by preventing guardrail bypass through formal guarantees and trusted devices.",
+   "idea": {
+    "problem": "AI agents can bypass human-in-the-loop approval mechanisms to execute unauthorized critical actions.",
+    "approach": "Define I-HITL protocol using communication topologies; prove necessary conditions; implement Countersign with trusted computing devices.",
+    "result": "Formal characterization of enforceable HITL; prototype system preventing agent approval delegation bypass."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.35349",
+   "title": "MarkovSim: an LLM Agent Harness with Bounded Context for Long-Horizon Computational Simulation",
+   "authors": [
+    "Yeui-Lung Lei",
+    "Wen-Bo Chen",
+    "Pan Zhang"
+   ],
+   "abstract": "Recent studies have applied large language model (LLM) agent systems to computational simulation workflows. Such workflows are long-horizon, so the information generated can exceed what an LLM can reason over at once, its context window. Context management is therefore essential, yet existing systems have either neglected it or treated it as a supporting mechanism rather than a subject of study. This paper presents MarkovSim, an LLM agent harness for long-horizon computational simulation, whose core is a context management scheme built into the workflow. The workflow record is written to a memory system with a predefined schema, and at workflow-defined boundaries, namely the state transitions of a finite-state machine a compact representation of the solution progress is constructed from it as the agent's context. Instantiated on finite element analysis and evaluated on six benchmark problems, MarkovSim passed 16 of 18 runs and corrected its own faults in both the solver operations and the model physics. The engineer was consulted only where engineering judgement was needed. The context remained bounded throughout every run, regardless of its length.",
+   "abs_url": "https://arxiv.org/abs/2610.35349",
+   "pdf_url": "https://arxiv.org/pdf/2610.35349",
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE",
+    "cs.AI"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes an LLM agent harness with structured context management using finite-state machines and memory schemas to constrain information available to the agent during long-horizon computational tasks.",
+   "idea": {
+    "problem": "LLM agents cannot reason over context exceeding their window in long-horizon computational workflows",
+    "approach": "Build context management into agent harness using finite-state machine state transitions and memory schema to construct compact context…",
+    "result": "Passed 16/18 finite element analysis benchmark runs with bounded context throughout, self-correcting solver and physics errors"
+   }
+  },
+  {
+   "id": "2610.35333",
+   "title": "RepoTrace: Improving Requirement Tracing in Multi-Round Agent Interactions",
+   "authors": [
+    "Huanyu Liu",
+    "Yezheng Cheng",
+    "Jinliang You",
+    "Tianxiao Huang",
+    "Linyu Li",
+    "Zheng Fang",
+    "Peng Cao",
+    "Ge Li"
+   ],
+   "abstract": "Code agents have become increasingly capable of performing software engineering tasks through interaction with software environments. However, agents tend to degrade as the number of interaction rounds increases, making it difficult to maintain existing software during iterative modification. We analyze 2,656 agent trajectories in EvoCode-Bench and identify requirement focus misalignment as a recurring failure pattern, where agents struggle to distinguish the primary modification targets of a requirement from unrelated code. We propose Repotrace a requirement-driven repository understanding harness that combines repository structure with requirement semantics to construct a requirement-code correspondence and injects it into the agent context. This correspondence enables code agents to follow the repository architecture, trace requirements across multi-round interactions, and identify the core code elements corresponding to the current requirement. Experiments show that Repotrace improves the mean per-round reward (MPR) across different models (e.g., +19.99 on GLM-5.2) and agent harnesses (e.g., +10.22 on Claude Code). Across rounds, Repotrace increases the average per-round reward from 0.163 to 0.371 on Terminus-2 with DeepSeek-V4-Pro, while reducing average regression errors by 56.78%. We release the source code and agents' trajectories to support future research.",
+   "abs_url": "https://arxiv.org/abs/2610.35333",
+   "pdf_url": "https://arxiv.org/pdf/2610.35333",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.78,
+   "type": "method",
+   "why": "Proposes a requirement-driven harness that injects requirement-code correspondence into agent context to constrain and guide code agent behavior across multi-round interactions.",
+   "idea": {
+    "problem": "Code agents degrade over multi-round interactions; fail to maintain requirement focus during iterative code modification",
+    "approach": "Build requirement-code correspondence by combining repository structure with requirement semantics; inject as context to guide agent",
+    "result": "Improves per-round reward across models and reduces regression errors by 56.78%"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.35082",
+   "title": "CoSA: The Conflict of Skills Attack in Real-World LLM Agent Ecosystems",
+   "authors": [
+    "Yujia Zheng",
+    "Tianhao Li",
+    "Shangzhi Xu",
+    "Yuekai Huang",
+    "Ziyou Jiang",
+    "Zhaoyang Li",
+    "Yuyao Ge",
+    "Junran Peng",
+    "Mingyang Li"
+   ],
+   "abstract": "Agent Skills allow LLM agents to combine reusable capabilities, but checking each Skill in isolation cannot rule out policy violations when they are composed. We term such failures Conflict of Skills (CoS): artifacts or assessment signals produced for one purpose may be reused downstream without preserving the restrictions or authorization needed for their new use. Using controlled executions of publicly available Skills and matched single-Skill controls, we identify four recurring mechanisms behind CoS. Building on these findings, we introduce the Conflict of Skills Attack (CoSA), which adds locally admitted Skills to an existing pool to supply missing business operations (capability supplementation) or reshape artifact exchange, decision reuse, and target/action bindings (relationship reshaping). CoSA leaves existing Skills and runtime permissions unchanged. To evaluate this threat under autonomous Skill selection, we introduce CoSA-Bench, built from real-world Skills and controlled services, with 288 tasks across recruiting, finance, IT, and business, covering data leakage, unauthorized state modification, and unsafe execution. Across five LLMs and three agent harnesses, additions capped at 5% of each original pool raise the policy-violation rate from 35.02% to 58.45%, an increase of 23.43 percentage points. Trace analysis links compliant-to-violating transitions to cross-Skill dependencies involving the additions. Finally, we develop a lightweight harness-level guard that checks information flow and authorization before consequential actions. On OpenClaw recruiting tasks across five models, the guard reduces violations from 65.28% to 6.67%, while policy-compliant task completion on matched benign controls changes from 66.67% to 65.00%.",
+   "abs_url": "https://arxiv.org/abs/2610.35082",
+   "pdf_url": "https://arxiv.org/pdf/2610.35082",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CR"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Identifies composition vulnerabilities in LLM agent skill pools and proposes harness-level guards that enforce authorization and information-flow constraints on agent actions.",
+   "idea": {
+    "problem": "Composing LLM agent skills can violate policies even when individual skills are safe due to cross-skill dependencies.",
+    "approach": "Design lightweight harness-level guard checking information flow and authorization before consequential actions; evaluate on real skills.",
+    "result": "Guard reduces policy violations from 65.28% to 6.67% on recruiting tasks while maintaining 65% benign task completion."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.34679",
+   "title": "AT-AT: Automatic Tool Optimization from Agent Traces",
+   "authors": [
+    "Maya Ravichandran",
+    "Pragya Tripathi",
+    "Dharamendra Kumar",
+    "Adith Swaminathan",
+    "Nathan Kallus"
+   ],
+   "abstract": "Efforts to improve LLM-based agents typically focus on modifying the agent itself, yet success also depends on the environment in which an agent acts. Tools mediate this interaction: a tool's description shapes how an agent calls it, and its implementation determines the results and errors the agent receives afterwards. Many tools, such as APIs and MCP servers, are shared by many agents and maintained by providers who cannot change those agents. We introduce AT-AT (Automatic Tool Optimization from Agent Traces), an agentic tool optimizer that improves a shared toolset offline from historical agent executions while holding the agents fixed. A lightweight coding agent reads agent trajectories and their evaluation results, and selectively edits tool descriptions and, when permitted, implementations. On $τ^2$-bench-verified, AT-AT achieves the highest task completion rates in the Airline and Telecom domains at lower cost than strong prompt- and tool-optimizer baselines, and its Telecom gain is statistically significant under paired permutation tests. Optimizing the tools within a coding agent harness also improves held-out performance on TerminalBench-2 and TBLite. When applied to three production MCP servers at a large enterprise, AT-AT lowered cost or tool error rates on every server and increased held-out task passes on one. By turning accumulated execution traces into updates to shared tool environments, AT-AT provides a path toward continual improvement of agent systems through environment-side learning.",
+   "abs_url": "https://arxiv.org/abs/2610.34679",
+   "pdf_url": "https://arxiv.org/pdf/2610.34679",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a tool optimization harness that improves shared LLM-agent tools by editing descriptions and implementations based on agent traces, enabling better agent-environment interaction without modifying agents.",
+   "idea": {
+    "problem": "Shared tools (APIs, MCP servers) limit agent success but providers cannot modify agents using them",
+    "approach": "Automatic tool optimizer reads agent trajectories and selectively edits tool descriptions and implementations offline",
+    "result": "Improved task completion rates and reduced costs on benchmarks and production MCP servers"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2608.18565",
+   "title": "SemaPLC: A Project-Grounded, Verification-Gated Agent Harness for PLC Code Generation",
+   "authors": [
+    "Yanlun Tu",
+    "Huacan Wang",
+    "Jin Xie",
+    "Ziyue Zhou",
+    "Jie Zhou",
+    "Ningyan Zhu",
+    "Ge Chen",
+    "Wangyi Chen",
+    "Tengfei Zhou",
+    "Yifan Zhou",
+    "Dasheng Yang",
+    "Xiaofeng Mou",
+    "Hui Zhang",
+    "Yi Xu"
+   ],
+   "abstract": "In industrial practice, AI-generated programmable logic controller (PLC) code must integrate with existing projects and implement the required behavior across scan cycles. Compilation alone does not establish runtime behavior, and subsequent edits can invalidate earlier verification results. We present SemaPLC, a project-grounded, verification-gated agent harness for PLC code generation. The harness combines project context and reusable PLC skills with specification review, compilation, and live-runtime validation. Its completion gate requires recorded checks to meet acceptance criteria for the current implementation. Edits invalidate previous verdicts, and failed checks guide bounded repair. We evaluate SemaPLC on 117 independent-POU tasks and 65 project-context tasks across seven language-model backbones. SemaPLC outperforms the evaluated baselines on both metrics for every backbone. Its mean verified-pass rate and dynamic score reach 72.6% and 52.2, exceeding the strongest baseline means by 8.7% points and 20.8 points, respectively. Verification-layer and failure analyses reveal how build recovery and output observability affect end-to-end results and identify behavioral errors that remain after compilation. We apply the harness in KUKA's iiQworks product environment for PLC development and discuss engineering lessons for its industrial integration and deployment. The industrial use indicates the agent assistance substantially improves PLC development efficiency by 45%.",
+   "abs_url": "https://arxiv.org/abs/2608.18565",
+   "pdf_url": "https://arxiv.org/pdf/2608.18565",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "tool",
+   "why": "Presents a verification-gated agent harness that constrains LLM-generated PLC code through specification review, compilation checks, and runtime validation gates, with structured repair feedback.",
+   "idea": {
+    "problem": "AI-generated PLC code must satisfy runtime behavior and project integration requirements; compilation alone cannot verify this",
+    "approach": "Agent harness combining project context, specification review, compilation, and live-runtime validation with completion gates and bounded repair",
+    "result": "72.6% verified-pass rate and 52.2 dynamic score on 182 tasks; 45% efficiency improvement in industrial deployment"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2605.27238",
+   "title": "EviACT: An Evidence-to-Action Framework for Agentic Program Repair",
+   "authors": [
+    "Qianru Meng",
+    "Xiao Zhang",
+    "Zhaochun Ren",
+    "Joost Visser"
+   ],
+   "abstract": "LLM-based agents have moved automated program repair (APR) from fixed-context patch generation to interactive repository-level repair. However, existing agentic APR systems still struggle to use execution evidence to guide localization, patch generation, and validation. We propose EviACT (Evidence-to-Action), an agentic APR framework that coordinates three evidence-driven guardrails across repair stages. The retrieval scaffold grounds repair context, the compile gate filters invalid edits, and the test-driven gate checks target-test recovery before full regression. Across four benchmarks, EviACT improves resolve rate over the strongest reported comparable baselines by 1.6-6.0 percentage points and shows 70.1-88.6% lower reported per-bug API cost where baseline costs are available. Ablations and diagnostics suggest that these gains are associated with the coordinated evidence-to-action chain, making agentic APR more effective and efficient.",
+   "abs_url": "https://arxiv.org/abs/2605.27238",
+   "pdf_url": "https://arxiv.org/pdf/2605.27238",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes evidence-driven guardrails (retrieval scaffold, compile gate, test-driven gate) that constrain and verify LLM-agent actions in automated program repair, enforcing checkable constraints on agent behavior.",
+   "idea": {
+    "problem": "LLM-based agents struggle to use execution evidence to guide localization, patch generation, and validation in program repair",
+    "approach": "Three coordinated evidence-driven guardrails: retrieval scaffold grounds context, compile gate filters invalid edits, test-driven gate validates patch…",
+    "result": "1.6–6.0 pp improvement in resolve rate and 70–89% lower API cost versus baselines"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2605.26893",
+   "title": "Learning Faithful Reasoning Processes with Spatio-Temporal Latent Dynamics for Large Language Models",
+   "authors": [
+    "Weijiang Lv",
+    "Wentong Zhao",
+    "Jiayu Wang",
+    "Yuhao Wu",
+    "Jiaheng Wei",
+    "Xiaobo Xia"
+   ],
+   "abstract": "Chain-of-Thought (CoT) reasoning has significantly enhanced the reasoning capabilities of large language models (LLMs). However, existing reinforcement learning methods primarily optimize outcome-level rewards, providing limited supervision over the reasoning process. As a result, models may produce shortcut-prone or unstable reasoning trajectories even when the final answer is correct. We propose GeoFaith, a spatio-temporal latent dynamics framework for learning faithful reasoning processes without process reward models. GeoFaith combines final-state latent uncertainty, which measures whether a completed trajectory lies in a well-supported manifold region, with predictive-entropy dynamics, which penalize abnormal uncertainty patterns such as premature collapse, oscillation, and prolonged uncertainty. These signals are incorporated as process regularization into GRPO, jointly optimizing answer correctness and reasoning quality without step-level process annotations. Experiments show that GeoFaith consistently improves reasoning accuracy, produces more efficient reasoning trajectories, and outperforms both outcome-only reinforcement learning and process-supervision baselines.",
+   "abs_url": "https://arxiv.org/abs/2605.26893",
+   "pdf_url": "https://arxiv.org/pdf/2605.26893",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a framework to improve LLM reasoning fidelity by regularizing reasoning trajectories through latent dynamics, addressing shortcut-prone reasoning without explicit process supervision.",
+   "idea": {
+    "problem": "LLMs produce correct answers via unstable or shortcut-prone reasoning trajectories",
+    "approach": "Combine final-state latent uncertainty with predictive-entropy dynamics as process regularization in RL",
+    "result": "Improved reasoning accuracy, efficiency, and trajectory quality without process annotations"
+   }
+  },
+  {
+   "id": "2512.21711",
+   "title": "Do Latent Tokens Think? A Causal and Adversarial Analysis of Chain-of-Continuous-Thought",
+   "authors": [
+    "Yuyi Zhang",
+    "Boyu Tang",
+    "Tianjie Ju",
+    "Sufeng Duan",
+    "Gongshen Liu"
+   ],
+   "abstract": "Latent tokens are gaining attention for enhancing reasoning in large language models (LLMs), yet their internal mechanisms remain unclear. This paper examines the problem from a reliability perspective, uncovering fundamental weaknesses: latent tokens function as uninterpretable placeholders rather than encoding faithful reasoning. While resistant to perturbation, they promote shortcut usage over genuine reasoning. We focus on Chain-of-Continuous-Thought (COCONUT), which claims better efficiency and stability than explicit Chain-of-Thought (CoT) while maintaining performance. We investigate this through two complementary approaches. First, steering experiments perturb specific token subsets, namely COCONUT and explicit CoT. Unlike CoT tokens, COCONUT tokens show minimal sensitivity to steering and lack reasoning-critical information. Second, shortcut experiments evaluate models under biased and out-of-distribution settings. Results on MMLU and HotpotQA demonstrate that COCONUT consistently exploits dataset artifacts, inflating benchmark performance without true reasoning. These findings reposition COCONUT as a pseudo-reasoning mechanism: it generates plausible traces that conceal shortcut dependence rather than faithfully representing reasoning processes.",
+   "abs_url": "https://arxiv.org/abs/2512.21711",
+   "pdf_url": "https://arxiv.org/pdf/2512.21711",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-10-26",
+   "venue": "EMNLP 2026",
+   "code": "",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "empirical",
+   "why": "Analyzes internal mechanisms of latent tokens via steering and causal interventions to understand whether LLMs engage in genuine reasoning, revealing that latent tokens enable shortcuts rather than faithful reasoning.",
+   "idea": {
+    "problem": "Latent tokens claim to enhance reasoning in LLMs, but their internal mechanisms and reliability are unclear",
+    "approach": "Use steering experiments and shortcut detection to probe whether latent tokens encode faithful reasoning or exploit dataset artifacts",
+    "result": "Latent tokens function as uninterpretable placeholders that enable shortcuts rather than genuine reasoning"
+   }
+  },
+  {
+   "id": "2610.34577",
+   "title": "Rethinking Verification in Agent Harnesses",
+   "authors": [
+    "Zhengxin Zhang",
+    "Erkang Zhu",
+    "Yin Lin",
+    "Claire Cardie",
+    "Bolin Ding",
+    "Jingren Zhou"
+   ],
+   "abstract": "Agent harnesses enable large language models to act through tools, observe the results, and iteratively work toward a task goal. Verification checks and revises agents' work to improve output quality. Yet there is limited guidance on how harnesses should organize this effort. We study verification as an axis of test-time scaling by examining when to intervene, who checks the work, and how checking leads to revision. Our framework spans four layers of the agent lifecycle: initial instructions, mid-turn reminders, completion gates, and independent review. We compare 17 designs across seven frontier coding models on Terminal-Bench (TB) and SWE-bench Verified (SWE), and introduce VisualBench for expert evaluation of visual and interactive artifacts. Initial instructions and execution-time reminders yield modest, model-dependent average gains on the coding benchmarks, without substantially increasing average output token use. Completion gates can yield larger gains but may substantially increase cost. Independent review by a critic offers a more favorable accuracy-cost tradeoff, improving average accuracy by 5.9-9.5 percentage points on TB and 3.9-6.6 on SWE at 1.13-1.25 and 1.00-1.04 times baseline cost, respectively. On VisualBench, independent review achieves net preferences of 13.2-23.8 points over the baseline across its four designs, exceeding the evaluated L0-L2 designs. Additional review rounds or independent critics further improve average TB accuracy by up to 3.5 percentage points. Together, these results provide empirical guidance for verification design in agent harnesses and support independent review as a practical axis of test-time scaling.",
+   "abs_url": "https://arxiv.org/abs/2610.34577",
+   "pdf_url": "https://arxiv.org/pdf/2610.34577",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-25",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Systematically evaluates verification mechanisms for LLM agents across harness layers—instructions, reminders, gates, and independent review—to constrain and improve agent behavior at test time.",
+   "idea": {
+    "problem": "Limited guidance on how agent harnesses should organize verification to check and revise agent work",
+    "approach": "Empirically compare 17 verification designs across four lifecycle layers on coding benchmarks, measuring accuracy-cost tradeoffs",
+    "result": "Independent review achieves best accuracy-cost tradeoff, improving accuracy 5.9-9.5% on Terminal-Bench and 3.9-6.6% on SWE-bench at minimal cost…"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.34425",
+   "title": "CTXAgent - Self-Controlled Context Management of LLM Agents",
+   "authors": [
+    "Matthias Busch",
+    "Marius Tacke",
+    "Roland C. Aydin",
+    "Christian Feiler",
+    "Christian J. Cyron"
+   ],
+   "abstract": "Agent harnesses keep long sessions inside the context window by compacting the history when a token threshold is crossed. We study an alternative in which the model manages its own context: it decides when to compact, what to keep and what to write as the hand-off, given two tools and one paragraph of guidance. Since earlier work found that open-weight models cannot manage their own context without scaffolding, we compare seven frontier models under identical conditions, with and without the context tools, on token cost and benchmark score, and we compare our harness with three widely used harnesses on two of these models. The benchmark is assembled from existing ones: coding exercises, multi-step SciCode problems and SWE-bench Pro and Terminal-Bench 4.0 tasks are interleaved with planted facts, ephemeral observations and standing instructions, all checked deterministically, in sessions of 35-212 turns that resemble a user working through different tasks in one chat. Most of the strongest models manage their context: they compact and curate regularly, the live context of the mixed sessions stays mostly below 100k tokens, and their benchmark scores mostly do not drop significantly. For the models that manage their context well, the cost reduction is substantial but varies between models, because some models compact so often that other costs increase. With Claude Opus 5.5, the self-managed harness matches Claude Code on task success at 34% lower cost than its explicit 200k-window configuration and 49% lower than its default, with no context window to choose. We release the agent, the benchmark and all result rows.",
+   "abs_url": "https://arxiv.org/abs/2610.34425",
+   "pdf_url": "https://arxiv.org/pdf/2610.34425",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-25",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.88,
+   "type": "empirical",
+   "why": "Studies how LLM agents can self-manage context windows using tools and guidance, comparing harness designs and evaluating token cost vs. performance across models and benchmarks.",
+   "idea": {
+    "problem": "Agent harnesses need to keep long sessions in context by compacting history when tokens exceed thresholds",
+    "approach": "Let models manage their own context via two tools and guidance, comparing seven frontier models with/without tools on cost and benchmark score",
+    "result": "Strongest models self-manage context effectively with substantial cost reduction (34-49% with Claude Opus) while maintaining benchmark performance"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.34141",
+   "title": "SpeC2Rust: Specification-Driven Repository-Level C-to-Rust Translation",
+   "authors": [
+    "Junjie Yao",
+    "Xiongzheng Guan",
+    "Jia Feng",
+    "Yujia Chen",
+    "Hongliang Tian",
+    "Cuiyun Gao"
+   ],
+   "abstract": "Legacy C codebases remain central to system software and performance-critical infrastructure, but their weak memory safety imposes security and maintenance risks. Recent C-to-Rust translation systems, including LLM-based translators, make automated migration increasingly feasible, yet they still struggle to recover repository-level intent, avoid raw pointers and unsafe constructs, maintain cross-file interfaces, and repair compilation and validation failures efficiently. We propose SpeC2Rust, a specification-driven pipeline for repository-level C-to-Rust translation. It has three stages: (1) Project-Intent Structuring, which decomposes a C repository into semantically coherent modules and generates persistent repository- and module-level specifications; (2) Spec-Guided Generation, which translates each Rust module against these specifications with a live symbol registry to preserve cross-file consistency; and (3) Layered-Feedback Repair, which batches repairs and injects only failure-relevant diagnostics, specification context, and source evidence for efficient compilation and test-driven correction. We evaluate SpeC2Rust on eight repository-level C projects. It generates Rust projects that compile and pass the original end-to-end tests, with no raw-pointer declarations, raw-pointer dereferences, or unsafe lines. On projects shared with an LLM-based baseline, SpeC2Rust reduces cost by 66.1% and input-token usage by 84.7%.",
+   "abs_url": "https://arxiv.org/abs/2610.34141",
+   "pdf_url": "https://arxiv.org/pdf/2610.34141",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-25",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "specification_mining",
+    "autoformalization"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Extracts specifications from C repositories to guide Rust translation, using specification-driven code generation as an intermediate artifact for ensuring memory safety and cross-file consistency.",
+   "idea": {
+    "problem": "C-to-Rust translation struggles with repository-level intent, unsafe constructs, and cross-file consistency",
+    "approach": "Extract repository/module specifications, guide translation with specs and symbol registry, repair failures with spec-injected diagnostics",
+    "result": "Generated Rust projects compile with no unsafe code and pass original tests; 66% cost reduction vs LLM baseline"
+   }
+  },
+  {
+   "id": "2610.34005",
+   "title": "Steering the Teacher: Improving On-Policy Self-Distillation for Thinking Models",
+   "authors": [
+    "Tiejin Chen",
+    "Xiaoou Liu",
+    "Hanyang Chen",
+    "Hua Wei"
+   ],
+   "abstract": "On-policy self-distillation (OPSD) trains a student on its own reasoning trajectories using token-level supervision from a reference-conditioned teacher initialized from the same model. However, access to the reference can induce teacher behaviors that undermine independent reasoning in thinking models, leading to reference hallucinations, where the student cites an unavailable reference to justify reasoning steps, and reconsideration suppression, where the teacher discourages verification and revision at uncertain steps. We introduce Steered-Teacher OPSD (ST-OPSD) to jointly address these failure modes through activation steering. ST-OPSD extracts two directions from model-generated reasoning trajectories and applies them to the teacher's hidden states during distillation target computation, suppressing reference-invoking behavior and encouraging reconsideration with marker-family calibration. The student learns from the resulting teacher distributions without being steered. Experiments on AIME and HMMT show that ST-OPSD improves accuracy over vanilla OPSD and other interventions while restoring reconsideration and reference-hallucination rates to base-model levels.",
+   "abs_url": "https://arxiv.org/abs/2610.34005",
+   "pdf_url": "https://arxiv.org/pdf/2610.34005",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI"
+   ],
+   "published": "2026-10-25",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Uses activation steering to improve reasoning in language models by suppressing unwanted behaviors (reference hallucinations, reconsideration suppression) and encouraging sound independent reasoning during self-distillation training.",
+   "idea": {
+    "problem": "Self-distillation in thinking models causes reference hallucinations and suppresses verification/revision",
+    "approach": "Apply activation steering to teacher's hidden states during distillation, suppressing reference-invoking and encouraging reconsideration",
+    "result": "ST-OPSD improves accuracy on AIME/HMMT while restoring healthy reasoning behaviors"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2608.01763",
+   "title": "EntailLLM: Verifying Agent-Generated Vulnerability Discovery Paths with Domain Knowledge via Logic Programming",
+   "authors": [
+    "Kaustuv Mukherji",
+    "Jaikrishna Manojkumar Patil",
+    "Colton Payne",
+    "Paulo Shakarian",
+    "Dana Warmsley",
+    "Nigel Stepp",
+    "Evelyn Kim"
+   ],
+   "abstract": "Large language model agents are increasingly used to analyze potential software vulnerabilities, but their outputs can silently violate domain knowledge, limiting their reliability in safety-critical settings such as medical devices. Prior work either treats that output as a prediction to be scored or constrains it to walks within a single knowledge graph; neither checks whether reasoning over a binary is entailed by an independent body of domain knowledge. We present EntailLLM, a framework that includes a specialized LLM agent and a validation mechanism. The agent proposes a traversal path of the function call graph for a vulnerability, which is checked against a separate knowledge graph and a logic program by an entailment procedure under annotated logic. We evaluate EntailLLM by examining six specialized agents across three CWE classes, and eight binaries varying in size from 405 to 12,696 functions. The agents improve pooled entailment from 77% to 98%, with entailment decreasing in only 3 of 118 configurations. We found that the best-performing agent combines self-refinement and a priori domain knowledge. EntailLLM is deployed end-to-end on real medical-device binaries, reaching 98% pooled entailment without per-device tuning. Our framework inherits the formal guarantees of generalized annotated logic, providing logical verification of agent output that is both explainable and grounded in well-defined semantics.",
+   "abs_url": "https://arxiv.org/abs/2608.01763",
+   "pdf_url": "https://arxiv.org/pdf/2608.01763",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.LO",
+    "cs.SE"
+   ],
+   "published": "2026-10-25",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a verification mechanism using logic programming to check whether LLM-agent outputs entail domain knowledge, grounding agent reasoning in formal semantics.",
+   "idea": {
+    "problem": "LLM agents analyzing vulnerabilities can silently violate domain knowledge, limiting reliability in safety-critical settings",
+    "approach": "Agent proposes function-call paths checked against knowledge graph and logic program via entailment under annotated logic",
+    "result": "Achieves 98% pooled entailment on real medical-device binaries with formal verification guarantees"
+   }
+  },
+  {
+   "id": "2610.33876",
+   "title": "FlashScript: Compiling Recurring Agent Workflows into Reusable Neuro-Symbolic Programs",
+   "authors": [
+    "Sadra Sabouri",
+    "Hosein Hasanbeig",
+    "Adam Sage",
+    "Shreya Sinha",
+    "Cale Darling",
+    "Ashish Tiwari",
+    "Katie Garms",
+    "Souti Chattopadhyay",
+    "Sumit Gulwani"
+   ],
+   "abstract": "Many agent tasks recur with new data or small changes, yet agents regenerate their reasoning and actions on each run, producing different results. Distilling a prior run into a skill helps the agent avoid earlier mistakes, but it still re-runs the full process each time, so runs can vary and incur that cost. We compile a successful agent run into a reusable neuro-symbolic program (NSP) with a set of guidelines we call FlashScript. Actions and data transformations become code, instance-specific values become parameters, and decisions that need model judgment become LLM calls. We identify three layers where these calls belong and three techniques that replace most of them with code. The compilation does not remove nondeterminism; it localizes it, so the deterministic program and its neural calls can be reviewed and tested separately. Across 120 WorkBench analytics tasks with Claude Haiku 4.5, the NSPs were correct and made identical tool calls on every run, using about 70 times fewer input tokens and a third of the runtime of a skill-guided agent whose runs were inconsistent. In a composite version of the tasks, the skill-guided agent's accuracy fell to 23%, and its output inconsistency increased, while the NSPs remained correct and identical across all runs. The NSPs successfully generalized to all 108 unseen instances of the same templates. Our findings suggest that NSPs from agent trajectories can be considered cumulative software assets for end-users to test, maintain, and reuse in their recurring workflows.",
+   "abs_url": "https://arxiv.org/abs/2610.33876",
+   "pdf_url": "https://arxiv.org/pdf/2610.33876",
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI",
+    "cs.SE"
+   ],
+   "published": "2026-10-24",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Compiles agent runs into neuro-symbolic programs that localize nondeterminism and enable deterministic, reviewable, and testable agent behavior with structured guardrails around LLM calls.",
+   "idea": {
+    "problem": "Agent tasks regenerate reasoning and actions on each run, producing inconsistent results and token waste",
+    "approach": "Compile successful runs into neuro-symbolic programs with actions as code, values as parameters, decisions as localized LLM calls",
+    "result": "70× fewer tokens, 1/3 runtime, consistent identical tool calls, successful generalization to unseen instances"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.33860",
+   "title": "Numina Fuse: Interactive Autoformalization in Lean 4",
+   "authors": [
+    "Justin Asher",
+    "Yichuan Cao",
+    "Ruichen Qiu",
+    "Pietro Pellegrino",
+    "Jia Li"
+   ],
+   "abstract": "Numina Fuse is an agent-native application for formalizing mathematics in Lean 4. Since Lean can compile while not representing its intended informal meaning, and agents now write Lean faster than people can read it, we built Fuse around human supervision of agent work. A user works with an AI orchestrator on a Lean project and supervises it through views of the blueprint, the dependency graph, and the Lean code, while the backend keeps the project's derived state and runs agents for hours without the user present. We describe the development of Fuse throughout 2026, as it moved from a prescribed pipeline of agents paced by human review to an orchestrator that dispatches specialists, provers, and parallel children on its own. We designed for this shift, keeping project state, tooling, and interface design separate from orchestration so that agents could take over more of the work as models improved. We report Fuse's use in a formalization of the three-dimensional Kakeya conjecture and a study of prover models. We close with lessons for the next generation of autoformalization systems. Fuse Desktop, an open-source local version, is available at https://github.com/project-numina/fuse-desktop.",
+   "abs_url": "https://arxiv.org/abs/2610.33860",
+   "pdf_url": "https://arxiv.org/pdf/2610.33860",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.LO",
+    "cs.SE"
+   ],
+   "published": "2026-10-24",
+   "venue": "",
+   "code": "https://github.com/project-numina/fuse-desktop",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "tool",
+   "why": "Numina Fuse is an agent-native system for interactive autoformalization in Lean 4, designed around human supervision of LLM agents with structured oversight via blueprints, dependency graphs, and code views.",
+   "idea": {
+    "problem": "Lean agents write faster than humans can review, requiring supervision mechanisms to ensure correctness during autoformalization",
+    "approach": "Build an orchestrator with human-supervisory harness providing blueprint, dependency graph, and code views while managing agent dispatching and project…",
+    "result": "System used to formalize three-dimensional Kakeya conjecture; demonstrates scalable supervised autoformalization with shifting agent responsibilities"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.33636",
+   "title": "Build or Adopt? Custom-Built vs. General-Purpose LLM Agent Harnesses for Automotive GUI Testing",
+   "authors": [
+    "Arsham Gholamzadeh Khoee",
+    "Ruyu Fu",
+    "Jiaqi Wei",
+    "Ruikun Deng",
+    "Robert Feldt",
+    "Dhasarathy Parthasarathy",
+    "Yinan Yu"
+   ],
+   "abstract": "As general-purpose LLM agent harnesses mature, organizations must decide whether to continue developing in-house systems or adopt existing alternatives. We study this decision at Volvo Group for GUI testing of Android-based in-vehicle infotainment (IVI) systems. We compare a production, custom-built harness with two general-purpose harnesses, Claude Code and OpenCode, keeping the tools, accessed through the Model Context Protocol (MCP), and the models the same. We evaluate the harnesses with up to four models on Volvo's IVI test cases and on open-ended tasks in public apps (Google Maps, Booking.com), and interview ten practitioners: developers, the product owner, and testers. On Volvo's stepwise IVI tests, general-purpose harnesses match the custom-built harness in success but vary more across runs. Their inference cost per task is 2.6-10.7 times higher, yet the engineering effort they save outweighs this: for a nightly IVI regression suite, total monthly cost, including engineering effort and inference, is 3-66% lower. On open-ended public-app tasks, they succeed more often, mainly because they recover better from incorrect actions. Interviews suggest that external advances can turn an in-house harness into technical debt even without deterioration. Adopting a general-purpose harness shifts maintenance from the agent loop to tools and instructions, but gives teams less control over what the model receives. Regardless of the harness, testers want to inspect the agent's actions and ensure that it follows the prescribed test scenario.",
+   "abs_url": "https://arxiv.org/abs/2610.33636",
+   "pdf_url": "https://arxiv.org/pdf/2610.33636",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-10-24",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "empirical",
+   "why": "Empirically compares custom-built vs. general-purpose LLM agent harnesses for GUI testing, analyzing their scaffolding, control mechanisms, tool interfaces, and practitioner needs for verification and inspection.",
+   "idea": {
+    "problem": "Organizations must choose between custom-built and general-purpose LLM agent harnesses for GUI testing tasks",
+    "approach": "Compare production custom harness with two general-purpose harnesses (Claude Code, OpenCode) on IVI tests and public-app tasks, including practitioner…",
+    "result": "General-purpose harnesses match custom harness on IVI tests but cost more in inference; save engineering effort; succeed more on open-ended tasks"
+   }
+  },
+  {
+   "id": "2610.33128",
+   "title": "Navigating Epistemic Parity in LLM Agents: A Benchmark for Cross-Source Conflict Resolution Between Memory and Procedural Skills",
+   "authors": [
+    "Prakhar Pandey"
+   ],
+   "abstract": "Production LLM agents increasingly run episodic memory pipelines and procedural skill modules (e.g., SKILL.md files) in tandem. Both are injected into the same context region with no defined precedence, so they can issue contradictory instructions that no instruction hierarchy resolves, a condition we term epistemic parity. We introduce a benchmark for measuring how LLM agents adjudicate such cross-source conflicts. We (i) develop a four-way taxonomy of memory-skill contradictions (factual, format, procedural, permission); (ii) instantiate 52 scenarios under a tripartite test-case anatomy (memory injection, skill injection, ambiguous user task), scored almost entirely by deterministic checkers over tool-call payloads and output structure; and (iii) run each scenario under three context conditions to isolate positional bias, measure the efficacy of an explicit precedence directive, and classify disclosure behavior, quantifying silent adjudication: resolving a conflict without telling the user. Across 1,383 runs on three open-weight models, neither source wins uniformly: resolution depends jointly on conflict type, model, and injection order. Moving the skill block nearer the task raises its win rate in all six factual and procedural cells (sign test, p = 0.031) but reverses for format conflicts, indicating that adjudication tracks token placement rather than source semantics. An explicit \"skill takes absolute precedence\" directive raises skill compliance on the two stronger models yet leaves 3-10% residual non-compliance, and moves the smallest model's factual and procedural resolution in the wrong direction. Most consequentially, in 98.8% of runs where the agent acted through a tool call it emitted no accompanying text at all, and 89% of all runs disclosed nothing about the contradiction: silent adjudication is the default. Code, scenarios, and raw outputs are public.",
+   "abs_url": "https://arxiv.org/abs/2610.33128",
+   "pdf_url": "https://arxiv.org/pdf/2610.33128",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-23",
+   "venue": "NeurIPS 2026",
+   "code": "https://github.com/prakhar1605/epistemic-parity-bench",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "benchmark",
+   "why": "Systematically evaluates how LLM agents resolve conflicts between contradictory instructions from memory and procedural skills, a guardrailing challenge; proposes a taxonomy and benchmark for measuring agent behavior under conflicting constraints.",
+   "idea": {
+    "problem": "LLM agents receive contradictory instructions from episodic memory and procedural skills with no defined precedence hierarchy",
+    "approach": "Create taxonomy of four conflict types and benchmark measuring agent adjudication across context conditions and models with deterministic scoring",
+    "result": "Resolution depends on conflict type, model, and injection order; explicit precedence directives partially effective; agents silently adjudicate in 89% of…"
+   }
+  },
   {
    "id": "2610.32919",
    "title": "SemantEq: Faithful Bidirectional Equivalence of Formal Statements",
@@ -51,7 +702,7 @@
     "approach": "Require equivalence proofs to use only allowed steps (logical rearrangement, library rewrites); audit proof terms under derived policy.",
     "result": "100% precision, 65.6% recall; proof auditing achieves 81.1% recall on equivalent pairs while rejecting all non-equivalent pairs."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.32813",
@@ -228,7 +879,7 @@
     "approach": "Benchmark ACSL spec generation on C programs with known correctness, evaluate with Frama-C verification",
     "result": "LLMs generate weak specs that pass verification despite requirement-code mismatch; requirements poorly improve specs for correct code"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.32045",
@@ -258,6 +909,37 @@
     "problem": "LLM safety guarantees may not hold when models are integrated into agent harnesses",
     "approach": "Evaluate five agent harnesses on harmful chemistry requests using direct and adaptive attacks",
     "result": "Agent harnesses increase harmful compliance; adaptive attacks succeed after harness integration but fail on base models"
+   }
+  },
+  {
+   "id": "2608.10213",
+   "title": "VeriFin: A Neurosymbolic Framework for Verifying LLM-Generated Financial Claims",
+   "authors": [
+    "Bethel Hall",
+    "Sachi Shome",
+    "William Eiers"
+   ],
+   "abstract": "Large Language Models (LLMs) are being adopted in financial workflows, where accuracy and reliability are critical. One such application is financial question answering over public company filings. However, LLMs struggle with quantitative financial reasoning, including identifying financial facts, interpreting reporting periods and units, and determining appropriate metrics, leading to incorrect answers. Recent RAG-based methods have improved financial question answering but do not ensure factual and numerical correctness. LLM-based verifiers may also accept incorrect numerical claims. To address this, we introduce VeriFin, a neurosymbolic framework for verifying LLM generated numerical financial claims. Given a question and a generated answer, VeriFin retrieves filing evidence, grounds values in XBRL facts, and establishes the required formula independently of the answer. It then uses the Z3 SMT solver to check the resulting arithmetic constraints. VeriFin accepts consistent claims, rejects inconsistent claims, and abstains when required facts or formulas cannot be established. To evaluate VeriFin, we constructed XBRLFiling, a dataset of 600 numerical questions from corporate filings, and selected 67 and 403 questions from FinanceBench and TAT-DQA, respectively. Across six answer models and three datasets, VeriFin achieves 100% observed precision among accepted answers with known correctness. For Qwen3-30B on XBRLFiling, VeriFin accepts 304 correct answers compared to 166 for an LLM judge, while reducing false accepts from 87 to 0. We release our benchmark to support research on reliable financial question answering.",
+   "abs_url": "https://arxiv.org/abs/2608.10213",
+   "pdf_url": "https://arxiv.org/pdf/2608.10213",
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE"
+   ],
+   "published": "2026-10-23",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.88,
+   "type": "method",
+   "why": "Proposes a neurosymbolic framework using SMT solvers to verify numerical financial claims by formalizing arithmetic constraints, grounding LLM outputs in structured data, and checking consistency—combining formal verification with LLM reasoning.",
+   "idea": {
+    "problem": "LLMs generate incorrect financial answers due to poor quantitative reasoning and fact grounding",
+    "approach": "Extract and formalize numerical claims into SMT constraints, ground values in XBRL facts, verify with Z3 solver",
+    "result": "Achieves 100% precision on accepted answers; reduces false accepts from 87 to 0 on benchmark dataset"
    }
   },
   {
@@ -291,7 +973,7 @@
     "approach": "Systematically test injection-execution dissociation across frontier and open-weight models; evaluate six defenses at four architectural layers; use causal-mediation analysis to…",
     "result": "Only Memory Sandbox fully blocks attacks on open-weight models; frontier models show variable resistance; models can rebuild instructions from retrieval corpus to bypass…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.31810",
@@ -325,7 +1007,7 @@
     "approach": "Agent pipeline that transcribes LaTeX to statements, audits for faithfulness, formalizes in Lean with author review at ambiguities",
     "result": "Verified Lean code linked to paper statements; reusable toolkit for authors building on formalized work"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.31376",
@@ -390,7 +1072,7 @@
     "approach": "Compile policies into executable programs of neural predicates and logic, optimized with adversarial counterexamples",
     "result": "Higher accuracy than LLM-as-judge, stable predictions, interpretable verdicts, efficient deployment on small models"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.30742",
@@ -427,7 +1109,7 @@
     "approach": "Train interface-invariant representations using multiple semantically aligned views and contrastive learning losses",
     "result": "UniGuard-0.6B improves F1 by 45.12 points on average across unseen-interface benchmarks, competitive with larger models"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.30690",
@@ -464,7 +1146,7 @@
     "approach": "Clinicians define safety rules formally verified for consistency; guardrail layer checks LLM outputs against rule base, with all verdicts traceable to named rules and extracted…",
     "result": "Verification layer produces recomputable, transparent judgments; measured disagreements with LLM-as-Judge localize to specific rules and facts; trade-offs quantified on over-…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.30557",
@@ -570,7 +1252,7 @@
     "approach": "LLMs type-check Python, translate to WhyML via Why3, verify with automated theorem provers using chain-of-thought",
     "result": "50% errors from domain gaps, 30% syntactic, 20% semantic; identifies key LLM limitation categories"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.30114",
@@ -855,7 +1537,7 @@
     "approach": "Test LLMs on arithmetic with redefined symbols designed to create misleading semantic associations",
     "result": "Semantic cues significantly deteriorate performance on simple tasks, showing over-reliance on surface semantics over symbolic logic"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.28989",
@@ -8803,7 +9485,7 @@
     "approach": "Turn execution trace failures into scoped harness changes across verification, retrieval, decomposition, and memory without task model training",
     "result": "Frozen harnesses improve held-out performance across five settings; verification grounded in evidence helps intermediate steps and final answers"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.33796",
@@ -8870,7 +9552,7 @@
     "approach": "Use theorem prover to verify candidate translations against positive and contrastive probes derived from target formulas, detecting dropped content and over-assertion.",
     "result": "SIV correlates with error severity (80% variance) and detects major errors on expert-audited translations with top AUC, while providing labeled error traces."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.33438",
@@ -8907,7 +9589,7 @@
     "approach": "Divide-and-conquer framework that extracts execution paths, generates path-specific specifications via LLMs, and merges them; uses recursive decomposition for complex programs.",
     "result": "87.5% on SG-Bench (vs. 66.7% baseline) and 83.0% on SV-COMP (vs. 44.2% baseline); human evaluation confirms higher specification quality and semantic alignment."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2609.33371",
@@ -9008,7 +9690,7 @@
     "approach": "Build hierarchical memory trees organizing experiences by procedural dependencies; learn dynamic retrieval and pruning policies via RL",
     "result": "Improves task completion, reasoning stability, and memory efficiency; smaller models match larger proprietary systems"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2607.10490",
@@ -9078,7 +9760,7 @@
     "approach": "Train activation-conditioned interpreter to decode hidden states into faithful instruction sets using judge-guided GRPO.",
     "result": "PRISM outperforms baselines at recovering instruction sets in benign, constrained, injection, and hidden-objective settings."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2507.02699",
