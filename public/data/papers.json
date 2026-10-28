@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27",
+ "generated": "2026-10-28",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,145 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.37255",
+   "title": "Your Policy Is Secretly a Harness: The Decision Geometry of Agent Interfaces",
+   "authors": [
+    "Jian Mu",
+    "Ruibo Shen",
+    "Yao Shu"
+   ],
+   "abstract": "Language model agents are post-trained and deployed through a harness, the prompts, tools, and control logic that present a task to the model and execute its outputs. Harnesses are often revised and judged by how an already trained model performs under them, which assumes that what the model learned under one harness carries over to the next. We ask what a policy learns from its harness and what survives when the harness changes. Under KL-regularized control, we show that the log odds of an optimal policy recover how strongly its harness favors each action over the others, so a trained policy carries the preferences of its harness. Deployed return then equals the ceiling of the harness, the best return it offers, minus the mismatch of the policy, the return lost to its own suboptimal decisions. Training changes only the mismatch, while changing the harness moves both terms. Comparing harnesses with a fixed model therefore mixes what each harness offers with how well that model uses it. In MiniWoB++, post-training makes a model's preferences specific to its training harness. Reversing the order of the observation fields leaves every optimal decision unchanged yet lowers a trained model's success from 85.0% to 19.2%. Conversely, every new harness that a fixed-model comparison rejects but that raises the ceiling outperforms the original agent after further training under it, and ceiling and mismatch measured beforehand predict these gains. For coding-agent harnesses on Terminal-Bench Lite, ceiling minus mismatch estimated with a stronger model as a stand-in for the optimum reproduces the accuracy ranking, while either term alone does not. Code is available at https://github.com/2020-qqtcg/HRP.",
+   "abs_url": "https://arxiv.org/abs/2610.37255",
+   "pdf_url": "https://arxiv.org/pdf/2610.37255",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CL"
+   ],
+   "published": "2026-10-27",
+   "venue": "",
+   "code": "https://github.com/2020-qqtcg/HRP",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Analyzes how agent harnesses (prompts, tools, control logic) shape learned policies and predicts performance when harnesses change, directly addressing harness design for LLM agents.",
+   "idea": {
+    "problem": "Harness changes mix what the harness offers with how well the model uses it, confounding evaluation of harness designs.",
+    "approach": "Decompose deployed return into harness ceiling (best possible return) minus policy mismatch (suboptimal decisions), measuring each term separately.",
+    "result": "Ceiling and mismatch predict performance gains; reversing observation fields without changing semantics degrades performance from 85% to 19.2%."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.36570",
+   "title": "CASEL: Consequence-Aware Selective Execution for Reliable Long-Horizon Tool-Using Agents",
+   "authors": [
+    "Yanyan Zhang",
+    "Fei Shen",
+    "Ting Yan",
+    "Hao Zhang"
+   ],
+   "abstract": "Tool-using language agents increasingly modify external systems, yet most runtime safeguards allocate scrutiny by generic uncertainty scores or coarse mutation heuristics. We introduce CASEL (Consequence-Aware Selective Execution Layer), a model-agnostic runtime allocation policy that combines calibrated failure probability, state-dependent consequence, reversibility, ambiguity, and evidence freshness to choose, for each proposed tool call, among direct execution, verification, sandboxing, clarification, approval, and abstention by minimizing a per-mode cost. We formalize direct execution as selective prediction and state and test the validity conditions of a finite-sample threshold and a trajectory risk ledger. In a controlled simulation over 20 seeds with 120,000 test actions each, in which every method has the same intervention menu and the same compute cost, CASEL reduces harmful-side-effect trajectories from 14.75 percent for an uncertainty-ranked gate to 7.02 percent and mean normalized harm from 0.184 to 0.123. A gate ranked by the product of failure probability and consequence reaches similar harm (5.82 percent, 0.120) but sends 45 percent more actions to human approval, and removing reversibility-aware routing raises the rate to 15.53 percent. A trajectory-level risk budget, in contrast, increases harm at equal cost (11.82 percent). Intervention effectiveness is assumed, not measured: the results rank allocation rules under the simulator's assumptions and do not establish deployment effectiveness.",
+   "abs_url": "https://arxiv.org/abs/2610.36570",
+   "pdf_url": "https://arxiv.org/pdf/2610.36570",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CR",
+    "cs.SE"
+   ],
+   "published": "2026-10-27",
+   "venue": "2026 5th International Conference on Cloud Co",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.9,
+   "type": "method",
+   "why": "Proposes CASEL, a runtime harness that allocates interventions (verification, sandboxing, approval, abstention) to tool calls based on formalized consequence-aware criteria to constrain agent behavior.",
+   "idea": {
+    "problem": "Tool-using agents modify external systems without adequate runtime safeguards; generic uncertainty scoring misses consequence-dependent risks.",
+    "approach": "Formalize selective execution policy combining calibrated failure probability, state-dependent consequence, reversibility, ambiguity, and evidence freshness to route each tool…",
+    "result": "Reduces harmful-side-effect trajectories from 14.75% to 7.02% compared to uncertainty-ranked baseline in simulation."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2603.29109",
+   "title": "SemLoc: Structured Grounding of Free-Form LLM Reasoning for Fault Localization",
+   "authors": [
+    "Zhaorui Yang",
+    "Haichao Zhu",
+    "Qian Zhang",
+    "Rajiv Gupta",
+    "Ashish Kundu"
+   ],
+   "abstract": "Large language models (LLMs) can describe what a piece of code should compute, but they do so in free-form text. Such text cannot be checked against program executions, and it does not reveal whether a statement is correct. We present SemLoc, which turns LLM reasoning into executable, verifiable semantic constraints. With structured semantic grounding, the LLM writes each property as a constraint with a fixed category, attached to an anchor in the code graph, such as a variable definition, branch, loop, or return. SemLoc inserts each constraint as a runtime check and runs the tests, which yields a semantic violation spectrum over passing and failing tests. Counterfactual verification then patches the code at an anchor and reruns the tests; a patch that a constraint suggests counts as verified only if all tests then pass. We study SemLoc on fault localization, where the tests serve as the oracle for verification, with four LLMs on QuixBugs and on SemBugs, a new dataset of 809 real bugs from 750 GitHub projects. The constraints are executable: 99.4% become runtime checks, and on programs where coverage ties the faulty line with at least half of the covered lines, their violations alone rank it first in 40.9% of the cases, compared with 2.2% for spectrum-based fault localization and 7.0% for Daikon invariants. They make the LLM's answers verifiable: 68.4% of SemLoc's top-ranked answers carry a patch that the tests confirm, and 93.6% of these are correct, which the LLM's own confidence cannot match. SemLoc's first-rank accuracy does not differ significantly, for any of the four LLMs, from that of an LLM given the same inputs (81.4% vs. 82.0%), and it far exceeds that of an LLM that sees only the function (50.0%).",
+   "abs_url": "https://arxiv.org/abs/2603.29109",
+   "pdf_url": "https://arxiv.org/pdf/2603.29109",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-10-27",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Converts free-form LLM reasoning into executable semantic constraints anchored to code, then verifies them via runtime checks and counterfactual patching—grounding reasoning in formal, checkable specifications.",
+   "idea": {
+    "problem": "LLM reasoning about code is free-form text that cannot be verified against executions",
+    "approach": "Structure LLM outputs as executable semantic constraints tied to code anchors, verify via runtime checks and test-based patching",
+    "result": "99.4% of constraints become executable checks; 40.9% rank faulty line first where coverage tie exists; 68.4% of top answers have test-confirmed…"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.36258",
+   "title": "SpecGuard: Detecting Multi-Turn LLM Jailbreaks via Specification-Based Runtime Monitoring",
+   "authors": [
+    "Junle Li",
+    "Siqi Chen",
+    "Jiakai Li",
+    "Bingzhuo Zhong"
+   ],
+   "abstract": "Multi-turn jailbreaks turn dialogue safety into a trace property: a violation may become identifiable only when user intent and assistant behavior are considered across multiple turns. Existing guard models largely classify individual messages or exchanges and return risk scores or labels, without executable safety semantics or a formally checkable decision trail. We present SpecGuard, a training-free, specification-driven framework for monitoring multi-turn LLM interactions. SpecGuard uses a fixed atomic-proposition contract to map natural-language observations into causally scoped, evidence-backed facts, and expresses forbidden interaction patterns as Linear Temporal Logic specifications. Each specification is compiled into a symbolic finite automaton that incrementally consumes the resulting dialogue trace. The same monitoring mechanism supports buffered runtime checking and retrospective auditing, while accepting runs produce replayable witnesses that identify the triggered specification, supporting facts, and relevant dialogue turns. Experiments on multi-turn safety benchmarks show that SpecGuard consistently outperforms representative open-source guard models while maintaining controlled false-positive rates. These results demonstrate a practical path from heuristic risk classification toward formally specified, verifiable, and auditable LLM safety monitoring, without learned detector parameters or access to the protected model.",
+   "abs_url": "https://arxiv.org/abs/2610.36258",
+   "pdf_url": "https://arxiv.org/pdf/2610.36258",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes SpecGuard, a specification-driven runtime monitor using Linear Temporal Logic to enforce safety constraints on multi-turn LLM interactions with formal verification and auditability.",
+   "idea": {
+    "problem": "Multi-turn LLM jailbreaks evade guards that only check individual messages without formal safety semantics.",
+    "approach": "Compile natural-language safety specs into Linear Temporal Logic and symbolic finite automata for runtime monitoring.",
+    "result": "SpecGuard outperforms guard models on multi-turn safety benchmarks with auditable, formally checkable decisions."
+   }
+  },
   {
    "id": "2610.35835",
    "title": "I-HITL: Inalienable Human-in-the-Loop",
@@ -50,7 +189,7 @@
     "approach": "Define I-HITL protocol using communication topologies; prove necessary conditions; implement Countersign with trusted computing devices.",
     "result": "Formal characterization of enforceable HITL; prototype system preventing agent approval delegation bypass."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.35349",
@@ -121,7 +260,7 @@
     "approach": "Build requirement-code correspondence by combining repository structure with requirement semantics; inject as context to guide agent",
     "result": "Improves per-round reward across models and reduces regression errors by 56.78%"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.35082",
@@ -162,7 +301,7 @@
     "approach": "Design lightweight harness-level guard checking information flow and authorization before consequential actions; evaluate on real skills.",
     "result": "Guard reduces policy violations from 65.28% to 6.67% on recruiting tasks while maintaining 65% benign task completion."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.34679",
@@ -197,7 +336,7 @@
     "approach": "Automatic tool optimizer reads agent trajectories and selectively edits tool descriptions and implementations offline",
     "result": "Improved task completion rates and reduced costs on benchmarks and production MCP servers"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2608.18565",
@@ -242,7 +381,41 @@
     "approach": "Agent harness combining project context, specification review, compilation, and live-runtime validation with completion gates and bounded repair",
     "result": "72.6% verified-pass rate and 52.2 dynamic score on 182 tasks; 45% efficiency improvement in industrial deployment"
    },
-   "figure_tries": 1
+   "figure_tries": 2
+  },
+  {
+   "id": "2606.23238",
+   "title": "HOLogicBench: Evaluating Higher-Order Logical Reasoning in LLMs",
+   "authors": [
+    "Yucheng Wu",
+    "Jundong Xu",
+    "Mingzhen Ju",
+    "Yue Yu",
+    "Chenpeng Wang",
+    "Haoxuan Li",
+    "Liangming Pan"
+   ],
+   "abstract": "Existing LLM logical-reasoning benchmarks largely focus on object-level inference under fixed predicates and rules, leaving higher-order reasoning over rules and policies underexplored. We introduce HOLogicBench, a 1,379-instance benchmark that systematically evaluates five representative higher-order reasoning operations, with Isabelle/HOL formalizations and proof-verified answers. Beyond answer accuracy, HOLogicBench provides solver-verified reference reasoning paths for each instance, enabling fine-grained evaluation of model-generated reasoning against valid derivations. Across 16 model configurations, average accuracy is 53.86\\%, with the best configuration reaching 65.99\\%. Further analyses reveal that LLMs exhibit limited alignment with valid derivations, remain vulnerable to minimal counterfactual perturbations, and display distinct failure patterns across higher-order reasoning types.",
+   "abs_url": "https://arxiv.org/abs/2606.23238",
+   "pdf_url": "https://arxiv.org/pdf/2606.23238",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-26",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Introduces a benchmark to evaluate LLM reasoning about higher-order logical operations with formal proof verification, analyzing model alignment with valid derivations.",
+   "idea": {
+    "problem": "LLM logical-reasoning benchmarks focus on object-level inference, leaving higher-order reasoning over rules and policies underexplored",
+    "approach": "Create a benchmark with Isabelle/HOL formalizations, proof-verified answers, and solver-verified reasoning paths for fine-grained evaluation",
+    "result": "Average accuracy 53.86%, revealing LLMs have limited alignment with valid derivations and vulnerability to perturbations"
+   }
   },
   {
    "id": "2605.27238",
@@ -276,7 +449,7 @@
     "approach": "Three coordinated evidence-driven guardrails: retrieval scaffold grounds context, compile gate filters invalid edits, test-driven gate validates patch…",
     "result": "1.6–6.0 pp improvement in resolve rate and 70–89% lower API cost versus baselines"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2605.26893",
@@ -379,7 +552,7 @@
     "approach": "Empirically compare 17 verification designs across four lifecycle layers on coding benchmarks, measuring accuracy-cost tradeoffs",
     "result": "Independent review achieves best accuracy-cost tradeoff, improving accuracy 5.9-9.5% on Terminal-Bench and 3.9-6.6% on SWE-bench at minimal cost…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.34425",
@@ -414,7 +587,7 @@
     "approach": "Let models manage their own context via two tools and guidance, comparing seven frontier models with/without tools on cost and benchmark score",
     "result": "Strongest models self-manage context effectively with substantial cost reduction (34-49% with Claude Opus) while maintaining benchmark performance"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.34141",
@@ -483,7 +656,7 @@
     "approach": "Apply activation steering to teacher's hidden states during distillation, suppressing reference-invoking and encouraging reconsideration",
     "result": "ST-OPSD improves accuracy on AIME/HMMT while restoring healthy reasoning behaviors"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2608.01763",
@@ -563,7 +736,7 @@
     "approach": "Compile successful runs into neuro-symbolic programs with actions as code, values as parameters, decisions as localized LLM calls",
     "result": "70× fewer tokens, 1/3 runtime, consistent identical tool calls, successful generalization to unseen instances"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.33860",
@@ -602,7 +775,7 @@
     "approach": "Build an orchestrator with human-supervisory harness providing blueprint, dependency graph, and code views while managing agent dispatching and project…",
     "result": "System used to formalize three-dimensional Kakeya conjecture; demonstrates scalable supervised autoformalization with shifting agent responsibilities"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.33636",
@@ -702,7 +875,7 @@
     "approach": "Require equivalence proofs to use only allowed steps (logical rearrangement, library rewrites); audit proof terms under derived policy.",
     "result": "100% precision, 65.6% recall; proof auditing achieves 81.1% recall on equivalent pairs while rejecting all non-equivalent pairs."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.32813",
@@ -879,7 +1052,7 @@
     "approach": "Benchmark ACSL spec generation on C programs with known correctness, evaluate with Frama-C verification",
     "result": "LLMs generate weak specs that pass verification despite requirement-code mismatch; requirements poorly improve specs for correct code"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.32045",
@@ -973,7 +1146,7 @@
     "approach": "Systematically test injection-execution dissociation across frontier and open-weight models; evaluate six defenses at four architectural layers; use causal-mediation analysis to…",
     "result": "Only Memory Sandbox fully blocks attacks on open-weight models; frontier models show variable resistance; models can rebuild instructions from retrieval corpus to bypass…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.31810",
@@ -1007,7 +1180,7 @@
     "approach": "Agent pipeline that transcribes LaTeX to statements, audits for faithfulness, formalizes in Lean with author review at ambiguities",
     "result": "Verified Lean code linked to paper statements; reusable toolkit for authors building on formalized work"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.31376",
