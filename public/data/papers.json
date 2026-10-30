@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28",
+ "generated": "2026-10-30",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,278 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.40071",
+   "title": "Agentic process evidence",
+   "authors": [
+    "Yuval Kainan",
+    "Carmit Hershman"
+   ],
+   "abstract": "The way software gets built is changing dramatically. AI agents now create pull requests, select dependencies, refactor codebases, interpret test failures, and execute infrastructure changes across the entire Software Development Life Cycle (SDLC). AI agents are autonomous team members, but unlike human engineers, they are ephemeral - their reasoning, decisions, and tool calls vanish the moment the session ends. Modern Security incidents involving intent mismatch or injection are becoming increasingly common - forcing us to address AI Agents as an insider threat. No widely adopted standard yet enables agentic provenance and governance and its obvious that you can't hold an ephemeral process accountable. The git log was designed for human commits. It shows what changed. It does not show what an AI agent did, which model it used, which tools it called, or whether anyone was accountable for the outcome. Every governance framework, every audit trail, every compliance control in the SDLC was built around one assumption: a human made the decision. That assumption no longer holds. This shift introduces 3 main procedural problems (not addressing scale) - Supply-chain vector - The agentic coder is software, so it is a supply-chain security risk. Policy guardrails - How to ensure the agentic coder is compliant with the policies of the organization. Task-alignment - How to align the agentic coder on its tasks and goals. We introduce Agentic Process Evidence (APE), a signed, tamper-evident, machine-readable attestation of agentic processes, linking the sessions to their outcome (process-aware logging). APE enables Policy-as-Code control over the agentic processes, allowing for human in the loop only when it's needed. We support the in-toto style attestation framework, and the protocol is aligned with the relevant regulations",
+   "abs_url": "https://arxiv.org/abs/2610.40071",
+   "pdf_url": "https://arxiv.org/pdf/2610.40071",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.SE",
+    "cs.SY",
+    "eess.SY"
+   ],
+   "published": "2026-10-29",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "position",
+   "why": "Proposes Agentic Process Evidence (APE) as a framework for logging, auditing, and governing AI agent actions in software development with policy enforcement and accountability mechanisms.",
+   "idea": {
+    "problem": "AI agents in SDLC lack provenance, governance, and accountability; existing audit trails assume human decision-makers",
+    "approach": "Introduce APE: signed, tamper-evident, machine-readable attestation of agent processes with Policy-as-Code control",
+    "result": "Framework enabling human-in-the-loop governance and compliance for agentic processes in software development"
+   }
+  },
+  {
+   "id": "2610.40036",
+   "title": "Hybrid AI Patterns: Thirteen Ways to Couple Language Models with Rules, and How to Choose Among Them",
+   "authors": [
+    "Siegfried Handschuh",
+    "Götz-Henrik Wiegand",
+    "Lorena Raichle"
+   ],
+   "abstract": "Language models handle text well, and rule engines give conclusions with proofs. Systems that combine the two are usually described by example, and the same coupling turns up under different names in agent frameworks, guardrail toolkits and neuro-symbolic research. This document defines thirteen patterns for coupling a language model with an executable rule language, in the catalogue form introduced for object-oriented design: intent, motivation, applicability, participants, collaborations, consequences, implementation, known uses and related patterns. Four patterns concern what crosses the boundary between model and rules, five who controls whom, three how the model takes part in the reasoning, and one how knowledge is kept over time. Five invariants hold for every combination, and five failure patterns name the couplings that break them. We relate the catalogue to published pattern catalogues and taxonomies of hybrid and neuro-symbolic systems and show where they overlap with it. A decision guide leads from a problem to a pattern. It rests on our measurements, including the cases in which a model alone did as well as the hybrid or better, and it reports what each design cost.",
+   "abs_url": "https://arxiv.org/abs/2610.40036",
+   "pdf_url": "https://arxiv.org/pdf/2610.40036",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-29",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "survey",
+   "why": "Systematizes patterns for coupling language models with rule engines and formal reasoning systems, addressing how to structure hybrid AI systems with guardrails and neuro-symbolic reasoning.",
+   "idea": {
+    "problem": "Coupling language models with rule engines lacks systematic design guidance and terminology",
+    "approach": "Catalog thirteen patterns with intent, motivation, applicability, consequences, and decision guide",
+    "result": "Patterns relate to published taxonomies; decision guide maps problems to patterns with cost measurements"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.39435",
+   "title": "Verifiable LLM-Guided Focal SMT Solving for Quantified Arrays",
+   "authors": [
+    "Kunhang Lv",
+    "Rui Han",
+    "Fuqi Jia",
+    "Yuhang Dong",
+    "Feifei Ma",
+    "Jian Zhang"
+   ],
+   "abstract": "Large language models can often identify useful semantic structure in formal artifacts, but their outputs cannot be trusted as proofs or solver decisions. We study whether LLMs can instead guide formal reasoning systems through a narrow, solver-verifiable interface. We instantiate this idea in quantified array SMT solving, where modern instantiation-based techniques can fail when key ground terms and equalities are hidden by auxiliary variables, axiom guards, and nested array terms. We observe that many instances are largely driven by a small set of focal ground terms or constraints, similar to the backdoor sets in SAT solving. Building on this, we present LinguaArray, a framework where an LLM proposes a small Semantic Focus Set (ground terms/constraints), while a conventional SMT solver remains the sole proof engine and certifies all results. LinguaArray uses these LLM-suggested, solver-validated finite sets to significantly enhance solver capability, solving additional satisfiable and unsatisfiable instances that the backend alone fails to solve. It interacts within a finite time and then falls back to the backend solver to mitigate potential regressions. Evaluation on 1015 SMT-LIB instances across five logics under 1200s timeout (including LLM latency) shows that LinguaArray solves up to 69.1% of instances and increases solved-instance counts by 105%--397% over the corresponding backends.",
+   "abs_url": "https://arxiv.org/abs/2610.39435",
+   "pdf_url": "https://arxiv.org/pdf/2610.39435",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-29",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "agent_guardrails"
+   ],
+   "confidence": 0.87,
+   "type": "method",
+   "why": "Uses LLM to guide SMT solver through narrow, verifiable interface where solver certifies all results; LLM output is not trusted as proof but guides formal reasoning within a checkable harness.",
+   "idea": {
+    "problem": "SMT instantiation-based techniques fail when key ground terms are hidden by auxiliary variables and nested array terms",
+    "approach": "LLM proposes small Semantic Focus Set of ground terms/constraints; conventional SMT solver validates and certifies all results",
+    "result": "Solves 69.1% of instances; increases solved-instance counts by 105%-397% over baseline backends"
+   }
+  },
+  {
+   "id": "2610.39182",
+   "title": "Reasoning or Pattern Exploitation? Mechanistic Insights from RL-Trained Language Models",
+   "authors": [
+    "Aishik Nagar",
+    "Cheston Tan"
+   ],
+   "abstract": "Large language models (LLMs) are increasingly described as acquiring \"reasoning\" skills after reinforcement learning with verifiable rewards. However, whether these gains reflect genuine reasoning or more superficial adaptations remains underexplored. In this work, we probe LLMs trained in a finite and exhaustively analyzable logical domain, namely Tic-Tac-Toe, and trace how internal representations evolve across reinforcement learning (RL) with Group Relative Policy Optimization (GRPO). Quantitatively, RL yields high accuracy and robustness across prompt variations, suggesting the emergence of game reasoning. Mechanistic interpretability, however, paints a different picture: features extracted with sparse autoencoders (SAEs) reveal that models primarily adapt to rely more heavily on information already explicit in the prompt, such as whose turn it is, game progression and board occupancy. In comparison, high-level concepts like board symmetries and strategic forks remain weakly represented, raising concerns that reasoning benchmarks overestimate model abilities. This suggests that RL-driven \"reasoning\" may conflate task-specific adaptations to input information with reasoning ability. We provide, for the first time: (i) a systematic interpretability pipeline tracing representation dynamics across RL training in small-scale LLMs; (ii) an extension of SAE-based feature discovery to hypothesis-driven testing in a finite logical domain; and (iii) an interpretability-based demonstration that RL post-training neither adds nor removes concept information but reorganizes which features dominate the representation, with causal interventions locating the decision downstream of it, in the late-layer state.",
+   "abs_url": "https://arxiv.org/abs/2610.39182",
+   "pdf_url": "https://arxiv.org/pdf/2610.39182",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-10-29",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Mechanistic interpretability study probing whether RL-trained LLMs develop genuine reasoning or exploit surface patterns, using SAEs to analyze representation dynamics and causal interventions.",
+   "idea": {
+    "problem": "Unclear whether RL-trained LLMs achieve genuine reasoning or merely adapt to prompt patterns",
+    "approach": "Probe Tic-Tac-Toe models with sparse autoencoders to trace representation changes during RL training and causal intervention analysis",
+    "result": "RL reorganizes feature dominance rather than adding reasoning; models rely on explicit prompt information over strategic concepts like board…"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.38620",
+   "title": "Think Before You Act: Decision Gate for LLM Agents",
+   "authors": [
+    "Iftach Shoham",
+    "Yuval David",
+    "Offer Akrabi",
+    "Erez Bilgory",
+    "Ido Levy",
+    "Sami Marreed",
+    "Sergey Zeltyn",
+    "Segev Shlomov"
+   ],
+   "abstract": "LLM agents increasingly perform consequential actions through external tools, yet their proposed actions are often executed without independent verification of policy compliance or task completion. We introduce JevAct, a runtime verification framework that intercepts selected agent actions before execution and enables feedback-driven correction. JevAct compiles domain policies into executable state checks and structured questions evaluated by a prefill-only decision model, which produces probability-based judgments without relying on LLM generation. By combining deterministic verification of tool-state facts with probabilistic assessment of conversational context, the framework identifies potentially invalid actions and premature task termination, providing targeted feedback for bounded revision. JevAct operates independently of the underlying agent model and requires no modifications to its parameters or tools. We evaluate JevAct across eleven LLM agents on $τ^2$-bench Airline and Telecom tasks and BFCL. Results show improvements in agent reliability across multiple models and benchmarks, with particularly consistent gains on Telecom and BFCL, while performance on Airline is more mixed. Overall, these findings suggest that combining structured decision models with executable verification can improve the reliability of tool-using LLM agents.",
+   "abs_url": "https://arxiv.org/abs/2610.38620",
+   "pdf_url": "https://arxiv.org/pdf/2610.38620",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-28",
+   "venue": "",
+   "code": "",
+   "license": "CC BY-SA 4.0",
+   "license_url": "http://creativecommons.org/licenses/by-sa/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes JevAct, a runtime verification framework that intercepts and verifies LLM-agent actions against domain policies before execution, enforcing guardrails through structured checks and feedback.",
+   "idea": {
+    "problem": "LLM agents execute tool actions without verifying policy compliance or task completion validity",
+    "approach": "Runtime interception of actions with deterministic state verification and probabilistic decision model evaluation",
+    "result": "Improved agent reliability across multiple models and benchmarks, particularly on Telecom and BFCL tasks"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.38130",
+   "title": "Template-Free Dynamic Invariant Detection",
+   "authors": [
+    "Erfan Arvan",
+    "Michael D. Ernst",
+    "Martin Kellogg"
+   ],
+   "abstract": "A dynamic invariant detector proposes invariants, such as method pre- and postconditions, and rules out those that do not hold at run time. Traditional detectors propose invariants from a fixed library of templates, which limits their expressiveness. A large language model (LLM) can propose invariants instead of, or in addition to, template-derived ones. With the right prompt and context choices, we found that this idea can both improve the invariants' expressiveness and reduce the cost of inferring the invariants. Greater expressiveness brings complications: an LLM-proposed invariant can execute arbitrary code during invariant evaluation, causing side effects or infinite loops. Our novel instrumentation strategies mitigate these problems. We wrap each candidate and evaluate only one invariant per thread at a time, so nested invariant evaluations cannot trigger one another indefinitely. To recover from non-nested hangs, we monitor each run for stalls and retry it under a growing time budget. Because we cannot prove a candidate side-effect-free in advance, we use delta debugging over the invariants evaluated during a failing test to isolate and disable a side-effecting candidate without discarding the rest of the run. We compared our implementation, Oca, to the popular template-based Daikon invariant detector on real open-source Java projects. Oca produces more expressive invariants: on average, 28% of its held invariants call a project-specific method, which Daikon's templates cannot express. Its invariants are more often valid, with a false-positive rate of 18% in a manual inspection, vs. 76% for Daikon, and more useful: as properties for property-based testing, they exposed 9 of 25 real bugs, compared with 4 for Daikon. Oca also costs less, using 566 minutes and 27 GB of disk, compared with 2,817 minutes and 827 GB for Daikon.",
+   "abs_url": "https://arxiv.org/abs/2610.38130",
+   "pdf_url": "https://arxiv.org/pdf/2610.38130",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-28",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes LLM-based technique to infer program invariants and specifications dynamically, with novel instrumentation to handle safety issues from arbitrary code execution.",
+   "idea": {
+    "problem": "Template-based invariant detectors have limited expressiveness; LLMs can propose richer invariants but risk arbitrary code execution.",
+    "approach": "Use LLM prompts to generate candidate invariants; wrap evaluation with instrumentation to prevent side effects, infinite loops, and timeouts via delta debugging.",
+    "result": "Oca detector produces more expressive invariants with 18% false-positive rate vs. 76% for Daikon; exposes 9 of 25 bugs in property-based testing."
+   }
+  },
+  {
+   "id": "2610.37923",
+   "title": "VerifiedLab: Harnessing Knowns for Unknowns",
+   "authors": [
+    "Yu Yao",
+    "Jiayi Dong",
+    "Yang Yang",
+    "Shuiwang Ji",
+    "Ju Li"
+   ],
+   "abstract": "Across human history, knowledge has undergone several transitions, from orality to writing and then to digital archives. At each transition, humans established new conventions to preserve knowledge for the new era. Nowadays, as research agents are increasingly deployed for laboratory experiments, knowledge is crossing another boundary: from records written for humans to those for machines. In this work, we introduce VerifiedLab, a multi-agent harness framework for this human-to-machine transition of knowledge. VerifiedLab transforms research output from passive artifacts into active systems that accelerate downstream use, adoption and prediction of future trends. In VerifiedLab, a team of AI scientists with distinct roles reasons over records verified field by field: a principal investigator plans, a librarian computes the evidence directly from the records, specialists draft, and a gate and a critic check each claim against the measured reliability of its data before the harness decides whether to release or withhold it. We demonstrate the efficacy of VerifiedLab through extensive experiments on perovskite solar cells: VerifiedLab recovers known physical trends, anticipates devices reported a year later, and lets AI scientists inherit the literature together with a measure of how far it can be trusted. By scaling the inference-time verification compute, VerifiedLab introduces a new pathway for knowledge dissemination and machine harness for AI co-scientists.",
+   "abs_url": "https://arxiv.org/abs/2610.37923",
+   "pdf_url": "https://arxiv.org/pdf/2610.37923",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-27",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "tool",
+   "why": "Proposes a multi-agent harness with guardrails (gate, critic, verification checks) that constrain and verify agent actions against data reliability before releasing outputs.",
+   "idea": {
+    "problem": "Research knowledge must transition from human-readable records to machine-actionable systems with verifiability guarantees",
+    "approach": "Multi-agent harness with specialized roles (PI, librarian, specialists, gate, critic) that verify claims field-by-field against data reliability before releasing…",
+    "result": "Recovers known physical trends, anticipates future devices, provides trustworthiness measures for inherited literature"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.37739",
+   "title": "OpenFrontiers: A Collection of Open Research Problems and a Benchmark for Scientific Rediscovery",
+   "authors": [
+    "Jiarui Yao",
+    "Ruida Wang",
+    "Tong Zhang"
+   ],
+   "abstract": "Large language models (LLMs) have shown increasing promise in research-level problem solving, yet a comprehensive collection of such problems is still missing, and evaluating them on research-level problems remains challenging. We introduce OpenFrontiers, a cross-disciplinary resource that combines a structured corpus of open research problems with a retrospective benchmark of recently resolved problems in mathematics. The corpus records problem statements, context, progress, and other information for 12,151 problems. The benchmark contains 200 problems, 110 resolved in 2026 and 90 still open, each with a Lean~4 statement checked by automated probes and two independent reviews; a subset HQ-50 further filters based on quality score, etc. Our evaluation protocol grades formal proofs with two independent checkers in an isolated sandbox under closed-book, frozen-retrieval, and live-web conditions. Evaluating seven LLM agents on the HQ-50 subset under a standardized budget, we find that closed-book rediscovery is rare, at most 7 of 40 resolved problems, whereas live-web success mostly reflects retrieval of published solutions. By linking a broad research-problem corpus to a formally graded evaluation subset with documented solutions, OpenFrontiers provides a foundation for measuring research-level rediscovery and studying progress toward solving currently open scientific problems. The dataset and benchmark could be found in https://huggingface.co/collections/FlippyDora/openfrontiers.",
+   "abs_url": "https://arxiv.org/abs/2610.37739",
+   "pdf_url": "https://arxiv.org/pdf/2610.37739",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+   ],
+   "published": "2026-10-27",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.75,
+   "type": "benchmark",
+   "why": "Provides a formally graded benchmark with Lean 4 statements to evaluate LLM reasoning on research-level problems, combining autoformalization with semantic understanding assessment.",
+   "idea": {
+    "problem": "Lack of comprehensive, formally graded benchmarks for evaluating LLM research-level problem solving",
+    "approach": "Create corpus of 12,151 open problems and benchmark 200 problems with Lean 4 formal statements verified by independent checkers",
+    "result": "Live-web success reflects retrieval rather than reasoning; closed-book rediscovery rare (at most 7/40 resolved problems)"
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2610.37255",
    "title": "Your Policy Is Secretly a Harness: The Decision Geometry of Agent Interfaces",
@@ -48,7 +320,7 @@
     "approach": "Decompose deployed return into harness ceiling (best possible return) minus policy mismatch (suboptimal decisions), measuring each term separately.",
     "result": "Ceiling and mismatch predict performance gains; reversing observation fields without changing semantics degrades performance from 85% to 19.2%."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.36570",
@@ -84,7 +356,38 @@
     "approach": "Formalize selective execution policy combining calibrated failure probability, state-dependent consequence, reversibility, ambiguity, and evidence freshness to route each tool…",
     "result": "Reduces harmful-side-effect trajectories from 14.75% to 7.02% compared to uncertainty-ranked baseline in simulation."
    },
-   "figure_tries": 1
+   "figure_tries": 2
+  },
+  {
+   "id": "2608.17843",
+   "title": "Decodable but Not Actionable: Auditing the Representation-Behavior Gap in Frozen LLMs for Geometric Constraints",
+   "authors": [
+    "Man Liang",
+    "Xinzhao Cheng",
+    "Faizan Wajid"
+   ],
+   "abstract": "Large language models (LLMs) perform well on structured reasoning tasks, but what they encode and whether encoded information guides their behavior remain unclear. We introduce a controlled auditing framework that uses parametric CAD to distinguish failures of encoding, expression, and activation-level control. Applied to eight pretrained models and matched randomly initialized controls, our framework reveals that pretraining contributes substantially more to linear decoding of local relations than to global constraint status, which is already highly decodable from random representations. Yet strong local decodability does not translate into the models' zero-shot predictions, which remain far below supervised probe performance. Restoring clean internal activations can repair probe predictions, whereas simple activation steering does not provide reliable targeted control. With only 400 labeled relation pairs, low-rank fine-tuning substantially improves generation on three representative models, showing that the representation--behavior gap can be reduced through adaptation. Together, these findings show why decodability alone is insufficient evidence that encoded information will be expressed or controllable in model behavior.",
+   "abs_url": "https://arxiv.org/abs/2608.17843",
+   "pdf_url": "https://arxiv.org/pdf/2608.17843",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-10-27",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Mechanistic analysis of LLM reasoning capabilities: uses probing and activation steering to investigate the gap between what LLMs encode about geometric constraints and what they actually express in behavior.",
+   "idea": {
+    "problem": "LLMs encode structured reasoning knowledge, but whether encoded information guides their behavior remains unclear",
+    "approach": "Controlled auditing with parametric CAD, linear probes, activation steering, and fine-tuning to separate encoding, expression, and control failures",
+    "result": "Strong local decodability from pretraining does not translate to zero-shot predictions; activation restoration helps but simple steering fails; fine-tuning reduces the…"
+   }
   },
   {
    "id": "2603.29109",
@@ -121,7 +424,7 @@
     "approach": "Structure LLM outputs as executable semantic constraints tied to code anchors, verify via runtime checks and test-based patching",
     "result": "99.4% of constraints become executable checks; 40.9% rank faulty line first where coverage tie exists; 68.4% of top answers have test-confirmed…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.36258",
@@ -189,7 +492,7 @@
     "approach": "Define I-HITL protocol using communication topologies; prove necessary conditions; implement Countersign with trusted computing devices.",
     "result": "Formal characterization of enforceable HITL; prototype system preventing agent approval delegation bypass."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.35349",
@@ -260,7 +563,7 @@
     "approach": "Build requirement-code correspondence by combining repository structure with requirement semantics; inject as context to guide agent",
     "result": "Improves per-round reward across models and reduces regression errors by 56.78%"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.35082",
@@ -301,7 +604,7 @@
     "approach": "Design lightweight harness-level guard checking information flow and authorization before consequential actions; evaluate on real skills.",
     "result": "Guard reduces policy violations from 65.28% to 6.67% on recruiting tasks while maintaining 65% benign task completion."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.34679",
@@ -336,7 +639,7 @@
     "approach": "Automatic tool optimizer reads agent trajectories and selectively edits tool descriptions and implementations offline",
     "result": "Improved task completion rates and reduced costs on benchmarks and production MCP servers"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2608.18565",
@@ -381,7 +684,7 @@
     "approach": "Agent harness combining project context, specification review, compilation, and live-runtime validation with completion gates and bounded repair",
     "result": "72.6% verified-pass rate and 52.2 dynamic score on 182 tasks; 45% efficiency improvement in industrial deployment"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2606.23238",
@@ -449,7 +752,7 @@
     "approach": "Three coordinated evidence-driven guardrails: retrieval scaffold grounds context, compile gate filters invalid edits, test-driven gate validates patch…",
     "result": "1.6–6.0 pp improvement in resolve rate and 70–89% lower API cost versus baselines"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2605.26893",
@@ -552,7 +855,7 @@
     "approach": "Empirically compare 17 verification designs across four lifecycle layers on coding benchmarks, measuring accuracy-cost tradeoffs",
     "result": "Independent review achieves best accuracy-cost tradeoff, improving accuracy 5.9-9.5% on Terminal-Bench and 3.9-6.6% on SWE-bench at minimal cost…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.34425",
@@ -587,7 +890,7 @@
     "approach": "Let models manage their own context via two tools and guidance, comparing seven frontier models with/without tools on cost and benchmark score",
     "result": "Strongest models self-manage context effectively with substantial cost reduction (34-49% with Claude Opus) while maintaining benchmark performance"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.34141",
@@ -656,7 +959,7 @@
     "approach": "Apply activation steering to teacher's hidden states during distillation, suppressing reference-invoking and encouraging reconsideration",
     "result": "ST-OPSD improves accuracy on AIME/HMMT while restoring healthy reasoning behaviors"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2608.01763",
@@ -736,7 +1039,7 @@
     "approach": "Compile successful runs into neuro-symbolic programs with actions as code, values as parameters, decisions as localized LLM calls",
     "result": "70× fewer tokens, 1/3 runtime, consistent identical tool calls, successful generalization to unseen instances"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.33860",
@@ -775,7 +1078,7 @@
     "approach": "Build an orchestrator with human-supervisory harness providing blueprint, dependency graph, and code views while managing agent dispatching and project…",
     "result": "System used to formalize three-dimensional Kakeya conjecture; demonstrates scalable supervised autoformalization with shifting agent responsibilities"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.33636",
