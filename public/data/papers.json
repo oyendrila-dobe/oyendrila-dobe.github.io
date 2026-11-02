@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30",
+ "generated": "2026-11-02",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,295 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2610.41998",
+   "title": "SecPO: Principled Adversarial Training for Prompt Injection Security",
+   "authors": [
+    "Sizhe Chen",
+    "Yibo Peng",
+    "Jaewon Chang",
+    "Chawin Sitawarin",
+    "David Wagner"
+   ],
+   "abstract": "Recognized as a top threat to AI agents, prompt injection allows instructions from untrusted data (email, documents, websites) to manipulate the agent's operation. The existing best-defended LLM, Meta-SecAlign, is trained with the DPO loss but still suffers from attack success rates (ASRs) approaching 100% under adaptive prompt injections. One reason is that DPO anchors the model around the undefended reference model, which is insecure. We show an idealized reference model---an injection-invariant, utility-preserving oracle---can nevertheless be approximated, as its output distribution in training is interestingly accessible. This new observation motivates a theoretically principled SecPO loss. Another Meta-SecAlign shortcoming is that it trains on weak simulated attacks. We implement an efficient adversarial training (AT) pipeline that synthesizes strong injected inputs (best@240), and train the model on them. Our AT reduces ASRs by 1.5-14.5$\\times$ across three SoTA adaptive attacks, compared with Meta-SecAlign; the SecPO loss reduces them by a further 2.4-4.6$\\times$ compared with using DPO loss. In agentic workflows, our SecPO + AT Qwen3.6-27B is much more secure than Meta-SecAlign: 8.8% vs. 78.8% AgentDojo ASR@800 under the AttackerMovesSecond attack. Moreover, our defended model shows no noticeable reduction in benign utility in nine benchmarks covering agentic tool calling, instruction following, science, and math. We release our $\\href{//github.com/Sizhe-Chen/SecPO}{\\text{code}}$, $\\href{//huggingface.co/datasets/Sizhe-Chen/Qwen3.6-27B-Instruct-SecPO-trainset}{\\text{training data}}$ (with optimized injections from AT), and $\\href{//huggingface.co/Sizhe-Chen/Qwen3.6-27B-Instruct-SecPO}{\\text{model}}$.",
+   "abs_url": "https://arxiv.org/abs/2610.41998",
+   "pdf_url": "https://arxiv.org/pdf/2610.41998",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI"
+   ],
+   "published": "2026-10-30",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes SecPO loss and adversarial training pipeline to defend LLM agents against prompt injection attacks, a key agent guardrail technique.",
+   "idea": {
+    "problem": "Prompt injection attacks manipulate LLM agents via untrusted data with near-100% success rates",
+    "approach": "SecPO loss with injection-invariant reference model plus adversarial training on synthesized strong attacks",
+    "result": "Reduces attack success rates 1.5-14.5× versus Meta-SecAlign, maintains benign utility"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.41511",
+   "title": "Specification-Guided Generation for Large Language Models",
+   "authors": [
+    "Alessandro Previti",
+    "Konstantinos Vandikas",
+    "Mario Alviano",
+    "Mats Carlsson",
+    "Albin Larsson Forsberg",
+    "Alexandros Nikou",
+    "Athanasios Karapantelakis",
+    "Aneta Vulgarakis"
+   ],
+   "abstract": "Large language models (LLMs) can generate structured outputs, but existing constrained-decoding methods mainly enforce syntax and cannot directly enforce satisfaction of a formal specification. We introduce a neuro-symbolic, specification-guided decoding framework that combines LLM generation with symbolic reasoning. At each step, the framework refines the decoding grammar by filtering out values that cannot be extended to an output satisfying the specification. We present a forward-only variant that guarantees specification satisfaction by construction, and a backtracking variant that revises earlier feasible choices when their downstream consequences leave only values that the LLM itself judges unsuitable. The framework is model-agnostic, requires no retraining, and builds on existing grammar-constrained decoding mechanisms. Experiments on configuration and constraint-solving benchmarks show that the forward-only variant reliably produces specification-compliant outputs while reducing repeated LLM inference compared with rejection sampling and incurring modest symbolic-reasoning overhead. The backtracking variant further reduces cases in which the model is forced to select values that it has itself judged unsuitable, thereby substantially improving adherence to the LLM's stated interpretation of the prompt.",
+   "abs_url": "https://arxiv.org/abs/2610.41511",
+   "pdf_url": "https://arxiv.org/pdf/2610.41511",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-30",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a neuro-symbolic framework that enforces formal specification satisfaction during LLM decoding through grammar refinement and symbolic reasoning, ensuring outputs comply with specifications by construction.",
+   "idea": {
+    "problem": "LLM constrained decoding enforces syntax but not formal specification satisfaction",
+    "approach": "Refine decoding grammar at each step by filtering values that cannot satisfy the specification using symbolic reasoning",
+    "result": "Forward-only variant guarantees specification satisfaction with reduced inference versus rejection sampling; backtracking improves model preference…"
+   }
+  },
+  {
+   "id": "2610.41472",
+   "title": "Post-SQLFix: Property-Guided Repair of LLM-Generated SQL with Runtime Verification",
+   "authors": [
+    "Zhihao Guo",
+    "Zonghan Wu",
+    "Yilei Shao",
+    "Haizhou Du",
+    "Nan Tang",
+    "Xiao Cheng",
+    "Huan Huo"
+   ],
+   "abstract": "Large Language Models (LLMs) for Text-to-SQL frequently generate queries with syntax errors, invalid identifier references, or violations of SQL scoping and typing rules. Repairing these errors is a program correctness problem, yet existing approaches rely on Execution Feedback (EF), whose symptom-level, dialect-specific error messages force the LLM to speculate on root causes. We identify an Arbitration Paradox in this paradigm: the system relies on unverified models both to propose repairs and to make the final judgment on whether those repairs satisfy the required properties. We resolve this paradox by reformulating Text-to-SQL repair as property-guided program repair. Our framework, Post-SQLFix, canonicalizes SQL into a dialect-aware Canonical Query Structure (CQS) and validates it through a hierarchical static analyzer with three stratified property layers (Syntactic, Context-Free Structural, Context-Sensitive Semantic). The analyzer produces precise, schema-aware violation diagnostics to guide the LLM's repair proposals. A Verify-Before-Apply Temporal Monitor then accepts only repairs that reduce the violation count, do not reintroduce resolved violations, and satisfy the operator contracts. These runtime invariants are bounded by the declared rule family and operator contracts, while a finite retry budget ensures halting. On three established benchmarks (BIRD, Spider, Mini-Dev) spanning over 3,000 evaluation instances, three SQL dialects (SQLite, MySQL, PostgreSQL), and six model configurations, Post-SQLFix resolves 77.8% of the execution errors that EF leaves unrepaired, while requiring less than half as many repair iterations and 30% fewer tokens. Crucially, accepted transitions under the monitor introduce no statically detectable structural regressions in our evaluation, translating checked repair fidelity into absolute accuracy improvements of up to +11.6 percentage points.",
+   "abs_url": "https://arxiv.org/abs/2610.41472",
+   "pdf_url": "https://arxiv.org/pdf/2610.41472",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-30",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Uses runtime verification and property-guided repair with a monitor to constrain LLM-generated SQL corrections, combining specification of valid SQL properties with formal checking to guard agent outputs.",
+   "idea": {
+    "problem": "LLM-generated SQL has syntax and semantic errors; feedback-based repair relies on unverified models to both propose and judge fixes.",
+    "approach": "Canonicalize SQL to dialect-aware structure, validate with stratified property layers, use temporal monitor to accept only repairs reducing violations without regressions.",
+    "result": "Resolves 77.8% more execution errors than feedback-only methods with fewer iterations and no structural regressions."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2610.41181",
+   "title": "AgentShield: Fortifying Web Applications Against AI Agents and Agentic Browsers",
+   "authors": [
+    "Moiz Ali",
+    "Nafis Karim",
+    "Rownak Islam",
+    "Jyotirmay Chauhan",
+    "Dhruv Kuchhal",
+    "Jason Polakis"
+   ],
+   "abstract": "LLM-powered browser agents are transforming web automation by autonomously interacting with websites and executing complex workflows. However, the effectiveness of existing anti-bot defenses against these systems remains unclear. We present a systematic empirical evaluation of modern agentic browsers against widely deployed anti-bot mechanisms, characterizing their capabilities, limitations, and behavioral differences from humans. Our results show that many defenses designed for traditional automation struggle to reliably detect autonomous AI-driven agents. Accordingly, we introduce AgentShield, a behavioral fingerprinting framework that targets the Perception-Reasoning-Action (PRA) loop underlying agentic user clients. By leveraging dynamic web forms that progressively reveal content and capture fine-grained interaction telemetry, AgentShield exposes behavioral artifacts that enable differentiation between human users and autonomous agents. We further demonstrate Extinction-induced Policy Drift (EPD), a novel attack in which repeated obstruction of task completion causes agents to relax their safeguards and engage in unsafe behaviors. Finally, we present defensive prompt injection techniques that exploit agent-specific weaknesses to mitigate emerging forms of autonomous web abuse that rely on content extraction. Our results highlight both the shortcomings of current web defenses against agentic user clients and the feasibility of practical detection mechanisms tailored to this new generation of web automation.",
+   "abs_url": "https://arxiv.org/abs/2610.41181",
+   "pdf_url": "https://arxiv.org/pdf/2610.41181",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-30",
+   "venue": "Proceedings of IEEE Symposium on Security and",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Evaluates defenses and proposes behavioral fingerprinting mechanisms to detect and constrain LLM-based web agents, demonstrating both agent vulnerabilities and detection guardrails.",
+   "idea": {
+    "problem": "LLM-powered browser agents evade existing anti-bot defenses designed for traditional automation",
+    "approach": "Behavioral fingerprinting via dynamic web forms and telemetry; exploit agent-specific weaknesses with defensive prompt injection",
+    "result": "AgentShield framework detects agents; demonstrates Extinction-induced Policy Drift attack and defensive mitigation techniques"
+   }
+  },
+  {
+   "id": "2608.27009",
+   "title": "The Guard That Cried Wolf: How Scary Words Make Agent Guardrails Refuse Legitimate Actions",
+   "authors": [
+    "Yingjie Zhang",
+    "Yuanbo Xie",
+    "Kai Chen"
+   ],
+   "abstract": "Agent guardrails are checks that approve or refuse each action before an LLM executes it. Sometimes they refuse requests that are genuinely safe. This over-safety blocks deployment when a guardrail refuses an authorized task. Evaluating over-safety is hard: at the boundary an authorized action resembles an unauthorized one, and the safe-versus-unsafe label is a choice of authorization policy, not fixed by the action alone. We argue it therefore requires a benchmark that does not yet exist, one that maps the decision boundary of an ideal guardrail. Harvesting such a benchmark from real data is impractical: boundary cases are hard to collect, their labels hard to verify. The gap is real, so we construct Cautious Bench, the first benchmark to make over-safety the construct for agent guardrails; it codesigns each sample and its label with a stated authorization policy. A build-time gate re-derives every example to certify it, so each label is a mechanical consequence of the policy rather than an annotator's per-sample verdict, a reference against which researchers can measure real guardrails. The benchmark renders 756 Decidable benign/twin pairs, each under three object-name types (2,268 measured pairs), and 40 Undecidable pairs reported separately. Measuring six guardrails from five designs, we find a name-superstition effect: each over-refuses an authorized action more often under a scary-looking object name than a benign one. Since only the object name varies in the aforementioned contrast experiments, the deviation is the name's doing: the guardrails read the surface label, not the authorization context.",
+   "abs_url": "https://arxiv.org/abs/2608.27009",
+   "pdf_url": "https://arxiv.org/pdf/2608.27009",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-30",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "benchmark",
+   "why": "Introduces Cautious Bench, a benchmark for measuring over-safety in agent guardrails, where labels are mechanically derived from authorization policies rather than annotator judgment.",
+   "idea": {
+    "problem": "Agent guardrails refuse legitimate authorized actions, but over-safety is hard to evaluate without a benchmark mapping the decision boundary.",
+    "approach": "Construct Cautious Bench with samples and labels codesigned with explicit authorization policies; use a build-time gate to mechanically certify labels.",
+    "result": "Measure six guardrails, finding they over-refuse authorized actions based on scary object names rather than authorization context."
+   }
+  },
+  {
+   "id": "2605.17291",
+   "title": "Step-wise Rubric Rewards for LLM Reasoning",
+   "authors": [
+    "Weichu Xie",
+    "Haozhe Zhao",
+    "Wenpu Liu",
+    "Yongfu Zhu",
+    "Liang Chen",
+    "Minghao Ye",
+    "Zirong Chen",
+    "Yuqi Xu",
+    "Shuai Dong",
+    "Ziyue Wang",
+    "Xinbo Xu",
+    "Kean Shi",
+    "Ruoyu Wu",
+    "Xiaoying Zhang",
+    "Wenqi Shao",
+    "Baobao Chang",
+    "Nan Duan",
+    "Jiaqi Wang"
+   ],
+   "abstract": "Reinforcement Learning with Verifiable Rewards (RLVR) improves language-model reasoning using final-answer correctness, but lacks supervision for intermediate steps. Rubric-based methods such as Rubrics as Rewards (RaR) provide finer-grained criteria, yet collapse rubric scores into a response-level scalar. This loses criterion-level structure, rewards flawed steps in correct responses, penalizes valid steps in incorrect responses, and can encourage unbounded self-correction. In 1,000 sampled problems, 18.2% of steps in answer-correct responses are wrong, while 49.9% of steps in answer-incorrect responses are correct. We propose Step-wise Rubrics as Rewards (SRaR), which (i) uses an LLM judge to assign rubric items to reasoning steps, (ii) normalizes step scores across rollouts to focus learning on quality differences, and (iii) combines step-wise and outcome rewards through a decoupled advantage estimator that preserves a stable outcome baseline. We also construct a 16K-problem rubric dataset by contrastively distilling criteria from verified correct and flawed reasoning paths. Across six math benchmarks, SRaR improves average accuracy over RaR by 3.57 and 2.75 points on Qwen3-8B-Non-Thinking and Qwen3-32B-Non-Thinking, respectively. On AIME 2025, it increases the Faithful Reasoning Rate from 34.5% to 46.7% and reduces self-correction looping from 48.1% to 26.5%. SRaR also achieves the best results on three of four code-generation benchmarks.",
+   "abs_url": "https://arxiv.org/abs/2605.17291",
+   "pdf_url": "https://arxiv.org/pdf/2605.17291",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "published": "2026-10-30",
+   "venue": "",
+   "code": "https://github.com/akarinmoe/SRaR",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes step-wise reward signals to improve LLM reasoning quality by supervising intermediate steps with finer-grained criteria, moving beyond outcome-only rewards.",
+   "idea": {
+    "problem": "Rubric-based RL rewards collapse step-level criteria into scalars, missing supervision for intermediate reasoning steps.",
+    "approach": "Assign rubric items to individual steps via LLM judge, normalize scores across rollouts, combine step and outcome rewards with decoupled advantage estimator.",
+    "result": "3.57 point accuracy gain on math benchmarks; Faithful Reasoning Rate 34.5% to 46.7% on AIME 2025."
+   }
+  },
+  {
+   "id": "2610.40744",
+   "title": "CLIC: Closed-Loop Intent Consistency for Securing LLM-Driven Control in Open RAN",
+   "authors": [
+    "Sunder Ali Khowaja",
+    "Kapal Dev",
+    "Joongheon Kim",
+    "Angelos Antonopoulos",
+    "Nikolaos Bartzoudis"
+   ],
+   "abstract": "With the progressive capabilities of large language models (LLMs), researchers are finding ways to integrate them into the control loops of Open Radio Access Network (O-RAN) to enable slicing and resource management through user intents. However, integration of LLMs in the O-RAN control loop via the RAN Intelligent Controller (RIC) makes the system vulnerable to \\textit{runtime prompt injection threats}, which manipulate control decisions without violating interface authentication, and \\textit{residual virtual prompt injection (VPI)} attacks that plant trigger mechanisms to silently steer the behaviour during fine-tuning. Existing studies address only the runtime threat and do not enforce consistency across the full control path, i.e. from the certified A1 intent, through the multi-step LLM trajectory, to the final E2 action. We propose a closed-loop intent-consistency layer (CLIC) that jointly mitigates both threats. The proposed CLIC defines a formal consistency score using a small quantized language model, which is deployed as a Non-RT rApp for model-integrity certification along with a Near-RT xApp for runtime enforcement. We implement CLIC on the OpenAI Cellular (OAIC) platform and evaluate it under domain-adapted JailbreakBench, AdvBench, and VPI workloads. The experimental results show that the proposed CLIC reduces the attack success rate from 0.92 to 0.29 and residual VPI attacks from 0.37 to 0.04, while improving isolation and fairness at slightly higher latency costs, i.e. approximately 27 ms.",
+   "abs_url": "https://arxiv.org/abs/2610.40744",
+   "pdf_url": "https://arxiv.org/pdf/2610.40744",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.NI"
+   ],
+   "published": "2026-10-29",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a runtime enforcement layer (CLIC) to verify LLM-agent consistency and prevent prompt injection attacks in a control loop system by checking that actions match certified intents.",
+   "idea": {
+    "problem": "LLM-based O-RAN controllers vulnerable to prompt injection and residual VPI attacks that manipulate control decisions",
+    "approach": "Closed-loop consistency layer enforcing formal consistency score between certified intents and LLM trajectories to final actions",
+    "result": "Attack success rate reduced from 0.92 to 0.29; residual VPI attacks from 0.37 to 0.04"
+   }
+  },
+  {
+   "id": "2610.40721",
+   "title": "MetaVul: Agentic Harness Discovery for Vulnerability Detection",
+   "authors": [
+    "Ira Ceka",
+    "Arnav Garg",
+    "Ryan Lutz",
+    "Ting Zhang",
+    "Ratnadira Widyasari",
+    "Gail Kaiser",
+    "Baishakhi Ray"
+   ],
+   "abstract": "LLM agents are increasingly used to automate vulnerability detection, but reliable detection is challenging because agents must distinguish subtle, security-relevant fixes from benign code variation. While underlying LLM capability has improved significantly, the accuracy of the agent still depends heavily on the harness: the code that defines the scaffolding around the LLM. Harnesses are typically fixed, and largely hand-written, limiting adaptation to evaluator feedback. Additionally, when harnesses are static, improvements on one dataset or model may not transfer to others. To address these challenges, we introduce MetaVul, a self-improving framework for harness discovery in vulnerability detection. Starting from a seed structured reasoning scaffold, MetaVul uses a workflow-based optimization loop to iteratively refine the harness using feedback from paired vulnerable and patched functions, while preserving the structured reasoning and verdict format. At each iteration, it searches over the history of prior harnesses, with access to their trajectories, logs, and metrics, and it returns a set of Pareto-optimal harnesses. We apply MetaVul to discover agent harnesses for various architectures. A validation set (202 pairs) is used for optimization, while an unseen dataset (430 pairs) is kept as the held-out set. We test whether harnesses learned from one model transfer to others not seen during optimization. Results on both frontier and small LLMs show that the optimized harnesses improve pairwise vulnerability detection up to 23.3 percentage points on the validation set and up to 25.8 points on the held-out set with a Pareto-frontier harness. Harnesses learned with one model also transfer to others. We show that harnesses optimized with one model transfer to another, improving held-out pairwise accuracy by 14.7 points without further optimization.",
+   "abs_url": "https://arxiv.org/abs/2610.40721",
+   "pdf_url": "https://arxiv.org/pdf/2610.40721",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.SE"
+   ],
+   "published": "2026-10-29",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.78,
+   "type": "method",
+   "why": "Proposes MetaVul, a framework for automatically discovering and optimizing agent harnesses (scaffolding around LLMs) for vulnerability detection, with structured reasoning preservation and Pareto-optimal harness selection.",
+   "idea": {
+    "problem": "LLM agent harnesses for vulnerability detection are hand-written and fixed, limiting adaptation and transfer across models.",
+    "approach": "Self-improving optimization loop that iteratively refines harnesses using feedback from vulnerable/patched function pairs while maintaining structured reasoning.",
+    "result": "Optimized harnesses improve pairwise detection by up to 25.8 points on held-out set and transfer across models with 14.7 point improvement."
+   }
+  },
   {
    "id": "2610.40071",
    "title": "Agentic process evidence",
@@ -80,7 +369,7 @@
     "approach": "Catalog thirteen patterns with intent, motivation, applicability, consequences, and decision guide",
     "result": "Patterns relate to published taxonomies; decision guide maps problems to patterns with cost measurements"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.39435",
@@ -147,7 +436,7 @@
     "approach": "Probe Tic-Tac-Toe models with sparse autoencoders to trace representation changes during RL training and causal intervention analysis",
     "result": "RL reorganizes feature dominance rather than adding reasoning; models rely on explicit prompt information over strategic concepts like board…"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.38620",
@@ -185,7 +474,7 @@
     "approach": "Runtime interception of actions with deterministic state verification and probabilistic decision model evaluation",
     "result": "Improved agent reliability across multiple models and benchmarks, particularly on Telecom and BFCL tasks"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.38130",
@@ -250,7 +539,7 @@
     "approach": "Multi-agent harness with specialized roles (PI, librarian, specialists, gate, critic) that verify claims field-by-field against data reliability before releasing…",
     "result": "Recovers known physical trends, anticipates future devices, provides trustworthiness measures for inherited literature"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.37739",
@@ -286,7 +575,7 @@
     "approach": "Create corpus of 12,151 open problems and benchmark 200 problems with Lean 4 formal statements verified by independent checkers",
     "result": "Live-web success reflects retrieval rather than reasoning; closed-book rediscovery rare (at most 7/40 resolved problems)"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.37255",
@@ -320,7 +609,7 @@
     "approach": "Decompose deployed return into harness ceiling (best possible return) minus policy mismatch (suboptimal decisions), measuring each term separately.",
     "result": "Ceiling and mismatch predict performance gains; reversing observation fields without changing semantics degrades performance from 85% to 19.2%."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.36570",
@@ -356,7 +645,7 @@
     "approach": "Formalize selective execution policy combining calibrated failure probability, state-dependent consequence, reversibility, ambiguity, and evidence freshness to route each tool…",
     "result": "Reduces harmful-side-effect trajectories from 14.75% to 7.02% compared to uncertainty-ranked baseline in simulation."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2608.17843",
@@ -424,7 +713,7 @@
     "approach": "Structure LLM outputs as executable semantic constraints tied to code anchors, verify via runtime checks and test-based patching",
     "result": "99.4% of constraints become executable checks; 40.9% rank faulty line first where coverage tie exists; 68.4% of top answers have test-confirmed…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.36258",
