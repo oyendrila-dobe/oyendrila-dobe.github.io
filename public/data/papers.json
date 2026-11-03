@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02",
+ "generated": "2026-11-03",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,620 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2611.03641",
+   "title": "From Natural Language to Exact Cover: A Neuro-Symbolic Approach to Zebra Puzzles",
+   "authors": [
+    "Paulius Skaisgiris",
+    "Thomas Pammer",
+    "Veronika Semmelrock",
+    "Mykyta Ielanskyi",
+    "Maximilian Heisinger",
+    "Erich Kobler"
+   ],
+   "abstract": "Chain-of-Thought (CoT) generation has substantially improved the performance of Large Language Models (LLMs) on complex reasoning tasks, including code generation, data analysis, and exam-style question answering. Despite these advances, purely neural LLMs continue to struggle with elementary logical reasoning problems and lack the determinism, soundness, and reliability characteristic of symbolic reasoning systems. Conversely, classical symbolic methods such as SAT solving and exact cover guarantee correctness and completeness, but require problems to be expressed in highly specialized formal encodings, limiting their applicability to natural language inputs. In this work, we present a synergistic neuro-symbolic framework that bridges this gap by combining neural semantic parsing with deterministic exact cover reasoning. Given a Zebra-style logic puzzle in natural language, an LLM translates entities and constraints into structured tool calls that construct an exact cover instance. A symbolic solver then computes the solution and provides feedback to iteratively refine invalid, under- or overconstrained encodings, exploiting the uniqueness property of Zebra puzzles. We conduct a comprehensive empirical evaluation across multiple parameter scales, post-training paradigms, and LLM families. The results demonstrate that our hybrid approach consistently outperforms strong plain neural baselines, including CoT prompting, as well as recent neuro-symbolic methods.",
+   "abs_url": "https://arxiv.org/abs/2611.03641",
+   "pdf_url": "https://arxiv.org/pdf/2611.03641",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization",
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Combines neural parsing with symbolic exact cover solving to translate natural-language puzzles into formal encodings and iteratively refine them, bridging semantic understanding and autoformalization through a neuro-symbolic harness.",
+   "idea": {
+    "problem": "LLMs struggle with elementary logical reasoning despite CoT improvements; symbolic solvers need formal encodings",
+    "approach": "LLM translates natural-language constraints into structured tool calls for exact cover; solver provides feedback for iterative refinement",
+    "result": "Hybrid approach outperforms pure neural baselines and recent neuro-symbolic methods across parameter scales"
+   }
+  },
+  {
+   "id": "2611.03434",
+   "title": "Optimize the Harness, Not the Model: Fitting a Minimal Agent to a Self-Hostable LLM for Investigative Analysis",
+   "authors": [
+    "Shai Nahum Gefen",
+    "Vered Chassida",
+    "Dmitry Basin",
+    "Guy Feigenblat"
+   ],
+   "abstract": "Government intelligence teams need LLM agents that can analyze large, messy evidence collections, but security and cost constraints often rule out hosted frontier models and broad, hard-to-audit tool surfaces. We report CLEO: Constrained Loop for Environment Optimization, a method for fitting a minimal agent harness to a fixed, self-hostable LLM. Given an expert-validated dataset, CLEO admits only the tools, guardrails, memory policies, and loop components that improve accuracy while remaining general and auditable. On our held-out dataset, the CLEO harness reaches an 83.8% pass rate, within 1.2 points of the strongest out-of-the-box Claude Code SDK baseline, while being two orders of magnitude smaller.",
+   "abs_url": "https://arxiv.org/abs/2611.03434",
+   "pdf_url": "https://arxiv.org/pdf/2611.03434",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.MA"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Proposes CLEO, a method to optimize agent harness components (tools, guardrails, memory, loop) for a fixed LLM, directly addressing constrained agent design with auditability.",
+   "idea": {
+    "problem": "Intelligence teams need auditable, cost-effective LLM agents that work with self-hosted models and minimal tool surfaces.",
+    "approach": "Optimize harness components (tools, guardrails, memory, loop) given a fixed LLM and expert-validated dataset, admitting only improvements.",
+    "result": "CLEO harness achieves 83.8% accuracy, near Claude baseline, with two orders of magnitude smaller footprint."
+   }
+  },
+  {
+   "id": "2611.03231",
+   "title": "Specification-Driven Governance for Fairness-by-Design in Agentic Software Engineering: How Far Can We Go?",
+   "authors": [
+    "Alfonso Cannavale",
+    "Alessandra Parziale",
+    "Valeria Pontillo",
+    "Patrizio Pelliccione",
+    "Andrea De Lucia",
+    "Fabio Palomba"
+   ],
+   "abstract": "Agentic AI is shifting developers' responsibilities from software implementation to software governance. While this paradigm improves productivity, it also raises challenges in ensuring that autonomous coding agents preserve developers' intentions. Among these, operationalizing fairness-by-design is largely unexplored, as existing approaches provide limited support for representing and propagating fairness requirements throughout agentic development workflows. In this paper, we investigate whether specification-driven development can operationalize fairness-by-design in the agentic development of machine learning systems. We study three coding agents on four machine learning applications, using four prompts that progressively operationalize fairness through nine Fairness Specification Elements, and analyze the traceability of fairness requirements across the generated artifacts, the fairness-accuracy trade-off of the resulting models, and the agents' design decisions and rationales. The results show that when fairness is operationalized, agents capture almost all fairness requirements in the specification (97.22%) and preserve most of them in the code (82.41%). However, the resulting models are not significantly fairer, as agents implement fairness as a post-hoc audit that neither shapes training nor prevents model delivery. Specifications thus make fairness traceable, but not enforceable, calling for fairness specifications that state what agents should do when requirements are not met, and for workflows that make the fairness decisions agents delegate to developers explicit.",
+   "abs_url": "https://arxiv.org/abs/2611.03231",
+   "pdf_url": "https://arxiv.org/pdf/2611.03231",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "specification_mining",
+    "agent_guardrails"
+   ],
+   "confidence": 0.87,
+   "type": "empirical",
+   "why": "Empirically evaluates how specification-driven development can govern fairness requirements in agentic AI systems, studying traceability and enforcement of fairness specifications across agent-generated code artifacts.",
+   "idea": {
+    "problem": "Agentic AI lacks mechanisms to operationalize fairness-by-design requirements throughout autonomous coding workflows",
+    "approach": "Study specification-driven development using nine Fairness Specification Elements to progressively operationalize fairness for coding agents",
+    "result": "Fairness specifications enable traceability (97.22% capture, 82.41% preservation) but remain unenforced; models not significantly fairer"
+   }
+  },
+  {
+   "id": "2611.03223",
+   "title": "Do Agents Still Follow the Rules? Benchmarking Rule Compliance under Agent Context Compaction",
+   "authors": [
+    "Yiwei Zha",
+    "Qingyu Meng",
+    "Herbert Bos",
+    "Min Chen"
+   ],
+   "abstract": "LLM agents compact long histories to fit their context windows, but the compacted context must still carry the operating rules that govern later actions. Prior work shows that violations rise after compaction, but measures compliance outside a complete agent harness and does not identify where each violation comes from. We introduce ARCBench(Agent Rule Compliance Benchmark), a configurable benchmark built on the open-source pi agent harness. Its tool-calling agent loop lets us measure rule compliance from actions taken during execution, bringing the evaluation closer to deployed agent workflows. Using ARCBench, we examine where violations after compaction come from, and how different compaction configurations and adversarial settings change their sources. We find that compaction rarely deletes the rule: most violations after compaction occur while the rule is still in the compacted history, with the agent treating a later request as permission, ignoring the rule, and proceeding anyway. Where violations come from depends on the configuration: how the rule is delivered decides whether the agent would break it even without compaction, while the compaction strategy and budget decide whether the rule survives. The strongest compactor-targeted attack more than doubles violations by corrupting the rule in the summary and changing how the agents behave, whereas the strongest defense restores the rule in most summary but still violates. Finally, retaining a rule does not guarantee compliance: compacted runs that retain the rule violate more than twice as often as runs with the full history.",
+   "abs_url": "https://arxiv.org/abs/2611.03223",
+   "pdf_url": "https://arxiv.org/pdf/2611.03223",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "benchmark",
+   "why": "Introduces ARCBench, a benchmark measuring whether LLM agents maintain rule compliance when histories are compacted, evaluating guardrail enforcement within a complete agent harness.",
+   "idea": {
+    "problem": "LLM agents violate rules after context compaction, but source of violations is unclear",
+    "approach": "Build benchmark with complete agent harness loop to measure rule compliance from actual tool-calling actions",
+    "result": "Most violations occur while rule is in history; compaction strategy and delivery method affect compliance"
+   }
+  },
+  {
+   "id": "2611.02843",
+   "title": "Math Foundation Formalization Agent: A General-Purpose Approach to Formalizing Mathematical Foundations",
+   "authors": [
+    "Jiaxin Xie",
+    "Guowei Dou",
+    "Xiang Ji",
+    "Wensheng Yu"
+   ],
+   "abstract": "Mathematical formalization plays an important role in establishing rigorous and machine-verifiable foundations for mathematical reasoning. With the development of large language models (LLMs) and interactive theorem provers, intelligent agents offer a promising approach to automating the formalization of mathematical theories. This paper presents the Math Foundation Formalization Agent (MFF-Agent), a general-purpose intelligent agent designed to support formalization tasks across multiple mathematical domains. The agent integrates the reasoning capabilities of large language models with the formal verification capabilities of the Rocq proof assistant. It incorporates task classification, tool-assisted execution, verification feedback, and state-based task management to support the generation, refinement, and verification of formal proofs. Unlike an approach focused on a single mathematical theory, the agent is examined through case studies involving Morse--Kelley axiomatic set theory (MK), real numbers, propositional logic, and equivalences of the axiom of choice. These cases investigate its applicability across mathematical foundations and distinguish source-level completion, interactive verification, and reproducible compilation. The results demonstrate the feasibility of a unified operational framework for heterogeneous foundation-level tasks and clarify the gap between such a framework and a fully integrated mathematical foundation.",
+   "abs_url": "https://arxiv.org/abs/2611.02843",
+   "pdf_url": "https://arxiv.org/pdf/2611.02843",
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Presents an intelligent agent that automates formalization of mathematical theories by integrating LLMs with theorem provers, using tool-assisted execution and verification feedback loops.",
+   "idea": {
+    "problem": "Automating formalization of mathematical theories across multiple domains",
+    "approach": "Agent integrating LLMs with Rocq proof assistant, using task classification, tool execution, verification feedback, and state management",
+    "result": "Demonstrates feasibility of unified framework for heterogeneous mathematical foundation formalization tasks"
+   }
+  },
+  {
+   "id": "2611.02741",
+   "title": "ATrust: Adaptive Trust Boundary Expansion for Securing LLM Agents",
+   "authors": [
+    "Xu Zhang",
+    "Zhichao Lu"
+   ],
+   "abstract": "As large language model (LLM) agents take on more complex tasks with greater autonomy, security has become a major obstacle to their broader deployment. Unlike in attacks that require complex exploitation of operating system vulnerabilities, attackers can easily hijack agents through indirect prompt injection (IPI), leading to privacy leakage, financial loss, and destructive operations. However, existing defenses often make security decisions based on limited static trusted evidence or assess observations in isolation. Such rigid trust assumptions can cause task-essential information to be unnecessarily discarded, resulting in over-defense and degraded agent functionality. To address this problem, we propose ATrust, a defense mechanism that adaptively expands the trust boundary during agent runtime. Starting from the user query as the root trust anchor, ATrust evaluates external observations against the current trust boundary and execution state, progressively admitting task-essential information as new trust anchors. This preserves necessary environmental feedback while excluding irrelevant content, whether benign or malicious, from subsequent decision-making, thereby limiting unnecessary exposure to external environment. We evaluate ATrust on AgentDojo and AgentDyn, where it achieves the strongest overall security--utility trade-off among existing defenses. With GPT-4o as the engine model, ATrust reduces the attack success rate on AgentDyn from 37.80% to 4.37% while enhancing utility by 10.00%, outperforming AuthGraph, the state-of-the-art defense, by 12.33%. These results demonstrate the effectiveness and practicality of ATrust.",
+   "abs_url": "https://arxiv.org/abs/2611.02741",
+   "pdf_url": "https://arxiv.org/pdf/2611.02741",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a defense mechanism that adaptively constrains LLM agent trust boundaries at runtime to prevent indirect prompt injection attacks while maintaining task functionality.",
+   "idea": {
+    "problem": "LLM agents vulnerable to indirect prompt injection attacks; existing static defenses over-restrict task-essential information",
+    "approach": "Adaptively expand trust boundary from user query root anchor, evaluating external observations against current state",
+    "result": "ATrust reduces attack success rate from 37.80% to 4.37% on AgentDyn while improving utility by 10.00%"
+   }
+  },
+  {
+   "id": "2611.02516",
+   "title": "Cumulative and Audited Guardrail Tool Evolution for LLM Agent Safety",
+   "authors": [
+    "Xiao Yang",
+    "Aishan Liu",
+    "Siyuan Liang",
+    "Zonghao Ying",
+    "Le Wang",
+    "Jiakai Wang",
+    "Xianglong Liu",
+    "Dacheng Tao"
+   ],
+   "abstract": "Large language model (LLM) agents increasingly operate in open-world environments where safety risks cannot be fully predefined. However, most existing guardrail mechanisms remain static, relying on fixed rules, prompts, or classifiers that generalize poorly to emerging risks. Here we present EVOLVE, a tool-level self-evolving defense framework that formulates agent security as a process of cumulative security evolution. Inspired by how human societies transform experiences into transferable protective knowledge, EVOLVE externalizes security knowledge into executable guardrail tools that are continuously inherited, independently audited, and iteratively refined through lifelong interaction. Across multiple benchmarks, backbone models, and embodied environments, EVOLVE consistently outperforms existing defenses across diverse risk scenarios with +22\\% average F1 score. We further validate the framework in real-world robotic and autonomous agent systems. Our results suggest that scalable agent safety may require continuously evolving defense systems rather than static guardrails.",
+   "abs_url": "https://arxiv.org/abs/2611.02516",
+   "pdf_url": "https://arxiv.org/pdf/2611.02516",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes EVOLVE, a framework for continuously evolving executable guardrail tools that audit and refine security constraints on LLM agent behavior rather than relying on static rules.",
+   "idea": {
+    "problem": "Static guardrails fail to generalize to emerging risks in open-world LLM agent environments",
+    "approach": "Externalize security as executable guardrail tools that evolve, inherit, and refine through audited lifelong interaction",
+    "result": "+22% average F1 score improvement over existing defenses across benchmarks"
+   }
+  },
+  {
+   "id": "2611.02332",
+   "title": "LEANGUARD: Lean-Verified Guardrails for Tool-Using Agents",
+   "authors": [
+    "Sreehari Sankar",
+    "Debargha Ganguly",
+    "Vikash Singh",
+    "Mohsen Hariri",
+    "Weicong Chen",
+    "Yanyan Zhang",
+    "Shouren Wang",
+    "Wang Yang",
+    "Chaoda Song",
+    "Alexander Nemecek",
+    "Osama Zafar",
+    "Idan Davidovich",
+    "Yuting Shao",
+    "Kai Ye",
+    "Biyao Zhang",
+    "Xinpeng Li",
+    "Joe Stubbs",
+    "Erman Ayday",
+    "Jing Ma",
+    "Vipin Chaudhary"
+   ],
+   "abstract": "Tool-using language-model agents often execute actions that their domain policies forbid. We present LeanGuard, a runtime that checks every proposed tool call against a policy written in Lean4 before the call reaches the environment. Policies combine state predicates with scoped past-time temporal operators over the execution history, evaluation is fail-closed, and the decision procedure is proved equivalent to a LeanLTL semantics. A denied call can be corrected in two ways. With feedback, the agent receives the violated rule and a hint; with proof-guided repair, Lean metaprogramming searches for a nearby call that preserves the user's intent and proves that the policy admits it, without the model. On Tau-Bench with five Qwen models (0.8B-27B), unguarded agents execute at least 33 calls that the Lean policy forbids, while LeanGuard executes none; with feedback, task success does not change significantly. On DTap, LeanGuard reduces direct prompt-injection success from 57.9% to 5.9%, and in telecom, where benign tasks need no writes, benign success is unchanged. Feedback reduces repeated blocked calls and raises task success for four of five models over a bare denial. On replayed denials, repair proves an admissible edit for 88 of 252 denials caused by argument values, in a median of 2,ms.",
+   "abs_url": "https://arxiv.org/abs/2611.02332",
+   "pdf_url": "https://arxiv.org/pdf/2611.02332",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "tool",
+   "why": "Presents LeanGuard, a runtime that enforces formal Lean-based policies on LLM agent tool calls, with verified decision procedures and proof-guided repair.",
+   "idea": {
+    "problem": "Tool-using agents execute actions violating domain policies",
+    "approach": "Runtime checker with Lean4 policies, temporal logic evaluation, fail-closed verification, and proof-guided repair",
+    "result": "Zero forbidden calls on benchmarks; reduces prompt-injection success from 57.9% to 5.9%; repair finds admissible edits for 88/252 blocked calls"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2606.20631",
+   "title": "Harnessing Agent Skills: Architectural Patterns and a Reference Architecture for Skill-Mediated LLM Agents",
+   "authors": [
+    "Boming Xia",
+    "Liming Zhu",
+    "Zhenchang Xing",
+    "Qinghua Lu",
+    "Dino Sejdinovic",
+    "Xiwei Xu"
+   ],
+   "abstract": "CONTEXT: Agent skills package reusable behavioural guidance and resources that large language model agents load or apply during a run. Within the agent harness, agent skill harnessing comprises connected architectural responsibilities that govern which skills enter a run, which actions they can cause, and how their use is recorded and informs revision. OBJECTIVES: We identify architectural patterns for agent skill harnessing and organise their responsibilities into a reference architecture that makes these connections explicit. METHODS: A multivocal literature review covered 36 practitioner systems and 51 academic papers; we consolidated practices into patterns and derived the reference architecture from patterns, source evidence, and architectural reasoning. We evaluated the reference architecture by mapping eight systems and applying it in Deep Agents and Hermes Agent. RESULTS: Ten patterns cover skill supply and activation, skill declarations and execution authority, verification and recording of skill use, and run evidence feeding repair and governed revision. The reference architecture organises their responsibilities into four layers (Supply Chain, Mediation, Execution Control, Evidence & Feedback) and two cross-cutting substrates, separating permission determination from enforcement and routing persistent revisions through acceptance. Mapping eight systems showed the first three layers broadly realised and 14 of 15 partial or unestablished ratings in Evidence \\& Feedback. Applying the architecture in Deep Agents and Hermes Agent turned requirements into checks that exposed a shell route outside the file-tool rules and a preview--apply mismatch. CONCLUSION: The patterns and reference architecture support comparing implementations and turning requirements into responsibility allocations and checks.",
+   "abs_url": "https://arxiv.org/abs/2606.20631",
+   "pdf_url": "https://arxiv.org/pdf/2606.20631",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "survey",
+   "why": "Systematizes architectural patterns for skill-mediated LLM agents, focusing on how to structure, govern, and control agent behaviors through harness design including permission enforcement and runtime verification.",
+   "idea": {
+    "problem": "LLM agents need structured architectural patterns for managing skills, permissions, and verification within agent harnesses",
+    "approach": "Multivocal literature review of 36 systems and 51 papers to identify patterns, organized into reference architecture with four layers covering skill supply, execution control, and…",
+    "result": "Ten patterns and reference architecture that separate permission determination from enforcement, enabling requirement-driven checks that expose control-flow…"
+   }
+  },
+  {
+   "id": "2606.09935",
+   "title": "GitInject: Real-World Prompt Injection Attacks in AI-Powered CI/CD Pipelines",
+   "authors": [
+    "Jafar Isbarov",
+    "Umid Suleymanov",
+    "Ilia Shumailov",
+    "Murat Kantarcioglu"
+   ],
+   "abstract": "AI agents are increasingly embedded in continuous integration and continuous delivery (CI/CD) workflows to autonomously review pull requests, triage issues, and maintain codebases. We study fully automated configurations in which external contributions invoke agents without prior human approval. Because these agents ingest untrusted content while operating with repository credentials and tools, prompt injection can have software supply chain consequences. We present GitInject, an open-source framework for evaluating prompt injection in live GitHub Actions workflows. Unlike benchmarks that simulate tool calls, GitInject provisions ephemeral repositories and executes actual workflows, exposing platform semantics such as sandbox constraints, credential handling, and permission boundaries. We use GitInject to evaluate eleven named attack scenarios across five workflows from four AI providers, covering configuration-file injection, credential exfiltration, judgment manipulation, and availability. Every provider is susceptible to at least one high-severity attack in the tested configurations. The most consequential vulnerabilities are structural: attacker-controlled configuration files from an unmerged contribution are loaded as operator-level instructions, allowing the agent--infrastructure interaction to expose credentials or corrupt review judgments. Two configuration-file attacks replicate on GitLab and Hugging Face as well as GitHub. We evaluate workflow-level countermeasures and show their coverage and utility tradeoffs. We release GitInject and all attack scenarios.",
+   "abs_url": "https://arxiv.org/abs/2606.09935",
+   "pdf_url": "https://arxiv.org/pdf/2606.09935",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "benchmark",
+   "why": "Evaluates prompt injection vulnerabilities in AI-agent CI/CD workflows and proposes guardrail countermeasures to constrain agent behavior and enforce security boundaries.",
+   "idea": {
+    "problem": "AI agents in CI/CD workflows are vulnerable to prompt injection attacks via untrusted external contributions",
+    "approach": "GitInject framework provisions real GitHub Actions workflows to test prompt injection attacks across multiple providers and scenarios",
+    "result": "All tested AI providers susceptible to high-severity attacks; configuration-file injection most consequential; countermeasures have tradeoffs"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.02155",
+   "title": "Decision Models as Policy Gates for Coding Agents: Explicit Policy Boundaries Improve Detection and Reduce False Alarms",
+   "authors": [
+    "James P. Beno"
+   ],
+   "abstract": "Coding agents can destroy data, leak secrets and message the wrong person faster than a human can review. Could a decision model catch these risks at runtime? We evaluated 22 hosted decision models and two prompted general models as classifiers for a multi-rule policy engine. A synthetic dataset of 2,643 tool calls was labeled blind against 28 rules, with a sealed holdout. With a single shared preamble in both conditions, explicit boundaries written as examples and counterexamples raised recall by 5.5-26.1 percentage points on all 23 available models and reduced false positives on 21. Jev 1.14's recall rose from 89.3% to 98.2%, while unnecessary interruptions fell from 30.6% to 4.8% of 252 clean actions. With examples, its median latency was 120 ms at $0.46 per thousand requests. Strong models retained the recall gains when concrete names were replaced by generic descriptions; three largely retained them when the same boundaries were written as prose. On 16 new scenarios written after the initial studies, a follow-up improved recall on 22 of 23 models and reduced unnecessary interruptions on 21. We release the dataset, rule texts and harness.",
+   "abs_url": "https://arxiv.org/abs/2611.02155",
+   "pdf_url": "https://arxiv.org/pdf/2611.02155",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.CR",
+    "cs.SE"
+   ],
+   "published": "2026-11-01",
+   "venue": "",
+   "code": "https://github.com/agentapprove/decision-policy-rules",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Evaluates decision models as runtime policy gates for coding agents, showing how explicit formal boundaries improve policy enforcement and reduce false alarms in agent tool calls.",
+   "idea": {
+    "problem": "Coding agents can cause harm (data destruction, secret leaks) faster than humans can review",
+    "approach": "Use decision models as policy classifiers with explicit example/counterexample boundaries vs. prose descriptions",
+    "result": "Explicit boundaries raised recall 5.5-26.1pp and reduced false positives on 21/23 models; best case 89.3% to 98.2% recall with 4.8% false alarm rate"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.01415",
+   "title": "Latent Harness: Compiling Agent Behaviors into Post-Block Activation Shifts",
+   "authors": [
+    "Ran Li",
+    "Shimin Di",
+    "Zeyu Ren",
+    "Ling Yue",
+    "Jiachuan Wang",
+    "Lei Chen"
+   ],
+   "abstract": "Harness engineering and self-evolving agents improve language-model agents quickly, yet their gains live outside the model. The harness is re-sent and re-paid on every call, and the standard route to internalization is a weight update that is costly to iterate and fixed once merged. We propose compiling the harness instead. Latent Harness distills an external condition into a rank-8 activation shift. The shift is applied at the output of every decoder block of a frozen backbone, at 0.03-0.05% of parameters. The condition is either an explicit process-level behavior instruction or the behavioral contract of an agentic harness. At inference the compiled bundle carries no harness text and adds no tokens. It exposes three runtime controls for injection strength, injection phase, and shift-space mixing. Compiled behaviors recover the source-harness gain in 8 of 10 preregistered settings. Where the explicit source pays the heaviest per-call token tax, the compiled form exceeds it. The same bundles transfer zero-shot across tasks (5 of 7 pairs positive) and compose in shift space, while stacked text instructions interfere destructively. Used as a search space, they lift budget-matched harness search by 1.45 times. On three agentic benchmarks the operator aligns policy to the harness con- tract. Under matched data, capacity, and effective strength it outperforms same-capacity LoRA, which needs 11.1 times the parameters to reach the same band, and it regresses nothing where the base policy is already strong. Across 1B-to-8B models the method skeleton is invariant while gain locations move with the model-task pair, which delimits where compiled harnesses should be deployed.",
+   "abs_url": "https://arxiv.org/abs/2611.01415",
+   "pdf_url": "https://arxiv.org/pdf/2611.01415",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-11-01",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes compiling external agent harnesses into activation shifts to enforce behavioral constraints on frozen LLM agents without textual overhead or repeated token costs.",
+   "idea": {
+    "problem": "Agent harnesses require re-sending and re-paying tokens per call; weight updates are costly to iterate and inflexible once merged.",
+    "approach": "Distill external harness conditions into rank-8 activation shifts applied at decoder block outputs; expose runtime controls for injection strength, phase, and mixing.",
+    "result": "Compiled behaviors recover source-harness gains in 8/10 settings, transfer zero-shot across tasks, compose in shift space, and outperform same-capacity LoRA while adding no token…"
+   }
+  },
+  {
+   "id": "2610.22061",
+   "title": "FAOPs: Normal Forms and an Algebra for AI Agent Workflows",
+   "authors": [
+    "Ali Mohammadi Shanghooshabad"
+   ],
+   "abstract": "Organizations increasingly encode operational procedures as multi-step agent skills, here called Agent Operating Procedures (AOPs), that must be traceable, auditable, reproducible, access-controlled, and bounded in time and cost, as regulated sectors require. Yet AOPs are typically kept as coarse-grained files, in which steps bundle actions, copied procedures drift apart, any step may reach any tool, and refactoring goes unchecked. We present Functional Agent Operating Procedures (FAOP), a formal theory that brings database-grade discipline to AI agent workflows. FAOP recasts each workflow as a typed function over scoped state and subjects an entire library to four progressive normal forms: Decomposed (FNF-1) splits a workflow into atomic steps, Typed (FNF-2) makes its data flow explicit and type-checked, Factored (FNF-3) gives each shared sub-workflow a single canonical definition so a change propagates instead of drifting, and Scoped (FNF-4) checks that each FAOP lists resources used by its own actions and the FAOPs it calls, while guardrails declared by it and by FAOPs that call it remain attached to their sources. A FAOP algebra of provably sound equalities turns refactoring and parallelization into compiler rewrites; orthogonal extensions add optimization (+O), bounded completion with time and cost limits (+B), and reachability checks (+R); and an architectural-level classifier (0-3) determines whether a workflow needs AI at all. Together, these make integrity, isolation, typing, stopping limits, cost, and optimization compile-time concerns across the whole library, not runtime hopes. We implement the theory in SkillBase, an AOP management system (what PostgreSQL is to data, SkillBase is to AOPs), and a separate executor that loads FAOPs from SkillBase and enforces these guarantees at run time. A worked financial workflow illustrates the approach end to end.",
+   "abs_url": "https://arxiv.org/abs/2610.22061",
+   "pdf_url": "https://arxiv.org/pdf/2610.22061",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.DB",
+    "cs.PL"
+   ],
+   "published": "2026-11-01",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes a formal theory (FAOP) with normal forms and algebra to structure, type-check, and enforce guardrails on AI agent workflows, bringing compile-time verification of safety, access control, and resource bounds to multi-step agent procedures.",
+   "idea": {
+    "problem": "AI agent workflows lack formal structure, making them hard to audit, refactor safely, and enforce access control and resource bounds.",
+    "approach": "Define Functional Agent Operating Procedures (FAOP) as typed functions with four progressive normal forms plus an algebra of provably sound equalities, enabling compile-time…",
+    "result": "SkillBase system enforces integrity, isolation, stopping limits, and cost bounds as compile-time concerns across workflow libraries."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.00729",
+   "title": "AgentCap: Capability-Based Runtime Authorization for Secure LLM Agent Execution",
+   "authors": [
+    "Aravinda Kashyap Kabbinamakki Suresh",
+    "Peng Gao"
+   ],
+   "abstract": "Language-model agents commonly collapse two decisions that security systems separate: selecting an action and determining whether that action is authorized. When a model exercises standing authority, indirect prompt injection can convert influence over its reasoning into unauthorized effects. We present AgentCap, a runtime authorization layer that externalizes this decision from the model and mediates every tool invocation through an MCP wrapper. Each request declares an intent, and AgentCap evaluates policy constraints over trust, workflow prerequisites, mutually exclusive authority, and the provenance of security-sensitive arguments. Authorized requests receive short-lived, budget-bounded capability tokens that are validated at the tool boundary. Delegation is restricted to session-bound parent-child chains that preserve action and resource while budget and lifetime can only be attenuated, preventing authority from being expanded or reused across unrelated agent sessions. A declarative policy language provides a common representation for runtime enforcement and predeployment analysis. Across AgentDojo and InjecAgent, AgentCap reduces attack success in every evaluated model-benchmark setting, including zero attack success with GPT-5.4 on both benchmarks. Controlled adversarial scenarios further show that AgentCap blocks every attempted unauthorized execution (ASR 0%) while preserving all legitimate operations exercised. These results demonstrate that agent security requires authorization of model-proposed effects at the tool boundary, independently of the model's reasoning.",
+   "abs_url": "https://arxiv.org/abs/2611.00729",
+   "pdf_url": "https://arxiv.org/pdf/2611.00729",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-10-31",
+   "venue": "NeurIPS 2026",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.95,
+   "type": "method",
+   "why": "Proposes AgentCap, a runtime authorization layer that enforces policy constraints on LLM agent tool calls through capability-based access control, preventing unauthorized effects from prompt injection.",
+   "idea": {
+    "problem": "LLM agents conflate action selection with authorization, allowing prompt injection to cause unauthorized tool invocations",
+    "approach": "Externalize authorization decisions via MCP wrapper enforcing declarative policies with capability tokens and delegation chains",
+    "result": "Zero attack success on benchmarks; blocks all unauthorized execution while preserving legitimate operations"
+   }
+  },
+  {
+   "id": "2611.00463",
+   "title": "Exo: An Architecture for Self-Improving Systems at Runtime",
+   "authors": [
+    "Alexander Krentsel",
+    "Sylvia Ratnasamy",
+    "Ion Stoica",
+    "Martin Casado",
+    "Ankur Goyal"
+   ],
+   "abstract": "Agent harnesses govern how language models act in an environment; designing their policies by hand is difficult, while automated techniques require representative datasets and costly executions. We present Exo, an agent runtime architecture for safe learning during ongoing work that collapses the optimization loop into task execution, allowing agents to revise both their harness and their strategies for further improvement. A minimal protected mechanism layer preserves execution history and governs policy activation while the harness evolves through inspectable code changes. On long-running objectives in an open-world game, Exo reduces model cost by 12-53% relative to Codex and Pi in standalone runs and 45-82% in transfer runs, while matching task completion rates. Compared with the same starting policy without the ability to edit policy, Exo reduces held-out model cost by 35-61% on AppWorld and SREGym with comparable correctness, cutting AppWorld's mean task time by 13% and SREGym's median diagnosis time by 35%. On Continual Learning Bench coding tasks, model cost including learning falls by 14%, with both policies resolving every issue.",
+   "abs_url": "https://arxiv.org/abs/2611.00463",
+   "pdf_url": "https://arxiv.org/pdf/2611.00463",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-10-30",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes Exo, an agent runtime architecture with protected mechanism layer for safe policy learning and revision, directly addressing how to structure and evolve LLM-agent guardrails during execution.",
+   "idea": {
+    "problem": "Agent harness policies are difficult to design by hand; automated techniques require datasets and costly executions.",
+    "approach": "Runtime architecture with protected mechanism layer enabling agents to revise harness and strategies during task execution.",
+    "result": "12-53% model cost reduction versus baselines while maintaining task completion; 35-61% cost reduction with comparable correctness on long-running tasks."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.00420",
+   "title": "Circuit Oracle: Automating Attribution Graph Analysis via Natural-Language Queries",
+   "authors": [
+    "Shariar Kabir",
+    "Hong Kiat Tan",
+    "Swastik Agrawal",
+    "Sai V R Chereddy",
+    "Sriram Balasubramanian"
+   ],
+   "abstract": "Attribution graphs, an emerging tool in mechanistic interpretability, use transcoders to decompose language model computations into sparse interpretable features connected by causal edges. However, turning a graph into a safety-relevant insight requires hours of manual analysis by experts. We introduce Circuit Oracle, an off-the-shelf LLM equipped with a multi-agent harness and task-specific authored skills, which answers natural-language questions about a target model by reading the attribution graph through tool calls. We evaluate it on three safety-relevant proxy tasks: detecting spurious features in probe circuits, eliciting hidden knowledge from taboo-finetuned models, and suppression jailbreaking via feature-level interventions. Beyond task scores, the oracle produces pruned subgraphs and context-specific feature explanations that we assess qualitatively. Results are mixed. On spurious-feature detection, Circuit Oracle reaches 78.2 $\\pm$ 2.4% accuracy, outperforming single-layer feature-ranking baselines. On secret elicitation, trained self-explainers like Activation Oracles remain the stronger baseline. On refusal suppression over 50 prompts, its single committed intervention is slightly below a diff-in-means baseline, and only exceeds it when allowed the best of five attempts. Results are stable across five runs and across model choices for the agents. We also release the pruned subgraphs and context-specific feature readings that revise existing global labels, and invite future work to develop evaluations that can measure their usefulness directly.",
+   "abs_url": "https://arxiv.org/abs/2611.00420",
+   "pdf_url": "https://arxiv.org/pdf/2611.00420",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-10-30",
+   "venue": "ICML 2026",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes an LLM-based multi-agent harness to automate mechanistic interpretability analysis via natural-language queries over attribution graphs, enabling safety-relevant model analysis.",
+   "idea": {
+    "problem": "Manual analysis of attribution graphs for safety insights requires expert hours",
+    "approach": "Multi-agent LLM harness with task-specific skills reads graphs via tool calls to answer natural-language questions",
+    "result": "Achieves 78.2% accuracy on spurious-feature detection; mixed results on other safety tasks"
+   }
+  },
+  {
+   "id": "2611.00340",
+   "title": "Autoformalization for Ambiguous Inputs: Precision, Coverage, and Cost across SQL and Logical Forms",
+   "authors": [
+    "Henry Shen",
+    "Xinling Liao",
+    "Adarsh Vatsa",
+    "William Eiers"
+   ],
+   "abstract": "Agentic systems translate natural-language requests into executable artifacts while managing ambiguity and inference cost. We evaluate seven autoformalization workflows on SQL and first-order logic benchmarks for ambiguous inputs. Across five SQL workflows, the raw model leads with F1 of 53.35% on AMBROSIA and 60.85% on AmbiQT. On AmP, DRIFT gains 15.98 F1 points over the raw model at 2.03 times its token cost, whereas LoC uses 18.65 times the raw model's tokens with lower F1. Within AutoCedar, structured interpretation lowers F1 by 6.44-6.95 points and raises AMBROSIA token use 2.2-fold. Paired reviewer comparisons show modest Kimi K3 gains of 1.93 points on AMBROSIA and 2.04 on AmbiQT. Clear-ambiguous AMBROSIA analysis shows greater relative stability for AutoCedar, with a smaller F1 drop than the raw model (11.46 vs. 16.68 points), alongside lower aggregate F1 (50.16% vs. 53.35%). Autoformalization alone does not guarantee robustness to ambiguity: the tested additions offer no uniformly effective remedy, making accuracy, ambiguity handling, and inference cost joint design requirements.",
+   "abs_url": "https://arxiv.org/abs/2611.00340",
+   "pdf_url": "https://arxiv.org/pdf/2611.00340",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-10-30",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Evaluates autoformalization workflows (SQL, first-order logic) on handling ambiguous natural-language inputs, measuring precision, coverage, and computational cost tradeoffs.",
+   "idea": {
+    "problem": "Autoformalization systems must handle ambiguous natural language while managing inference cost and accuracy",
+    "approach": "Benchmark seven autoformalization workflows on SQL and FOL tasks, comparing raw models, structured interpretation, reviewers, and specialized…",
+    "result": "No single technique uniformly effective; accuracy, ambiguity robustness, and token cost are interdependent design requirements"
+   }
+  },
+  {
+   "id": "2611.00314",
+   "title": "Decentralized Multi-Agent Coordination and Communication in Shared Codebases",
+   "authors": [
+    "Rishabh Mediratta",
+    "Lingyun Xiao",
+    "Peter Stone",
+    "Joydeep Biswas",
+    "Elias Stengel-Eskin"
+   ],
+   "abstract": "Coding agents working in shared repositories may receive separate, independently-motivated requests from human developers, creating a setting that is multi-agent by necessity. When this scenario happens, their individual implementations may work separately but conflict when combined. To study this setting, we introduce ParallACT, a benchmark of orchestrator-free multi-agent coding tasks. ParallACT contains both complementary and contradictory tasks. In complementary tasks, each agent's task is separately useful and implementations must share an interface to be productively combined. In contradictory pairs, both agents' tasks require editing the same code in incompatible ways, and naively combining independent solutions fails to produce a useful implementation. We compare a single-agent oracle given the combined set of tasks against multi-agent settings that vary execution order, visibility, awareness of other agents, and access to a communication channel. We find that the oracle solves most tasks while parallel agents perform substantially worse. Their performance drop is notable for complementary tasks, and particularly sharp for contradictory tasks (e.g., from 62% to 16% for Claude Code with Claude Opus 4.8) where merged code typically satisfies only one specification, and the same gap appears in all six further configurations pairing two agent harnesses with three open-weight models. Simply telling an agent that a peer exists does not help significantly, and giving agents access to a communication channel recovers only a small part of the performance, at an additional token cost. ParallACT thus identifies and isolates a core challenge that will become more common as multi-agent coding by independent principals becomes standard, and provides a controlled test of which coordination strategies help, and at what cost.",
+   "abs_url": "https://arxiv.org/abs/2611.00314",
+   "pdf_url": "https://arxiv.org/pdf/2611.00314",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.MA"
+   ],
+   "published": "2026-10-30",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "benchmark",
+   "why": "Introduces a benchmark for multi-agent coordination in shared codebases, testing communication and awareness mechanisms as guardrails for coordinating independent LLM agents.",
+   "idea": {
+    "problem": "Multiple LLM agents working in shared repositories with conflicting or complementary tasks create coordination failures when merging independent solutions.",
+    "approach": "Benchmark (ParallACT) comparing single-agent oracle against multi-agent settings with varying communication, visibility, and awareness to isolate coordination challenges.",
+    "result": "Parallel agents substantially underperform oracle; communication channels recover only small performance gains; awareness alone provides minimal help."
+   }
+  },
   {
    "id": "2610.41998",
    "title": "SecPO: Principled Adversarial Training for Prompt Injection Security",
@@ -50,7 +664,7 @@
     "approach": "SecPO loss with injection-invariant reference model plus adversarial training on synthesized strong attacks",
     "result": "Reduces attack success rates 1.5-14.5× versus Meta-SecAlign, maintains benign utility"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.41511",
@@ -125,7 +739,7 @@
     "approach": "Canonicalize SQL to dialect-aware structure, validate with stratified property layers, use temporal monitor to accept only repairs reducing violations without regressions.",
     "result": "Resolves 77.8% more execution errors than feedback-only methods with fewer iterations and no structural regressions."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2610.41181",
@@ -189,6 +803,42 @@
     "approach": "Construct Cautious Bench with samples and labels codesigned with explicit authorization policies; use a build-time gate to mechanically certify labels.",
     "result": "Measure six guardrails, finding they over-refuse authorized actions based on scary object names rather than authorization context."
    }
+  },
+  {
+   "id": "2607.27783",
+   "title": "Reasoning Consensus: Structural Ensembling of LLM Reasoning via Weighted DAG Aggregation",
+   "authors": [
+    "Amruta Parulekar",
+    "Jinu Lee",
+    "Dilek Hakkani-Tür",
+    "Hari Sundaram"
+   ],
+   "abstract": "Large Language Models (LLMs) reason in free-form chain-of-thought (CoT) without revealing which steps were well supported and which alternatives were rejected. In high-stakes domains, users then cannot judge if an answer rests on sound reasoning. Majority voting and multi-agent debate improve answers using model agreement, but do not expose agreement on individual steps. Reasoning Consensus (RC) extracts a typed reasoning graph from each CoT, merges equivalent steps across graphs from diverse models, and weights every step by how many chains attest to it. RC reveals this step-wise support and the varied justifications behind each answer. On 7 benchmarks across law, science, medicine, narrative reasoning and logic, RC matches majority voting and debate in accuracy (69.4% vs. 69.0-70.3%). An LLM judge prefers RC's best-supported graph to other graphs for the same answer. In a user study, participants read RC graphs faster than debate transcripts or vote tallies, and 14 of 18 preferred them for future use.",
+   "abs_url": "https://arxiv.org/abs/2607.27783",
+   "pdf_url": "https://arxiv.org/pdf/2607.27783",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-10-30",
+   "venue": "",
+   "code": "",
+   "license": "CC BY-SA 4.0",
+   "license_url": "http://creativecommons.org/licenses/by-sa/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.78,
+   "type": "method",
+   "why": "Proposes a method to expose step-wise reasoning support and justifications by extracting and aggregating reasoning graphs, helping users and systems judge whether LLM answers rest on sound reasoning.",
+   "idea": {
+    "problem": "LLMs reason in free-form without revealing which steps are well-supported or alternatives rejected",
+    "approach": "Extract typed reasoning graphs from CoT, merge equivalent steps across models, weight by attestation count",
+    "result": "Matches majority voting accuracy while exposing step-level support; users prefer graphs for interpretability"
+   },
+   "figure_tries": 1
   },
   {
    "id": "2605.17291",
@@ -369,7 +1019,7 @@
     "approach": "Catalog thirteen patterns with intent, motivation, applicability, consequences, and decision guide",
     "result": "Patterns relate to published taxonomies; decision guide maps problems to patterns with cost measurements"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.39435",
@@ -436,7 +1086,7 @@
     "approach": "Probe Tic-Tac-Toe models with sparse autoencoders to trace representation changes during RL training and causal intervention analysis",
     "result": "RL reorganizes feature dominance rather than adding reasoning; models rely on explicit prompt information over strategic concepts like board…"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.38620",
@@ -474,7 +1124,7 @@
     "approach": "Runtime interception of actions with deterministic state verification and probabilistic decision model evaluation",
     "result": "Improved agent reliability across multiple models and benchmarks, particularly on Telecom and BFCL tasks"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.38130",
@@ -539,7 +1189,7 @@
     "approach": "Multi-agent harness with specialized roles (PI, librarian, specialists, gate, critic) that verify claims field-by-field against data reliability before releasing…",
     "result": "Recovers known physical trends, anticipates future devices, provides trustworthiness measures for inherited literature"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.37739",
@@ -575,7 +1225,7 @@
     "approach": "Create corpus of 12,151 open problems and benchmark 200 problems with Lean 4 formal statements verified by independent checkers",
     "result": "Live-web success reflects retrieval rather than reasoning; closed-book rediscovery rare (at most 7/40 resolved problems)"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.37255",
