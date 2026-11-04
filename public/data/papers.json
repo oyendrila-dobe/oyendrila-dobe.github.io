@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03",
+ "generated": "2026-11-04",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,207 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2611.05094",
+   "title": "A Gated Spec-Driven Workflow: An Audit-Trail Study of Coding-Agent Work",
+   "authors": [
+    "Rodrigo Figueiredo Abdo",
+    "Pedro Carvalho Brom"
+   ],
+   "abstract": "Spec-driven development (SDD) asks a coding agent to work from specifications, plans, and task lists rather than from the chat transcript. We study one such workflow for Claude Code, in which almost every control is an instruction carried out by the same model that it constrains. The user must approve each stage before the next begins. A reviewer subagent checks each artefact against a fixed, stage-specific defect list, and an executor subagent may only touch the files listed in its task. After each block of tasks, the orchestrator runs a file-inventory check to detect undeclared changes. We analyse the logs and transcripts of nine features in seven projects, all run by the authors, ranging from a Fortran solver and Python programs to books and this paper. Of these, five finished with every planned task done, including the Fortran solver feature, and 288 of the 581 planned tasks were completed block by block. The executor kept to its declared files: it left only one undeclared change in the deliverable folder, and the check caught it, although its reports record other departures from the protocol. The weak point was the orchestrator, which runs and judges its own checks. It recorded undeclared changes in 11 of 247 block checks, mostly from the authors' in-round requests and the environment, and stopped work in only four.",
+   "abs_url": "https://arxiv.org/abs/2611.05094",
+   "pdf_url": "https://arxiv.org/pdf/2611.05094",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-11-03",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Analyzes a spec-driven agent workflow with formal guardrails (task constraints, file inventory checks, staged approvals, reviewer subagent) designed to enforce specifications and detect constraint violations during execution.",
+   "idea": {
+    "problem": "Coding agents need structured guardrails to follow specifications and prevent undeclared changes during development",
+    "approach": "Gated workflow with staged approval, executor file constraints, reviewer defect checks, and orchestrator file-inventory verification",
+    "result": "Five of nine features completed successfully; executor stayed within constraints; orchestrator self-judging was the weak point"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.05039",
+   "title": "ALBI: LLM-Guided Inductive Logic Programming via Iterative Generate-Test-Constrain Refineme",
+   "authors": [
+    "Aboubaker Seddiq Benterki",
+    "Jüri Vain",
+    "Gert Kanter",
+    "Leelo Aino Jürgenstein"
+   ],
+   "abstract": "We introduce ALBI (Agent for Learning By Induction), a neuro-symbolic ILP framework that replaces the ASP-based hypothesis generator in the Learning from Failures (LFF) paradigm with a Large Language Model (LLM), while retaining SWI-Prolog as a formal verifier. ALBI implements an iterative generate-test-constrain loop: the LLM proposes candidate hypotheses from structured prompts; Prolog tests each candidate; and diagnostic feedback drives refinement. We further introduce semantic anonymization, a metamorphic testing methodology, to distinguish structural symbolic induction from surface-level pattern matching on predicate names. Experiments on 30 standard ILP benchmarks show that ALBI achieves 100% success across three frontier LLMs (Gemini 3.1 Pro, GPT 5.4 Pro, Claude Opus 4.6), matching Popper while requiring only 1.4-1.7 iterations on average. Under anonymization, all models maintain 100% success with a moderate iteration increase (1.36-1.67 times), providing evidence of robust symbolic reasoning.",
+   "abs_url": "https://arxiv.org/abs/2611.05039",
+   "pdf_url": "https://arxiv.org/pdf/2611.05039",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.SC"
+   ],
+   "published": "2026-11-03",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "autoformalization"
+   ],
+   "confidence": 0.82,
+   "type": "method",
+   "why": "Combines LLMs with formal verification (Prolog) in a generate-test-constrain loop for inductive logic programming, grounding LLM reasoning in symbolic logic and formal correctness checking.",
+   "idea": {
+    "problem": "LLMs lack grounded symbolic reasoning for inductive logic programming tasks",
+    "approach": "Iterative generate-test-constrain loop: LLM proposes hypotheses, Prolog formally verifies, feedback refines candidates",
+    "result": "100% success on 30 ILP benchmarks; robust symbolic reasoning under semantic anonymization"
+   }
+  },
+  {
+   "id": "2611.04673",
+   "title": "Right Tool, Wrong Parameters: Defending LLM Agents Against Parameter Poisoning",
+   "authors": [
+    "Yao Wang",
+    "Zehua Ma",
+    "Weiming Zhang",
+    "Han Fang"
+   ],
+   "abstract": "Indirect Prompt Injection (IPI) poses a critical threat to LLM agents. Existing defenses largely focus on whether an injection induces a new tool invocation or unintended action. In this paper, we study a different attack surface, parameter poisoning, where the attacker preserves the intended action but manipulates one or more tool arguments, such as a recipient or other task-critical value. Such attacks are difficult to detect because no new action is introduced, while parameter changes themselves are often legitimate parts of the user's request. Our key insight is that the legitimacy of a parameter change should be determined by the trust of the information flow that produces it under the user query. The query induces a task-specific trust hierarchy over available information fields: some are trusted to determine particular parameters, while others should have little or no influence. Based on this insight, we propose AuthorityFlow, a three-stage parameter-level defense. First, it interprets the user query to construct a task-specific trust hierarchy over the information fields available to the agent. Second, for each tool argument, it traces the information flow that produces its current value and attributes the value to its supporting field. Finally, it accepts the value only when that field is trusted to determine the parameter under the current task, allowing high-trust changes while flagging low-trust influence as potential parameter poisoning. We further introduce FactAuthBench for evaluating parameter poisoning in LLM agents. Without defense, the attack success rate reaches 93.06%. AuthorityFlow reduces it to 9.03%, while retaining 82.64% benign task utility compared with 90.28% without defense. Our results show that effective IPI defense requires reasoning not only about what action an agent takes, but also about which information is trusted to determine its parameters.",
+   "abs_url": "https://arxiv.org/abs/2611.04673",
+   "pdf_url": "https://arxiv.org/pdf/2611.04673",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "published": "2026-11-03",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.9,
+   "type": "method",
+   "why": "Proposes AuthorityFlow, a formal information-flow defense against parameter poisoning in LLM agents by constructing task-specific trust hierarchies over information fields.",
+   "idea": {
+    "problem": "LLM agents vulnerable to parameter poisoning attacks that manipulate tool arguments without triggering new actions",
+    "approach": "Construct task-specific trust hierarchies, trace information flow to parameter values, accept only trusted-field influences",
+    "result": "Reduces attack success from 93.06% to 9.03% while retaining 82.64% benign task utility"
+   }
+  },
+  {
+   "id": "2611.04579",
+   "title": "FreeForm Harness: A Mobile-Native Agent Harness for Open and Composable Extensions",
+   "authors": [
+    "Bo Zhang",
+    "Pengbo Zhang",
+    "Jiaxin Jiao",
+    "Yue Liu"
+   ],
+   "abstract": "Mobile phones support many everyday agent tasks, but current mobile agents bundle capabilities into monolithic pipelines with no open recombination point. Users and third parties cannot publish, install, and compose new behaviors, leaving personalized daily-life requests underserved. We argue that the missing piece is a substrate: although phones are the Web's dominant access point, open publication and composition under decentralized authorship stop at the agent harness. We present FreeForm Harness (FFH), a mobile-native agent harness for open, composable extensions. A frozen base and a permanence-aware required layer handle mobile constraints, including location, proactive triggering, and scarce channels. A uniform plugin contract makes independently authored extensions composable, checkable, and replaceable over a frozen socket set. FFH also supports end-user authorship through a tiered commissioned-authoring path. When no existing extension matches a user's intent, a Web coding agent generates a candidate artifact, which is validated and admitted on device under the same contract as other extensions. An Android prototype spans device, market, and cloud. Evaluation shows that architectural boundaries are enforced at runtime; realistic daily-life requests fit the declared composition space without widening it; and user intent reaches on-device execution through retrieval or commissioned authoring, with final trust decisions remaining device-local. FFH advances the agentic Web from \"everything is a plugin\" toward \"everyone is a developer\" on mobile.",
+   "abs_url": "https://arxiv.org/abs/2611.04579",
+   "pdf_url": "https://arxiv.org/pdf/2611.04579",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-11-03",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "tool",
+   "why": "Proposes a mobile agent harness with enforced architectural boundaries, uniform plugin contracts, and runtime validation to constrain and verify LLM-agent behavior through a structured framework.",
+   "idea": {
+    "problem": "Mobile agents lack open, composable extension mechanisms with enforced safety boundaries",
+    "approach": "Frozen-base harness with uniform plugin contracts, runtime enforcement, and device-local trust validation",
+    "result": "Architectural boundaries enforced at runtime; realistic requests fit composition space without widening"
+   }
+  },
+  {
+   "id": "2611.04196",
+   "title": "DoGNAVY-Exploit: Harnessing Parallel Open-Weight Agents for Stage-Aware Vulnerability Exploitation",
+   "authors": [
+    "Yuxuan Wang",
+    "Dadi Guo",
+    "Weijie Guo",
+    "Zikai Xu",
+    "Chen Lu",
+    "Yizhe Zhuang",
+    "Peng Huang",
+    "Yuejin Xie",
+    "Guopeng Lin",
+    "Xuangan Xiao",
+    "Shipei Qu",
+    "Dongrui Liu"
+   ],
+   "abstract": "Frontier LLM agents can turn known vulnerabilities into working exploits, but are costly and often access-restricted due to their potential for malicious use. Open-weight models offer a more accessible alternative, but struggle to maintain progress across long exploitation chains. They also often fail to apply relevant security knowledge at the appropriate stage and in the right context to identify and evaluate promising attack directions. To address these limitations, we propose DoGNAVY-Exploit, a multi-agent harness built around two complementary designs: stage-aware decomposition with progressive expert knowledge disclosure, and hierarchical orchestration with parallel exploration. Specifically, DoGNAVY-Exploit uses configurable milestones to recast long-horizon exploitation as short, verifiable capability transitions and provides only the knowledge relevant to each stage. Within each milestone, a hierarchical architecture separates strategic planning from parallel execution: a planner proposes diverse attack routes, executors test them concurrently, and a controller accepts progress only when supported by runtime evidence. A shared structured memory consolidates verified facts, artifacts, replay steps, and failed routes across branches, allowing agents to build on collective progress and carry validated knowledge into subsequent milestones. In controlled benchmark environments, DoGNAVY-Exploit with GLM-5.2 achieves 97.5% Pass@1 on Cybench, and 97.5% zero-day and 100% one-day Pass@1 on CVE-Bench. On ExploitGym, it solves 79 tasks with GLM-5.2 and 157 with GLM-5.3, while the corresponding public Claude Code baselines solve 39 and 130 tasks, respectively. Ablation results further demonstrate that the stage-aware orchestration, expert knowledge, parallel exploration, and memory designs can substantially improve the exploitation capabilities of open-weight agents.",
+   "abs_url": "https://arxiv.org/abs/2611.04196",
+   "pdf_url": "https://arxiv.org/pdf/2611.04196",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-03",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes a multi-agent harness with stage-aware decomposition, hierarchical orchestration, and structured memory to constrain and coordinate LLM agents for vulnerability exploitation tasks.",
+   "idea": {
+    "problem": "Open-weight LLM agents fail to maintain progress across long exploitation chains and misapply security knowledge at inappropriate stages",
+    "approach": "Multi-agent harness with stage-aware milestones, hierarchical planner-executor-controller architecture, parallel exploration, and shared structured…",
+    "result": "Achieves 97.5% Pass@1 on Cybench and ExploitGym with improvements over Claude Code baselines"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.03939",
+   "title": "From Benchmarks to Behaviors: A Framework for Auditing AI Agents",
+   "authors": [
+    "Nick Hagar"
+   ],
+   "abstract": "Generative AI systems increasingly mediate access to information. Their behavior depends on tools, instructions, and user memories that are often difficult for researchers to observe or control. Here, I introduce TRACE (Transparent Research on Agent Contexts and Environments), a framework for systematically auditing how these components shape AI agent behavior. Built on an open-source agent harness, TRACE enables controlled manipulation of system components. It also records inputs, outputs, and task execution for downstream analysis. I demonstrate this framework through an experiment examining how user memories influence source selection when agents answer questions about the 2026 U.S. midterm elections. I find that memories expressing explicit preference for a publisher increase its inclusion among the first three cited sources in a response by 33-39 percentage points. Memories identifying the user as a Republican or expressing distrust of mainstream media shift citations rightward. That same media distrust memory also increases citation of sources expressing misinformation or conspiracy theories by 6.3 percentage points, with substantial variation across models. These findings demonstrate that concise user memories can alter source selection in consequential settings, even when questions and search results remain fixed. TRACE extends algorithm auditing to agent harnesses, providing a transparent way to study agent behaviors that benchmarks or commercial interfaces may struggle to isolate.",
+   "abs_url": "https://arxiv.org/abs/2611.03939",
+   "pdf_url": "https://arxiv.org/pdf/2611.03939",
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "tool",
+   "why": "Introduces TRACE, an open-source agent harness framework for controlling and auditing LLM-agent components, enabling systematic study of how instructions and context shape agent behavior.",
+   "idea": {
+    "problem": "LLM agent behavior depends on tools, instructions, and memories that are hard to observe and control",
+    "approach": "Build TRACE, an open-source agent harness enabling controlled manipulation of system components and recording of inputs/outputs",
+    "result": "User memories significantly shift citation selection (33-39 pp) and can increase misinformation citation by 6.3 pp"
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2611.03641",
    "title": "From Natural Language to Exact Cover: A Neuro-Symbolic Approach to Zebra Puzzles",
@@ -297,7 +498,7 @@
     "approach": "Runtime checker with Lean4 policies, temporal logic evaluation, fail-closed verification, and proof-guided repair",
     "result": "Zero forbidden calls on benchmarks; reduces prompt-injection success from 57.9% to 5.9%; repair finds admissible edits for 88/252 blocked calls"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2606.20631",
@@ -366,7 +567,7 @@
     "approach": "GitInject framework provisions real GitHub Actions workflows to test prompt injection attacks across multiple providers and scenarios",
     "result": "All tested AI providers susceptible to high-severity attacks; configuration-file injection most consequential; countermeasures have tradeoffs"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.02155",
@@ -399,7 +600,7 @@
     "approach": "Use decision models as policy classifiers with explicit example/counterexample boundaries vs. prose descriptions",
     "result": "Explicit boundaries raised recall 5.5-26.1pp and reduced false positives on 21/23 models; best case 89.3% to 98.2% recall with 4.8% false alarm rate"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.01415",
@@ -466,7 +667,7 @@
     "approach": "Define Functional Agent Operating Procedures (FAOP) as typed functions with four progressive normal forms plus an algebra of provably sound equalities, enabling compile-time…",
     "result": "SkillBase system enforces integrity, isolation, stopping limits, and cost bounds as compile-time concerns across workflow libraries."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.00729",
@@ -530,7 +731,7 @@
     "approach": "Runtime architecture with protected mechanism layer enabling agents to revise harness and strategies during task execution.",
     "result": "12-53% model cost reduction versus baselines while maintaining task completion; 35-61% cost reduction with comparable correctness on long-running tasks."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.00420",
@@ -664,7 +865,7 @@
     "approach": "SecPO loss with injection-invariant reference model plus adversarial training on synthesized strong attacks",
     "result": "Reduces attack success rates 1.5-14.5× versus Meta-SecAlign, maintains benign utility"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.41511",
@@ -739,7 +940,7 @@
     "approach": "Canonicalize SQL to dialect-aware structure, validate with stratified property layers, use temporal monitor to accept only repairs reducing violations without regressions.",
     "result": "Resolves 77.8% more execution errors than feedback-only methods with fewer iterations and no structural regressions."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2610.41181",
@@ -838,7 +1039,7 @@
     "approach": "Extract typed reasoning graphs from CoT, merge equivalent steps across models, weight by attestation count",
     "result": "Matches majority voting accuracy while exposing step-level support; users prefer graphs for interpretability"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2605.17291",
