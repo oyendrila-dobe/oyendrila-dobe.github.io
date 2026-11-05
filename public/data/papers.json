@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04",
+ "generated": "2026-11-05",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,192 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2611.06727",
+   "title": "Airlock: Bounding the Multi-Agent Blast Radius via Selective Online Containment",
+   "authors": [
+    "Zhonghao Zhan",
+    "Javad Forough",
+    "Yefan Zhang",
+    "Krinos Li",
+    "Xiao Ma",
+    "Hamed Haddadi"
+   ],
+   "abstract": "When multi-agent systems act on the external world, a single agent's faulty output can spread across tasks before detection, creating a system-wide blast radius. Single-agent guardrails are confined to individual harnesses, while existing multi-agent controls either cancel only the faulty source and miss downstream consumers or halt and roll back the entire workflow at the cost of healthy work. We present Airlock, a multi-agent runtime and guardrail for selective post-alert fault containment. Its tree-structured runtime, EdgeCitadel, narrows permissions vertically from parent to child agents to establish node boundaries and control switches. Meanwhile, an append-only provenance DAG records cross-agent data consumption horizontally. Upon an alert, Airlock traces forward on this DAG to isolate tainted executions and pending actions, and backward to narrow root causes. At the site switches, a default full quarantine tier freezes affected branches without a solver, while an assured optimized cut tier uses fence-then-prune to enforce a deadline-aware minimum cut minimizing collateral disruption. Across 1,832 testbed runs, 161 physical smart-home LLM runs, and 24,266 simulation records, Airlock blocks all post-alert faulty actuations on our main testbed and smart-home grids with zero post-convergence leaks. Whereas native controls in A2A and LangGraph either contain at most 33.3% of faults or retain at most 16% of work without redo, Airlock retains +68 pp to +96 pp more healthy work, and its optimized cut retains +46 pp more than full quarantine under dense spread. These results show that co-designing runtime authority boundaries with online provenance enables surgical fault containment without sacrificing healthy work (code: https://github.com/EdgeCitadelTeam/EdgeCitadel).",
+   "abs_url": "https://arxiv.org/abs/2611.06727",
+   "pdf_url": "https://arxiv.org/pdf/2611.06727",
+   "primary_category": "cs.MA",
+   "categories": [
+    "cs.MA"
+   ],
+   "published": "2026-11-04",
+   "venue": "",
+   "code": "https://github.com/EdgeCitadelTeam/EdgeCitadel",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes Airlock, a runtime and guardrail system that uses provenance tracking and fault isolation to contain faulty agent outputs in multi-agent systems, enforcing selective containment rather than full halts.",
+   "idea": {
+    "problem": "Faulty multi-agent outputs spread across tasks before detection; existing controls either miss downstream effects or halt entire workflows",
+    "approach": "Tree-structured runtime with vertical permission boundaries and append-only provenance DAG to trace tainted data; fence-then-prune minimum cut algorithm for selective…",
+    "result": "Blocks post-alert faulty actuations while retaining 68-96pp more healthy work than existing controls"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.06682",
+   "title": "SecureGARD: Dynamic Ontology-Guided Governance for Secure Tool-Using LLM Agents",
+   "authors": [
+    "Guoqin Xiong",
+    "Shengtao Wen",
+    "Xiang Chen",
+    "Xinyi Zeng",
+    "Zhaoxin Fan",
+    "Wei Ye",
+    "Xiaofeng Cao",
+    "Sheng-Jun Huang"
+   ],
+   "abstract": "Tool-using large language model (LLM) agents translate model outputs into consequential actions, turning indirect prompt injection into an execution-security problem. Existing defenses constrain tool calls, trajectories, or information flows, but often leave action semantics, state dependencies, and evidence relations implicit, limiting generalization across heterogeneous tools and complicating safe updates. We present \\ours{}, a dynamic ontology-guided governance framework. \\ours{} grounds heterogeneous calls in a shared semantic representation and combines an executable ontology with episode-level task state to derive deterministic ready, waiting, and forbidden decisions. A waiting decision identifies an unmet but recoverable obligation, enabling bounded replanning without expanding the agent's authorization boundary. \\ours{} evolves its ontology offline from verified training executions. An offline LLM proposes instance-independent action--state axioms, which are accepted only if they address ontology errors exposed by training failures, preserve logical consistency and protected entailments, and pass held-out validation before the ontology is frozen. We evaluate \\ours{} on AgentDojo, ASB, and AgentDyn under benign and indirect prompt-injection settings. \\ours{} achieves a 0\\% attack success rate (ASR) across all three benchmarks while improving task utility under attack compared with existing baselines. These results show that explicit semantic governance can strengthen execution security without indiscriminate blocking.",
+   "abs_url": "https://arxiv.org/abs/2611.06682",
+   "pdf_url": "https://arxiv.org/pdf/2611.06682",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "published": "2026-11-04",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a formal ontology-guided governance framework with deterministic logic-based constraints to verify and control LLM-agent tool calls, preventing prompt injection attacks while maintaining task utility.",
+   "idea": {
+    "problem": "Tool-using LLM agents vulnerable to prompt injection; existing defenses leave action semantics and state dependencies implicit",
+    "approach": "Dynamic ontology grounding heterogeneous tool calls in shared semantic representation with executable logic deriving ready/waiting/forbidden…",
+    "result": "0% attack success rate on AgentDojo, ASB, AgentDyn; improved task utility under attack versus baselines"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2607.07779",
+   "title": "From Solvers to Research: Large Language Model-Driven Formal Mathematics at the Research Frontier",
+   "authors": [
+    "Eric Jiang",
+    "Xiao Liang",
+    "Junyi Zhang",
+    "Justin Baker",
+    "Zhi Zhang",
+    "Yingjia Wan",
+    "Yubei Li",
+    "Jinxi Yu",
+    "Mengting Li",
+    "Haikang Deng",
+    "Alexander Taylor",
+    "Rushil Raghavan",
+    "Michael Simon",
+    "Hyunsik Chae",
+    "Jia-Chen Gu",
+    "Xinjie He",
+    "Kyle Hess",
+    "Ethan Ji",
+    "Yiwen Kou",
+    "Tzu-Han Lin",
+    "Jiachen Lu",
+    "Jack Mauro",
+    "Vigyan Sahai",
+    "Zheng Tan",
+    "Hengli Li",
+    "Yikai Zhang",
+    "Kyle Zheng",
+    "Lunji Zhu",
+    "Dong Liu",
+    "Jasdeep Sidhu",
+    "Isaac Hair",
+    "Eniuce Jun",
+    "Ying Nian Wu",
+    "Andrea L. Bertozzi",
+    "Kai-Wei Chang",
+    "Raghu Meka",
+    "Matthew Sottile",
+    "Nanyun Peng",
+    "Amit Sahai",
+    "Terence Tao",
+    "Wei Wang"
+   ],
+   "abstract": "Large language models have made rapid progress in generating machine-checked proofs for well-defined mathematical problems. Extending this progress to research mathematics requires more than solving isolated theorems. Research involves choosing questions, developing definitions and conjectures, connecting results, and combining formal proofs with expert judgment. This survey examines how LLM-driven systems can support these broader activities. We review formal-mathematics tasks, datasets, and autoformalization, and organize proof-generation methods into three overlapping areas: training strategies, inference-time search and adaptation, and agentic workflows. We then examine benchmark results, selected research projects, and platforms for collaborative mathematical work. A central distinction runs throughout the survey: checking a formal proof does not by itself establish that it captures the intended problem or makes a new mathematical contribution. We therefore distinguish theorem benchmarks, repository tasks, formalization projects, and research claims, and discuss the evidence needed to assess each. Finally, we identify five priorities for progress: better data and evaluation, representations of mathematical relationships, conjecture and concept generation, reliable tool integration, and human--AI collaboration. Together, these perspectives connect advances in proof generation to the practical demands of mathematical research.",
+   "abs_url": "https://arxiv.org/abs/2607.07779",
+   "pdf_url": "https://arxiv.org/pdf/2607.07779",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "published": "2026-11-04",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding"
+   ],
+   "confidence": 0.92,
+   "type": "survey",
+   "why": "Comprehensive survey of LLM-driven formal mathematics covering autoformalization, proof generation, and how LLMs can support research-level mathematical reasoning beyond isolated theorems.",
+   "idea": {
+    "problem": "LLMs can solve isolated theorems but struggle with research mathematics requiring question selection, conjecture development, and connecting results",
+    "approach": "Survey formal-mathematics tasks, autoformalization methods, and proof-generation strategies including training, search, and agentic workflows",
+    "result": "Identifies five priorities: better data/evaluation, mathematical relationships, conjecture generation, tool integration, human-AI collaboration"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2602.02313",
+   "title": "From Outcome to Representation: Tracing Reasoning Mechanisms through Integrated Policy Gradient",
+   "authors": [
+    "Changming Li",
+    "Kaixing Zhang",
+    "Haoyun Xu",
+    "Yingdong Shi",
+    "Zheng Zhang",
+    "Kaitao Song",
+    "Kan Ren"
+   ],
+   "abstract": "Large Language Models (LLMs) demonstrate remarkable reasoning capabilities, yet the internal mechanisms driving these multi-step processes remain opaque. Existing mechanistic interpretability approaches often rely on superficial text-pattern co-occurrences or capture only short-term effects, struggling to trace the long-horizon, outcome-driven influence of internal components such as neurons or sparse features in multi-step reasoning.In this paper, we introduce Integrated Policy Gradient (IPG), a novel, training-free framework that brings policy-based attribution into mechanistic interpretability for LLM reasoning. Grounded in \\textit{outcome-oriented} and \\textit{sequential-influence-aware} principles, it backpropagates outcome-level, non-differentiable behavioral signals (e.g., reasoning outcome correctness) through entire inference trajectories, utilizing path integration to isolate outcome-relevant mediators at component level for reliable attribution. This provides a linear approximation of Causal Mediation Analysis (CMA) in reasoning. Empirical evaluations demonstrate that \\method achieves precise localization and reveals mechanistic insights by identifying sparse, concentrated subsets of internal components associated with specific reasoning behaviors. Our method also enables modulation of reasoning capabilities, offering a powerful and reliable framework for understanding LLM reasoning. The project page is at https://foundation-model-research.github.io/IPG .",
+   "abs_url": "https://arxiv.org/abs/2602.02313",
+   "pdf_url": "https://arxiv.org/pdf/2602.02313",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+   ],
+   "published": "2026-11-04",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes Integrated Policy Gradient to trace reasoning mechanisms in LLMs by attributing outcome-level signals to internal components, advancing mechanistic interpretability of multi-step reasoning.",
+   "idea": {
+    "problem": "LLM reasoning mechanisms remain opaque; existing interpretability approaches miss long-horizon outcome-driven influences",
+    "approach": "Backpropagate outcome-level behavioral signals through inference trajectories via path integration to identify outcome-relevant internal components",
+    "result": "Precise localization of sparse reasoning-relevant subsets enables mechanistic insight and reasoning capability modulation"
+   },
+   "figure_tries": 1
+  },
   {
    "id": "2611.05094",
    "title": "A Gated Spec-Driven Workflow: An Audit-Trail Study of Coding-Agent Work",
@@ -47,7 +233,7 @@
     "approach": "Gated workflow with staged approval, executor file constraints, reviewer defect checks, and orchestrator file-inventory verification",
     "result": "Five of nine features completed successfully; executor stayed within constraints; orchestrator self-judging was the weak point"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.05039",
@@ -184,7 +370,7 @@
     "approach": "Multi-agent harness with stage-aware milestones, hierarchical planner-executor-controller architecture, parallel exploration, and shared structured…",
     "result": "Achieves 97.5% Pass@1 on Cybench and ExploitGym with improvements over Claude Code baselines"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.03939",
@@ -215,7 +401,7 @@
     "approach": "Build TRACE, an open-source agent harness enabling controlled manipulation of system components and recording of inputs/outputs",
     "result": "User memories significantly shift citation selection (33-39 pp) and can increase misinformation citation by 6.3 pp"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.03641",
@@ -498,7 +684,7 @@
     "approach": "Runtime checker with Lean4 policies, temporal logic evaluation, fail-closed verification, and proof-guided repair",
     "result": "Zero forbidden calls on benchmarks; reduces prompt-injection success from 57.9% to 5.9%; repair finds admissible edits for 88/252 blocked calls"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2606.20631",
@@ -567,7 +753,7 @@
     "approach": "GitInject framework provisions real GitHub Actions workflows to test prompt injection attacks across multiple providers and scenarios",
     "result": "All tested AI providers susceptible to high-severity attacks; configuration-file injection most consequential; countermeasures have tradeoffs"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.02155",
@@ -600,7 +786,7 @@
     "approach": "Use decision models as policy classifiers with explicit example/counterexample boundaries vs. prose descriptions",
     "result": "Explicit boundaries raised recall 5.5-26.1pp and reduced false positives on 21/23 models; best case 89.3% to 98.2% recall with 4.8% false alarm rate"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.01415",
@@ -667,7 +853,7 @@
     "approach": "Define Functional Agent Operating Procedures (FAOP) as typed functions with four progressive normal forms plus an algebra of provably sound equalities, enabling compile-time…",
     "result": "SkillBase system enforces integrity, isolation, stopping limits, and cost bounds as compile-time concerns across workflow libraries."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.00729",
@@ -731,7 +917,7 @@
     "approach": "Runtime architecture with protected mechanism layer enabling agents to revise harness and strategies during task execution.",
     "result": "12-53% model cost reduction versus baselines while maintaining task completion; 35-61% cost reduction with comparable correctness on long-running tasks."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.00420",
@@ -1039,7 +1225,7 @@
     "approach": "Extract typed reasoning graphs from CoT, merge equivalent steps across models, weight by attestation count",
     "result": "Matches majority voting accuracy while exposing step-level support; users prefer graphs for interpretability"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2605.17291",
