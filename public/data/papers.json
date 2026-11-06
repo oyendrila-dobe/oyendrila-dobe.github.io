@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05",
+ "generated": "2026-11-06",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,398 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2611.08237",
+   "title": "Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling",
+   "authors": [
+    "Xiaojun Wu",
+    "Cehao Yang",
+    "Xuhui Jiang",
+    "Chengjin Xu",
+    "Jia Li",
+    "Jian Guo"
+   ],
+   "abstract": "Mathematical modeling turns an open-ended real-world problem into assumptions, a model, a solution, and a defended recommendation, and its answers matter only if they are both close to a credible reference and physically feasible; existing benchmarks either score solver fragments or grade reports with an LLM judge, leaving those numbers unchecked. We introduce TB-MathModel (the Terminal-style Mathematical Modeling Bench), the first benchmark to make complete contest-style modeling problems agentic, verifiable, and terminal at once, over 18 real CUMCM and MCM problems (2023--2025). Each task ships the verbatim statement, official attachments, and figures in a containerized terminal; the agent returns one JSON artifact, scored on the numeric core of the final question against a reproduction of the Outstanding-award paper. Two design choices distinguish it: direction-aware, one-sided scoring, which never penalises beating the anchor, and two-layer feasibility verification---a programmatic gate over six decidable invariant forms plus 624 Lean~4 obligations---with a hard gate that zeroes infeasible answers. Each task is scored against a panel of human outstanding papers rather than one, so a model must be close to many accepted answers; across seven multimodal entries (three seeds each) the strongest reach a multi-reference O-Eval of 64.58\\%, while the \\$2.54 open model holds 59.81\\% at $1/100$ the cost. TB-MathModel turns the numeric core of modeling into a reproducible, machine-checkable signal for measuring long-horizon modeling competence and for collecting agent trajectories. The source code is available at https://github.com/wxj630/terminal-bench-math-modeling.",
+   "abs_url": "https://arxiv.org/abs/2611.08237",
+   "pdf_url": "https://arxiv.org/pdf/2611.08237",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "https://github.com/wxj630/terminal-bench-math-modeling",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining",
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "benchmark",
+   "why": "Introduces a verifiable agent benchmark with formal feasibility constraints (Lean proofs and decidable invariants) and a structured agent harness for mathematical modeling tasks.",
+   "idea": {
+    "problem": "Mathematical modeling benchmarks lack verifiable outputs and contest-style structure.",
+    "approach": "Containerized terminal with agentic tasks, feasibility verification via Lean proofs and invariant checks, multi-reference scoring.",
+    "result": "18 CUMCM/MCM problems with verifiable solutions; strongest model achieves 64.58% multi-reference O-Eval."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.07882",
+   "title": "Compositional Loop Invariant Inference for Multiphase Programs via Structured Neurosymbolic Reasoning",
+   "authors": [
+    "Mingxiu Wang",
+    "Jiawei Wang",
+    "Shuangxiang Kan",
+    "Angela Huo",
+    "Yuekang Li",
+    "Xi Zheng",
+    "Xiao Cheng"
+   ],
+   "abstract": "Loop invariants are essential for deductive program verification, yet automatically inferring them for {multiphase programs}, whose loops contain conditional branches that induce multiple execution phases with distinct behaviors, remains an open problem. Existing LLM-based methods either reason about loops as a whole or use explicit branch information to generate atomic assertions jointly across branches, without maintaining complete candidate sub-invariants for independent generation and targeted repair. We present CLOVER, a structured neurosymbolic reasoning framework for multiphase invariant inference built on two interlinked mechanisms. First, compositional inference: CLOVER statically decomposes a loop into symbolic {loop branch sequences}, conjunctions of the loop guard and branch conditions that characterize distinct execution scenarios, and guides the LLM to generate candidate sub-invariants for each one independently, so that each LLM query focuses on a single execution scenario rather than the entire loop. Second, counterexample-guided localized refinement: when SMT verification rejects a composed disjunctive invariant, CLOVER traces the counterexample back through the branch structure to identify which specific loop branch sequence caused the failure and repairs only that sub-invariant, preserving all correct components. Both mechanisms are unified by a shared symbolic structure derived from the loop's branch semantics, which guides what the LLM generates, how candidates are composed, and where refinement is directed. We evaluate CLOVER on 316 linear arithmetic, 50 nonlinear arithmetic, and 54 multiphase benchmarks. CLOVER solves 35 of 54 multiphase benchmarks, outperforming the best LLM-based baseline (29) by 20.7\\% and the best traditional method (22) by 59.1\\%. On linear/nonlinear benchmarks, CLOVER remains competitive, solving 355 of 366 programs overall.",
+   "abs_url": "https://arxiv.org/abs/2611.07882",
+   "pdf_url": "https://arxiv.org/pdf/2611.07882",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "specification_mining"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes a neurosymbolic framework combining LLM reasoning with SMT verification to infer loop invariants, using compositional decomposition and counterexample-guided refinement grounded in formal semantics.",
+   "idea": {
+    "problem": "Automatically inferring loop invariants for multiphase programs with conditional branches",
+    "approach": "Decompose loops into symbolic branch sequences, generate sub-invariants per sequence, compose and refine using SMT counterexamples",
+    "result": "Solves 35/54 multiphase benchmarks, outperforming LLM baseline (29) and traditional methods (22)"
+   }
+  },
+  {
+   "id": "2611.07652",
+   "title": "Don't Prompt Your Agents. Equip Them: Skillware as a Modular Standard for Sovereign, Auditable, and Deterministic Capability Execution for Logical Systems",
+   "authors": [
+    "Vladimiros Peilivanidis"
+   ],
+   "abstract": "Current autonomous logical systems rely on a fragile assumption: that language models should dynamically write code, guess API payloads, and memorize operational constraints through prompt engineering. In practice, this burns massive context windows, inflates API bills, and produces brittle agents that fail unpredictably in production. In this work, we present Skillware, an open architectural framework and capability registry that formally separates what an agent wants to do from how that task is executed. Instead of prompting models with loose text instructions or markdown files baptized as 'skills', Skillware equips them with modular, versioned software capability bundles. Much like skill hotkeys in video games that execute deterministically under fixed world rules, each bundle combines a typed JSON input contract, deterministic Python code, task directives, bundled datasets, and automated unit tests. In-process adapters translate these capabilities into native tool declarations for any model, from frontier cloud APIs to local open-weight runtimes with zero network latency. Evaluating 23 frontier and open-weight models across 368 benchmark conditions, we show that small local models (3B to 8B parameters) equipped with Skillware consistently outperform unequipped frontier models on complex multi-step workflows. They cut token usage by up to 84.8%, slash inference costs by up to 97.3%, and eliminate parameter errors entirely. True agent reliability does not come from larger models or longer prompts, but from equipping logical systems with verified, deterministic software. Finally, we articulate the trajectory of capability bundles across an invariant continuum of information processing systems: from digital logical systems today, to IoT, drones, and embodied robotics tomorrow, establishing a foundation for auditable, real-time capability execution.",
+   "abs_url": "https://arxiv.org/abs/2611.07652",
+   "pdf_url": "https://arxiv.org/pdf/2611.07652",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.SE"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "https://github.com/arpahls/skillware",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Proposes Skillware, a framework that structures and constrains LLM-agent behavior through modular, typed capability bundles with deterministic execution, verification, and formal input contracts—a harness design for auditable agent actions.",
+   "idea": {
+    "problem": "Current agents rely on fragile prompting, dynamic code generation, and lose operational constraints through context windows and API bills.",
+    "approach": "Skillware equips agents with modular, versioned capability bundles combining typed JSON contracts, deterministic code, directives, datasets, and unit tests.",
+    "result": "Small local models outperform frontier models; token usage cut 84.8%, costs cut 97.3%, parameter errors eliminated."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.07624",
+   "title": "Beneath the Surface: What We Overlook When We Talk About Agent Evolution",
+   "authors": [
+    "Xiaobo Wang",
+    "Zimu Wang",
+    "Siyu Ye",
+    "Jiaqi Li",
+    "Min Tang",
+    "Jun Bai",
+    "Yuling Shi",
+    "Ruobing Wang",
+    "Jingjing Zhang",
+    "Chaofan Wang",
+    "Kai Wu",
+    "Mengnan Qi",
+    "Kai Cai",
+    "Xiaodong Gu",
+    "Qi Liu",
+    "Zilong Zheng"
+   ],
+   "abstract": "Agent harness evolution enables recursive self-improvement (RSI) without updating model weights. We examine whether higher benchmark scores yield reliable, efficient, and transferable improvement. We evaluate four methods across harnesses, general and coding tasks. Repeated evaluations, controlled agent expansion, component interventions, and admission replays reveal recurring patterns. All sixteen evolved agents gain previously uncovered tasks while losing previously covered ones. In one general-task case, reliability rises by 5.2 points despite losing ten previously covered tasks. Most reliability gains also increase deployment cost. Specific changes usually outperform generic reminders, but their benefits can change when combined. The highest-scoring agent does not yield the largest mean improvement in any of our four pools, and stricter admission can discard useful alternatives. Transfer selectively preserves gains: coverage usually falls on the general-task target across both harness types and paradigms, but rises on the coding target with the outer-layer-only harness. These findings motivate preservation-aware evaluation, tested decision rules, and explicit applicability conditions. As a constructive follow-up, EvoAudit turns these diagnostics into revisions of select, analyze, mutate, and gate, achieving the best performance.",
+   "abs_url": "https://arxiv.org/abs/2611.07624",
+   "pdf_url": "https://arxiv.org/pdf/2611.07624",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "empirical",
+   "why": "Analyzes agent harness evolution methods, revealing trade-offs between benchmark performance and reliability, coverage, and transferability—critical for building trustworthy agent systems.",
+   "idea": {
+    "problem": "Higher benchmark scores from evolved agent harnesses may mask reliability loss and poor transferability",
+    "approach": "Evaluate four harness evolution methods with controlled expansions, component interventions, and admission replays to diagnose trade-offs",
+    "result": "Evolved agents gain new tasks while losing old ones; high scores don't guarantee best improvements; transfer is selective and task-dependent"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.07586",
+   "title": "Stress Testing Chain-of-Thought Monitoring Against Covert Misalignment",
+   "authors": [
+    "Yao Huang",
+    "Yifan Wang",
+    "Yitong Sun",
+    "Yichi Zhang",
+    "Yinpeng Dong"
+   ],
+   "abstract": "As LLM agents advance rapidly in autonomy, the risk of hidden objectives that bypass safety constraints becomes increasingly plausible. Chain-of-thought (CoT) monitoring offers a key control mechanism by reading the agent's reasoning and flagging misalignment before it materializes into action, yet its reliability depends on the realism of the red-team it is stress-tested against. Existing red-teaming efforts rely on shared templates, such as casting a side task as a prerequisite, which treat the side objective as an exogenous insertion and leave task-specific, contextually grounded evasions underexplored. We therefore ask: How robust is CoT monitoring against agents that strategically conceal misalignment? To answer this, we introduce TraceMRT, an automated Trace-level Monitor Red-Teaming framework that reframes the side task as a coherent sub-goal of the primary task and searches trace-shaping strategies whose induced trajectories complete the misaligned objective while reading as natural execution. Through black-box attacks on state-of-the-art monitors such as GPT-5.2 and Claude-4.5, we reveal substantial vulnerabilities even in top models. To counter these vulnerabilities, we propose a Bayesian Trajectory Monitoring framework, integrating global context and local segment evidence to detect covert misalignment. Empirically, our method significantly consolidates monitor robustness with 0.91 AUC and 0.74 TPR@FPR=0.05.",
+   "abs_url": "https://arxiv.org/abs/2611.07586",
+   "pdf_url": "https://arxiv.org/pdf/2611.07586",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes monitoring framework to detect covert misalignment in LLM agents and empirically tests robustness against strategic evasion attacks.",
+   "idea": {
+    "problem": "CoT monitoring for agent alignment is vulnerable to strategically concealed misalignment attacks.",
+    "approach": "Automated red-teaming framework that frames side tasks as coherent sub-goals; Bayesian monitoring integrating global and local evidence.",
+    "result": "Proposed method achieves 0.91 AUC and 0.74 TPR@FPR=0.05 on detecting covert misalignment."
+   }
+  },
+  {
+   "id": "2611.07461",
+   "title": "The Last Mile to the Real World: Agent-Native Primitives as Reusable Building Blocks for Solving Real-World Tasks",
+   "authors": [
+    "Haibo Jin",
+    "Peng Kuang",
+    "Xiaopeng Yuan",
+    "Lucheng Fu",
+    "Jerry Wang",
+    "Xucheng Yu",
+    "Yaoning Yu",
+    "Dehao Wu",
+    "Runguo Li",
+    "Colin Su",
+    "Jingxuan Sun",
+    "Xuyang Liu",
+    "Haojing Luo",
+    "Haohan Wang"
+   ],
+   "abstract": "How can an agent handle a real-world task end to end? Frontier models with their own harnesses still fall short on real-world benchmarks: on Terminal-Bench 4.0, GPT-5.6 Sol with Codex resolves 37.3% of the tasks and Claude Opus 5 with Claude Code 51.8%. These tasks fail at the step from reaching a resource to applying it, which we call the last mile to the real world. Existing approaches put the resource within reach but leave the competence to apply it with the caller, so each harness rebuilds that competence. We introduce agent-native primitives, reusable units that equip a resource with a resident LLM that applies it in context and communicates with other primitives, and HEELO (Harness Engineering around Evolving Agent-Native Primitives for the Last Mile to Real-WOrld Tasks), a harness engineering framework that builds each task's harness from a library of such primitives. HEELO composes the primitives a task needs into a task-specific graph, verifies the result against evidence from the environment, revises the primitives a failure implicates, and admits new or improved primitives after validation. We instantiate HEELO with eight primitive families, each built for one kind of task, and evaluate them on more than twenty benchmarks. Dev-Primitives raise Terminal-Bench 4.0 resolution from 37.3% under Codex to 55.5% on the same backbone, Harness Primitives composed per task raise Terminal-Bench 2.0 Pass@1 from 60.0% for the seed harness to 72.2%, Tool Primitives raise ToolBench pass rate from 55.8% to 75.1%, and Navigation Primitives raise GAIA-Text-103 accuracy from 45.6% to 58.3%. On the 46 real-world tasks of our heelo.dev platform, Claude Opus 5.5 with Claude Code and GPT-6.1 Sol with Codex complete 9 each on their own and 39 and 35 when connected to HEELO through our MCP server, with 1.9$\\times$ and 2.3$\\times$ less time and 1.55$\\times$ lower cost per completed task.",
+   "abs_url": "https://arxiv.org/abs/2611.07461",
+   "pdf_url": "https://arxiv.org/pdf/2611.07461",
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG",
+    "cs.MA",
+    "cs.SE"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes agent-native primitives and HEELO framework to structure and constrain agent behavior through reusable, composable building blocks with verification and revision loops.",
+   "idea": {
+    "problem": "LLM agents fail on real-world tasks at applying resources despite reaching them; existing harnesses lack reusable competence for resource application.",
+    "approach": "Introduce agent-native primitives as reusable units with resident LLMs that apply resources; compose them into task-specific graphs with verification and revision.",
+    "result": "HEELO raises Terminal-Bench resolution from 37.3% to 55.5%, ToolBench pass rate to 75.1%, and enables 39/46 real-world tasks vs. 9 without framework."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2608.27969",
+   "title": "openJiuwen: Beyond Static Harnesses for Long-Horizon Coding Agents",
+   "authors": [
+    "Tao Yu",
+    "Xinyu Zhang",
+    "Qianqian Chen",
+    "Xiaoneng Xiang",
+    "Chia Kwangyang",
+    "Xingchen Huang",
+    "Ran Chen",
+    "Yangkai Ding",
+    "Zheng Wang",
+    "Yeo Boon Hong",
+    "Bingzheng Gan",
+    "Enrui Hu",
+    "Shuo Cheng",
+    "Deyang Li",
+    "Ruifeng Shi",
+    "Hongbo Wang",
+    "Qi Ye",
+    "Xuefeng Jin",
+    "Zhangchun Zhao"
+   ],
+   "abstract": "Long-horizon coding agents operate over evolving repository states while increasingly relying on heterogeneous capabilities, delegated agents, and multi-agent coordination. These trends pose two complementary challenges for the agent harness. First, developers need to compose capabilities, reconfigure execution logic, and scale increasingly complex agent systems without repeatedly rebuilding orchestration. Second, complex coding tasks continuously produce new evidence---such as semantic diagnostics, execution outcomes, task progress, and changing context relevance---that should dynamically influence subsequent runtime decisions. We characterize these challenges as Structural Composability and Runtime Adaptivity. We present openJiuwen, an open-source harness designed for both developer composability and adaptive task execution. openJiuwen provides a shared execution substrate and Rail-based capability composition across single agents, delegated sub-agents, and Swarm Flow, enabling developers to construct sophisticated agent harnesses under common execution semantics. It further adapts framework-controlled runtime decisions around a fixed model policy, allowing evolving evidence to dynamically affect context, feedback, and task control toward successful completion. We systematically evaluate openJiuwen on SWE-bench Verified and Terminal-Bench 2.1, where it achieves 82.6% and 87.19%, respectively, exceeding the strongest selected official-leaderboard point estimates by 3.4 and 3.39 percentage points. These results show that openJiuwen achieves strong performance on complex coding tasks while providing a composable and adaptive harness design.",
+   "abs_url": "https://arxiv.org/abs/2608.27969",
+   "pdf_url": "https://arxiv.org/pdf/2608.27969",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "tool",
+   "why": "Presents openJiuwen, an agent harness framework for structured composition, runtime adaptivity, and control of long-horizon coding agents through a shared execution substrate and capability orchestration.",
+   "idea": {
+    "problem": "Long-horizon coding agents need composable harnesses and dynamic runtime adaptation as they coordinate multiple capabilities",
+    "approach": "Shared execution substrate with Rail-based capability composition and framework-controlled runtime decisions using evolving task evidence",
+    "result": "82.6% on SWE-bench Verified, 87.19% on Terminal-Bench 2.1, exceeding official leaderboard estimates by 3.4 and 3.39 points"
+   }
+  },
+  {
+   "id": "2608.25667",
+   "title": "AI Slop and Hallucinations in Vulnerability Assessment: A Survey on Reasoning Failures and Trustworthy Mitigation",
+   "authors": [
+    "Junchen Ding",
+    "Jialiang Dong",
+    "Yichen Zhu",
+    "Yi Liu",
+    "Gelei Deng",
+    "Willy Susilo",
+    "Siqi Ma",
+    "Yuekang Li"
+   ],
+   "abstract": "The integration of Large Language Models (LLMs) into cybersecurity has transformed vulnerability assessment, but it has also produced a trustworthiness crisis driven by the unchecked proliferation of \"AI slop.\" These artifacts, hallucinated vulnerabilities, plausible but incorrect patches, and semantically repackaged bug reports, impose a cognitive burden on human triage pipelines that mirrors a denial-of-service attack. This paper surveys the empirical evidence, identifies a unifying mechanism, and traces a path toward trustworthy triage. We formalize a taxonomy of AI slop grounded in a structured literature review and dissect its root cause: the gap between the causal deductive reasoning of security experts and the autoregressive probabilistic generation of current LLMs. We operationalize this gap through a measurable proxy, the Deductive Coverage Score, and show that chain-of-thought prompting and tool-using agents narrow but do not close it. We review mitigation strategies and argue that passive detection and watermarking target provenance rather than correctness, facing fundamental entropy constraints. We instead advocate for active neuro-symbolic verification, mapping each pipeline component to prior systems with documented limits on security inputs. Finally, we specify two evaluation instruments, CVE-Bench and Slop-Score, including dataset construction, metric formulas, and anti-gaming provisions. By shifting evaluation from linguistic fluency to mathematical verifiability, this survey provides a roadmap for securing emerging AI-driven triage systems.",
+   "abs_url": "https://arxiv.org/abs/2608.25667",
+   "pdf_url": "https://arxiv.org/pdf/2608.25667",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI"
+   ],
+   "published": "2026-11-05",
+   "venue": "SiMLA 2026",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding",
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "survey",
+   "why": "Surveys reasoning failures in LLM-based security tools and proposes neuro-symbolic verification and guardrails to ensure trustworthy vulnerability assessment.",
+   "idea": {
+    "problem": "LLMs generate hallucinated vulnerabilities and incorrect patches, creating trustworthiness gaps in security triage",
+    "approach": "Formalize AI slop taxonomy, measure deductive coverage gap, propose neuro-symbolic verification and evaluation benchmarks",
+    "result": "Roadmap for securing AI-driven triage via mathematical verifiability over linguistic fluency"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2605.27354",
+   "title": "Teach the Way It Thinks: Guiding LLM Post-training Data Engineering with Sparse Autoencoders",
+   "authors": [
+    "Yi Jing",
+    "Zao Dai",
+    "Jinwu Hu",
+    "Zijun Yao",
+    "Lei Hou",
+    "Juanzi Li",
+    "Xiaozhi Wang"
+   ],
+   "abstract": "Data engineering for large language model (LLM) reinforcement learning (RL) decides which samples to train on, when to present them, and which to batch together. Existing methods mostly rely on external feedback, such as pass rates or difficulty labels, which observes only the outcome on each sample. We argue that model internals offer richer and more model-intrinsic feedback that can guide all three decisions. We propose SAERL which organizes RL training data in the feature space of Sparse Autoencoders (SAEs), a mechanistic interpretability tool that decomposes model internals into sparse, interpretable features. SAE features let us view the model as a set of functional regions, each formed by features that related samples activate together. For each sample, its SAE activations indicate which regions it engages, and its gradients projected onto SAE features indicate how training on it would change these regions. Guided by this view, SAERL keeps samples with strong and non-redundant gradient signals, trains each functional region from easy to hard, and trains one functional region at a time, drawing each batch from a single activation cluster with moderate cross-cluster mixing. The resulting curriculum is constructed once with small models and transfers to larger ones. Experiments on mathematical reasoning show consistent gains across model scales and RL algorithms. For instance, on Qwen2.5-Math-1.5B, SAERL improves the average accuracy of GRPO by 3.1% and reaches the target accuracy with 42% fewer training steps. Further analyses reveal that ordering and batching are complementary. These results demonstrate that model internals are a powerful and practical foundation for post-training data engineering.",
+   "abs_url": "https://arxiv.org/abs/2605.27354",
+   "pdf_url": "https://arxiv.org/pdf/2605.27354",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "semantic_understanding"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Uses mechanistic interpretability (SAEs) to guide RL training data engineering, leveraging model internals to improve reasoning without external feedback signals.",
+   "idea": {
+    "problem": "LLM RL data engineering relies on external feedback; model internals offer richer guidance for sample selection, ordering, and batching.",
+    "approach": "Organize RL training data in SAE feature space, using SAE activations and gradients to identify functional regions and construct curricula.",
+    "result": "3.1% accuracy gain on Qwen2.5-Math-1.5B with 42% fewer training steps; curriculum transfers across model scales."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.07040",
+   "title": "An LLM-Orchestrated Neuro-Symbolic Framework for Verifying Diagnostic Signal Reachability in Electronic Systems",
+   "authors": [
+    "Heba Jaradat",
+    "Mohammed-Khalil Ghali",
+    "Saurabh Kulkarni",
+    "Rohan Kulkarni",
+    "Sangwon Yoon"
+   ],
+   "abstract": "Diagnostic Signal Reachability (DSR) captures whether board-level health signals are observable by management controllers, including baseboard management controllers (BMCs), complex programmable logic devices (CPLDs), and other smart controllers. Verifying DSR is essential for field diagnosability in datacenter fleets, where one design is deployed at massive scale, yet it remains largely manual, since each signal is traced by hand across schematic sheets, renamed nets, series components, and monitoring devices. Large language models (LLMs) are attractive but unreliable at structural connectivity reasoning, where over-claiming can silently hide a rare coverage gap. We present NetFlow-DSR, a neuro-symbolic framework in which an LLM orchestrates the DSR pipeline and resolves device roles mainly from part-name families and library pin names, consulting specifications only for ambiguous parts. Pin directionality is read from the design library, and deterministic graph engines verify connectivity over the authoritative netlist. The pipeline detects diagnostic nets, canonicalizes renamed net fragments, and performs controller-seeded, power-aware breadth-first search over an admissibility graph that credits device-mediated monitoring. Each verdict carries an auditable trace card whose proof path is the witness. Across five production boards from an AI platform, covering 421 expert-graded signals, a three-stage ablation improves pooled F1 from 0.578 to 0.944. Because a monitored verdict is emitted only with a proof path, the verifier is sound by construction, and precision and specificity were 100% in the evaluated data. In a cross-model study on the system-controller module, precision remained 100% across three LLMs while recall tracked each model's device-semantic extraction. Precision therefore depends on the netlist-grounded verifier and correct device semantics rather than on any single LLM.",
+   "abs_url": "https://arxiv.org/abs/2611.07040",
+   "pdf_url": "https://arxiv.org/pdf/2611.07040",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-11-04",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "semantic_understanding",
+    "specification_mining",
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "method",
+   "why": "Neuro-symbolic framework that uses LLMs to orchestrate reasoning over hardware specifications, grounding outputs in deterministic verification to ensure soundness and auditability of diagnostic conclusions.",
+   "idea": {
+    "problem": "Manually verifying diagnostic signal reachability across large-scale hardware designs is error-prone and unscalable",
+    "approach": "LLM orchestrates device-role resolution; deterministic graph verifier checks connectivity over authoritative netlist with proof traces",
+    "result": "100% precision and specificity on production boards; soundness by construction via netlist-grounded verification"
+   }
+  },
   {
    "id": "2611.06727",
    "title": "Airlock: Bounding the Multi-Agent Blast Radius via Selective Online Containment",
@@ -50,7 +442,7 @@
     "approach": "Tree-structured runtime with vertical permission boundaries and append-only provenance DAG to trace tainted data; fence-then-prune minimum cut algorithm for selective…",
     "result": "Blocks post-alert faulty actuations while retaining 68-96pp more healthy work than existing controls"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.06682",
@@ -88,7 +480,7 @@
     "approach": "Dynamic ontology grounding heterogeneous tool calls in shared semantic representation with executable logic deriving ready/waiting/forbidden…",
     "result": "0% attack success rate on AgentDojo, ASB, AgentDyn; improved task utility under attack versus baselines"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2607.07779",
@@ -161,7 +553,7 @@
     "approach": "Survey formal-mathematics tasks, autoformalization methods, and proof-generation strategies including training, search, and agentic workflows",
     "result": "Identifies five priorities: better data/evaluation, mathematical relationships, conjecture generation, tool integration, human-AI collaboration"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2602.02313",
@@ -200,7 +592,7 @@
     "approach": "Backpropagate outcome-level behavioral signals through inference trajectories via path integration to identify outcome-relevant internal components",
     "result": "Precise localization of sparse reasoning-relevant subsets enables mechanistic insight and reasoning capability modulation"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.05094",
@@ -233,7 +625,7 @@
     "approach": "Gated workflow with staged approval, executor file constraints, reviewer defect checks, and orchestrator file-inventory verification",
     "result": "Five of nine features completed successfully; executor stayed within constraints; orchestrator self-judging was the weak point"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.05039",
@@ -370,7 +762,7 @@
     "approach": "Multi-agent harness with stage-aware milestones, hierarchical planner-executor-controller architecture, parallel exploration, and shared structured…",
     "result": "Achieves 97.5% Pass@1 on Cybench and ExploitGym with improvements over Claude Code baselines"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.03939",
@@ -401,7 +793,7 @@
     "approach": "Build TRACE, an open-source agent harness enabling controlled manipulation of system components and recording of inputs/outputs",
     "result": "User memories significantly shift citation selection (33-39 pp) and can increase misinformation citation by 6.3 pp"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.03641",
