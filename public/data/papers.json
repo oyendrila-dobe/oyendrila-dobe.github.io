@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06",
+ "generated": "2026-11-08",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -52,7 +52,7 @@
     "approach": "Containerized terminal with agentic tasks, feasibility verification via Lean proofs and invariant checks, multi-reference scoring.",
     "result": "18 CUMCM/MCM problems with verifiable solutions; strongest model achieves 64.58% multi-reference O-Eval."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.07882",
@@ -119,7 +119,7 @@
     "approach": "Skillware equips agents with modular, versioned capability bundles combining typed JSON contracts, deterministic code, directives, datasets, and unit tests.",
     "result": "Small local models outperform frontier models; token usage cut 84.8%, costs cut 97.3%, parameter errors eliminated."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.07624",
@@ -165,7 +165,7 @@
     "approach": "Evaluate four harness evolution methods with controlled expansions, component interventions, and admission replays to diagnose trade-offs",
     "result": "Evolved agents gain new tasks while losing old ones; high scores don't guarantee best improvements; transfer is selective and task-dependent"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.07586",
@@ -247,7 +247,7 @@
     "approach": "Introduce agent-native primitives as reusable units with resident LLMs that apply resources; compose them into task-specific graphs with verification and revision.",
     "result": "HEELO raises Terminal-Bench resolution from 37.3% to 55.5%, ToolBench pass rate to 75.1%, and enables 39/46 real-world tasks vs. 9 without framework."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2608.27969",
@@ -333,7 +333,7 @@
     "approach": "Formalize AI slop taxonomy, measure deductive coverage gap, propose neuro-symbolic verification and evaluation benchmarks",
     "result": "Roadmap for securing AI-driven triage via mathematical verifiability over linguistic fluency"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2605.27354",
@@ -372,7 +372,7 @@
     "approach": "Organize RL training data in SAE feature space, using SAE activations and gradients to identify functional regions and construct curricula.",
     "result": "3.1% accuracy gain on Qwen2.5-Math-1.5B with 42% fewer training steps; curriculum transfers across model scales."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.07040",
@@ -442,7 +442,7 @@
     "approach": "Tree-structured runtime with vertical permission boundaries and append-only provenance DAG to trace tainted data; fence-then-prune minimum cut algorithm for selective…",
     "result": "Blocks post-alert faulty actuations while retaining 68-96pp more healthy work than existing controls"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.06682",
@@ -480,7 +480,7 @@
     "approach": "Dynamic ontology grounding heterogeneous tool calls in shared semantic representation with executable logic deriving ready/waiting/forbidden…",
     "result": "0% attack success rate on AgentDojo, ASB, AgentDyn; improved task utility under attack versus baselines"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2607.07779",
@@ -553,7 +553,7 @@
     "approach": "Survey formal-mathematics tasks, autoformalization methods, and proof-generation strategies including training, search, and agentic workflows",
     "result": "Identifies five priorities: better data/evaluation, mathematical relationships, conjecture generation, tool integration, human-AI collaboration"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2602.02313",
@@ -592,7 +592,7 @@
     "approach": "Backpropagate outcome-level behavioral signals through inference trajectories via path integration to identify outcome-relevant internal components",
     "result": "Precise localization of sparse reasoning-relevant subsets enables mechanistic insight and reasoning capability modulation"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.05094",
@@ -964,6 +964,75 @@
    }
   },
   {
+   "id": "2611.02815",
+   "title": "Predictive Safety Guardrails Do Not Always Make LLM Agents Safer",
+   "authors": [
+    "Weixiang Zhao",
+    "Zhihao Liu",
+    "Guancheng Li",
+    "Yanyan Zhao",
+    "Bing Qin",
+    "Ting Liu"
+   ],
+   "abstract": "Large language model agents increasingly take consequential actions in digital and physical environments, where safety risks may emerge only after multiple interaction steps. This has motivated world-model-driven predictive safety guardrails, which anticipate future consequences before execution. However, existing evaluations largely focus on end-to-end safety outcomes, leaving unclear whether safety gains arise from reliable prediction and faithful use of predicted risks. In this work, we systematically diagnose the prediction-to-action pipeline along three dimensions: how world-model predictions are integrated into decision making, whether the predictions themselves are reliable, and whether their content is faithfully used. Across seven policy models and two safety environments, we find that stronger prediction involvement does not yield monotonic safety gains and can reduce task completion while substantially increasing inference cost. We further find that world-model predictions remain insufficiently reliable, especially over longer horizons, where safety prediction degrades substantially relative to near-term forecasting. Finally, we find that safety gains can persist even under corrupted predictions, while locally verified predictions still leave subsequent safety violations, showing that predictive content is not faithfully incorporated into the decision process. Together, these findings expose a fundamental prediction-to-action gap in current predictive guardrails: producing more or seemingly accurate foresight is insufficient unless that foresight is both reliable and faithfully translated into safer decisions.",
+   "abs_url": "https://arxiv.org/abs/2611.02815",
+   "pdf_url": "https://arxiv.org/pdf/2611.02815v1",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "empirical",
+   "why": "Systematically evaluates predictive safety guardrails for LLM agents, diagnosing failures in the prediction-to-action pipeline and showing gaps between predicted risks and actual safety outcomes.",
+   "idea": {
+    "problem": "World-model-driven predictive safety guardrails for LLM agents may not reliably improve safety despite better predictions.",
+    "approach": "Systematically diagnose prediction-to-action pipeline across decision integration, prediction reliability, and faithful use of predictions.",
+    "result": "Stronger prediction involvement does not guarantee safety gains; predictions degrade over horizons and are not faithfully incorporated into decisions."
+   }
+  },
+  {
+   "id": "2611.02784",
+   "title": "HLSClaw: Bringing Vibe Coding to High-Level Synthesis through Skill-Based Agentic Harness",
+   "authors": [
+    "Jinming Ge",
+    "Shang Liu",
+    "Jiawei Liang",
+    "Shangkun Li",
+    "Afzal Ahmad",
+    "Jiang Xu",
+    "Linfeng Du",
+    "Wei Zhang"
+   ],
+   "abstract": "LLM agents are rapidly shifting software development toward intent-driven \\emph{vibe coding}, yet their effectiveness drops sharply in high-level synthesis (HLS), where code optimization must jointly consider design structure, directive search, and downstream hardware constraints. Existing HLS optimization approaches, including both heuristic-based methods and recent LLM-assisted pipelines, typically operate at fixed abstraction levels or in weakly coupled stages, limiting their ability to leverage the strong interplay between source code restructuring and directive search outcomes. Our key insight is that HLS optimization can be reframed from a fixed, hardwired transformation pipeline into a skill-based agentic control problem: an LLM agent equipped with modular, executable optimization skills and a feedback-driven orchestrator can autonomously navigate the coupled space of code restructuring and directive search. This motivates the design of HLSClaw, the first HLS-specific, skill-based agentic harness for holistic HLS optimization. On real-world HLS benchmarks, HLSClaw achieves a 39.12x geometric-mean latency speedup, outperforming the compiler baseline ScaleHLS by 1.98x, and surpassing the commercial coding agents Claude Code and Codex by 1.86x and 1.70x, respectively, while maintaining strong timing robustness.",
+   "abs_url": "https://arxiv.org/abs/2611.02784",
+   "pdf_url": "https://arxiv.org/pdf/2611.02784v1",
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.SE"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "tool",
+   "why": "Presents a skill-based agentic harness that structures and constrains an LLM agent's optimization behavior through modular skills and feedback-driven orchestration for hardware synthesis tasks.",
+   "idea": {
+    "problem": "LLM agents struggle with HLS optimization because code restructuring and directive search are tightly coupled, requiring joint consideration of design, constraints, and hardware…",
+    "approach": "Reframe HLS optimization as a skill-based agentic control problem where an LLM agent uses modular, executable optimization skills guided by a feedback-driven orchestrator.",
+    "result": "HLSClaw achieves 39.12x geometric-mean latency speedup, 1.98x better than ScaleHLS compiler baseline, while maintaining timing robustness."
+   }
+  },
+  {
    "id": "2611.02741",
    "title": "ATrust: Adaptive Trust Boundary Expansion for Securing LLM Agents",
    "authors": [
@@ -990,6 +1059,36 @@
     "problem": "LLM agents vulnerable to indirect prompt injection attacks; existing static defenses over-restrict task-essential information",
     "approach": "Adaptively expand trust boundary from user query root anchor, evaluating external observations against current state",
     "result": "ATrust reduces attack success rate from 37.80% to 4.37% on AgentDyn while improving utility by 10.00%"
+   }
+  },
+  {
+   "id": "2611.02605",
+   "title": "StateFence: Task-State Protection Against Evidence-Chain Contamination in Blue-Team LLM Agents",
+   "authors": [
+    "Haowen Dai",
+    "Alejandro Guerra-Manzanares"
+   ],
+   "abstract": "Indirect prompt injection creates a distinctive risk for blue-team Large Language Model (LLM) agents in Security Operations Centers (SOCs). Malicious instructions can be embedded in telemetry, tickets, retrieval results, or memory and then propagate through alert triage, incident summarization, response recommendation, and Indicator of Compromise (IOC) extraction as locally plausible intermediate decisions. We characterize this failure mode as evidence-chain contamination of protected task state. The main challenge is task dependent: a suspicious string may be malicious control text for summarization but essential evidence for IOC extraction. To address this challenge, we propose StateFence, a task-aware evaluation and defense framework that treats severity labels, incident narratives, response policies, and IOC sets as protected states. StateFence maps indirect prompt-injection attacks into explicit, stealth, multi-hop, and persistent SOC evidence attacks, records observable propagation traces, and routes defenses according to the attacked state. Across controlled SOC cases and public-SOC validation cases, StateFence lowers attack success and reduces failures that appear only after evidence is poisoned, while preserving task utility and avoiding the indicator loss caused by task-mismatched filtering. Our findings indicate that robust blue-team LLM agents require mechanisms that preserve task-critical state under untrusted evidence.",
+   "abs_url": "https://arxiv.org/abs/2611.02605",
+   "pdf_url": "https://arxiv.org/pdf/2611.02605v1",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI"
+   ],
+   "published": "2026-11-02",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "method",
+   "why": "Proposes StateFence, a task-aware framework to protect LLM-agent state from indirect prompt injection attacks by routing defenses according to attacked task state, exemplifying logic-based guardrails on agent behavior.",
+   "idea": {
+    "problem": "Indirect prompt injection contaminates task state in blue-team LLM agents through untrusted evidence in SOC workflows",
+    "approach": "Task-aware evaluation framework that maps injection attacks to evidence attacks and routes defenses per protected state type",
+    "result": "Reduces attack success and failures from evidence poisoning while preserving task utility and indicator preservation"
    }
   },
   {
@@ -1179,6 +1278,109 @@
     "result": "Explicit boundaries raised recall 5.5-26.1pp and reduced false positives on 21/23 models; best case 89.3% to 98.2% recall with 4.8% false alarm rate"
    },
    "figure_tries": 3
+  },
+  {
+   "id": "2611.02028",
+   "title": "LARK: Lean-Assisted Reasoning for LLM-Generated GPU Kernels",
+   "authors": [
+    "Zixi Zhang",
+    "Jiayi Nie",
+    "Haoran Wu",
+    "Yujie Yan",
+    "Yann Herklotz",
+    "Rika Antonova",
+    "Robert Mullins",
+    "Yiren Zhao",
+    "George A. Constantinides",
+    "Jianyi Cheng"
+   ],
+   "abstract": "Efficient GPU kernels are typically low-level and hardware-specific, and LLM agents can now generate them faster than experts can verify. Existing approaches rely on testing, which provides evidence but not a guarantee of correctness. We introduce LARK, an agentic framework that automatically and formally verifies GPU kernels against their PyTorch reference implementations. LARK proves equivalence in functional and memory behavior under exact arithmetic and establishes a new trust boundary: human effort is only needed to verify operator-level Lean semantics ahead of kernel generation time, instead of checking every single line of generated code. LARK formalizes the GPU machine model and the semantics of each operation in Lean 4 once per target language, and the Lean 4 semantics of any incoming kernel is derived from these pre-built definitions. LLM agents then automate the proof in two steps. First, an agent decomposes the whole kernel semantics into smaller segments and Lean 4 verifies this segmentation, which addresses the intractability of proving equivalence for large kernels directly. Second, agents write Lean proofs that each kernel segment matches its high-level PyTorch counterpart. Together, the two steps give whole-program equivalence. We demonstrate that LARK can be used 1) to ensure correctness in existing code-generation agents and 2) to automatically verify human-written kernel libraries. On the KernelCraft GPU tasks, combined with a simple ReAct agent, LARK enables GLM 5.3 to fully verify 10 of 12 Level-1 kernels and Opus 5.5 all 5 Level-2 kernels. Moreover, over 10 production kernels randomly sampled from popular open-source LLM serving frameworks, LARK verifies 9 and identifies a new data race bug in the tenth. We believe LARK represents a significant step toward verifiable code generation in the agentic era.",
+   "abs_url": "https://arxiv.org/abs/2611.02028",
+   "pdf_url": "https://arxiv.org/pdf/2611.02028v1",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-01",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization",
+    "semantic_understanding",
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Formalizes GPU kernel semantics in Lean and uses agents to prove kernel equivalence against reference implementations, combining autoformalization with agent-guided verification.",
+   "idea": {
+    "problem": "LLM-generated GPU kernels need verification beyond testing for correctness guarantees",
+    "approach": "Formalize GPU machine model in Lean, decompose kernels into segments, use agents to prove segment equivalence against PyTorch",
+    "result": "Verified 10/12 Level-1 and 5/5 Level-2 kernels; found data race bug in production kernel"
+   }
+  },
+  {
+   "id": "2611.01930",
+   "title": "RECEIPT: Measuring and Repairing the Return Assumption of LLM Agents in Web Service Operations",
+   "authors": [
+    "Boyang Yang",
+    "Ziyao Yang",
+    "Yu Zhang",
+    "Duo Chai",
+    "Xiaoming Chen",
+    "Haoye Tian"
+   ],
+   "abstract": "LLM agents operate Web infrastructure from the command line and rely on a return assumption, namely that each tool call returns within a bounded time and with its requested action finished. Many commands, however, ask a question before they act, and the agent's harness either closes the program's input or keeps it open as a terminal at which nobody types. With closed input, the program can return status 0 without the requested action. With open input, it waits until a time limit, and the agent pays in time and tokens. To the best of our knowledge, this paper is the first to measure and repair the return assumption. We collect 91,469 production tool calls and 89,047 public agent trajectories, test how 8 widely used harnesses launch commands, and build Litmus, a catalog of 158 checked command-line invocations, and Tripwire, a benchmark of 25 task pairs that differ only in whether a question guards the requested action. We then propose RECEIPT, which keeps the input open, reads what each process waits for from system calls, and returns this state to an unmodified agent through a model-checked protocol. On Litmus, closed input causes 11.5% of tested invocations to return status 0 without performing the requested action, and 7 of 8 harnesses close input when no terminal is attached. An unanswered question at a plain terminal multiplies a task's token use by 2.9, and the input connection moves an LLM from 7th to 3rd place among 8. Across 5 LLMs, RECEIPT reduces false claims of success by 73.5% and completes all 25 guarded tasks on a second harness. An agent's reliability therefore depends on what its harness lets it observe as well as on its LLM. Agent builders should report what each tool call did, not only how it ended, and benchmark maintainers should fix and report the input connection before they rank LLMs.",
+   "abs_url": "https://arxiv.org/abs/2611.01930",
+   "pdf_url": "https://arxiv.org/pdf/2611.01930v1",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-11-01",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "empirical",
+   "why": "Measures and repairs a critical assumption in LLM-agent harnesses—that tool calls return reliably—by diagnosing input handling failures and proposing RECEIPT, a protocol-based fix to improve agent reliability.",
+   "idea": {
+    "problem": "LLM agents assume tool calls return promptly with actions completed, but many commands await user input; harnesses fail to handle this, causing false success claims.",
+    "approach": "Diagnose input-handling failures across harnesses using production data and Litmus catalog; propose RECEIPT, which reads process state via system calls and returns it to agents…",
+    "result": "RECEIPT reduces false success claims by 73.5% and shifts agent ranking; input connection matters as much as LLM choice for reliability."
+   }
+  },
+  {
+   "id": "2611.01825",
+   "title": "The Scope Grammar of Natural-Language Rules: Counting and Enumerating Readings modulo Logical Equivalence",
+   "authors": [
+    "Sherzod Turaev"
+   ],
+   "abstract": "A rule written for people fixes its atomic conditions and connectives but leaves open how the connectives are bracketed, and each bracketing is a different logical reading that an autoformalizer must resolve or expose. We study the scope grammar, a deliberately ambiguous context-free grammar whose derivation trees are the readings of a connective skeleton and whose quotient by logical equivalence is what matters downstream. A skeleton with $k$ binary connectives has $C_k$ derivation trees, the $k$-th Catalan number, but far fewer logically distinct readings. For the positive, repetition-free fragment we make the gap exact: through the uniqueness of the read-once normal form we characterize the realizable normal forms by lowest common ancestors and count them with a two-label recurrence over the operator word, verified against exhaustive enumeration up to eleven atoms. The count is invariant under reversal and $\\wedge/\\vee$ duality; a skeleton is ambiguous if and only if it uses both $\\wedge$ and $\\vee$, a one-pass test; and the number of classes is at least $2^{\\lfloor n/3\\rfloor}$. Up to fifteen atoms the alternating pattern is the worst case; its count has a cubic generating function, is the 3-Schröder sequence (OEIS A137842), and grows with base $\\varphi^{5/2}\\approx3.330$, below the Catalan base 4. We reduce maximality to an inequality on increments, verified to sixteen atoms, and explain why local exchange arguments cannot prove it. We also treat negation, exceptions, and background axioms, where normal-form uniqueness still decides equivalence but counting is open.",
+   "abs_url": "https://arxiv.org/abs/2611.01825",
+   "pdf_url": "https://arxiv.org/pdf/2611.01825v2",
+   "primary_category": "cs.FL",
+   "categories": [
+    "cs.FL",
+    "cs.CL",
+    "cs.LO"
+   ],
+   "published": "2026-11-01",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.75,
+   "type": "theory",
+   "why": "Addresses logical ambiguity resolution in natural-language rules through scope grammar and logical equivalence, a core autoformalization challenge when translating NL to formal semantics.",
+   "idea": {
+    "problem": "Natural-language rules have ambiguous connective bracketings; autoformalizers must resolve which logical reading is intended.",
+    "approach": "Study scope grammar whose derivation trees represent readings; use read-once normal form to characterize and count logically distinct equivalence classes.",
+    "result": "For positive repetition-free fragment, characterize realizable normal forms by LCA; count via two-label recurrence; show ambiguity iff both ∧ and ∨ used; count grows as 3-Schröder…"
+   }
   },
   {
    "id": "2611.01415",
