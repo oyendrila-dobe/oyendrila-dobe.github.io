@@ -52,7 +52,7 @@
     "approach": "Generate runtime-checkable LTL specifications from NL intents, ground them to device affordances, and verify candidate actions against SMT-backed guardrails before execution.",
     "result": "Achieves 100% required action accuracy across simulated smart home, greenhouse, and industrial automation tasks versus 13% for direct LLM baseline."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.09088",
@@ -124,7 +124,7 @@
     "approach": "Build a Lean-specific agent backbone exposing runs, sessions, typed events via API with integrated tooling (blueprints, LSP, Loogle, SafeVerify)",
     "result": "LeaChat and LeaOverleaf demonstrate interactive formalization where mathematicians maintain high-level control while agents handle proof generation"
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.08516",
@@ -158,7 +158,7 @@
     "approach": "Transactional OS sandbox with kernel enforcement, CoW workspaces, identity-pinned egress proxy with DLP, and structured IPC bus for multi-agent isolation.",
     "result": "Reduces confirmation prompts by 90.7–99.88%, eliminates successful attacks (100%→0%), handles concurrent agents safely, and detects merge conflicts."
    },
-   "figure_tries": 1
+   "figure_tries": 2
   },
   {
    "id": "2611.08428",
@@ -644,6 +644,37 @@
     "problem": "Manually verifying diagnostic signal reachability across large-scale hardware designs is error-prone and unscalable",
     "approach": "LLM orchestrates device-role resolution; deterministic graph verifier checks connectivity over authoritative netlist with proof traces",
     "result": "100% precision and specificity on production boards; soundness by construction via netlist-grounded verification"
+   }
+  },
+  {
+   "id": "2611.06962",
+   "title": "Formalizing inverse problems in the age of AI: possibilities, pitfalls, and an invitation",
+   "authors": [
+    "Christian Clason",
+    "Tapio Helin",
+    "Medet Nursultanov",
+    "Lauri Oksanen"
+   ],
+   "abstract": "Proof assistants such as Lean check mathematical proofs down to the axioms, and AI agents have recently made writing such proofs cheap. We describe AutoIP, a Lean library in which classical linear regularization theory, together with the functional analysis it rests on, has been autoformalized by AI agents. A machine-checked proof certifies only the formal statement it proves, so the remaining human task is to confirm that each formal statement says what was intended. We organize the library around this task: a reviewer compares the formal statements with their natural-language counterparts and never needs to read a proof. Our experience is that the risks lie in the statements rather than in the proofs, and that simple automated tests on the statements can expose problems even in the established literature. We illustrate this with a textbook theorem whose hypothesis is more restrictive than asserted. We invite the inverse problems community to extend and build on the library.",
+   "abs_url": "https://arxiv.org/abs/2611.06962",
+   "pdf_url": "https://arxiv.org/pdf/2611.06962v1",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-04",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "tool",
+   "why": "Describes AutoIP, a Lean library autoformalized by AI agents, addressing the gap between natural-language mathematics and formal statements through machine-checked proofs and systematic verification.",
+   "idea": {
+    "problem": "Translating classical inverse-problem mathematics into machine-checkable formal proofs while ensuring statements match intent",
+    "approach": "Use AI agents to autoformalize regularization theory in Lean; organize review around comparing formal statements to natural-language counterparts rather than reading…",
+    "result": "Discovered discrepancies in established literature; demonstrated automated tests expose problems in formal statements"
    }
   },
   {
