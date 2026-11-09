@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-08",
+ "generated": "2026-11-09",
  "themes": {
   "semantic_understanding": "Semantic understanding & reasoning",
   "autoformalization": "Autoformalization",
@@ -16,6 +16,179 @@
   "theory": "Theory"
  },
  "papers": [
+  {
+   "id": "2611.09364",
+   "title": "SafeOrchestrate: Runtime Checked Intent-Driven Orchestration for Cyber-Physical Systems",
+   "authors": [
+    "Muhammad Ashfaq",
+    "Ahmed R. Sadik",
+    "Ewan Warburton",
+    "Pyry Kotilainen",
+    "Niko M\\\"akitalo",
+    "Tommi Mikkonen"
+   ],
+   "abstract": "Modern cyber physical systems (CPS) integrate heterogeneous sensors, actuators, controllers, and services, composed at runtime rather than at design time. Orchestrating such systems through natural language (NL) is attractive, but unconstrained large language model (LLM) tool use is risky because actions must respect device capabilities, runtime state, and safety constraints. We present Safe Orchestrate, a reference architecture for runtime checked, intent driven CPS orchestration. Given an NL intent, it derives atomic goals, generates a runtime checkable specification for each, grounds the specifications to device affordances, and verifies every candidate action against runtime state and safety constraints before execution. In a Web of Things (WoT) instantiation, the architecture produces Linear Temporal Logic (LTL) style specifications from the NL intent, grounds them to Thing Description (TD) affordances exposed through the Model Context Protocol (MCP), and checks candidate actions against satisfiability modulo theories (SMT) backed guardrails. We evaluate this instantiation on simulated smart home, greenhouse, and industrial automation tasks against a direct LLM to MCP baseline. Safe Orchestrate maintains 100% required action accuracy on every task and 100% MCP Execution Similarity (MCP ES) on all but one, where MCP ES is 92%. By contrast, the baseline degrades on multi device, event triggered, and ordered tasks, with MCP ES falling to 13%. These results suggest that combining LLM based specification generation with role aware grounding and runtime constraint checking improves reliability for open CPS orchestration without enriched TD annotations or planning domain expertise.",
+   "abs_url": "https://arxiv.org/abs/2611.09364",
+   "pdf_url": "https://arxiv.org/pdf/2611.09364",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-09",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining",
+    "autoformalization"
+   ],
+   "confidence": 0.92,
+   "type": "method",
+   "why": "Proposes SafeOrchestrate, an architecture that generates formal LTL specifications from natural language intents and enforces them via SMT-based runtime guardrails on LLM tool use in cyber-physical systems.",
+   "idea": {
+    "problem": "Unconstrained LLM tool use for orchestrating cyber-physical systems risks violating device capabilities, runtime state, and safety constraints.",
+    "approach": "Generate runtime-checkable LTL specifications from NL intents, ground them to device affordances, and verify candidate actions against SMT-backed guardrails before execution.",
+    "result": "Achieves 100% required action accuracy across simulated smart home, greenhouse, and industrial automation tasks versus 13% for direct LLM baseline."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.09088",
+   "title": "When Routine Operations Break Architectural Pattern Relationships in LLM Agent Harnesses",
+   "authors": [
+    "Boming Xia",
+    "Qinghua Lu",
+    "Dino Sejdinovic",
+    "Liming Zhu"
+   ],
+   "abstract": "LLM agent harnesses distribute tool mediation, state management and safety guardrails across native services, independently written plugins and configuration. Routine operations can change the runtime order or retained state that architectural pattern relationships require, without any code change. We study five relationships associated with the Guardrail Enforcement Point, Autonomy Controller and Blackboard patterns across five released harnesses, analysing a main sample of fourteen independently written plugins. Using PatternOps, our assessment procedure, we trace requirements from pattern descriptions, provider documentation and deployment profiles to the providers that realise them and the records that decide them. We then compare alternative allocations under supported operations. Such operations broke relationships silently: after a plugin was reapplied or an allow rule saved, policy stopped evaluating edits while every plugin stayed active, and a prohibited edit executed. Which alternatives qualified depended on the requirement. Allocations that kept the required order, or kept or rebuilt the needed state, held on their tested paths and operation sequences, while others prevented prohibited effects but missed edits rejected elsewhere. In these harnesses, a pattern relationship is a property of the running system and its history, so architects should evaluate it against the decision paths, state lifetimes and operation sequences their deployments use.",
+   "abs_url": "https://arxiv.org/abs/2611.09088",
+   "pdf_url": "https://arxiv.org/pdf/2611.09088",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "published": "2026-11-09",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.82,
+   "type": "empirical",
+   "why": "Analyzes how routine operations in LLM agent harnesses can silently break architectural patterns that enforce safety guardrails and policy checks, demonstrating vulnerabilities in deployed agent systems.",
+   "idea": {
+    "problem": "Routine operations in LLM agent harnesses break safety-critical architectural pattern relationships without code changes",
+    "approach": "Trace pattern requirements across harness components and compare alternative runtime allocations under supported operations",
+    "result": "Found guardrail enforcement silently fails after plugin reapplication or rule changes; alternative allocations vary in maintaining required order and…"
+   }
+  },
+  {
+   "id": "2611.08849",
+   "title": "Lea: An Agent Backbone for Mathematician-Controlled Formalization in Lean",
+   "authors": [
+    "Shaswat Patel",
+    "Daniel Aarao Reis Arturi",
+    "Kevin Gomez",
+    "Jaume de Dios Pont",
+    "Jorge Poco",
+    "Eduardo V. Teixeira",
+    "Sam Westrick",
+    "Claudio Silva",
+    "Chinmay Hegde"
+   ],
+   "abstract": "Agentic systems now formalize research-level mathematics in Lean, but they are built for autonomy: the mathematician states a target and inspects a result. The alternative, a general-purpose coding harness, is domain-neutral and must be assembled into a formalization workspace before any mathematics begins. Mathematicians, however, report wanting to keep high-level control over how an argument is decomposed and established. We present $\\textbf{Lea}$, a Lean-specific agent backbone for mathematician-facing software rather than a single interface. Lea exposes runs, sessions, and typed events through one application-neutral API, and ships with Lean tooling (blueprints, LSP, Loogle, SafeVerify) already wired. We report two applications built on it: $\\textbf{LeaChat}$, a web client for interactive proof authoring, and $\\textbf{LeaOverleaf}$, which formalizes theorems annotated directly in an Overleaf document; a session begun in either continues in the other. In a case study, a mathematician outlined a proof of the Durfee square generating function in a few natural-language messages, and Lea produced a complete Lean development from Mathlib alone, following the intended decomposition closely and requiring substantive correction at a single point. Lea and both applications are released as open source so that further mathematician-facing tools can be built on the same backbone.",
+   "abs_url": "https://arxiv.org/abs/2611.08849",
+   "pdf_url": "https://arxiv.org/pdf/2611.08849",
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "published": "2026-11-09",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "autoformalization",
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "tool",
+   "why": "Lea is a Lean-specific agent backbone that provides mathematician-controlled formalization through an application-neutral API, enabling interactive proof authoring with human oversight over decomposition and argument structure.",
+   "idea": {
+    "problem": "Current agentic formalization systems lack mathematician control over proof decomposition and argument structure",
+    "approach": "Build a Lean-specific agent backbone exposing runs, sessions, typed events via API with integrated tooling (blueprints, LSP, Loogle, SafeVerify)",
+    "result": "LeaChat and LeaOverleaf demonstrate interactive formalization where mathematicians maintain high-level control while agents handle proof generation"
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.08516",
+   "title": "Aegis OS: A Transactional Multi-Tenant Operating System Runtime for Eliminating Authorization Fatigue in Autonomous Coding Agents",
+   "authors": [
+    "Hui Zhao (Heurion Research)"
+   ],
+   "abstract": "Autonomous coding agents such as Google Antigravity (agy), Anthropic Claude Code (claude), and OpenAI Codex CLI (codex) execute multi-step software engineering workflows on workstations and cloud hosts. Existing agent environments face a Security-Autonomy Dilemma: operators must choose between per-action confirmation prompts, which interrupt workflows on 45%-57% of tool calls and induce authorization fatigue, or unconfined execution (--yolo / --dangerously-skip-permissions), which exposes host files, SSH/cloud credentials, and API tokens to prompt injection and hallucination risks. Furthermore, concurrent agents editing a shared working tree clobber one another's changes, while passing large artifacts inline through LLM context windows incurs high token overhead. We present Aegis OS (aegis-os), a transactional, multi-tenant Agent Operating System Runtime in Rust exposed via the Model Context Protocol (MCP) and Google Agent2Agent (A2A) protocol. Aegis OS shifts the authorization boundary from individual tool calls to transactional workspace boundaries. Each agent runs inside a kernel-enforced OS sandbox (macOS Seatbelt and Linux Bubblewrap with default-deny --tmpfs $HOME isolation and a Unix-socket egress bridge) backed by a Copy-on-Write (CoW) shadow workspace (APFS clonefile; single-open Linux FICLONE reflinks), an identity-pinned HTTP Egress Proxy with L7 method/path-scoped secret injection and outbound DLP, and an A2A IPC bus with Content-Addressable Storage (CAS). Across 1,500 controlled calls and 28,087 real calls across 52 coding-agent sessions, Aegis OS reduces prompts by 94.19%-99.88% (controlled) and 90.7%-97.9% (real sessions, 1.12% IPR), lowers attack success rate across 80 attacks in eight categories from 100.0% to 0.0% on macOS and Linux, clones 1,000-file (78.1 MB) repos in 6.3 ms on APFS and 15.6 ms on btrfs, and catches 10/10 syntactic and semantic merge conflicts.",
+   "abs_url": "https://arxiv.org/abs/2611.08516",
+   "pdf_url": "https://arxiv.org/pdf/2611.08516",
+   "primary_category": "cs.OS",
+   "categories": [
+    "cs.OS",
+    "cs.CR",
+    "cs.MA",
+    "cs.SE"
+   ],
+   "published": "2026-11-09",
+   "venue": "",
+   "code": "",
+   "license": "CC BY 4.0",
+   "license_url": "http://creativecommons.org/licenses/by/4.0/",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.92,
+   "type": "tool",
+   "why": "Presents Aegis OS, a kernel-enforced sandbox harness that constrains autonomous agent tool calls through transactional boundaries, secret injection, and runtime verification rather than per-action prompts.",
+   "idea": {
+    "problem": "Autonomous coding agents face authorization fatigue from confirmation prompts or unconfined execution that risks credential and file exposure to prompt injection.",
+    "approach": "Transactional OS sandbox with kernel enforcement, CoW workspaces, identity-pinned egress proxy with DLP, and structured IPC bus for multi-agent isolation.",
+    "result": "Reduces confirmation prompts by 90.7–99.88%, eliminates successful attacks (100%→0%), handles concurrent agents safely, and detects merge conflicts."
+   },
+   "figure_tries": 1
+  },
+  {
+   "id": "2611.08428",
+   "title": "The Power of Meta Access in the Software of the Future --- Demonstrated on LLM Chat UIs and Chat AI",
+   "authors": [
+    "Julian Kunkel",
+    "Ali Doosthosseini"
+   ],
+   "abstract": "Chat remains the default surface for many large language model (LLM) tasks, even as agentic tools such as OpenCode excel at coding and automation. Yet the model sees the current dialogue but not the workspace around it. We explore meta access---giving the assistant a structured, permissioned view of the interface itself and propose a ladder of levels: feature tutoring; metadata, settings, and preference access; retrieval over summaries and messages, confirmed mutation, and full orchestration. Meta access can turn a chat client from many screens into one entry point for finding, navigating, organising, and operating it, while raising risks around grounding, privacy, prompt injection, and trust. General-purpose agentic harnesses are runtimes; because they can change their own settings, meta access becomes reflexive and needs a separate control-plane boundary. We ground this in the Meta Chat prototype of the Chat AI client. It builds bounded context from, e.g., summaries, settings, and relevant messages; links references to conversations, topics, and personas; supports confirmed, reversible changes; offers a browsable tutorial library; and recommends personas as user-started conversations. By exposing application state in structured form, meta access can extend screen readers from widget descriptions to semantic workspace operations. Meta access thus turns chat from a window onto one conversation into a control layer for the whole workspace, extending chat toward agentic capability without surrendering user control. As assistants become embedded in IDEs, dashboards, office suites, and operating systems, AI-era interfaces should expose a structured, permissioned model of their state and capabilities, ideally by opening their existing metamodels through a debugger-like interface.",
+   "abs_url": "https://arxiv.org/abs/2611.08428",
+   "pdf_url": "https://arxiv.org/pdf/2611.08428v1",
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.75,
+   "type": "position",
+   "why": "Proposes structured, permissioned access to application state as a guardrail against prompt injection and to maintain user control over agentic LLM assistants embedded in interfaces.",
+   "idea": {
+    "problem": "LLM chat UIs lack structured access to workspace state, creating security and usability risks as assistants become more agentic",
+    "approach": "Meta access: a permissioned, structured view of application state and capabilities exposed through a control-plane boundary with confirmed mutations",
+    "result": "Prototype demonstrates how meta access can extend chat to full workspace control while maintaining user agency and security boundaries"
+   }
+  },
   {
    "id": "2611.08237",
    "title": "Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling",
@@ -52,7 +225,7 @@
     "approach": "Containerized terminal with agentic tasks, feasibility verification via Lean proofs and invariant checks, multi-reference scoring.",
     "result": "18 CUMCM/MCM problems with verifiable solutions; strongest model achieves 64.58% multi-reference O-Eval."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.07882",
@@ -119,7 +292,40 @@
     "approach": "Skillware equips agents with modular, versioned capability bundles combining typed JSON contracts, deterministic code, directives, datasets, and unit tests.",
     "result": "Small local models outperform frontier models; token usage cut 84.8%, costs cut 97.3%, parameter errors eliminated."
    },
-   "figure_tries": 2
+   "figure_tries": 3
+  },
+  {
+   "id": "2611.07640",
+   "title": "Beyond Instruction Override: Benchmarking Indirect Prompt Injection with Task-Tampering Attacks",
+   "authors": [
+    "Rongting Zhang",
+    "Martin Bertran",
+    "Sandeep Avula",
+    "Chia-Jung Lee",
+    "Vanessa Murdock"
+   ],
+   "abstract": "Indirect prompt-injection (IPI) benchmarks predominantly test planted instructions that redirect a tool-using agent toward an attacker-chosen task. Yet attacker-controlled content can instead tamper with the outcome of the task already in progress. A buyer's dispute evidence can cite a false refund policy to inflate a refund without changing the task. We define IPI by authority rather than instruction-like wording: planted content constitutes an attack when it attempts to influence a decision that its source is not authorized to determine. We introduce a benchmark that makes this boundary explicit: in each of 90 validated cases across three tool-use environments, the user request specifies the source that resolves the targeted decision. Every attack tampers with a decision required by the benign task rather than replacing that task. Each case has attacks with the same harmful outcome that target up to six parts of the agent's decision making: its objective, decision rules, available actions, expected consequences, reading of observations, or beliefs about the current state. Without a defense, attacks on three of the five other targets (decision rules, available actions, and state) have higher mean success than objective attacks across five LLMs. A detection-and-removal defense reduces objective-targeting attacks to 2.4% success but leaves observation- and state-targeting attacks at 9.5% and 12.1%; this gap persists under detection-optimized rewrites. A tool-policy defense still allows 15.4% attack success, close to 17.0% without a defense, because these attacks generally retain expected tools and manipulate values obtained during execution. Evaluations whose attacks redirect the task or target only the agent's objective can therefore overestimate the coverage of these defenses. Code and data are available at https://github.com/amazon-science/task-tampering-prompt-injection.",
+   "abs_url": "https://arxiv.org/abs/2611.07640",
+   "pdf_url": "https://arxiv.org/pdf/2611.07640v1",
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "https://github.com/amazon-science/task-tampering-prompt-injection",
+   "tags": [
+    "agent_guardrails"
+   ],
+   "confidence": 0.85,
+   "type": "benchmark",
+   "why": "Introduces a benchmark for indirect prompt-injection attacks that exploit agent decision-making, and evaluates detection and tool-policy defenses as guardrails against tampering.",
+   "idea": {
+    "problem": "Existing IPI benchmarks miss task-tampering attacks that manipulate task outcomes rather than replace the task itself.",
+    "approach": "Define IPI by authority over decisions; create benchmark with 90 cases testing attacks on six decision-making components with defense evaluation.",
+    "result": "Detection removes objective attacks but fails on state/observation attacks; tool-policy defense allows 15.4% success, revealing defense gaps."
+   }
   },
   {
    "id": "2611.07624",
@@ -165,7 +371,7 @@
     "approach": "Evaluate four harness evolution methods with controlled expansions, component interventions, and admission replays to diagnose trade-offs",
     "result": "Evolved agents gain new tasks while losing old ones; high scores don't guarantee best improvements; transfer is selective and task-dependent"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.07586",
@@ -247,7 +453,39 @@
     "approach": "Introduce agent-native primitives as reusable units with resident LLMs that apply resources; compose them into task-specific graphs with verification and revision.",
     "result": "HEELO raises Terminal-Bench resolution from 37.3% to 55.5%, ToolBench pass rate to 75.1%, and enables 39/46 real-world tasks vs. 9 without framework."
    },
-   "figure_tries": 2
+   "figure_tries": 3
+  },
+  {
+   "id": "2611.07442",
+   "title": "Req2Rust: A Requirements-Guided Agent Harness for Project-Level C++-to-Rust Migration",
+   "authors": [
+    "Shengbo Wang",
+    "Mingwei Liu",
+    "Yuwen Chen",
+    "Yanlin Wang"
+   ],
+   "abstract": "Memory-safety concerns make Rust an attractive target for modernizing legacy C/C++ systems, yet project-level C++ migration must balance semantic fidelity with Rust-oriented reconstruction. Source-structure-preserving migration can track low-level behavior, but it can also carry source-language organization, unsafe idioms, and project assumptions into Rust. Direct agent-based translation gives the model more freedom to construct a Rust project, but semantic coverage depends on the model identifying the source behaviors that must be preserved. This problem is especially acute for C++, where source behaviors are often hidden in object models, destructor-driven lifetime protocols, and other hard-to-localize C++ semantics. This paper presents Req2Rust, the first project-level LLM-based C++-to-Rust migration harness. Req2Rust first derives an evidence-grounded Migration Requirements Specification (MRS) that records the behaviors and constraints that must be preserved. It then synthesizes a Rust Design Specification (RDS) and realizes it as an initial Rust project. Because real projects contain implementation details and idioms that only become visible during build and validation, Req2Rust treats the initial Rust project as an executable refinement state. Compiler, semantic, and unsafe-reduction validators produce validation reports for improving buildability, behavioral alignment, and unsafe usage. We evaluate Req2Rust on general C++ projects and modules from the large-scale Openharmony codebase against a ClaudeCode baseline. Req2Rust produces buildable Rust crates in both settings and improves test pass rate from 69.5% to 91.9% on general projects and from 45.4% to 87.9% on Openharmony modules.",
+   "abs_url": "https://arxiv.org/abs/2611.07442",
+   "pdf_url": "https://arxiv.org/pdf/2611.07442v1",
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "published": "2026-11-05",
+   "venue": "",
+   "code": "",
+   "tags": [
+    "agent_guardrails",
+    "specification_mining"
+   ],
+   "confidence": 0.85,
+   "type": "tool",
+   "why": "Presents an LLM agent harness that derives specifications from C++ source code and uses validators as external guardrails to guide migration and constrain agent behavior toward correct Rust translation.",
+   "idea": {
+    "problem": "C++-to-Rust migration must preserve complex source behaviors while achieving idiomatic Rust; agent freedom risks missing hidden C++ semantics.",
+    "approach": "Derive Migration Requirements Specification from source, synthesize Rust Design Specification, refine via compiler and semantic validators as external guardrails.",
+    "result": "Buildable Rust crates with 91.9% test pass rate on general projects, 87.9% on Openharmony modules, versus 69.5% and 45.4% baseline."
+   }
   },
   {
    "id": "2608.27969",
@@ -333,7 +571,7 @@
     "approach": "Formalize AI slop taxonomy, measure deductive coverage gap, propose neuro-symbolic verification and evaluation benchmarks",
     "result": "Roadmap for securing AI-driven triage via mathematical verifiability over linguistic fluency"
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2605.27354",
@@ -372,7 +610,7 @@
     "approach": "Organize RL training data in SAE feature space, using SAE activations and gradients to identify functional regions and construct curricula.",
     "result": "3.1% accuracy gain on Qwen2.5-Math-1.5B with 42% fewer training steps; curriculum transfers across model scales."
    },
-   "figure_tries": 2
+   "figure_tries": 3
   },
   {
    "id": "2611.07040",
